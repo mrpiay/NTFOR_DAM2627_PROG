@@ -9,7 +9,7 @@ javac -d bin src/dam/*.java
 java -cp bin dam.Principal
 ```
 
-Copia en tu respuesta lo que imprime y explica por qué sale eso.
+En cada una, copia en tu respuesta lo que sale por pantalla y explícalo.
 
 ---
 
@@ -22,7 +22,7 @@ Copia en tu respuesta lo que imprime y explica por qué sale eso.
         print("Tienes " + getInt() * 12 + " meses");
 ```
 
-¿Qué imprime? ¿Por qué no sale `2012`?
+Copia lo que sale por pantalla y explícalo.
 
 **3.** Cambia el `main` por esto:
 
@@ -31,11 +31,11 @@ Copia en tu respuesta lo que imprime y explica por qué sale eso.
         print("Tienes " + (20 + 1) + " años");
 ```
 
-¿Qué imprime cada línea? ¿Por qué son distintas?
+Copia lo que sale por pantalla y explícalo.
 
 **4.** ¿Qué tiene que ser la primera línea de `Auxiliar.java` y de `Principal.java`? ¿En qué carpeta deben estar los dos archivos, y por qué?
 
-**5.** Cambia el `main` por `print(5);` y compila. ¿Compila? Copia el error y explícalo. ¿Cómo lo cambias para que imprima `5` usando `print`?
+**5.** Cambia el `main` por `print(5);` y compila. Copia lo que sale por pantalla y explícalo.
 
 **6.** Cambia el `main` por esto:
 
@@ -45,7 +45,7 @@ Copia en tu respuesta lo que imprime y explica por qué sale eso.
         print("Potencia: " + Math.pow(2, 10));
 ```
 
-¿Qué imprime? ¿Por qué la raíz y la potencia salen con `.0` y el máximo no?
+Copia lo que sale por pantalla y explícalo.
 
 **7.** Añade este método a `Auxiliar`:
 
@@ -62,7 +62,7 @@ y cambia el `main` por esto:
         print("Redondeada: " + Math.round(areaCirculo(2) * 100) / 100.0);
 ```
 
-¿Qué imprime cada línea? Explica cómo consigue la segunda dejar dos decimales.
+Copia lo que sale por pantalla y explícalo.
 
 **8.** Cambia el `main` por esto:
 
@@ -75,7 +75,7 @@ y cambia el `main` por esto:
         print(nombre.substring(4));
 ```
 
-¿Qué imprime cada línea? ¿Desde qué número empiezan a contarse las posiciones de un `String`?
+Copia lo que sale por pantalla y explícalo.
 
 **9.** Cambia el `main` por esto:
 
@@ -85,6 +85,6 @@ y cambia el `main` por esto:
         System.out.println("" + nombre.charAt(0) + nombre.charAt(4));
 ```
 
-¿Qué imprime cada línea? ¿Por qué la primera no imprime letras?
+Copia lo que sale por pantalla y explícalo.
 
-**10.** ¿Por qué se ejecuta con `java -cp bin dam.Principal`? ¿Qué error sale con `java -cp bin Principal` y por qué?
+**10.** Ejecuta `java -cp bin dam.Principal` y después `java -cp bin Principal`. Copia lo que sale por pantalla y explícalo.
