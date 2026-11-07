@@ -10,8 +10,7 @@ Todas las semanas: el cuestionario de autoevaluación está disponible desde el 
 |---|---|
 | Lunes 16 de noviembre, 23:59 | Entrega en Teams de las autoevaluaciones de las semanas del 2 al 6 y del 9 al 13, en una sola tarea |
 | Martes 17 de noviembre | Se publican las soluciones de esas dos autoevaluaciones y el proyecto «Notas de clase» completo |
-| Miércoles 18 de noviembre | **Entrega de la UD4**: el proyecto «Notas de clase» comprimido, en Teams (paso 8 del proyecto) |
-| Miércoles 25 de noviembre | **Examen de la UD4**: arrays, cadenas y regex |
+| Viernes 20 de noviembre (11:00 y 12:10) | **Prueba escrita**, en papel, sobre «Java 0» y el proyecto «Notas de clase»: cómo se organiza un programa en Java, arrays y matrices, los métodos de `String` y de `Arrays`, leer un archivo y el propio proyecto |
 
 ## Programación
 

@@ -9,7 +9,7 @@
 | UD1 · Fundamentos de Java | jue 10 sep | vie 18 sep | 13 | 6 % | Taller de ejercicios cortos |
 | UD2 · Control de flujo y excepciones | vie 18 sep | vie 9 oct | 26 | 10 % | Taller de resolución de problemas |
 | UD3 · Funciones | vie 9 oct | vie 23 oct | 16 | 7 % | Pequeño proyecto con 6–8 funciones reutilizables |
-| UD4 · Arrays, cadenas y regex | vie 23 oct | mié 18 nov | 20 | 10 % | Proyecto «Notas de clase» |
+| UD4 · Arrays, cadenas y regex | vie 23 oct | mié 18 nov | 20 | 10 % | — |
 
 Peso de estas unidades en el módulo: 33 % (la suma de los pesos de sus unidades, apartado 2.1 de la programación).
 
@@ -25,8 +25,7 @@ Peso de estas unidades en el módulo: 33 % (la suma de los pesos de sus unidades
 | vie 23 oct | Entrega UD3 | Pequeño proyecto con 6–8 funciones reutilizables |
 | vie 30 oct | Examen UD3 | Funciones |
 | 3–6 nov | **Puesta en común y proyecto de diagnóstico** | No se avanza: se repasa y se completa lo que tocaba hasta la fecha y se preparan las próximas entregas y exámenes |
-| mié 18 nov | Entrega UD4 | Proyecto «Notas de clase» |
-| mié 25 nov | Examen UD4 | Arrays, cadenas y regex |
+| vie 20 nov | Prueba UD4 | Arrays, cadenas y regex: prueba escrita sobre «Java 0» y el proyecto «Notas de clase», en lugar del examen |
 | mié 9 dic y jue 10 dic | **Repaso** | 1ª evaluación |
 | vie 11 dic | **Examen final** | 1ª evaluación |
 
@@ -37,7 +36,7 @@ Peso de estas unidades en el módulo: 33 % (la suma de los pesos de sus unidades
 | UD1 | Taller de ejercicios cortos | 4–6 ejercicios cortos resueltos. Código que compila y formatea correctamente. Pequeño resumen de los formatos usados. |
 | UD2 | Taller de resolución de problemas | 6–10 ejercicios resueltos con manejo de excepciones. Código que compila, pasa pruebas de caso e incluye mensajes de error claros. Breve autorrevisión por lote (qué falló, cómo se arregló). |
 | UD3 | Pequeño proyecto con 6–8 funciones reutilizables | Pequeño proyecto con 6–8 funciones reutilizables. 3 ejercicios guía: cálculo numérico, validación simple y un problema recursivo. Código que compila, con pruebas de caso y comentarios breves. |
-| UD4 | Proyecto «Notas de clase» | Programa de consola que lee un CSV con las notas de una clase (arrays, una matriz, `split`, `parseInt`, `try-catch`) y responde con un menú: si un nombre está en la lista, las notas y la media de un alumno, el mejor de un trimestre y los mejores de cada trimestre y del curso. Métodos auxiliares en una clase aparte (`dam.notas.Notas`). Se entrega comprimido, con el código, el bytecode y el CSV. |
+| UD4 | Taller de procesado de texto | 5–7 ejercicios de parsing/validación resueltos. Pequeña librería TextoUtils con funciones reutilizables. Conjunto de casos de prueba que pasan correctamente. |
 
 ## Semana a semana
 
@@ -53,8 +52,8 @@ Peso de estas unidades en el módulo: 33 % (la suma de los pesos de sus unidades
 | Del 26 al 30 de octubre | UD4 · Práctica guiada Arrays & Strings<br>**examen de la UD3** |
 | [Del 2 al 6 de noviembre](../2026_11_02-06) | **puesta en común y proyecto de diagnóstico** (no se avanza: se repasa y se completa lo que tocaba hasta la fecha) |
 | [Del 9 al 13 de noviembre](../2026_11_09-13) | UD4 · Proyecto guiado «Notas de clase» |
-| Del 16 al 20 de noviembre | UD4 · Temas pendientes de la UD4<br>UD5 · Práctica guiada –Clases |
-| Del 23 al 27 de noviembre | **examen de la UD4**<br>UD5 · Práctica guiada –Clases<br>UD5 · Taller de encapsulación |
+| Del 16 al 20 de noviembre | UD4 · Temas pendientes de la UD4<br>UD5 · Práctica guiada –Clases<br>**prueba escrita de la UD4** |
+| Del 23 al 27 de noviembre | UD5 · Práctica guiada –Clases<br>UD5 · Taller de encapsulación |
 | Del 30 de noviembre al 4 de diciembre | UD5 · Taller de encapsulación<br>UD5 · Mini-proyecto.Catálogo básico |
 | Del 7 al 11 de diciembre | **repaso** o terminar lo pendiente · 1ª evaluación<br>**examen final** · 1ª evaluación |
 | Del 14 al 18 de diciembre | UD5 · Mini-proyecto.Catálogo básico<br>UD6 · Práctica guiada herencia |

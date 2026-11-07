@@ -10,6 +10,5 @@
 |---|---|
 | Autoevaluación de esta semana y de la anterior ([semana del 2 al 6](../../2026_11_02-06/estudio/autoevaluacion.md)), en una sola tarea de Teams | Hasta el **lunes 16 de noviembre**, a las 23:59 |
 | Soluciones de las dos autoevaluaciones y el proyecto completo, en [`soluciones/`](../soluciones) | **Martes 17 de noviembre** |
-| **Entrega de la UD4:** el proyecto «Notas de clase» comprimido, como explica el paso 8 (`<tu usuario>-notas-csv.zip`), en la tarea de Teams de la entrega | **Miércoles 18 de noviembre** |
 
-El examen de la UD4 es el **miércoles 25 de noviembre**: está en las fechas importantes del repositorio.
+La prueba escrita sobre «Java 0» y el proyecto «Notas de clase» es el **viernes 20 de noviembre**, después de que se publiquen las soluciones: está en las fechas importantes del repositorio.

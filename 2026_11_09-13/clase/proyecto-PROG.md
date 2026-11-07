@@ -15,9 +15,9 @@ Es la **UD4 · Arrays, cadenas y regex**: arrays, una matriz (un array de dos di
 
 **Usa la IA como guía, no para que lo haga por ti.** Pídele que te explique lo que no entiendas; **el código lo pones tú en tu proyecto**, aunque sea copiando y pegando, sabiendo **dónde** lo pones y **para qué**. El objetivo es que lo que hagas **funcione y cumpla los requisitos** de cada paso («Comprueba que…») y que sepas **dónde está cada cosa y qué habría que tocar para cambiar o añadir algo**.
 
-**El objetivo es entender cada paso:** es lo que necesitas para responder el cuestionario de autoevaluación y preparar el examen de la UD4.
+**El objetivo es entender cada paso:** es lo que necesitas para responder el cuestionario de autoevaluación y preparar la prueba escrita.
 
-**Entrega.** Este proyecto es la entrega de la UD4: el proyecto comprimido, el **miércoles 18 de noviembre** (ver [`entrega.md`](entrega.md)).
+**Evaluación continua.** Algunas semanas hay una **prueba escrita, en papel,** en las dos últimas sesiones del último día de clase, después de que se publiquen las soluciones de lo que entra. La primera es el **viernes 20 de noviembre**, sobre «Java 0» y este proyecto: cómo se organiza un programa en Java (clases, paquetes y métodos estáticos), arrays y matrices, los métodos de `String` y de `Arrays` que se usan en el proyecto, leer un archivo y el propio proyecto. Sustituye al examen de la UD4.
 
 ## Las herramientas
 
@@ -29,7 +29,7 @@ Las de «Java 0», en el terminal de Linux (en Windows, **Ubuntu** desde el men�
 | **VS Code** | El editor | `code .` lo abre en la carpeta en que estás. Su terminal: **Ctrl+ñ** | Todos |
 | **`javac`** | El compilador: de `.java` a `.class` | `javac -d bin src/dam/*.java src/dam/notas/*.java` | Todos |
 | **`java`** | Ejecuta el programa | `java -cp bin dam.Principal`, desde la carpeta del proyecto | Todos |
-| **`zip`** | Comprime el proyecto para entregarlo | `zip -r …` | 8 |
+| **`zip`** | Comprime el proyecto en un solo archivo | `zip -r …` | 8 |
 
 ## Con qué trabajas
 
@@ -571,7 +571,7 @@ Y que, después de cada opción, vuelve a salir el menú.
 
 ## Paso 8 · Comprobar todo y comprimir
 
-**Objetivo.** Repasar que todo funciona y crear el zip para la entrega.
+**Objetivo.** Repasar que todo funciona y guardar el proyecto en un zip, como en «Java 0».
 
 **Pista.**
 
