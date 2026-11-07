@@ -8,6 +8,7 @@ Un caso real: un archivo `notas.csv` con las notas de una clase de 25 alumnos en
 - ¿Qué notas tiene este alumno y cuál es su media?
 - ¿Quién tiene la mejor nota de un trimestre?
 - ¿Quién es el mejor de cada trimestre y del curso?
+- ¿Quién ha aprobado un trimestre?
 
 Es la continuación de «Java 0»: el mismo paquete `dam`, con `Principal` y `Auxiliar`, y un paquete nuevo, `dam.notas`, con una clase `Notas`. Cada paso añade a `Notas` un **método auxiliar** que hace una sola cosa, y `Principal` lo usa. Al final, la lógica del programa se lee casi como las preguntas de arriba.
 
@@ -29,7 +30,7 @@ Las de «Java 0», en el terminal de Linux (en Windows, **Ubuntu** desde el men�
 | **VS Code** | El editor | `code .` lo abre en la carpeta en que estás. Su terminal: **Ctrl+ñ** | Todos |
 | **`javac`** | El compilador: de `.java` a `.class` | `javac -d bin src/dam/*.java src/dam/notas/*.java` | Todos |
 | **`java`** | Ejecuta el programa | `java -cp bin dam.Principal`, desde la carpeta del proyecto | Todos |
-| **`zip`** | Comprime el proyecto en un solo archivo | `zip -r …` | 8 |
+| **`zip`** | Comprime el proyecto en un solo archivo | `zip -r …` | 10 |
 
 ## Con qué trabajas
 
@@ -64,6 +65,8 @@ Nombre03;82;85;73
 | `Arrays.toString` y `String.format` para mostrar | 2 y 4 |
 | Métodos que reciben arrays y devuelven un valor o una posición | 3 a 6 |
 | Un menú con `do-while` y `switch` | 7 |
+| Repetir una pregunta hasta que el dato sea válido (`try-catch` y `break`) | 8 |
+| Saltarse elementos al recorrer un array (`continue`) | 9 |
 
 ## Plan de la semana
 
@@ -78,8 +81,8 @@ Cada sesión dura 50 minutos.
 | Jueves 12 | 13:00 | **Paso 5** (el mejor de un trimestre). |
 | Jueves 12 | 13:50 | **Paso 6** (los mejores de cada trimestre y del curso). |
 | Viernes 13 | 10:10 | **Paso 7** (el menú). |
-| Viernes 13 | 11:00 | **Paso 8** (comprobar todo y comprimir). |
-| Viernes 13 | 12:10 | Terminar los pasos que falten y repasar el proyecto con la lista final («Cómo comprobarlo»). |
+| Viernes 13 | 11:00 | **Paso 8** (leer números sin romperse) y **paso 9** (aprobados de un trimestre). |
+| Viernes 13 | 12:10 | **Paso 10** (comprobar todo y comprimir) y repasar el proyecto con la lista final («Cómo comprobarlo»). |
 
 **Los pasos se hacen en orden**, cada uno en la sesión que le toca según el plan de la semana: cada paso usa lo del anterior. Al terminar cada paso, el programa tiene que compilar y funcionar.
 
@@ -565,17 +568,122 @@ Y que, después de cada opción, vuelve a salir el menú.
 **Si te falla…**
 
 - *Al elegir una opción sale también lo de la siguiente*: falta un `break`.
-- *`NumberFormatException` al elegir*: has escrito algo que no es un número; `getInt` solo acepta números enteros.
+- *`NumberFormatException` al elegir*: has escrito algo que no es un número; de momento `getInt` solo acepta números enteros. Lo arregla el paso 8.
 
 ---
 
-## Paso 8 · Comprobar todo y comprimir
+## Paso 8 · Leer números sin que el programa se rompa
+
+**Objetivo.** Que, si en el menú o al pedir el trimestre se escribe algo que no es un número, el programa avise y vuelva a preguntar, en lugar de terminar con un error.
+
+**Pista.** `Integer.parseInt("hola")` lanza una excepción, `NumberFormatException`, y como nadie la recoge el programa termina. Igual que en el paso 1, `try-catch` la recoge. Para volver a preguntar hasta que el dato sea bueno, se usa un bucle sin fin, `while (true)`, del que se sale con `break` en cuanto el número es válido.
+
+En `Auxiliar.java`, sustituye el método `getInt` entero por este:
+
+```java
+    public static int getInt() {
+        int numero;
+        while (true) {
+            try {
+                numero = Integer.parseInt(teclado.nextLine().trim());
+                break;                      // es un número: sale del bucle
+            } catch (NumberFormatException e) {
+                print("Eso no es un número. Prueba otra vez:");
+            }
+        }
+        return numero;
+    }
+```
+
+- `while (true)` repite siempre: la única salida es el `break`.
+- Si `parseInt` funciona, se guarda el número y `break` sale del bucle en ese momento. Después, `return numero` lo devuelve.
+- Si `parseInt` falla, el resto del `try` no se ejecuta (tampoco el `break`): salta al `catch`, que avisa, y el bucle vuelve a empezar.
+
+Como todas las opciones leen los números con `getInt`, el arreglo sirve para todo el programa sin tocar nada más.
+
+**Comprueba que…**
+
+| Eliges | Y escribes | Sale |
+|---|---|---|
+| `hola` | | `Eso no es un número. Prueba otra vez:` y espera otra respuesta |
+| `3` | `x` y después `2` | `Eso no es un número. Prueba otra vez:` y después `Trimestre 2: Nombre07 (100)` |
+
+**Si te falla…**
+
+- *`variable numero might not have been initialized`*: el `break` está antes de `numero = …` o fuera del `try`.
+- *Sigue preguntando aunque escribas un número*: falta el `break`.
+
+---
+
+## Paso 9 · Aprobados de un trimestre
+
+**Objetivo.** Una opción nueva en el menú, «5. Aprobados de un trimestre»: quién tiene 50 o más en el trimestre elegido y cuántos son.
+
+**Pista.** Se recorre la columna del trimestre y se saltan los suspensos con `continue`. `continue` pasa directamente a la siguiente vuelta del bucle, sin ejecutar lo que queda de esta. La diferencia con `break`: `break` termina el bucle entero; `continue` solo se salta la vuelta en la que está.
+
+En `Principal.java`, añade este método debajo de los demás:
+
+```java
+    static void opcionAprobados(String[] nombres, int[][] notas) {
+        print("Trimestre (1, 2 o 3):");
+        int trimestre = getInt();
+        if (trimestre < 1 || trimestre > 3) {
+            print("No hay trimestre " + trimestre);
+            return;
+        }
+        int columna = trimestre - 1;
+        int aprobados = 0;
+        for (int i = 0; i < nombres.length; i++) {
+            if (notas[i][columna] < 50) {
+                continue;                   // suspenso: pasa al siguiente
+            }
+            print(nombres[i] + " (" + notas[i][columna] + ")");
+            aprobados++;
+        }
+        print("Aprobados: " + aprobados + " de " + nombres.length);
+    }
+```
+
+- `return` en un método `void` lo termina en ese momento: si el trimestre no existe, no se hace nada más.
+- Con un suspenso, `continue` se salta el `print` y el `aprobados++`: solo se muestran y se cuentan los aprobados.
+
+En el `main`, añade la opción al menú, debajo de `print("4. Mejores de cada trimestre y del curso");`:
+
+```java
+            print("5. Aprobados de un trimestre");
+```
+
+Y en el `switch`, antes de `case 0:`:
+
+```java
+                case 5:
+                    opcionAprobados(nombres, notas);
+                    break;
+```
+
+**Comprueba que…** con la opción `5` y el trimestre `1` salen 16 líneas, de `Nombre02 (57)` a `Nombre25 (90)`, y al final:
+
+```
+Aprobados: 16 de 25
+```
+
+Con el trimestre `3` dice `Aprobados: 19 de 25`, y con el `7`, `No hay trimestre 7`.
+
+**Si te falla…**
+
+- *Dice `Aprobados: 25 de 25`*: el `aprobados++` está antes del `if`. Tiene que ir después, para que el `continue` se lo salte.
+- *Salen solo los suspensos*: la condición del `if` está al revés; es `< 50`.
+- *La opción 5 dice `Opción no válida`*: falta el `case 5` en el `switch`.
+
+---
+
+## Paso 10 · Comprobar todo y comprimir
 
 **Objetivo.** Repasar que todo funciona y guardar el proyecto en un zip, como en «Java 0».
 
 **Pista.**
 
-1. Compila y pasa otra vez la tabla del paso 7.
+1. Compila y pasa otra vez las tablas de los pasos 7, 8 y 9.
 2. Comprime el proyecto. `$USER` es tu nombre de usuario de Linux, así el zip lleva tu nombre:
 
    ```bash
@@ -617,4 +725,6 @@ Qué se entrega y cuándo: [`entrega.md`](entrega.md).
 | Dice el mejor de un trimestre y avisa si el trimestre no existe |  |
 | Muestra los mejores de cada trimestre y del curso |  |
 | El menú repite hasta elegir 0 |  |
+| Si se escribe algo que no es un número, avisa y vuelve a preguntar |  |
+| Lista los aprobados de un trimestre y dice cuántos son |  |
 | El zip lleva `src`, `bin` y `notas.csv`, y funciona extraído en otra carpeta |  |
