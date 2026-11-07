@@ -6,7 +6,7 @@
 
 | UD | Inicio | Fin | Sesiones | Peso | Entrega |
 |---|---|---|---|---|---|
-| UD5 · POO I: Clases | jue 19 nov | jue 17 dic | 26 | 10 % | Mini-proyecto.Catálogo básico |
+| UD5 · POO I: Clases | mié 9 dic | jue 17 dic | 13 | 10 % | Mini-proyecto.Catálogo básico |
 | UD6 · POO II: Herencia y polimorfismo | jue 17 dic | vie 22 ene | 19 | 8 % | Taller de jerarquías |
 | UD7 · POO III: Interfaces y clases abstractas | vie 22 ene | jue 4 feb | 15 | 6 % | Lista ordenada con Comparable y Comparator, con demo |
 
@@ -16,7 +16,7 @@ Peso de estas unidades en el módulo: 24 % (la suma de los pesos de sus unidades
 
 | Fecha | Qué | Detalle |
 |---|---|---|
-| jue 17 dic | Entrega UD5 | Mini-proyecto.Catálogo básico |
+| — | Entrega UD5 | Mini-proyecto.Catálogo básico (fecha por reajustar en la 2ª evaluación) |
 | mié 13 ene | Examen UD5 | POO I: Clases |
 | vie 22 ene | Entrega UD6 | Taller de jerarquías |
 | vie 29 ene | Examen UD6 | POO II: Herencia y polimorfismo |
