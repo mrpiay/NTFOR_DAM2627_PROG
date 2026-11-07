@@ -9,7 +9,9 @@ Todas las semanas: el cuestionario de autoevaluación está disponible desde el 
 | Fecha | Qué |
 |---|---|
 | Lunes 16 de noviembre, 23:59 | Entrega en Teams de las autoevaluaciones de las semanas del 2 al 6 y del 9 al 13, en una sola tarea |
-| Martes 17 de noviembre | Se publican las soluciones de esas dos autoevaluaciones |
+| Martes 17 de noviembre | Se publican las soluciones de esas dos autoevaluaciones y el proyecto «Notas de clase» completo |
+| Miércoles 18 de noviembre | **Entrega de la UD4**: el proyecto «Notas de clase» comprimido, en Teams (paso 8 del proyecto) |
+| Miércoles 25 de noviembre | **Examen de la UD4**: arrays, cadenas y regex |
 
 ## Programación
 
@@ -32,6 +34,7 @@ Junto a cada archivo, GitHub muestra cuándo cambió por última vez y qué se c
 | Semana | Clase | Estudio | Soluciones |
 |---|---|---|---|
 | Del 2 al 6 de noviembre | [clase](2026_11_02-06/clase) | [estudio](2026_11_02-06/estudio) | [soluciones](2026_11_02-06/soluciones) |
+| Del 9 al 13 de noviembre | [clase](2026_11_09-13/clase) | [estudio](2026_11_09-13/estudio) | [soluciones](2026_11_09-13/soluciones) |
 
 ## Cómo usar los materiales
 

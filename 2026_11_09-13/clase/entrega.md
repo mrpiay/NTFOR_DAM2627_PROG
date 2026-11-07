@@ -1,0 +1,15 @@
+# Entrega · semana del 9 al 13 de noviembre
+
+## Todas las semanas
+
+- **Autoevaluación.** El cuestionario está en [`estudio/autoevaluacion.md`](../estudio/autoevaluacion.md) desde el primer día de la semana. Respóndelo y sube tus respuestas, con el número de cada pregunta, a la tarea de Teams de la semana **antes del martes siguiente** (hasta el lunes a las 23:59). El martes se publican las soluciones en [`soluciones/`](../soluciones).
+
+## Esta semana
+
+| Qué | Cuándo |
+|---|---|
+| Autoevaluación de esta semana y de la anterior ([semana del 2 al 6](../../2026_11_02-06/estudio/autoevaluacion.md)), en una sola tarea de Teams | Hasta el **lunes 16 de noviembre**, a las 23:59 |
+| Soluciones de las dos autoevaluaciones y el proyecto completo, en [`soluciones/`](../soluciones) | **Martes 17 de noviembre** |
+| **Entrega de la UD4:** el proyecto «Notas de clase» comprimido, como explica el paso 8 (`<tu usuario>-notas-csv.zip`), en la tarea de Teams de la entrega | **Miércoles 18 de noviembre** |
+
+El examen de la UD4 es el **miércoles 25 de noviembre**: está en las fechas importantes del repositorio.
