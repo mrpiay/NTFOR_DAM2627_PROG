@@ -11,6 +11,8 @@ java -cp bin dam.Principal
 
 En cada una, copia en tu respuesta lo que sale por pantalla y asegúrate de que lo entiendes: en las pruebas escritas tendrás que explicarlo sin ayuda de la IA.
 
+Si en una pregunta aparece algo que no has visto, como un método de `Math` o de `String`, búscalo en «Dónde consultar», en el [README de `estudio/`](README.md).
+
 ---
 
 **1.** En `public static int getInt()`, ¿qué significan `public`, `static` e `int`?
