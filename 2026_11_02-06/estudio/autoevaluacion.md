@@ -81,8 +81,8 @@ Copia lo que sale por pantalla.
 
 ```java
         String nombre = "Ana García";
-        System.out.println(nombre.charAt(0) + nombre.charAt(4));
-        System.out.println("" + nombre.charAt(0) + nombre.charAt(4));
+        print("" + (nombre.charAt(0) + nombre.charAt(4)));
+        print("" + nombre.charAt(0) + nombre.charAt(4));
 ```
 
 Copia lo que sale por pantalla.
