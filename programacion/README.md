@@ -93,7 +93,7 @@ Los coeficientes de la nota final son los del apartado 6.1 de la programación. 
 
 ## Uso de la IA y autoría
 
-- **Uso de la inteligencia artificial:** en cada entrega se indicará si se puede usar la IA, con qué límites y cómo hay que declarar su uso. En cualquier caso, **hay que poder explicar todo lo que se entrega**: el docente puede pedir una explicación, una defensa o una modificación en clase (manual interno del centro, anexo I).
+- **Uso de la inteligencia artificial:** en cada entrega se indicará si se puede usar la IA, con qué límites y cómo hay que declarar su uso. En cualquier caso, **hay que poder explicar todo lo que se entrega**: se puede pedir una explicación, una defensa o una modificación en clase (manual interno del centro, anexo I).
 - **Autoría:** si se demuestra un uso excesivo de la IA que impide comprender y explicar lo generado y entregado, la actividad queda como no evaluada (equivale a un 0), con las consecuencias que eso tiene para la evaluación continua.
 
 ## Si no se aprueba
@@ -107,7 +107,7 @@ Según el apartado 6.1 de la programación:
 
 ## Libros recomendados
 
-Libros digitales recomendados por el docente para estudiar el módulo (teoría, ejercicios y casos prácticos):
+Libros digitales recomendados para estudiar el módulo (teoría, ejercicios y casos prácticos):
 
 - *Programación*. A. Jiménez Marín y F. M. Pérez Montes. Paraninfo, 2021. Libro digital, ISBN 9788413667232.
 - *Programación* (contenido actualizado). M. Dorrego Martín. Síntesis, 2024. Libro digital, ISBN 9788413578842.
