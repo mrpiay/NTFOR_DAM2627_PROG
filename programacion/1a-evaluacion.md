@@ -52,7 +52,7 @@ Peso de estas unidades en el módulo: 33 % (la suma de los pesos de sus unidades
 | Del 26 al 30 de octubre | UD4 · Práctica guiada Arrays & Strings<br>**examen de la UD3** |
 | [Del 2 al 6 de noviembre](../2026_11_02-06) | **puesta en común y proyecto de diagnóstico** (no se avanza: se repasa y se completa lo que tocaba hasta la fecha) |
 | [Del 9 al 13 de noviembre](../2026_11_09-13) | UD4 · Proyecto guiado «Notas de clase» |
-| Del 16 al 20 de noviembre | UD4 · Expresiones regulares<br>UD5 · Práctica guiada –Clases<br>**prueba escrita de la UD4** |
+| Del 16 al 20 de noviembre | UD4 · Repaso del proyecto «Notas de clase»<br>UD5 · Práctica guiada –Clases<br>**prueba escrita de la UD4** |
 | Del 23 al 27 de noviembre | UD5 · Práctica guiada –Clases<br>UD5 · Taller de encapsulación |
 | Del 30 de noviembre al 4 de diciembre | UD5 · Taller de encapsulación<br>UD5 · Mini-proyecto.Catálogo básico |
 | Del 7 al 11 de diciembre | **repaso** o terminar lo pendiente · 1ª evaluación<br>**examen final** · 1ª evaluación |
