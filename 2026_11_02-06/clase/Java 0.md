@@ -1,6 +1,6 @@
 # Java 0
 
-**Programación Java en Linux (WSL) con terminal en VS Code**
+**Programación Java en Linux con terminal en VS Code**
 
 ## Qué vamos a construir
 
@@ -27,7 +27,7 @@ Todos los comandos se lanzan desde la carpeta raíz, `java-pr0`. Si los lanzas d
 
 Empezamos con dos archivos sueltos en `java-pr0`, sin paquete. Para usar un método de otra clase basta con escribir `Clase.metodo()`.
 
-Abre **Ubuntu** desde el menú Inicio y escribe estos comandos. `~` es tu carpeta personal de Linux (lo explica «Linux con WSL, Java y VS Code», de SI):
+Abre el terminal de Linux (en Windows, **Ubuntu** desde el menú Inicio; si tu ordenador tiene Linux, su terminal) y escribe estos comandos. `~` es tu carpeta personal de Linux (lo explica «Linux con WSL, Java y VS Code», de SI):
 
 ```bash
 mkdir -p ~/dam2627/prog/java-pr0
