@@ -4,7 +4,7 @@
 
 ## Qué vamos a construir
 
-Este tutorial sigue el orden de la clase. Empezamos con dos archivos en `java-pr0` y los convertimos, paso a paso, en un proyecto con paquete, compilado en `bin` y comprimido en un zip. `Principal` usa los métodos `print` y `getInt` de `Auxiliar`.
+Este tutorial va paso a paso. Empezamos con dos archivos en `java-pr0` y los convertimos, paso a paso, en un proyecto con paquete, compilado en `bin` y comprimido en un zip. `Principal` usa los métodos `print` y `getInt` de `Auxiliar`.
 
 Esta es la estructura final del proyecto:
 
@@ -27,12 +27,16 @@ Todos los comandos se lanzan desde la carpeta raíz, `java-pr0`. Si los lanzas d
 
 Empezamos con dos archivos sueltos en `java-pr0`, sin paquete. Para usar un método de otra clase basta con escribir `Clase.metodo()`.
 
+Abre **Ubuntu** desde el menú Inicio y escribe estos comandos. `~` es tu carpeta personal de Linux (lo explica «Linux con WSL, Java y VS Code», de SI):
+
 ```bash
 mkdir -p ~/dam2627/prog/java-pr0
 cd ~/dam2627/prog/java-pr0
 touch Auxiliar.java Principal.java
 code .
 ```
+
+Se abre VS Code con la carpeta `java-pr0` y los dos archivos vacíos. Ábrelos desde el Explorador (panel izquierdo), pega en cada uno su código y guarda con **Ctrl+S**. Abre el terminal de VS Code con **Ctrl+ñ**: los comandos siguientes se escriben ahí.
 
 `Auxiliar.java` guarda los métodos reutilizables:
 
@@ -75,6 +79,8 @@ javac *.java
 java Principal
 ```
 
+Sale `Edad?` y el programa espera: escribe `20` y pulsa Intro. Verás `Tienes 20 años`.
+
 ## 2. Quitar el nombre de la clase con import static
 
 Escribir `Auxiliar.` delante de cada método cansa, así que probamos a importar sus métodos estáticos:
@@ -99,6 +105,8 @@ import static Auxiliar.*;
   symbol: class Auxiliar
 ```
 
+Después salen otros dos `cannot find symbol`, en `print` y en `getInt`, y al final `3 errors`. Todos vienen del mismo problema.
+
 El motivo es que Java no permite importar desde una clase sin paquete (el llamado paquete sin nombre). Un `import` siempre necesita la forma `paquete.Clase`, así que primero hay que poner las clases en un paquete.
 
 ## 3. Meter las dos clases en el paquete dam
@@ -110,19 +118,20 @@ package dam;
 ```
 
 - Debe ser la primera instrucción del archivo, antes de cualquier `import`.
+- No compiles todavía: el import de `Principal.java` se corrige en el paso 5.
 - Las dos clases llevan la misma línea, así que comparten paquete.
 - Desde ahora el nombre completo de las clases es `dam.Principal` y `dam.Auxiliar`.
 
 ## 4. Cada paquete en una carpeta con su nombre
 
-Las clases del paquete `dam` deben estar en una carpeta llamada `dam`, porque Java busca `dam.Principal` en `dam/Principal.class`. Si dejas los archivos en la raíz, `java` no encuentra la clase:
+Las clases del paquete `dam` deben estar en una carpeta llamada `dam`, porque Java busca `dam.Principal` en `dam/Principal.class`. Si dejaras los archivos en la raíz, `java` no encontraría la clase (no hace falta probarlo):
 
 ```
 Error: Could not find or load main class dam.Principal
 Caused by: java.lang.ClassNotFoundException: dam.Principal
 ```
 
-Desde `java-pr0`, crea la carpeta del paquete dentro de `src`, mueve allí los dos `.java` y borra los `.class` antiguos:
+Cierra en VS Code las pestañas de los dos archivos: si las dejas abiertas y guardas, VS Code vuelve a crearlos en la raíz. Después, desde `java-pr0`, crea la carpeta del paquete dentro de `src`, mueve allí los dos `.java` y borra los `.class` antiguos:
 
 ```bash
 mkdir -p src/dam
@@ -142,7 +151,7 @@ java-pr0/
 
 ## 5. Importar con el paquete: import static dam.Auxiliar.*
 
-Con las clases ya en el paquete, el import lleva delante el nombre del paquete. Así queda `Principal.java`:
+Con las clases ya en el paquete, el import lleva delante el nombre del paquete. Abre `src/dam/Principal.java` desde el Explorador y déjalo así:
 
 ```java
 package dam;
@@ -164,7 +173,7 @@ public class Principal {
 | `Auxiliar` | Clase que contiene los métodos |
 | `.*` | Todos sus miembros estáticos accesibles, aquí `print` y `getInt` |
 
-`Auxiliar.java` solo cambia en su primera línea, `package dam;`.
+`src/dam/Auxiliar.java` solo cambia en su primera línea, `package dam;` (ya la añadiste en el paso 3).
 
 El `main` se ejecuta en este orden:
 
@@ -227,7 +236,7 @@ Tienes 20 años
 
 ## 8. Comprimir el proyecto
 
-Este comando crea `jpiay-pr0.zip` con las carpetas `src` y `bin` y todo lo que contienen:
+Este comando crea `jpiay-pr0.zip` (`zip` lo instalaste al preparar el entorno, en la guía de SI) con las carpetas `src` y `bin` y todo lo que contienen:
 
 ```bash
 zip -r jpiay-pr0.zip src/ bin/
@@ -240,7 +249,7 @@ zip -r jpiay-pr0.zip src/ bin/
 | `jpiay-pr0.zip` | Nombre del archivo que se crea |
 | `src/ bin/` | Lo que se comprime |
 
-Compila antes de comprimir para que el zip lleve el bytecode actualizado. `deflated 43%` en la salida significa que ese archivo ocupa un 43 % menos dentro del zip.
+Compila antes de comprimir para que el zip lleve el bytecode actualizado. En la salida, cada línea `adding:` es un archivo o carpeta que entra en el zip; `deflated 43%` significa que ese archivo ocupa un 43 % menos dentro del zip.
 
 Si el zip ya existe, el comando lo actualiza en lugar de crearlo de cero, y lo que hayas borrado del proyecto sigue dentro. Para empezar limpio, bórralo antes con `rm jpiay-pr0.zip`.
 
@@ -252,7 +261,7 @@ Si el zip ya existe, el comando lo actualiza en lugar de crearlo de cero, y lo q
 unzip -l jpiay-pr0.zip
 ```
 
-Esta es la salida con el zip de clase:
+Esta es la salida con `jpiay-pr0.zip`, el proyecto terminado que está junto a este documento. En la tuya cambian las fechas, y puede cambiar algún tamaño de los `.java` y el orden:
 
 ```
 Archive:  jpiay-pr0.zip
@@ -294,7 +303,7 @@ rm -r prueba
 | `javac src/dam/Principal.java` da `cannot find symbol` | Compilas una sola clase y no encuentra `Auxiliar` | `javac -d bin src/dam/*.java` |
 | Sale `cannot find symbol` en `print` o `getInt` | Falta `import static dam.Auxiliar.*;` | Añádelo después de `package dam;` |
 | Al escribir la edad sale `NumberFormatException: For input string: "veinte"` | `Integer.parseInt` solo convierte textos que son números | Escribe la edad en cifras: `20` |
-| Sale `Tienes 20 a?os` | El terminal no usa UTF-8 | Ejecuta `export LC_ALL=C.UTF-8` y repite |
+| Sale `Tienes 20 a?os` | El terminal no usa UTF-8 | Ejecuta `export LC_ALL=C.UTF-8` y repite (vale mientras ese terminal esté abierto) |
 
 ## Resumen de comandos
 
