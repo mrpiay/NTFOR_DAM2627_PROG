@@ -71,7 +71,7 @@ public class Principal {
 }
 ```
 
-Así funciona. Se compila y ejecuta desde `java-pr0`, y los `.class` quedan junto a los `.java`:
+Se compila y ejecuta desde `java-pr0`, y los `.class` quedan junto a los `.java`:
 
 ```bash
 javac *.java
@@ -122,7 +122,7 @@ package dam;
 
 ## 4. Cada paquete en una carpeta con su nombre
 
-Las clases del paquete `dam` van en una carpeta llamada `dam` ([UD1, apartado 1](../apuntes/UD1-fundamentos-de-java.md#1-cómo-se-organiza-un-programa-en-java)). Si dejaras los archivos en la raíz, `java` no encontraría la clase (no hace falta probarlo):
+Las clases del paquete `dam` van en una carpeta llamada `dam`, dentro de `src`, la carpeta de los archivos fuente (los `.class` irán a `bin` en el paso 6) ([UD1, apartado 1](../apuntes/UD1-fundamentos-de-java.md#1-cómo-se-organiza-un-programa-en-java)). Si dejaras los archivos en la raíz, `java` no encontraría la clase (no hace falta probarlo):
 
 ```
 Error: Could not find or load main class dam.Principal
@@ -168,7 +168,6 @@ public class Principal {
 
 `src/dam/Auxiliar.java` solo cambia en su primera línea, `package dam;` (ya la añadiste en el paso 3).
 
-`getInt()` se ejecuta antes de unir el texto: primero espera la edad, y después se escribe `Tienes 20 años`.
 
 ## 6. Compilar desde la raíz y dejar el bytecode en bin
 
@@ -209,6 +208,8 @@ Edad?
 20
 Tienes 20 años
 ```
+
+`getInt()` se ejecuta antes de unir el texto: primero espera la edad, y después se escribe `Tienes 20 años`.
 
 ## 8. Comprimir el proyecto
 
