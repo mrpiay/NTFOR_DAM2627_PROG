@@ -13,7 +13,10 @@ Lo básico que hay que saber de la UD1. Cada apartado tiene la idea clave, lo qu
 - Todo el código va dentro de una **clase**. El archivo se llama como la clase pública: `Principal` va en `Principal.java`.
 - El programa empieza en **`public static void main(String[] args)`**.
 - Un **paquete** agrupa clases relacionadas y es también una carpeta: `package dam;` va en `src/dam/`.
+- `package dam;` es la **primera instrucción** del archivo, antes de cualquier `import`. Desde ese momento, el **nombre completo** de la clase lleva el paquete delante: `dam.Principal`.
+- **`public`** permite usar un método o una clase desde cualquier otra clase, también de otros paquetes. Sin `public`, solo se puede usar desde las clases de su mismo paquete.
 - Un **método estático** (`static`) se llama sin crear objetos: `Auxiliar.print("Hola")`, o solo `print("Hola")` con `import static dam.Auxiliar.*;`.
+- **`import static paquete.Clase.*;`** importa los miembros estáticos de esa clase (no la clase): `.*` quiere decir todos. Un `import` siempre necesita la forma `paquete.Clase`, así que no se puede importar desde una clase que no está en ningún paquete.
 - El tipo que va delante del nombre del método es lo que **devuelve**: `public static int getInt()` devuelve un `int`; `void` (como en `main`) significa que no devuelve nada.
 - Los **comentarios** explican el código: `//` (una línea) y `/* … */` (varias).
 
@@ -28,7 +31,9 @@ Lo básico que hay que saber de la UD1. Cada apartado tiene la idea clave, lo qu
 - El código fuente (`.java`) se compila con **`javac`** y da **bytecode** (`.class`), que no depende del sistema operativo.
 - El bytecode lo ejecuta la **JVM** (máquina virtual de Java) con **`java`**. Por eso un programa Java funciona igual en Windows, Linux y macOS.
 - El **JDK** trae el compilador y la JVM; el **JRE**, solo la JVM.
-- Con paquetes: `javac -d bin src/dam/*.java` (deja los `.class` en `bin`) y `java -cp bin dam.Principal` (el nombre de la clase, con su paquete).
+- Con paquetes se compila con `javac -d bin src/dam/*.java`. **`-d bin`** es la carpeta de destino de los `.class`: si no existe, la crea, y dentro crea una carpeta por paquete (`bin/dam/`), con la misma estructura que el código. Sin `-d`, los `.class` quedan mezclados con los `.java`.
+- Se ejecuta con `java -cp bin dam.Principal`. **`-cp bin`** (el *classpath*) dice dónde buscar las clases, y la clase se escribe con su nombre completo, con punto, sin `.class` ni ruta: Java busca `dam.Principal` en `bin/dam/Principal.class`.
+- `java` ejecuta los `.class`, no el código fuente: después de cambiar un `.java`, hay que volver a compilar.
 - Un **IDE** (VS Code, IntelliJ, Eclipse, NetBeans) hace lo mismo con un botón.
 
 **Compara**

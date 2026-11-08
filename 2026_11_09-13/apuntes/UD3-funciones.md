@@ -11,7 +11,8 @@ Lo básico que hay que saber de la UD3. Cada apartado tiene la idea clave, lo qu
 **Lo que tienes que saber**
 
 - Se declara con lo que devuelve, su nombre y sus parámetros: `public static double media(int[] notasAlumno)`.
-- **`void`** indica que no devuelve nada; si devuelve algo, termina con **`return valor;`**.
+- **`void`** indica que no devuelve nada; si devuelve algo, termina con **`return valor;`**. En un método `void`, `return;` (sin valor) lo termina en ese momento.
+- Con **`public`**, el método se puede usar desde cualquier clase; sin `public`, solo desde las clases de su mismo paquete.
 - Se **llama** por su nombre con los valores que necesita: `media(notas[0])`.
 - Dividir el programa en métodos pequeños hace que se lea mejor, se pruebe por partes y no se repita código. En «CSV notas», `Notas` tiene un método para cada cosa y `Principal` solo los usa.
 - `static` permite llamarlo sin crear un objeto; los objetos se ven en la UD5.

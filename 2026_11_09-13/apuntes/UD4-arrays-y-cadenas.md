@@ -12,10 +12,10 @@ Las expresiones regulares (regex) se trabajan en la 2.ª evaluación.
 
 **Lo que tienes que saber**
 
-- Se crea con su tamaño (`new String[25]`, todo vacío) o con sus valores (`{42, 97, 33}`).
+- Se crea con su tamaño o con sus valores (`{42, 97, 33}`). Creado con su tamaño, un array de números empieza lleno de ceros (`new int[3]` es `{0, 0, 0}`), y uno de `String`, vacío (`null` en cada posición).
 - Las posiciones van de **`0`** a **`length - 1`**. Salir de ahí da `ArrayIndexOutOfBoundsException`.
 - `array.length` es su tamaño (sin paréntesis).
-- Se recorre con un `for` (cuando hace falta la posición) o con un for-each (cuando solo hace falta el valor).
+- Se recorre con un `for` (cuando hace falta la posición) o con un **for-each** (cuando solo hace falta el valor): `for (int nota : notas) { … }` da cada valor en `nota`, sin usar posiciones.
 - Operaciones típicas: sumar, contar, buscar el **máximo** o el **mínimo** (empezando por el primero y comparando con el resto) y buscar la **posición** de un valor.
 - Dos arrays en el mismo orden pueden ir emparejados: `nombres[i]` y `notas[i]` son del mismo alumno.
 
@@ -75,6 +75,7 @@ Las expresiones regulares (regex) se trabajan en la 2.ª evaluación.
 
 - Los `String` **no cambian**: cada método devuelve un texto nuevo. `nombre.trim()` no cambia `nombre`; hay que guardar el resultado.
 - Para convertir un texto en número: `Integer.parseInt`.
+- Los textos se comparan con **`equals`** (o `equalsIgnoreCase`), nunca con `==`, que compara si son el mismo objeto y no su contenido.
 
 ---
 

@@ -57,8 +57,7 @@ public class Auxiliar {
 }
 ```
 
-- `public` permite usar el método desde otras clases.
-- `static` permite llamarlo sin crear un objeto con `new Auxiliar()`. También es lo que hará posible el `import static` más adelante.
+- `public static`: los métodos se pueden llamar desde `Principal` sin crear un objeto ([UD1, apartado 1](../apuntes/UD1-fundamentos-de-java.md#1-cómo-se-organiza-un-programa-en-java)).
 - `getInt()` lee una línea del teclado con `Scanner` (`teclado.nextLine()`) y la convierte en número entero con `Integer.parseInt`.
 
 `Principal.java` tiene el `main` y llama a los métodos con el nombre de la clase delante:
@@ -107,7 +106,7 @@ import static Auxiliar.*;
 
 Después salen otros dos `cannot find symbol`, en `print` y en `getInt`, y al final `3 errors`. Todos vienen del mismo problema.
 
-El motivo es que Java no permite importar desde una clase sin paquete (el llamado paquete sin nombre). Un `import` siempre necesita la forma `paquete.Clase`, así que primero hay que poner las clases en un paquete.
+Falla porque `Auxiliar` no está en ningún paquete, y un `import` necesita la forma `paquete.Clase` ([UD1, apartado 1](../apuntes/UD1-fundamentos-de-java.md#1-cómo-se-organiza-un-programa-en-java)): primero hay que poner las clases en un paquete.
 
 ## 3. Meter las dos clases en el paquete dam
 
@@ -117,14 +116,13 @@ Para que ambas clases pertenezcan al paquete `dam`, añade esta línea al princi
 package dam;
 ```
 
-- Debe ser la primera instrucción del archivo, antes de cualquier `import`.
+- Va en la primera línea, antes de cualquier `import` ([UD1, apartado 1](../apuntes/UD1-fundamentos-de-java.md#1-cómo-se-organiza-un-programa-en-java)).
 - No compiles todavía: el import de `Principal.java` se corrige en el paso 5.
 - Las dos clases llevan la misma línea, así que comparten paquete.
-- Desde ahora el nombre completo de las clases es `dam.Principal` y `dam.Auxiliar`.
 
 ## 4. Cada paquete en una carpeta con su nombre
 
-Las clases del paquete `dam` deben estar en una carpeta llamada `dam`, porque Java busca `dam.Principal` en `dam/Principal.class`. Si dejaras los archivos en la raíz, `java` no encontraría la clase (no hace falta probarlo):
+Las clases del paquete `dam` van en una carpeta llamada `dam` ([UD1, apartado 1](../apuntes/UD1-fundamentos-de-java.md#1-cómo-se-organiza-un-programa-en-java)). Si dejaras los archivos en la raíz, `java` no encontraría la clase (no hace falta probarlo):
 
 ```
 Error: Could not find or load main class dam.Principal
@@ -166,37 +164,21 @@ public class Principal {
 }
 ```
 
-| Parte | Significado |
-| --- | --- |
-| `import static` | Importa miembros estáticos de una clase, no la clase |
-| `dam` | Paquete donde está la clase |
-| `Auxiliar` | Clase que contiene los métodos |
-| `.*` | Todos sus miembros estáticos accesibles, aquí `print` y `getInt` |
+`import static dam.Auxiliar.*;` importa todos los métodos estáticos de `Auxiliar`, del paquete `dam`: `print` y `getInt` ([UD1, apartado 1](../apuntes/UD1-fundamentos-de-java.md#1-cómo-se-organiza-un-programa-en-java)).
 
 `src/dam/Auxiliar.java` solo cambia en su primera línea, `package dam;` (ya la añadiste en el paso 3).
 
-El `main` se ejecuta en este orden:
-
-1. `print("Edad?")` muestra la pregunta.
-2. `getInt()` espera a que escribas la edad y devuelve el número.
-3. Java une el texto y el número: `"Tienes 20 años"`.
-4. `print(...)` muestra el resultado.
+`getInt()` se ejecuta antes de unir el texto: primero espera la edad, y después se escribe `Tienes 20 años`.
 
 ## 6. Compilar desde la raíz y dejar el bytecode en bin
 
-Este comando traduce los `.java` a bytecode (archivos `.class`, lo que ejecuta la máquina virtual de Java) y los guarda en `bin`:
+Este comando compila los `.java` y guarda los `.class` en `bin` ([UD1, apartado 2](../apuntes/UD1-fundamentos-de-java.md#2-compilar-y-ejecutar)):
 
 ```bash
 javac -d bin src/dam/*.java
 ```
 
-| Parte | Significado |
-| --- | --- |
-| `javac` | Compilador de Java |
-| `-d bin` | Carpeta de destino de los `.class`; si no existe, la crea |
-| `src/dam/*.java` | Compila todos los `.java` de esa carpeta |
-
-Si todo va bien, `javac` no muestra nada. `-d` crea la subcarpeta `dam` a partir de la línea `package dam;`, así que `bin` queda con la misma estructura que el paquete. Compruébalo con:
+Si todo va bien, `javac` no muestra nada, y `bin` queda con la misma estructura que el paquete. Compruébalo con:
 
 ```bash
 ls -R bin
@@ -210,23 +192,17 @@ bin/dam:
 Auxiliar.class  Principal.class
 ```
 
-Sin `-d bin`, los `.class` se quedarían mezclados con los `.java` en `src/dam`. Vuelve a compilar cada vez que cambies un `.java`: `java` ejecuta los `.class`, no tu código fuente.
+Vuelve a compilar cada vez que cambies un `.java`.
 
 ## 7. Ejecutar desde el terminal
 
-Para ejecutar el programa, indica dónde está el bytecode y el nombre completo de la clase que tiene el `main`:
+Para ejecutar el programa, indica dónde están los `.class` (`-cp bin`) y el nombre completo de la clase que tiene el `main` ([UD1, apartado 2](../apuntes/UD1-fundamentos-de-java.md#2-compilar-y-ejecutar)):
 
 ```bash
 java -cp bin dam.Principal
 ```
 
-| Parte | Significado |
-| --- | --- |
-| `java` | Arranca la máquina virtual |
-| `-cp bin` | Classpath: la carpeta donde buscar las clases |
-| `dam.Principal` | Nombre completo de la clase: paquete, punto y clase |
-
-Java busca `dam.Principal` en `bin/dam/Principal.class`. Por eso se escribe con punto, sin `.class` y sin la ruta. Si escribes 20 y pulsas Intro, verás:
+Si escribes 20 y pulsas Intro, verás:
 
 ```
 Edad?
@@ -242,14 +218,7 @@ Este comando crea un zip con tu nombre de usuario de Linux (`$USER`), por ejempl
 zip -r $USER-pr0.zip src/ bin/
 ```
 
-| Parte | Significado |
-| --- | --- |
-| `zip` | Programa de compresión |
-| `-r` | Recursivo: incluye subcarpetas y archivos; sin él, solo guarda las carpetas vacías |
-| `$USER-pr0.zip` | Nombre del archivo que se crea: `$USER` se cambia por tu usuario |
-| `src/ bin/` | Lo que se comprime |
-
-Compila antes de comprimir para que el zip lleve el bytecode actualizado. En la salida, cada línea `adding:` es un archivo o carpeta que entra en el zip; `deflated 43%` significa que ese archivo ocupa un 43 % menos dentro del zip.
+`-r` incluye las subcarpetas y todo lo que tienen dentro. Compila antes de comprimir para que el zip lleve los `.class` actualizados. En la salida, cada línea `adding:` es un archivo o carpeta que entra en el zip.
 
 Si el zip ya existe, el comando lo actualiza en lugar de crearlo de cero, y lo que hayas borrado del proyecto sigue dentro. Para empezar limpio, bórralo antes con `rm $USER-pr0.zip`.
 
@@ -279,11 +248,7 @@ Archive:  jpiay-pr0.zip
      2000                     8 files
 ```
 
-- **Length** es el tamaño original en bytes; las carpetas aparecen con 0.
-- **Date** y **Time** son la última modificación de cada elemento.
-- **Name** es la ruta dentro del zip.
-- **2000** es la suma de los tamaños: 194 + 306 + 830 + 670.
-- **8 files** cuenta todas las entradas: 4 archivos y 4 carpetas.
+Comprueba que en la columna **Name** salen `src/dam` y `bin/dam`, con los dos `.java` y los dos `.class`.
 
 El zip está completo: lleva las dos clases en fuente y en bytecode. Para comprobar que también funciona, extráelo en otra carpeta y ejecútalo desde allí:
 

@@ -42,7 +42,7 @@ La plantilla, `2026_11_09-13/actividades/plantilla` del repositorio, que en el p
 | `src/dam/Principal.java` | El `main` y los métodos de cada opción | todos |
 | `src/dam/notas/Notas.java` | Los métodos auxiliares; los comentarios `// TODO Paso N` marcan dónde va cada uno | 1 a 6 |
 
-Los datos van en formato **CSV**: una línea de cabecera y una línea por alumno, con los campos separados por `;`. No hay archivo: el programa genera las líneas en el paso 1, con notas al azar, y empiezan así:
+Los datos van en formato **CSV** ([UD4, apartado 5](../apuntes/UD4-arrays-y-cadenas.md#5-datos-en-formato-csv)): una línea de cabecera y una línea por alumno, con los campos separados por `;`. No hay archivo: el programa genera las líneas en el paso 1, con notas al azar, y empiezan así:
 
 ```
 nombre;t1;t2;t3
@@ -161,10 +161,9 @@ Y el import que usa, debajo de `package dam.notas;`:
 import java.util.Random;
 ```
 
-- `new Random(semilla)` crea un generador de números al azar. `azar.nextInt(101)` da un entero de 0 a 100 (el 101 no entra).
-- La **semilla** decide qué números salen: con la misma semilla salen siempre los mismos, en el mismo orden, en cualquier ordenador. Por eso las notas son las mismas en todos los ordenadores y los resultados de cada paso coinciden con los de esta guía.
+- `azar.nextInt(101)` da un entero de 0 a 100. La semilla hace que en todos los ordenadores salgan las mismas notas, las de esta guía ([UD4, apartado 5](../apuntes/UD4-arrays-y-cadenas.md#5-datos-en-formato-csv)).
 - El array tiene `alumnos + 1` posiciones: la 0 es la cabecera y cada una de las demás, un alumno.
-- `String.format` monta el texto: cada `%d` se cambia por un número, en orden; `%02d`, por un número con dos cifras (`1` sale `01`).
+- `String.format` monta cada línea: `%02d` escribe el número con dos cifras, `01` ([UD4, apartado 4](../apuntes/UD4-arrays-y-cadenas.md#4-cadenas-string)).
 
 En `Principal.java`, debajo de `import static dam.Auxiliar.*;`, importa los métodos de `Notas`:
 
@@ -181,7 +180,7 @@ Y en el `main`, en lugar de `// TODO Paso 1: generar las líneas del CSV`:
         print("Segunda: " + lineas[1]);
 ```
 
-`generarLineas(25, 2627)` genera 25 alumnos con la semilla 2627. `lineas.length` es el número de posiciones del array; `lineas[0]` es la primera, porque las posiciones empiezan en 0.
+`generarLineas(25, 2627)` genera 25 alumnos con la semilla 2627. `lineas[0]` es la primera posición ([UD4, apartado 1](../apuntes/UD4-arrays-y-cadenas.md#1-arrays)).
 
 **Comprueba que…**
 
@@ -214,9 +213,9 @@ String[] campos = "Nombre01;11;60;16".split(";");
 // campos[0] es "Nombre01", campos[1] es "11", campos[2] es "60" y campos[3] es "16"
 ```
 
-Los campos son texto: `"11"` no es el número 11. `Integer.parseInt("11")` lo convierte. `trim()` quita los espacios del principio y del final, por si los hubiera.
+Los campos son texto: se limpian con `trim()` y se convierten en número con `Integer.parseInt` ([UD4, apartado 4](../apuntes/UD4-arrays-y-cadenas.md#4-cadenas-string)).
 
-Las notas van en una **matriz**, un array de dos dimensiones: `int[][] notas` tiene una fila por alumno y una columna por trimestre. `notas[0]` es la fila del primer alumno, `{11, 60, 16}`, y `notas[0][1]` es su nota del 2.º trimestre, 60. La fila del alumno `i` está en la misma posición que su nombre en `nombres`.
+Las notas van en una **matriz** ([UD4, apartado 2](../apuntes/UD4-arrays-y-cadenas.md#2-matrices-arrays-de-dos-dimensiones)): una fila por alumno y una columna por trimestre, en el mismo orden que `nombres`. `notas[0][1]` es la nota del 2.º trimestre del primer alumno, 60.
 
 En `Notas.java`, en lugar de `// TODO Paso 2: cargarNombres y cargarNotas`:
 
@@ -245,7 +244,7 @@ En `Notas.java`, en lugar de `// TODO Paso 2: cargarNombres y cargarNotas`:
 ```
 
 - Los dos bucles empiezan en `i = 1` para saltarse la cabecera (`lineas[0]`). Por eso los arrays tienen `lineas.length - 1` posiciones y se rellenan en `i - 1`.
-- `new int[25][3]` crea la matriz llena de ceros; el `for` de dentro rellena las tres columnas de cada fila.
+- El `for` de dentro rellena las tres columnas de cada fila.
 
 En el `main` de `Principal`, cambia las líneas `print("Primera: …")` y `print("Segunda: …")` por estas:
 
@@ -257,7 +256,7 @@ En el `main` de `Principal`, cambia las líneas `print("Primera: …")` y `print
         print(nombres[24] + " " + Arrays.toString(notas[24]));
 ```
 
-Y añade `import java.util.Arrays;` debajo de los otros imports. `Arrays.toString` convierte un array en texto, como `[42, 97, 33]`.
+Y añade `import java.util.Arrays;` debajo de los otros imports. `Arrays.toString` convierte un array en texto ([UD4, apartado 3](../apuntes/UD4-arrays-y-cadenas.md#3-la-clase-arrays)).
 
 **Comprueba que…**
 
@@ -295,8 +294,8 @@ Nombre25 [19, 8, 71]
     }
 ```
 
-- Los textos se comparan con `equals`, nunca con `==`. `equalsIgnoreCase` compara sin distinguir mayúsculas: `nombre07` es igual que `Nombre07`.
-- `return i` sale del método en cuanto lo encuentra. Si el bucle termina sin encontrarlo, devuelve `-1`, que no es ninguna posición: así quien lo llama sabe que no está.
+- `equalsIgnoreCase` compara sin distinguir mayúsculas: `nombre07` es igual que `Nombre07` ([UD4, apartado 4](../apuntes/UD4-arrays-y-cadenas.md#4-cadenas-string)).
+- Devuelve la posición en cuanto lo encuentra, o `-1` si no está ([UD3, apartado 2](../apuntes/UD3-funciones.md#2-parámetros-y-valor-de-retorno)).
 
 En `Principal.java`, debajo del `main` (después de su `}` y antes de la última `}` de la clase), añade el método de esta opción:
 
@@ -313,7 +312,7 @@ En `Principal.java`, debajo del `main` (después de su `}` y antes de la última
     }
 ```
 
-Los métodos de las opciones no llevan `public`: solo se usan dentro de `Principal`. Y llámalo al final del `main`: `opcionEstaEnLaLista(nombres);`. Se muestra `posicion + 1` porque para una persona el primero es el número 1, no el 0.
+Los métodos de las opciones van sin `public`: no hace falta usarlos fuera de su paquete ([UD3, apartado 1](../apuntes/UD3-funciones.md#1-qué-es-una-función-método)). Y llámalo al final del `main`: `opcionEstaEnLaLista(nombres);`. Se muestra `posicion + 1` porque para una persona el primero es el número 1, no el 0.
 
 **Comprueba que…** al ejecutar y escribir el nombre:
 
@@ -350,7 +349,7 @@ Los métodos de las opciones no llevan `public`: solo se usan dentro de `Princip
 ```
 
 - `media` recibe **una fila** de la matriz: las notas de un alumno, como `notas[11]`.
-- `for (int nota : notasAlumno)` es el **for-each**: recorre el array dando cada valor en `nota`, sin usar posiciones. Sirve cuando solo hace falta el valor.
+- `for (int nota : notasAlumno)` recorre la fila dando cada valor en `nota`: es el for-each ([UD4, apartado 1](../apuntes/UD4-arrays-y-cadenas.md#1-arrays)).
 - `(double)` convierte la suma en decimal antes de dividir: sin él, `int / int` da una división entera y se pierden los decimales.
 
 En `Principal.java`, añade este método debajo del anterior:
@@ -394,7 +393,7 @@ Según el idioma del sistema, los decimales pueden salir con coma (`70,67`): las
 
 **Objetivo.** Pedir un trimestre y decir quién tiene la mejor nota en él.
 
-**Pista.** Es buscar el máximo de una **columna** de la matriz: se recorren las filas y se mira siempre la misma columna. El trimestre 1 es la columna 0.
+**Pista.** Se busca el máximo de una **columna** de la matriz ([UD4, apartado 2](../apuntes/UD4-arrays-y-cadenas.md#2-matrices-arrays-de-dos-dimensiones)): el trimestre 1 es la columna 0.
 
 En `Notas.java`, en lugar de `// TODO Paso 5: mejorDelTrimestre`:
 
@@ -412,7 +411,7 @@ En `Notas.java`, en lugar de `// TODO Paso 5: mejorDelTrimestre`:
     }
 ```
 
-Se guarda la **posición** del mejor, no su nota: con la posición se saben el nombre (`nombres[mejor]`) y la nota (`notas[mejor][columna]`). Se empieza suponiendo que el mejor es el primero (`mejor = 0`) y se compara con los demás.
+Se guarda la **posición** del mejor: con ella se saben el nombre (`nombres[mejor]`) y la nota (`notas[mejor][columna]`). Se empieza suponiendo que el mejor es el primero ([UD4, apartado 1](../apuntes/UD4-arrays-y-cadenas.md#1-arrays)).
 
 En `Principal.java`, añade este método:
 
@@ -547,7 +546,7 @@ Curso: Nombre22 (media 70.67)
 
 - Los datos se generan y se cargan **una sola vez**, al principio; el menú solo los consulta.
 - `do-while` repite el menú mientras la opción no sea 0; como la condición va al final, el menú sale al menos una vez.
-- Cada `case` llama al método de su opción. Así el `main` se lee como una lista de lo que hace el programa, y cada método se puede entender y cambiar por separado.
+- Cada `case` llama al método de su opción: el `main` se lee como una lista de lo que hace el programa ([UD3, apartado 1](../apuntes/UD3-funciones.md#1-qué-es-una-función-método)).
 
 **Comprueba que…**
 
@@ -573,7 +572,7 @@ Y que, después de cada opción, vuelve a salir el menú.
 
 **Objetivo.** Que, si en el menú o al pedir el trimestre se escribe algo que no es un número, el programa avise y vuelva a preguntar, en lugar de terminar con un error.
 
-**Pista.** `Integer.parseInt("hola")` lanza una excepción, `NumberFormatException`, y como nadie la recoge el programa termina. Una **excepción** es un error durante la ejecución, y `try-catch` la recoge: si dentro del `try` se lanza, se ejecuta el `catch` y el programa sigue. Para volver a preguntar hasta que el dato sea bueno, se usa un bucle sin fin, `while (true)`, del que se sale con `break` en cuanto el número es válido.
+**Pista.** `Integer.parseInt("hola")` lanza una excepción, `NumberFormatException`, y como nadie la recoge el programa termina. `try-catch` la recoge: si se lanza dentro del `try`, se ejecuta el `catch` y el programa sigue. Para volver a preguntar hasta que el dato sea bueno, se usa un bucle sin fin, `while (true)`, del que se sale con `break` en cuanto el número es válido.
 
 En `Auxiliar.java`, sustituye el método `getInt` entero por este:
 
@@ -617,7 +616,7 @@ Como todas las opciones leen los números con `getInt`, el arreglo sirve para to
 
 **Objetivo.** Una opción nueva en el menú, «5. Aprobados de un trimestre»: quién tiene 50 o más en el trimestre elegido y cuántos son.
 
-**Pista.** Se recorre la columna del trimestre y se saltan los suspensos con `continue`. `continue` pasa directamente a la siguiente vuelta del bucle, sin ejecutar lo que queda de esta. La diferencia con `break`: `break` termina el bucle entero; `continue` solo se salta la vuelta en la que está.
+**Pista.** Se recorre la columna del trimestre y se saltan los suspensos con `continue`. `continue` pasa a la siguiente vuelta del bucle sin hacer lo que queda de esta (`break`, en cambio, termina el bucle entero).
 
 En `Principal.java`, añade este método debajo de los demás:
 
@@ -642,7 +641,7 @@ En `Principal.java`, añade este método debajo de los demás:
     }
 ```
 
-- `return` en un método `void` lo termina en ese momento: si el trimestre no existe, no se hace nada más.
+- `return` termina el método en ese momento: si el trimestre no existe, no se hace nada más ([UD3, apartado 1](../apuntes/UD3-funciones.md#1-qué-es-una-función-método)).
 - Con un suspenso, `continue` se salta el `print` y el `aprobados++`: solo se muestran y se cuentan los aprobados.
 
 En el `main`, añade la opción al menú, debajo de `print("4. Mejores de cada trimestre y del curso");`:
