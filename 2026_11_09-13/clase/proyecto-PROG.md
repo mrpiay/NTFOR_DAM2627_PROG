@@ -1,4 +1,4 @@
-# PROG · Proyecto guiado «Notas de clase»
+# PROG · Proyecto guiado «CSV notas»
 
 ## Punto de partida
 
@@ -34,7 +34,7 @@ Las de «Java 0», en el terminal de Linux (en Windows, **Ubuntu** desde el men�
 
 ## Con qué trabajas
 
-La plantilla, `2026_11_09-13/clase/plantilla` del repositorio, que en el paso 0 copias como `notas-csv`:
+La plantilla, `2026_11_09-13/clase/plantilla` del repositorio, que en el paso 0 copias como `csv-notas`:
 
 | Archivo | Qué es | Pasos |
 |---|---|---|
@@ -88,7 +88,7 @@ Cada sesión dura 50 minutos.
 
 Cada paso tiene **Objetivo**, **Pista** (el código y lo justo para entenderlo), **Comprueba que…** y **Si te falla…** (errores típicos y cómo resolverlos).
 
-**Compilar y ejecutar.** En todos los pasos, desde la carpeta `notas-csv`:
+**Compilar y ejecutar.** En todos los pasos, desde la carpeta `csv-notas`:
 
 ```bash
 javac -d bin src/dam/*.java src/dam/notas/*.java
@@ -101,18 +101,18 @@ Es lo mismo que en «Java 0», con una carpeta más: `src/dam/notas/*.java`, el 
 
 ## Paso 0 · Preparar el proyecto
 
-**Objetivo.** Tener la plantilla en `~/dam2627/prog/notas-csv` y ejecutarla.
+**Objetivo.** Tener la plantilla en `~/dam2627/prog/csv-notas` y ejecutarla.
 
 **Pista.**
 
-1. En el terminal de Linux, descarga el repositorio del módulo dentro de `~/dam2627/prog` y copia la plantilla con el nombre `notas-csv`:
+1. En el terminal de Linux, descarga el repositorio del módulo dentro de `~/dam2627/prog` y copia la plantilla con el nombre `csv-notas`:
 
    ```bash
    mkdir -p ~/dam2627/prog
    cd ~/dam2627/prog
    git clone https://github.com/mrpiay/NTFOR_DAM2627_PROG.git
-   cp -r NTFOR_DAM2627_PROG/2026_11_09-13/clase/plantilla notas-csv
-   cd notas-csv
+   cp -r NTFOR_DAM2627_PROG/2026_11_09-13/clase/plantilla csv-notas
+   cd csv-notas
    ```
 
    `git clone` crea la carpeta `NTFOR_DAM2627_PROG` con todo el repositorio. Las semanas siguientes no hace falta volver a descargarlo: dentro de esa carpeta, `git pull` trae lo nuevo.
@@ -124,7 +124,7 @@ Es lo mismo que en «Java 0», con una carpeta más: `src/dam/notas/*.java`, el 
    java -cp bin dam.Principal
    ```
 
-**Comprueba que…** sale `=== Notas de clase ===` y en el Explorador de VS Code ves `notas.csv`, `src` y, después de compilar, `bin`.
+**Comprueba que…** sale `=== CSV notas ===` y en el Explorador de VS Code ves `notas.csv`, `src` y, después de compilar, `bin`.
 
 **Si te falla…**
 
@@ -186,7 +186,7 @@ Y en el `main`, en lugar de `// TODO Paso 1: leer notas.csv`:
 **Comprueba que…**
 
 ```
-=== Notas de clase ===
+=== CSV notas ===
 Líneas leídas: 26
 Primera: nombre;t1;t2;t3
 Segunda: Nombre01;42;97;33
@@ -199,7 +199,7 @@ Y que, si cambias el nombre del archivo (`mv notas.csv notas2.csv`) y vuelves a 
 - *`cannot find symbol` en `Files`, `Path` o `IOException`*: faltan los tres imports de `Notas.java`.
 - *`cannot find symbol` en `leerLineas`*: falta `import static dam.notas.Notas.*;` en `Principal.java`, o no has compilado `src/dam/notas/*.java`.
 - *`unreported exception java.io.IOException`*: falta el `try-catch`.
-- *Sale `No se puede leer notas.csv` sin haber cambiado nada*: ejecutas desde otra carpeta. `java` busca `notas.csv` en la carpeta en que estás: tiene que ser `notas-csv`.
+- *Sale `No se puede leer notas.csv` sin haber cambiado nada*: ejecutas desde otra carpeta. `java` busca `notas.csv` en la carpeta en que estás: tiene que ser `csv-notas`.
 
 ---
 
@@ -262,7 +262,7 @@ Y añade `import java.util.Arrays;` debajo de los otros imports. `Arrays.toStrin
 **Comprueba que…**
 
 ```
-=== Notas de clase ===
+=== CSV notas ===
 Líneas leídas: 26
 Alumnos: 25
 Nombre01 [42, 97, 33]
@@ -505,7 +505,7 @@ Curso: Nombre12 (media 88.00)
 
 ```java
     public static void main(String[] args) {
-        print("=== Notas de clase ===");
+        print("=== CSV notas ===");
 
         String[] lineas = leerLineas("notas.csv");
         if (lineas.length == 0) {
@@ -687,14 +687,14 @@ Con el trimestre `3` dice `Aprobados: 19 de 25`, y con el `7`, `No hay trimestre
 2. Comprime el proyecto. `$USER` es tu nombre de usuario de Linux, así el zip lleva tu nombre:
 
    ```bash
-   zip -r $USER-notas-csv.zip src/ bin/ notas.csv
+   zip -r $USER-csv-notas.zip src/ bin/ notas.csv
    ```
 
    Lleva el código (`src`), el bytecode (`bin`) y los datos (`notas.csv`), que el programa necesita para funcionar.
 3. Comprueba que el zip funciona: extráelo en otra carpeta y ejecútalo desde allí.
 
    ```bash
-   unzip $USER-notas-csv.zip -d prueba
+   unzip $USER-csv-notas.zip -d prueba
    cd prueba
    java -cp bin dam.Principal
    cd ..
@@ -705,7 +705,7 @@ Con el trimestre `3` dice `Aprobados: 19 de 25`, y con el `7`, `No hay trimestre
 
 **Si te falla…**
 
-- *Desde `prueba` sale `No se puede leer notas.csv`*: el zip no lleva `notas.csv`. Bórralo (`rm $USER-notas-csv.zip`) y vuelve a crearlo con el comando del punto 2.
+- *Desde `prueba` sale `No se puede leer notas.csv`*: el zip no lleva `notas.csv`. Bórralo (`rm $USER-csv-notas.zip`) y vuelve a crearlo con el comando del punto 2.
 - *Desde `prueba` sale `ClassNotFoundException`*: el zip no lleva `bin`. Compila, borra el zip y vuelve a crearlo.
 
 ---

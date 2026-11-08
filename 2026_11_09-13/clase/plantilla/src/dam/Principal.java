@@ -5,7 +5,7 @@ import static dam.Auxiliar.*;
 public class Principal {
 
     public static void main(String[] args) {
-        print("=== Notas de clase ===");
+        print("=== CSV notas ===");
 
         // TODO Paso 1: leer notas.csv
 

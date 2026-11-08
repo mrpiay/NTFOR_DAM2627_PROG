@@ -1,8 +1,8 @@
 # Autoevaluación · semana del 9 al 13 de noviembre
 
-Preguntas sobre el proyecto «Notas de clase» y los métodos de Java para arrays y textos que más se usan. Puede que sufran modificaciones a lo largo de la semana. Responde poniendo el número de cada pregunta.
+Preguntas sobre el proyecto «CSV notas» y los métodos de Java para arrays y textos que más se usan. Puede que sufran modificaciones a lo largo de la semana. Responde poniendo el número de cada pregunta.
 
-En las preguntas de código, parte del proyecto `notas-csv` terminado. Crea `src/dam/Pregunta.java` con este código y pega el de cada pregunta donde dice `// aquí va el código de la pregunta` (antes, borra el de la anterior):
+En las preguntas de código, parte del proyecto `csv-notas` terminado. Crea `src/dam/Pregunta.java` con este código y pega el de cada pregunta donde dice `// aquí va el código de la pregunta` (antes, borra el de la anterior):
 
 ```java
 package dam;
@@ -21,7 +21,7 @@ public class Pregunta {
 }
 ```
 
-Desde la carpeta `notas-csv`, compila y ejecuta `Pregunta` (no `Principal`):
+Desde la carpeta `csv-notas`, compila y ejecuta `Pregunta` (no `Principal`):
 
 ```bash
 javac -d bin src/dam/*.java src/dam/notas/*.java

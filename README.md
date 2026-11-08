@@ -9,8 +9,8 @@ Todas las semanas: el cuestionario de autoevaluación está disponible desde el 
 | Fecha | Qué |
 |---|---|
 | Lunes 16 de noviembre, 23:59 | Entrega en Teams de las autoevaluaciones de las semanas del 2 al 6 y del 9 al 13, en una sola tarea |
-| Martes 17 de noviembre | Se publican las soluciones de esas dos autoevaluaciones y el proyecto «Notas de clase» completo |
-| Viernes 20 de noviembre (11:00 y 12:10) | **Prueba escrita**, en papel, sobre «Java 0» y el proyecto «Notas de clase»: cómo se organiza un programa en Java, arrays y matrices, los métodos de `String` y de `Arrays`, leer un archivo y el propio proyecto |
+| Martes 17 de noviembre | Se publican las soluciones de esas dos autoevaluaciones y el proyecto «CSV notas» completo |
+| Viernes 20 de noviembre (11:00 y 12:10) | **Prueba escrita**, en papel, sobre «Java 0» y el proyecto «CSV notas»: cómo se organiza un programa en Java, arrays y matrices, los métodos de `String` y de `Arrays`, leer un archivo y el propio proyecto |
 | Viernes 4 de diciembre | **Examen final de la 1.ª evaluación** (del 25 de noviembre al 3 de diciembre, repaso) |
 
 ## Programación

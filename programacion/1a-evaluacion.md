@@ -25,7 +25,7 @@ Peso de estas unidades en el módulo: 33 % (la suma de los pesos de sus unidades
 | vie 23 oct | Entrega UD3 | Pequeño proyecto con 6–8 funciones reutilizables |
 | vie 30 oct | Examen UD3 | Funciones |
 | 3–6 nov | **Puesta en común y proyecto de diagnóstico** | No se avanza: se repasa y se completa lo que tocaba hasta la fecha y se preparan las próximas entregas y exámenes |
-| vie 20 nov | Prueba UD4 | Arrays, cadenas y regex: prueba escrita sobre «Java 0» y el proyecto «Notas de clase», en lugar del examen |
+| vie 20 nov | Prueba UD4 | Arrays, cadenas y regex: prueba escrita sobre «Java 0» y el proyecto «CSV notas», en lugar del examen |
 | del mié 25 nov al jue 3 dic | **Repaso** | 1ª evaluación |
 | vie 4 dic | **Examen final** | 1ª evaluación |
 
@@ -51,8 +51,8 @@ Peso de estas unidades en el módulo: 33 % (la suma de los pesos de sus unidades
 | Del 19 al 23 de octubre | UD3 · Práctica guiada<br>UD4 · Práctica guiada Arrays & Strings |
 | Del 26 al 30 de octubre | UD4 · Práctica guiada Arrays & Strings<br>**examen de la UD3** |
 | [Del 2 al 6 de noviembre](../2026_11_02-06) | **puesta en común y proyecto de diagnóstico** (no se avanza: se repasa y se completa lo que tocaba hasta la fecha) |
-| [Del 9 al 13 de noviembre](../2026_11_09-13) | UD4 · Proyecto guiado «Notas de clase» |
-| Del 16 al 20 de noviembre | UD4 · Repaso del proyecto «Notas de clase»<br>**prueba escrita de la UD4** |
+| [Del 9 al 13 de noviembre](../2026_11_09-13) | UD4 · Proyecto guiado «CSV notas» |
+| Del 16 al 20 de noviembre | UD4 · Repaso del proyecto «CSV notas»<br>**prueba escrita de la UD4** |
 | Del 23 al 27 de noviembre | **repaso** o terminar lo pendiente · 1ª evaluación |
 | Del 30 de noviembre al 4 de diciembre | **repaso** o terminar lo pendiente · 1ª evaluación<br>**examen final** · 1ª evaluación |
 | Del 7 al 11 de diciembre | UD5 · Práctica guiada –Clases |
