@@ -140,3 +140,17 @@ Si en una pregunta aparece un método que no has visto, búscalo en «Dónde con
         }
         print("Fin");
 ```
+
+## Repaso de la UD3 y UD4
+
+Estas preguntas se responden con los repasos de `estudio/`.
+
+**12.** Un método recibe un `int` y lo cambia; otro recibe un array y cambia uno de sus valores. ¿En cuál cambia también el original y por qué?
+
+**13.** ¿Qué es la sobrecarga de métodos? ¿Qué es un método recursivo y qué pasa si no tiene caso base?
+
+**14.** ¿Qué es el ámbito de una variable? ¿Pueden dos métodos distintos tener una variable con el mismo nombre?
+
+**15.** ¿Por qué la línea `nombre.trim();`, sola, no quita los espacios de `nombre`? ¿Cómo se escribe para que sí lo haga?
+
+**16.** ¿Qué es un archivo CSV? ¿Qué pasos hay para cargar sus datos en arrays?
