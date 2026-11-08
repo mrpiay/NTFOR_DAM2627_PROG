@@ -1,6 +1,6 @@
 # UD1 · Fundamentos de Java
 
-Lo básico que hay que saber de la UD1. Cada apartado tiene la idea clave, lo que tienes que saber y, cuando hay conceptos que se confunden, una tabla para compararlos. Los ejemplos son de «Java 0» y de «CSV notas». Las preguntas para comprobar que lo entiendes están en los cuestionarios de autoevaluación.
+Lo básico que hay que saber de la UD1. Cada apartado tiene la idea clave, lo que tienes que saber y, cuando hay conceptos que se confunden, una tabla para compararlos. Los ejemplos son de «Java 0». Las preguntas para comprobar que lo entiendes están en los cuestionarios de autoevaluación.
 
 ---
 

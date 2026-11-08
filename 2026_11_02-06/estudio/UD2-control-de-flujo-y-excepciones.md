@@ -1,6 +1,6 @@
 # UD2 · Control de flujo y excepciones
 
-Lo básico que hay que saber de la UD2. Cada apartado tiene la idea clave, lo que tienes que saber y, cuando hay conceptos que se confunden, una tabla para compararlos. Los ejemplos son de «CSV notas». Las preguntas para comprobar que lo entiendes están en los cuestionarios de autoevaluación.
+Lo básico que hay que saber de la UD2. Cada apartado tiene la idea clave, lo que tienes que saber y, cuando hay conceptos que se confunden, una tabla para compararlos. Las preguntas para comprobar que lo entiendes están en los cuestionarios de autoevaluación.
 
 Crear excepciones propias, las aserciones, la depuración con el depurador y la documentación del código se trabajan más adelante.
 
@@ -14,14 +14,14 @@ Crear excepciones propias, las aserciones, la depuración con el depurador y la 
 
 - **`if`** ejecuta un bloque si la condición es verdadera; **`else`**, si es falsa; y **`else if`** encadena varias condiciones.
 - **`switch`** elige entre varios valores concretos de una variable. Cada **`case`** termina con **`break`**; si falta, se ejecuta también el siguiente. **`default`** recoge cualquier otro valor.
-- En «CSV notas», el menú es un `switch` sobre la opción elegida.
+- Un menú de opciones suele ser un `switch` sobre la opción elegida.
 
 **Compara**
 
 | | `if / else if` | `switch` |
 |---|---|---|
 | Qué compara | Cualquier condición (rangos, varias variables…) | Un valor contra una lista de valores concretos |
-| Ejemplo | `if (trimestre < 1 \|\| trimestre > 3)` | El menú: `case 1:`, `case 2:`… |
+| Ejemplo | `if (edad < 18 \|\| edad > 65)` | El menú: `case 1:`, `case 2:`… |
 
 ---
 
@@ -34,7 +34,7 @@ Crear excepciones propias, las aserciones, la depuración con el depurador y la 
 - **`while`**: comprueba la condición **antes**; puede no ejecutarse nunca.
 - **`do-while`**: comprueba **después**; se ejecuta al menos una vez. Por eso el menú es un `do-while`: sale siempre una vez.
 - **`for`**: cuando se sabe cuántas veces: `for (int i = 0; i < nombres.length; i++)`.
-- **for-each**: recorre todos los elementos sin usar posiciones: `for (int nota : notasAlumno)`.
+- **for-each**: recorre todos los elementos sin usar posiciones: `for (int n : numeros)`.
 - Elementos típicos: un **contador** (`aprobados++`), un **acumulador** (`suma += nota`) y un **centinela** (un valor que indica el final, como `0` para salir).
 
 **Compara**
@@ -56,7 +56,6 @@ Crear excepciones propias, las aserciones, la depuración con el depurador y la 
 - **`break`** termina el bucle (o el `switch`) en ese momento.
 - **`continue`** salta al **siguiente** giro del bucle, sin ejecutar lo que queda del actual.
 - **`return`** sale del método; si devuelve algo, con su valor.
-- En «CSV notas»: `continue` salta los suspensos al listar los aprobados; `break` sale del bucle de `getInt` cuando el número es válido; `return i` sale de `buscar` en cuanto encuentra el nombre.
 
 **Compara**
 
@@ -77,7 +76,6 @@ Crear excepciones propias, las aserciones, la depuración con el depurador y la 
 - **`try { … } catch (Tipo e) { … }`**: si dentro del `try` se lanza esa excepción, se ejecuta el `catch` y el programa sigue.
 - Excepciones habituales: **`NumberFormatException`** (`parseInt` de un texto que no es un número), **`ArrayIndexOutOfBoundsException`** (posición fuera del array), **`NullPointerException`** (usar algo que vale `null`), **`IOException`** (fallo al leer un archivo).
 - Algunas, como `IOException`, son **comprobadas**: Java obliga a tratarlas, y sin `try-catch` el programa no compila.
-- En «CSV notas»: `getInt` recoge la `NumberFormatException` y vuelve a preguntar.
 
 ---
 
@@ -87,6 +85,6 @@ Crear excepciones propias, las aserciones, la depuración con el depurador y la 
 
 **Lo que tienes que saber**
 
-- Un **caso de prueba** es una entrada y la salida que se espera («Nombre22» → «media 70.67»).
-- Hay que probar los casos normales, los **límites** (el primero, el último, el vacío) y los **erróneos** (letras donde va un número, un trimestre que no existe).
+- Un **caso de prueba** es una entrada y la salida que se espera (para un método que suma dos números: «2 y 3» → «5»).
+- Hay que probar los casos normales, los **límites** (el primero, el último, el vacío) y los **erróneos** (letras donde va un número, una opción que no existe).
 - Si sale algo distinto, se busca dónde cambia el valor esperado: con mensajes de control (`print`) o con el depurador, que para el programa en una línea y muestra las variables.
