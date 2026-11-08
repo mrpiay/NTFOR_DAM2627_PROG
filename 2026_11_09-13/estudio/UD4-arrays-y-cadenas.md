@@ -77,14 +77,13 @@ Las expresiones regulares (regex) se trabajan en la 2.ª evaluación.
 
 ---
 
-## 5. Leer un archivo de texto
+## 5. Datos en formato CSV
 
-**En una frase:** un archivo como un CSV se lee línea a línea y cada línea se parte en campos.
+**En una frase:** un CSV es texto con un registro por línea y los campos separados por `;` o `,`; para usarlo, cada línea se parte en campos.
 
 **Lo que tienes que saber**
 
-- `Files.readAllLines(Path.of("notas.csv"))` lee todas las líneas; con `.toArray(new String[0])` quedan en un array de `String`.
-- Leer puede fallar (`IOException`), así que va dentro de un `try-catch`.
 - Un **CSV** tiene una línea de cabecera y una línea por registro, con los campos separados por `;` o `,`.
-- Para cargarlo: saltar la cabecera, partir cada línea con `split`, limpiar con `trim` y convertir los números con `parseInt`.
-- Los ficheros se ven a fondo en la UD8.
+- Para cargarlo en arrays: saltar la cabecera, partir cada línea con `split`, limpiar con `trim` y convertir los números con `parseInt`.
+- **Datos al azar:** `new Random(semilla)` crea un generador y `nextInt(101)` da un entero de 0 a 100. Con la misma semilla salen siempre los mismos números, en cualquier ordenador.
+- En «CSV notas», las líneas se generan con `Random` y `String.format`. Leer y escribir archivos se ve en la UD8.

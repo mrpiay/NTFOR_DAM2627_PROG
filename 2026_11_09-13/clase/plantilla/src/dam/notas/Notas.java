@@ -5,7 +5,7 @@ package dam.notas;
 
 public class Notas {
 
-    // TODO Paso 1: leerLineas
+    // TODO Paso 1: generarLineas
 
     // TODO Paso 2: cargarNombres y cargarNotas
 

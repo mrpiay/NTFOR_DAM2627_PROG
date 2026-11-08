@@ -7,7 +7,7 @@ public class Principal {
     public static void main(String[] args) {
         print("=== CSV notas ===");
 
-        // TODO Paso 1: leer notas.csv
+        // TODO Paso 1: generar las líneas del CSV
 
     }
 

@@ -2,7 +2,7 @@
 
 ## Punto de partida
 
-Un caso real: un archivo `notas.csv` con las notas de una clase de 25 alumnos en los tres trimestres, y un programa que lo abre y responde a las preguntas típicas sobre esas notas:
+Un caso real: las notas de una clase de 25 alumnos en los tres trimestres, en formato CSV, y un programa que las carga y responde a las preguntas típicas sobre esas notas:
 
 - ¿Está este nombre en la lista?
 - ¿Qué notas tiene este alumno y cuál es su media?
@@ -12,13 +12,13 @@ Un caso real: un archivo `notas.csv` con las notas de una clase de 25 alumnos en
 
 Es la continuación de «Java 0»: el mismo paquete `dam`, con `Principal` y `Auxiliar`, y un paquete nuevo, `dam.notas`, con una clase `Notas`. Cada paso añade a `Notas` un **método auxiliar** que hace una sola cosa, y `Principal` lo usa. Al final, la lógica del programa se lee casi como las preguntas de arriba.
 
-Es la **UD4 · Arrays, cadenas y regex**: arrays, una matriz (un array de dos dimensiones) y métodos de `String`. De paso, adelanta cómo se lee un archivo y qué es una excepción, que se ven con más detalle más adelante.
+Es la **UD4 · Arrays, cadenas y regex**: arrays, una matriz (un array de dos dimensiones) y métodos de `String`. De paso, adelanta qué es una excepción y cómo se recoge con `try-catch`.
 
 **Usa la IA como guía, no para que lo haga por ti.** Pídele que te explique lo que no entiendas; **el código lo pones tú en tu proyecto**, aunque sea copiando y pegando, sabiendo **dónde** lo pones y **para qué**. El objetivo es que lo que hagas **funcione y cumpla los requisitos** de cada paso («Comprueba que…») y que sepas **dónde está cada cosa y qué habría que tocar para cambiar o añadir algo**.
 
 **El objetivo es entender cada paso:** es lo que necesitas para responder el cuestionario de autoevaluación y preparar la prueba escrita.
 
-**Evaluación continua.** Algunas semanas hay una **prueba escrita, en papel,** en las dos últimas sesiones del último día de clase, después de que se publiquen las soluciones de lo que entra. La primera es el **viernes 20 de noviembre**, sobre «Java 0» y este proyecto: cómo se organiza un programa en Java (clases, paquetes y métodos estáticos), arrays y matrices, los métodos de `String` y de `Arrays` que se usan en el proyecto, leer un archivo y el propio proyecto. Sustituye al examen de la UD4.
+**Evaluación continua.** Algunas semanas hay una **prueba escrita, en papel,** en las dos últimas sesiones del último día de clase, después de que se publiquen las soluciones de lo que entra. La primera es el **viernes 20 de noviembre**, sobre «Java 0» y este proyecto: cómo se organiza un programa en Java (clases, paquetes y métodos estáticos), arrays y matrices, los métodos de `String` y de `Arrays` que se usan en el proyecto, las excepciones con `try-catch` y el propio proyecto. Sustituye al examen de la UD4.
 
 ## Las herramientas
 
@@ -38,27 +38,26 @@ La plantilla, `2026_11_09-13/clase/plantilla` del repositorio, que en el paso 0 
 
 | Archivo | Qué es | Pasos |
 |---|---|---|
-| `notas.csv` | Los datos: una cabecera y una línea por alumno, con los campos separados por `;` | ninguno: no se cambia |
 | `src/dam/Auxiliar.java` | `print`, `getInt` y `getString` (lee una línea de texto), como en «Java 0». Ya está hecho | ninguno |
 | `src/dam/Principal.java` | El `main` y los métodos de cada opción | todos |
 | `src/dam/notas/Notas.java` | Los métodos auxiliares; los comentarios `// TODO Paso N` marcan dónde va cada uno | 1 a 6 |
 
-Así empieza `notas.csv`:
+Los datos van en formato **CSV**: una línea de cabecera y una línea por alumno, con los campos separados por `;`. No hay archivo: el programa genera las líneas en el paso 1, con notas al azar, y empiezan así:
 
 ```
 nombre;t1;t2;t3
-Nombre01;42;97;33
-Nombre02;57;40;88
-Nombre03;82;85;73
+Nombre01;11;60;16
+Nombre02;9;46;19
+Nombre03;6;64;43
 ```
 
-`t1`, `t2` y `t3` son las notas de los tres trimestres, en porcentaje (de 0 a 100). Puedes abrirlo con VS Code para verlo entero.
+`t1`, `t2` y `t3` son las notas de los tres trimestres, en porcentaje (de 0 a 100).
 
 ## Qué se trabaja
 
 | Qué | Pasos |
 |---|---|
-| Leer un archivo y tratar el error si no se puede (`try-catch`) | 1 |
+| Generar datos al azar, siempre los mismos (`Random` con semilla), y montar texto con `String.format` | 1 |
 | Partir texto (`split`, `trim`) y convertirlo en número (`Integer.parseInt`) | 2 |
 | Arrays y una matriz: crearlos, rellenarlos y recorrerlos | 2, 4, 5 y 6 |
 | Comparar textos (`equalsIgnoreCase`) y buscar en un array | 3 |
@@ -74,7 +73,7 @@ Cada sesión dura 50 minutos.
 
 | Día | Sesión | Qué hacemos |
 |---|---|---|
-| Miércoles 11 | 13:00 | Leer «Punto de partida», «Las herramientas» y «Con qué trabajas» (15 min). **Paso 0** (preparar el proyecto) y **paso 1** (leer el archivo). |
+| Miércoles 11 | 13:00 | Leer «Punto de partida», «Las herramientas» y «Con qué trabajas» (15 min). **Paso 0** (preparar el proyecto) y **paso 1** (generar el CSV). |
 | Miércoles 11 | 13:50 | **Paso 2** (partir las líneas y cargar los arrays). |
 | Miércoles 11 | 14:40 | **Paso 3** (¿está en la lista?). |
 | Jueves 12 | 12:10 | **Paso 4** (las notas y la media de un alumno). |
@@ -124,7 +123,7 @@ Es lo mismo que en «Java 0», con una carpeta más: `src/dam/notas/*.java`, el 
    java -cp bin dam.Principal
    ```
 
-**Comprueba que…** sale `=== CSV notas ===` y en el Explorador de VS Code ves `notas.csv`, `src` y, después de compilar, `bin`.
+**Comprueba que…** sale `=== CSV notas ===` y en el Explorador de VS Code ves `src` y, después de compilar, `bin`.
 
 **Si te falla…**
 
@@ -134,34 +133,38 @@ Es lo mismo que en «Java 0», con una carpeta más: `src/dam/notas/*.java`, el 
 
 ---
 
-## Paso 1 · Leer el archivo
+## Paso 1 · Generar el CSV
 
-**Objetivo.** Leer `notas.csv` y ver cuántas líneas tiene.
+**Objetivo.** Tener las líneas del CSV en un array: la cabecera y una línea por alumno, con sus tres notas.
 
-**Pista.** En `Notas.java`, en lugar de `// TODO Paso 1: leerLineas`:
+**Pista.** Las notas se inventan al azar con `Random`. En `Notas.java`, en lugar de `// TODO Paso 1: generarLineas`:
 
 ```java
-    // Las líneas del archivo, en un array (vacío si no se puede leer)
-    public static String[] leerLineas(String ruta) {
-        try {
-            return Files.readAllLines(Path.of(ruta)).toArray(new String[0]);
-        } catch (IOException e) {
-            System.out.println("No se puede leer " + ruta);
-            return new String[0];
+    // Las líneas del CSV: la cabecera y una línea por alumno, con tres notas al azar de 0 a 100
+    public static String[] generarLineas(int alumnos, long semilla) {
+        Random azar = new Random(semilla);
+        String[] lineas = new String[alumnos + 1];
+        lineas[0] = "nombre;t1;t2;t3";
+        for (int i = 1; i <= alumnos; i++) {
+            int t1 = azar.nextInt(101);
+            int t2 = azar.nextInt(101);
+            int t3 = azar.nextInt(101);
+            lineas[i] = String.format("Nombre%02d;%d;%d;%d", i, t1, t2, t3);
         }
+        return lineas;
     }
 ```
 
-Y los imports que usa, debajo de `package dam.notas;`:
+Y el import que usa, debajo de `package dam.notas;`:
 
 ```java
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.util.Random;
 ```
 
-- `Path.of(ruta)` es la ruta del archivo; `Files.readAllLines` lo lee entero y da sus líneas; `.toArray(new String[0])` las pasa a un array de `String`, una línea en cada posición.
-- Leer un archivo puede fallar: que no exista, que no haya permiso… Entonces Java lanza una **excepción**, `IOException`. `try-catch` la recoge: si todo va bien se ejecuta el `try`; si falla, el `catch`, que avisa y devuelve un array vacío. Sin `try-catch`, el programa no compila: Java obliga a decidir qué hacer si el archivo no se puede leer.
+- `new Random(semilla)` crea un generador de números al azar. `azar.nextInt(101)` da un entero de 0 a 100 (el 101 no entra).
+- La **semilla** decide qué números salen: con la misma semilla salen siempre los mismos, en el mismo orden, en cualquier ordenador. Por eso las notas son las mismas en todos los ordenadores y los resultados de cada paso coinciden con los de esta guía.
+- El array tiene `alumnos + 1` posiciones: la 0 es la cabecera y cada una de las demás, un alumno.
+- `String.format` monta el texto: cada `%d` se cambia por un número, en orden; `%02d`, por un número con dos cifras (`1` sale `01`).
 
 En `Principal.java`, debajo de `import static dam.Auxiliar.*;`, importa los métodos de `Notas`:
 
@@ -169,37 +172,34 @@ En `Principal.java`, debajo de `import static dam.Auxiliar.*;`, importa los mét
 import static dam.notas.Notas.*;
 ```
 
-Y en el `main`, en lugar de `// TODO Paso 1: leer notas.csv`:
+Y en el `main`, en lugar de `// TODO Paso 1: generar las líneas del CSV`:
 
 ```java
-        String[] lineas = leerLineas("notas.csv");
-        if (lineas.length == 0) {
-            return;     // no se ha podido leer: termina
-        }
-        print("Líneas leídas: " + lineas.length);
+        String[] lineas = generarLineas(25, 2627);
+        print("Líneas: " + lineas.length);
         print("Primera: " + lineas[0]);
         print("Segunda: " + lineas[1]);
 ```
 
-`lineas.length` es el número de posiciones del array; `lineas[0]` es la primera, porque las posiciones empiezan en 0.
+`generarLineas(25, 2627)` genera 25 alumnos con la semilla 2627. `lineas.length` es el número de posiciones del array; `lineas[0]` es la primera, porque las posiciones empiezan en 0.
 
 **Comprueba que…**
 
 ```
 === CSV notas ===
-Líneas leídas: 26
+Líneas: 26
 Primera: nombre;t1;t2;t3
-Segunda: Nombre01;42;97;33
+Segunda: Nombre01;11;60;16
 ```
 
-Y que, si cambias el nombre del archivo (`mv notas.csv notas2.csv`) y vuelves a ejecutar, sale `No se puede leer notas.csv` y el programa termina sin errores. Después déjalo como estaba: `mv notas2.csv notas.csv`.
+Y que, si cambias la semilla `2627` por otro número, la segunda línea sale con otras notas, y si vuelves a ejecutar sin cambiarla, salen las mismas. Después déjala en `2627`.
 
 **Si te falla…**
 
-- *`cannot find symbol` en `Files`, `Path` o `IOException`*: faltan los tres imports de `Notas.java`.
-- *`cannot find symbol` en `leerLineas`*: falta `import static dam.notas.Notas.*;` en `Principal.java`, o no has compilado `src/dam/notas/*.java`.
-- *`unreported exception java.io.IOException`*: falta el `try-catch`.
-- *Sale `No se puede leer notas.csv` sin haber cambiado nada*: ejecutas desde otra carpeta. `java` busca `notas.csv` en la carpeta en que estás: tiene que ser `csv-notas`.
+- *`cannot find symbol` en `Random`*: falta `import java.util.Random;` en `Notas.java`.
+- *`cannot find symbol` en `generarLineas`*: falta `import static dam.notas.Notas.*;` en `Principal.java`, o no has compilado `src/dam/notas/*.java`.
+- *Salen otras notas*: la semilla no es `2627`, o has cambiado el `101` o el orden de `t1`, `t2` y `t3`.
+- *Sale `Nombre1` en lugar de `Nombre01`*: has escrito `%d` en lugar de `%02d`.
 
 ---
 
@@ -210,13 +210,13 @@ Y que, si cambias el nombre del archivo (`mv notas.csv notas2.csv`) y vuelves a 
 **Pista.** Cada línea se parte por los `;` con `split`:
 
 ```java
-String[] campos = "Nombre01;42;97;33".split(";");
-// campos[0] es "Nombre01", campos[1] es "42", campos[2] es "97" y campos[3] es "33"
+String[] campos = "Nombre01;11;60;16".split(";");
+// campos[0] es "Nombre01", campos[1] es "11", campos[2] es "60" y campos[3] es "16"
 ```
 
-Los campos son texto: `"42"` no es el número 42. `Integer.parseInt("42")` lo convierte. `trim()` quita los espacios del principio y del final, por si los hubiera.
+Los campos son texto: `"11"` no es el número 11. `Integer.parseInt("11")` lo convierte. `trim()` quita los espacios del principio y del final, por si los hubiera.
 
-Las notas van en una **matriz**, un array de dos dimensiones: `int[][] notas` tiene una fila por alumno y una columna por trimestre. `notas[0]` es la fila del primer alumno, `{42, 97, 33}`, y `notas[0][1]` es su nota del 2.º trimestre, 97. La fila del alumno `i` está en la misma posición que su nombre en `nombres`.
+Las notas van en una **matriz**, un array de dos dimensiones: `int[][] notas` tiene una fila por alumno y una columna por trimestre. `notas[0]` es la fila del primer alumno, `{11, 60, 16}`, y `notas[0][1]` es su nota del 2.º trimestre, 60. La fila del alumno `i` está en la misma posición que su nombre en `nombres`.
 
 En `Notas.java`, en lugar de `// TODO Paso 2: cargarNombres y cargarNotas`:
 
@@ -263,10 +263,10 @@ Y añade `import java.util.Arrays;` debajo de los otros imports. `Arrays.toStrin
 
 ```
 === CSV notas ===
-Líneas leídas: 26
+Líneas: 26
 Alumnos: 25
-Nombre01 [42, 97, 33]
-Nombre25 [90, 38, 45]
+Nombre01 [11, 60, 16]
+Nombre25 [19, 8, 71]
 ```
 
 **Si te falla…**
@@ -377,15 +377,15 @@ En el `main`, cambia la llamada `opcionEstaEnLaLista(nombres);` por `opcionNotas
 
 | Escribes | Sale |
 |---|---|
-| `Nombre12` | `Nombre12 [81, 88, 95] media 88.00` |
-| `Nombre01` | `Nombre01 [42, 97, 33] media 57.33` |
+| `Nombre22` | `Nombre22 [76, 49, 87] media 70.67` |
+| `Nombre14` | `Nombre14 [97, 34, 51] media 60.67` |
 | `Pepe` | `Pepe no está en la lista` |
 
-Según el idioma del sistema, los decimales pueden salir con coma (`88,00`): las dos formas están bien.
+Según el idioma del sistema, los decimales pueden salir con coma (`70,67`): las dos formas están bien.
 
 **Si te falla…**
 
-- *La media sale `57.00` en lugar de `57.33`*: falta el `(double)`.
+- *La media sale `70.00` en lugar de `70.67`*: falta el `(double)`.
 - *`cannot find symbol` en `Arrays`*: falta `import java.util.Arrays;` en `Principal.java`.
 
 ---
@@ -435,9 +435,9 @@ Y en el `main`, cambia la llamada del paso anterior por `opcionMejorDeUnTrimestr
 
 | Escribes | Sale |
 |---|---|
-| `1` | `Trimestre 1: Nombre21 (100)` |
-| `2` | `Trimestre 2: Nombre07 (100)` |
-| `3` | `Trimestre 3: Nombre19 (100)` |
+| `1` | `Trimestre 1: Nombre14 (97)` |
+| `2` | `Trimestre 2: Nombre06 (98)` |
+| `3` | `Trimestre 3: Nombre07 (95)` |
 | `5` | `No hay trimestre 5` |
 
 **Si te falla…**
@@ -484,10 +484,10 @@ Y en el `main`, cambia la llamada del paso anterior por `opcionMejores(nombres, 
 **Comprueba que…**
 
 ```
-Trimestre 1: Nombre21 (100)
-Trimestre 2: Nombre07 (100)
-Trimestre 3: Nombre19 (100)
-Curso: Nombre12 (media 88.00)
+Trimestre 1: Nombre14 (97)
+Trimestre 2: Nombre06 (98)
+Trimestre 3: Nombre07 (95)
+Curso: Nombre22 (media 70.67)
 ```
 
 **Si te falla…**
@@ -507,10 +507,7 @@ Curso: Nombre12 (media 88.00)
     public static void main(String[] args) {
         print("=== CSV notas ===");
 
-        String[] lineas = leerLineas("notas.csv");
-        if (lineas.length == 0) {
-            return;
-        }
+        String[] lineas = generarLineas(25, 2627);
         String[] nombres = cargarNombres(lineas);
         int[][] notas = cargarNotas(lineas);
         print("Alumnos: " + nombres.length);
@@ -548,7 +545,7 @@ Curso: Nombre12 (media 88.00)
     }
 ```
 
-- Los datos se cargan **una sola vez**, al principio; el menú solo los consulta.
+- Los datos se generan y se cargan **una sola vez**, al principio; el menú solo los consulta.
 - `do-while` repite el menú mientras la opción no sea 0; como la condición va al final, el menú sale al menos una vez.
 - Cada `case` llama al método de su opción. Así el `main` se lee como una lista de lo que hace el programa, y cada método se puede entender y cambiar por separado.
 
@@ -557,8 +554,8 @@ Curso: Nombre12 (media 88.00)
 | Eliges | Y escribes | Sale |
 |---|---|---|
 | `1` | `nombre07` | `Nombre07 está en la lista: es el número 7` |
-| `2` | `Nombre12` | `Nombre12 [81, 88, 95] media 88.00` |
-| `3` | `2` | `Trimestre 2: Nombre07 (100)` |
+| `2` | `Nombre22` | `Nombre22 [76, 49, 87] media 70.67` |
+| `3` | `2` | `Trimestre 2: Nombre06 (98)` |
 | `4` | | las cuatro líneas del paso 6 |
 | `9` | | `Opción no válida` |
 | `0` | | `Hasta luego` y termina |
@@ -576,7 +573,7 @@ Y que, después de cada opción, vuelve a salir el menú.
 
 **Objetivo.** Que, si en el menú o al pedir el trimestre se escribe algo que no es un número, el programa avise y vuelva a preguntar, en lugar de terminar con un error.
 
-**Pista.** `Integer.parseInt("hola")` lanza una excepción, `NumberFormatException`, y como nadie la recoge el programa termina. Igual que en el paso 1, `try-catch` la recoge. Para volver a preguntar hasta que el dato sea bueno, se usa un bucle sin fin, `while (true)`, del que se sale con `break` en cuanto el número es válido.
+**Pista.** `Integer.parseInt("hola")` lanza una excepción, `NumberFormatException`, y como nadie la recoge el programa termina. Una **excepción** es un error durante la ejecución, y `try-catch` la recoge: si dentro del `try` se lanza, se ejecuta el `catch` y el programa sigue. Para volver a preguntar hasta que el dato sea bueno, se usa un bucle sin fin, `while (true)`, del que se sale con `break` en cuanto el número es válido.
 
 En `Auxiliar.java`, sustituye el método `getInt` entero por este:
 
@@ -606,7 +603,7 @@ Como todas las opciones leen los números con `getInt`, el arreglo sirve para to
 | Eliges | Y escribes | Sale |
 |---|---|---|
 | `hola` | | `Eso no es un número. Prueba otra vez:` y espera otra respuesta |
-| `3` | `x` y después `2` | `Eso no es un número. Prueba otra vez:` y después `Trimestre 2: Nombre07 (100)` |
+| `3` | `x` y después `2` | `Eso no es un número. Prueba otra vez:` y después `Trimestre 2: Nombre06 (98)` |
 
 **Si te falla…**
 
@@ -661,13 +658,13 @@ Y en el `switch`, antes de `case 0:`:
                     break;
 ```
 
-**Comprueba que…** con la opción `5` y el trimestre `1` salen 16 líneas, de `Nombre02 (57)` a `Nombre25 (90)`, y al final:
+**Comprueba que…** con la opción `5` y el trimestre `1` salen 11 líneas, de `Nombre06 (64)` a `Nombre23 (95)`, y al final:
 
 ```
-Aprobados: 16 de 25
+Aprobados: 11 de 25
 ```
 
-Con el trimestre `3` dice `Aprobados: 19 de 25`, y con el `7`, `No hay trimestre 7`.
+Con el trimestre `3` dice `Aprobados: 14 de 25`, y con el `7`, `No hay trimestre 7`.
 
 **Si te falla…**
 
@@ -687,10 +684,10 @@ Con el trimestre `3` dice `Aprobados: 19 de 25`, y con el `7`, `No hay trimestre
 2. Comprime el proyecto. `$USER` es tu nombre de usuario de Linux, así el zip lleva tu nombre:
 
    ```bash
-   zip -r $USER-csv-notas.zip src/ bin/ notas.csv
+   zip -r $USER-csv-notas.zip src/ bin/
    ```
 
-   Lleva el código (`src`), el bytecode (`bin`) y los datos (`notas.csv`), que el programa necesita para funcionar.
+   Lleva el código (`src`) y el bytecode (`bin`), que es lo que hace falta para ejecutarlo.
 3. Comprueba que el zip funciona: extráelo en otra carpeta y ejecútalo desde allí.
 
    ```bash
@@ -705,8 +702,7 @@ Con el trimestre `3` dice `Aprobados: 19 de 25`, y con el `7`, `No hay trimestre
 
 **Si te falla…**
 
-- *Desde `prueba` sale `No se puede leer notas.csv`*: el zip no lleva `notas.csv`. Bórralo (`rm $USER-csv-notas.zip`) y vuelve a crearlo con el comando del punto 2.
-- *Desde `prueba` sale `ClassNotFoundException`*: el zip no lleva `bin`. Compila, borra el zip y vuelve a crearlo.
+- *Desde `prueba` sale `ClassNotFoundException`*: el zip no lleva `bin`. Compila, borra el zip (`rm $USER-csv-notas.zip`) y vuelve a crearlo con el comando del punto 2.
 
 ---
 
@@ -727,4 +723,4 @@ Qué se entrega y cuándo: [`entrega.md`](entrega.md).
 | El menú repite hasta elegir 0 |  |
 | Si se escribe algo que no es un número, avisa y vuelve a preguntar |  |
 | Lista los aprobados de un trimestre y dice cuántos son |  |
-| El zip lleva `src`, `bin` y `notas.csv`, y funciona extraído en otra carpeta |  |
+| El zip lleva `src` y `bin`, y funciona extraído en otra carpeta |  |

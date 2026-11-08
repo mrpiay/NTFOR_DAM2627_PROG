@@ -77,7 +77,7 @@ Crear excepciones propias, las aserciones, la depuración con el depurador y la 
 - **`try { … } catch (Tipo e) { … }`**: si dentro del `try` se lanza esa excepción, se ejecuta el `catch` y el programa sigue.
 - Excepciones habituales: **`NumberFormatException`** (`parseInt` de un texto que no es un número), **`ArrayIndexOutOfBoundsException`** (posición fuera del array), **`NullPointerException`** (usar algo que vale `null`), **`IOException`** (fallo al leer un archivo).
 - Algunas, como `IOException`, son **comprobadas**: Java obliga a tratarlas, y sin `try-catch` el programa no compila.
-- En «CSV notas»: `leerLineas` recoge la `IOException` y devuelve un array vacío; `getInt` recoge la `NumberFormatException` y vuelve a preguntar.
+- En «CSV notas»: `getInt` recoge la `NumberFormatException` y vuelve a preguntar.
 
 ---
 
@@ -87,6 +87,6 @@ Crear excepciones propias, las aserciones, la depuración con el depurador y la 
 
 **Lo que tienes que saber**
 
-- Un **caso de prueba** es una entrada y la salida que se espera («Nombre12» → «media 88.00»).
+- Un **caso de prueba** es una entrada y la salida que se espera («Nombre22» → «media 70.67»).
 - Hay que probar los casos normales, los **límites** (el primero, el último, el vacío) y los **erróneos** (letras donde va un número, un trimestre que no existe).
 - Si sale algo distinto, se busca dónde cambia el valor esperado: con mensajes de control (`print`) o con el depurador, que para el programa en una línea y muestra las variables.

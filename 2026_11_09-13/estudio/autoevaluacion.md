@@ -36,7 +36,7 @@ Si en una pregunta aparece un método que no has visto, búscalo en «Dónde con
 
 ## Cuestiones sobre el proyecto
 
-**1.** ¿Por qué `leerLineas` tiene un `try-catch`? ¿Qué devuelve si no puede leer el archivo y qué hace entonces el `main`?
+**1.** ¿Para qué sirve la semilla de `new Random(semilla)` en `generarLineas`? ¿Qué pasaría si cada uno usara una semilla distinta? ¿Por qué `generarLineas(25, 2627)` devuelve 26 líneas?
 
 **2.** Copia lo que sale por pantalla.
 
@@ -155,4 +155,4 @@ Estas preguntas se responden con los apuntes de cada unidad, en `estudio/`.
 
 **15.** ¿Por qué la línea `nombre.trim();`, sola, no quita los espacios de `nombre`? ¿Cómo se escribe para que sí lo haga?
 
-**16.** ¿Qué es un archivo CSV? ¿Qué pasos hay para cargar sus datos en arrays?
+**16.** ¿Qué es el formato CSV? ¿Qué pasos hay para cargar sus líneas en arrays?
