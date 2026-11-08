@@ -34,7 +34,7 @@ Las de «Java 0», en el terminal de Linux (en Windows, **Ubuntu** desde el men�
 
 ## Con qué trabajas
 
-La plantilla, `2026_11_09-13/clase/plantilla` del repositorio, que en el paso 0 copias como `csv-notas`:
+La plantilla, `2026_11_09-13/actividades/plantilla` del repositorio, que en el paso 0 copias como `csv-notas`:
 
 | Archivo | Qué es | Pasos |
 |---|---|---|
@@ -110,7 +110,7 @@ Es lo mismo que en «Java 0», con una carpeta más: `src/dam/notas/*.java`, el 
    mkdir -p ~/dam2627/prog
    cd ~/dam2627/prog
    git clone https://github.com/mrpiay/NTFOR_DAM2627_PROG.git
-   cp -r NTFOR_DAM2627_PROG/2026_11_09-13/clase/plantilla csv-notas
+   cp -r NTFOR_DAM2627_PROG/2026_11_09-13/actividades/plantilla csv-notas
    cd csv-notas
    ```
 

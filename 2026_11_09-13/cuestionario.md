@@ -30,7 +30,7 @@ java -cp bin dam.Pregunta
 
 En cada una, copia en tu respuesta lo que sale por pantalla y asegúrate de que lo entiendes: en las pruebas escritas tendrás que explicarlo sin ayuda de la IA. Cuando termines, borra `Pregunta` del proyecto: `rm src/dam/Pregunta.java bin/dam/Pregunta.class`.
 
-Si en una pregunta aparece un método que no has visto, búscalo en «Dónde consultar», en el [README de `estudio/`](README.md).
+Si en una pregunta aparece un método que no has visto, búscalo en «Dónde consultar», en el [README de `apuntes/`](apuntes/README.md).
 
 ---
 
@@ -145,7 +145,7 @@ Si en una pregunta aparece un método que no has visto, búscalo en «Dónde con
 
 ## Cuestiones sobre los apuntes
 
-Estas preguntas se responden con los apuntes de cada unidad, en `estudio/`.
+Estas preguntas se responden con los apuntes de cada unidad, en `apuntes/`.
 
 **12.** Un método recibe un `int` y lo cambia; otro recibe un array y cambia uno de sus valores. ¿En cuál cambia también el original y por qué?
 

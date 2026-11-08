@@ -11,7 +11,7 @@ java -cp bin dam.Principal
 
 En cada una, copia en tu respuesta lo que sale por pantalla y asegúrate de que lo entiendes: en las pruebas escritas tendrás que explicarlo sin ayuda de la IA.
 
-Si en una pregunta aparece algo que no has visto, como un método de `Math` o de `String`, búscalo en «Dónde consultar», en el [README de `estudio/`](README.md).
+Si en una pregunta aparece algo que no has visto, como un método de `Math` o de `String`, búscalo en «Dónde consultar», en el [README de `apuntes/`](apuntes/README.md).
 
 ---
 
@@ -95,7 +95,7 @@ Copia lo que sale por pantalla.
 
 ## Cuestiones sobre los apuntes
 
-Estas preguntas se responden con los apuntes de cada unidad, en `estudio/`.
+Estas preguntas se responden con los apuntes de cada unidad, en `apuntes/`.
 
 **11.** ¿Qué tipo de Java usarías para guardar una edad, un precio, la inicial de un nombre y si un alumno ha aprobado? ¿Por qué `String` no es un tipo primitivo?
 
