@@ -141,9 +141,9 @@ Si en una pregunta aparece un método que no has visto, búscalo en «Dónde con
         print("Fin");
 ```
 
-## Repaso de la UD3 y UD4
+## UD3 y UD4
 
-Estas preguntas se responden con los repasos de `estudio/`.
+Estas preguntas se responden con los apuntes de cada unidad, en `estudio/`.
 
 **12.** Un método recibe un `int` y lo cambia; otro recibe un array y cambia uno de sus valores. ¿En cuál cambia también el original y por qué?
 

@@ -1,4 +1,4 @@
-# Repaso · UD2 · Control de flujo y excepciones
+# UD2 · Control de flujo y excepciones
 
 Lo básico que hay que saber de la UD2. Cada apartado tiene la idea clave, lo que tienes que saber y, cuando hay conceptos que se confunden, una tabla para compararlos. Los ejemplos son de «CSV notas». Las preguntas para comprobar que lo entiendes están en los cuestionarios de autoevaluación.
 

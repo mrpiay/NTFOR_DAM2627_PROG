@@ -1,4 +1,4 @@
-# Repaso · UD4 · Arrays y cadenas
+# UD4 · Arrays y cadenas
 
 Lo básico que hay que saber de la UD4. Cada apartado tiene la idea clave, lo que tienes que saber y, cuando hay conceptos que se confunden, una tabla para compararlos. Los ejemplos son de «CSV notas». Las preguntas para comprobar que lo entiendes están en los cuestionarios de autoevaluación.
 

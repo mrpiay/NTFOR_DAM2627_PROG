@@ -91,9 +91,9 @@ Copia lo que sale por pantalla.
 
 **10.** Ejecuta `java -cp bin dam.Principal` y después `java -cp bin Principal`. Copia lo que sale por pantalla.
 
-## Repaso de la UD1 y UD2
+## UD1 y UD2
 
-Estas preguntas se responden con los repasos de `estudio/`.
+Estas preguntas se responden con los apuntes de cada unidad, en `estudio/`.
 
 **11.** ¿Qué tipo de Java usarías para guardar una edad, un precio, la inicial de un nombre y si un alumno ha aprobado? ¿Por qué `String` no es un tipo primitivo?
 
