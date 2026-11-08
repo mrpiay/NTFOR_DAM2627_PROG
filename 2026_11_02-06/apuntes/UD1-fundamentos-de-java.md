@@ -100,3 +100,31 @@ Lo básico que hay que saber de la UD1. Cada apartado tiene la idea clave, lo qu
 - **`printf`** o **`String.format`** dan formato: `%d` entero, `%.2f` decimal con dos cifras, `%s` texto, `%n` salto de línea.
 - **`Scanner`** lee del teclado: `teclado.nextLine()` lee una línea de texto.
 - En los proyectos, todo esto va en métodos auxiliares (`print`, `getInt`), y el `main` los usa.
+
+---
+
+## 7. Métodos que ya vienen hechos: `Math` y `String`
+
+**En una frase:** Java trae clases con métodos listos para usar; `Math` hace cálculos y cada `String` sabe hacer cosas con su texto.
+
+**Lo que tienes que saber**
+
+- Los de **`Math`** son estáticos: se llaman con el nombre de la clase delante, `Math.sqrt(9)`.
+- Los de **`String`** se llaman sobre el texto, con un punto: `nombre.length()`.
+- Las **posiciones** de un texto empiezan en **0**: en `"Hola"`, la `H` está en la posición 0 y la `a`, en la 3.
+- `print` recibe un texto: para escribir un número solo, se une a un texto vacío, `print("" + 5)`.
+
+| Método | Qué hace | Ejemplo |
+|---|---|---|
+| `Math.sqrt(x)` | Raíz cuadrada. Devuelve un `double` | `Math.sqrt(9)` → `3.0` |
+| `Math.pow(a, b)` | `a` elevado a `b`. Devuelve un `double` | `Math.pow(3, 2)` → `9.0` |
+| `Math.max(a, b)` | El mayor de los dos (`Math.min`, el menor) | `Math.max(3, 8)` → `8` |
+| `Math.round(x)` | Redondea al entero más cercano. Para dejar dos decimales: `Math.round(x * 100) / 100.0` | `Math.round(2.6)` → `3` |
+| `Math.PI` | El número π (una constante, sin paréntesis) | `3.141592653589793` |
+| `texto.length()` | Cuántos caracteres tiene | `"Hola".length()` → `4` |
+| `texto.toUpperCase()` | El texto en mayúsculas (`toLowerCase`, en minúsculas) | `"Hola".toUpperCase()` → `"HOLA"` |
+| `texto.charAt(n)` | El carácter de la posición `n`, como `char` | `"Hola".charAt(1)` → `'o'` |
+| `texto.indexOf(t)` | La posición donde empieza `t`, o `-1` si no está | `"Hola".indexOf("la")` → `2` |
+| `texto.substring(n)` | El trozo desde la posición `n` hasta el final | `"Hola".substring(2)` → `"la"` |
+
+Los demás métodos están en la documentación oficial, en inglés: ver «Dónde consultar», en el README de `apuntes/`.
