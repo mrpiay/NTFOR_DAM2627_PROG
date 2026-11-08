@@ -64,13 +64,14 @@ Las expresiones regulares (regex) se trabajan en la 2.ª evaluación.
 |---|---|---|
 | `length()` | Número de caracteres | `"Ana".length()` → `3` |
 | `charAt(i)` | El carácter de la posición `i` | `"Ana".charAt(0)` → `'A'` |
-| `substring(a, b)` | El trozo de `a` a `b` (sin incluir `b`) | `"Nombre07".substring(6)` → `"07"` |
+| `substring(a)` | El trozo desde `a` hasta el final | `"Nombre07".substring(6)` → `"07"` |
+| `substring(a, b)` | El trozo de `a` a `b` (sin incluir `b`) | `"Nombre07".substring(0, 6)` → `"Nombre"` |
 | `trim()` | Quita los espacios del principio y del final | `" Ana ".trim()` → `"Ana"` |
 | `toUpperCase()` / `toLowerCase()` | A mayúsculas / minúsculas | |
 | `equals` / `equalsIgnoreCase` | Comparar (con o sin distinguir mayúsculas) | |
 | `contains(t)` | Si contiene el texto `t` | |
 | `split(";")` | Lo parte en un array por el separador | `"Ana;7;8".split(";")` → `{"Ana","7","8"}` |
-| `String.format(…)` | Texto con formato | `String.format("%.2f", 7.333)` → `"7.33"` |
+| `String.format(…)` | Texto con formato: `%d` entero, `%02d` entero con dos cifras, `%.2f` dos decimales, `%s` texto; `%5d` ocupa 5 huecos alineado a la derecha y `%-10s`, 10 huecos alineado a la izquierda | `String.format("%.2f", 7.333)` → `"7.33"` |
 
 - Los `String` **no cambian**: cada método devuelve un texto nuevo. `nombre.trim()` no cambia `nombre`; hay que guardar el resultado.
 - Para convertir un texto en número: `Integer.parseInt`.

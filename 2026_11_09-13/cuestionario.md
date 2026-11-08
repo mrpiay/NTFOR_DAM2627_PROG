@@ -124,7 +124,7 @@ Si en una pregunta aparece un método que no has visto, búscalo en «Dónde con
 
 **9.** `buscar`, `mejorDelTrimestre` y `mejorDelCurso` devuelven una **posición**, no un nombre ni una nota. ¿Por qué? ¿Para qué sirve que `buscar` devuelva `-1`?
 
-**10.** ¿Por qué los métodos auxiliares están en una clase aparte, `Notas`, en el paquete `dam.notas`? ¿Qué hace `import static dam.notas.Notas.*;`? Si el archivo tuviera cuatro trimestres en lugar de tres, ¿qué habría que cambiar en `Notas` y en `Principal`?
+**10.** ¿Por qué los métodos auxiliares están en una clase aparte, `Notas`, en el paquete `dam.notas`? ¿Qué hace `import static dam.notas.Notas.*;`? Si el CSV tuviera cuatro trimestres en lugar de tres, ¿qué habría que cambiar en `Notas` y en `Principal`?
 
 **11.** Copia lo que sale por pantalla. ¿Por qué no sale `Aprobado: 61`?
 

@@ -9,6 +9,8 @@ javac -d bin src/dam/*.java
 java -cp bin dam.Principal
 ```
 
+Al terminar, deja `Principal` y `Auxiliar` como estaban al final de «Java 0».
+
 En cada una, copia en tu respuesta lo que sale por pantalla y asegúrate de que lo entiendes: en las pruebas escritas tendrás que explicarlo sin ayuda de la IA.
 
 Si en una pregunta aparece algo que no has visto, como un método de `Math` o de `String`, búscalo en «Dónde consultar», en el [README de `apuntes/`](apuntes/README.md).
@@ -39,7 +41,7 @@ Copia lo que sale por pantalla.
 
 **4.** ¿Qué tiene que ser la primera línea de `Auxiliar.java` y de `Principal.java`? ¿En qué carpeta deben estar los dos archivos, y por qué?
 
-**5.** Cambia el `main` por `print(5);` y compila. Copia lo que sale por pantalla.
+**5.** Cambia el `main` por `print(5);` y compila (no ejecutes). Copia lo que dice `javac`.
 
 **6.** Cambia el `main` por esto:
 

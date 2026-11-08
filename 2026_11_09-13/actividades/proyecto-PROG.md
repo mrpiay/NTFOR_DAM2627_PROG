@@ -12,7 +12,7 @@ Un caso real: las notas de una clase de 25 alumnos en los tres trimestres, en fo
 
 Es la continuación de «Java 0»: el mismo paquete `dam`, con `Principal` y `Auxiliar`, y un paquete nuevo, `dam.notas`, con una clase `Notas`. Cada paso añade a `Notas` un **método auxiliar** que hace una sola cosa, y `Principal` lo usa. Al final, la lógica del programa se lee casi como las preguntas de arriba.
 
-Es la **UD4 · Arrays, cadenas y regex**: arrays, una matriz (un array de dos dimensiones) y métodos de `String`. De paso, adelanta qué es una excepción y cómo se recoge con `try-catch`.
+Son la **UD3 · Funciones** (un método auxiliar para cada cosa) y la **UD4 · Arrays y cadenas**: arrays, una matriz (un array de dos dimensiones) y métodos de `String`. Además, usa las excepciones de la UD2 (`try-catch`) y `break` y `continue`.
 
 **Usa la IA como guía, no para que lo haga por ti.** Pídele que te explique lo que no entiendas; **el código lo pones tú en tu proyecto**, aunque sea copiando y pegando, sabiendo **dónde** lo pones y **para qué**. El objetivo es que lo que hagas **funcione y cumpla los requisitos** de cada paso («Comprueba que…») y que sepas **dónde está cada cosa y qué habría que tocar para cambiar o añadir algo**.
 
@@ -30,7 +30,7 @@ Las de «Java 0», en el terminal de Linux (en Windows, **Ubuntu** desde el men�
 | **VS Code** | El editor | `code .` lo abre en la carpeta en que estás. Su terminal: **Ctrl+ñ** | Todos |
 | **`javac`** | El compilador: de `.java` a `.class` | `javac -d bin src/dam/*.java src/dam/notas/*.java` | Todos |
 | **`java`** | Ejecuta el programa | `java -cp bin dam.Principal`, desde la carpeta del proyecto | Todos |
-| **`zip`** | Comprime el proyecto en un solo archivo | `zip -r …` | 10 |
+| **`zip`** y **`unzip`** | Comprimen el proyecto en un solo archivo y lo extraen | `zip -r …` · `unzip … -d …` | 10 |
 
 ## Con qué trabajas
 
@@ -71,7 +71,7 @@ Nombre03;6;64;43
 
 Cada sesión dura 50 minutos.
 
-| Día | Sesión | Qué hacemos |
+| Día | Sesión | Qué se hace |
 |---|---|---|
 | Miércoles 11 | 13:00 | Leer «Punto de partida», «Las herramientas» y «Con qué trabajas» (15 min). **Paso 0** (preparar el proyecto) y **paso 1** (generar el CSV). |
 | Miércoles 11 | 13:50 | **Paso 2** (partir las líneas y cargar los arrays). |
@@ -129,7 +129,7 @@ Es lo mismo que en «Java 0», con una carpeta más: `src/dam/notas/*.java`, el 
 
 - *`git: command not found`*: instálalo con `sudo apt install git` y repite `git clone`.
 - *`fatal: destination path 'NTFOR_DAM2627_PROG' already exists`*: ya lo descargaste. Entra (`cd NTFOR_DAM2627_PROG`), actualízalo con `git pull`, vuelve con `cd ..` y sigue con `cp -r`.
-- *`code: command not found`*: VS Code no está conectado a Linux; repasa «Ubuntu Linux, WSL, Java y VS Code», de SI.
+- *`code: command not found`*: VS Code no está conectado a Linux; repasa la guía de SI [«Ubuntu Linux, WSL, Java y VS Code»](https://github.com/mrpiay/NTFOR_DAM2627_SI/blob/main/2026_11_02-06/actividades/Ubuntu%20Linux%20WSL%20Java%20y%20VS%20Code.md).
 
 ---
 
@@ -313,7 +313,7 @@ En `Principal.java`, debajo del `main` (después de su `}` y antes de la última
     }
 ```
 
-Y llámalo al final del `main`: `opcionEstaEnLaLista(nombres);`. Se muestra `posicion + 1` porque para una persona el primero es el número 1, no el 0.
+Los métodos de las opciones no llevan `public`: solo se usan dentro de `Principal`. Y llámalo al final del `main`: `opcionEstaEnLaLista(nombres);`. Se muestra `posicion + 1` porque para una persona el primero es el número 1, no el 0.
 
 **Comprueba que…** al ejecutar y escribir el nombre:
 
@@ -607,7 +607,8 @@ Como todas las opciones leen los números con `getInt`, el arreglo sirve para to
 
 **Si te falla…**
 
-- *`variable numero might not have been initialized`*: el `break` está antes de `numero = …` o fuera del `try`.
+- *`unreachable statement`*: el `break` está antes de `numero = …`; tiene que ir después.
+- *`variable numero might not have been initialized`*: el `break` está fuera del `try`.
 - *Sigue preguntando aunque escribas un número*: falta el `break`.
 
 ---

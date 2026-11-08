@@ -2,9 +2,9 @@
 
 **Programación Java en Linux con terminal en VS Code**
 
-## Qué vamos a construir
+## Qué se construye
 
-Este tutorial va paso a paso. Empezamos con dos archivos en `java-pr0` y los convertimos, paso a paso, en un proyecto con paquete, compilado en `bin` y comprimido en un zip. `Principal` usa los métodos `print` y `getInt` de `Auxiliar`.
+Este tutorial va paso a paso. Se empieza con dos archivos en `java-pr0` y se convierten, paso a paso, en un proyecto con paquete, compilado en `bin` y comprimido en un zip. `Principal` usa los métodos `print` y `getInt` de `Auxiliar`.
 
 Esta es la estructura final del proyecto:
 
@@ -25,9 +25,9 @@ Todos los comandos se lanzan desde la carpeta raíz, `java-pr0`. Si los lanzas d
 
 ## 1. Punto de partida: dos clases en java-pr0
 
-Empezamos con dos archivos sueltos en `java-pr0`, sin paquete. Para usar un método de otra clase basta con escribir `Clase.metodo()`.
+Se empieza con dos archivos sueltos en `java-pr0`, sin paquete. Para usar un método de otra clase basta con escribir `Clase.metodo()`.
 
-Abre el terminal de Linux (en Windows, **Ubuntu** desde el menú Inicio; si tu ordenador tiene Linux, su terminal) y escribe estos comandos. `~` es tu carpeta personal de Linux (lo explica «Ubuntu Linux, WSL, Java y VS Code», de SI):
+Abre el terminal de Linux (en Windows, **Ubuntu** desde el menú Inicio; si tu ordenador tiene Linux, su terminal) y escribe estos comandos. `~` es tu carpeta personal de Linux (lo explica la guía de SI [«Ubuntu Linux, WSL, Java y VS Code»](https://github.com/mrpiay/NTFOR_DAM2627_SI/blob/main/2026_11_02-06/actividades/Ubuntu%20Linux%20WSL%20Java%20y%20VS%20Code.md), que también instala Java, VS Code y `zip`):
 
 ```bash
 mkdir -p ~/dam2627/prog/java-pr0
@@ -236,29 +236,29 @@ Tienes 20 años
 
 ## 8. Comprimir el proyecto
 
-Este comando crea `jpiay-pr0.zip` (`zip` lo instalaste al preparar el entorno, en la guía de SI) con las carpetas `src` y `bin` y todo lo que contienen:
+Este comando crea un zip con tu nombre de usuario de Linux (`$USER`), por ejemplo `jpiay-pr0.zip`, con las carpetas `src` y `bin` y todo lo que contienen (`zip` se instala en la [guía de SI](https://github.com/mrpiay/NTFOR_DAM2627_SI/blob/main/2026_11_02-06/actividades/Ubuntu%20Linux%20WSL%20Java%20y%20VS%20Code.md)):
 
 ```bash
-zip -r jpiay-pr0.zip src/ bin/
+zip -r $USER-pr0.zip src/ bin/
 ```
 
 | Parte | Significado |
 | --- | --- |
 | `zip` | Programa de compresión |
 | `-r` | Recursivo: incluye subcarpetas y archivos; sin él, solo guarda las carpetas vacías |
-| `jpiay-pr0.zip` | Nombre del archivo que se crea |
+| `$USER-pr0.zip` | Nombre del archivo que se crea: `$USER` se cambia por tu usuario |
 | `src/ bin/` | Lo que se comprime |
 
 Compila antes de comprimir para que el zip lleve el bytecode actualizado. En la salida, cada línea `adding:` es un archivo o carpeta que entra en el zip; `deflated 43%` significa que ese archivo ocupa un 43 % menos dentro del zip.
 
-Si el zip ya existe, el comando lo actualiza en lugar de crearlo de cero, y lo que hayas borrado del proyecto sigue dentro. Para empezar limpio, bórralo antes con `rm jpiay-pr0.zip`.
+Si el zip ya existe, el comando lo actualiza en lugar de crearlo de cero, y lo que hayas borrado del proyecto sigue dentro. Para empezar limpio, bórralo antes con `rm $USER-pr0.zip`.
 
 ## 9. Ver lo comprimido
 
 `unzip -l` lista el contenido del zip sin extraer nada:
 
 ```bash
-unzip -l jpiay-pr0.zip
+unzip -l $USER-pr0.zip
 ```
 
 Esta es la salida con `jpiay-pr0.zip`, el proyecto terminado que está junto a este documento. En la tuya cambian las fechas, y puede cambiar algún tamaño de los `.java` y el orden:
@@ -288,7 +288,7 @@ Archive:  jpiay-pr0.zip
 El zip está completo: lleva las dos clases en fuente y en bytecode. Para comprobar que también funciona, extráelo en otra carpeta y ejecútalo desde allí:
 
 ```bash
-unzip jpiay-pr0.zip -d prueba
+unzip $USER-pr0.zip -d prueba
 java -cp prueba/bin dam.Principal
 rm -r prueba
 ```
@@ -317,8 +317,8 @@ javac -d bin src/dam/*.java
 java -cp bin dam.Principal
 
 # Comprimir
-zip -r jpiay-pr0.zip src/ bin/
+zip -r $USER-pr0.zip src/ bin/
 
 # Ver lo comprimido
-unzip -l jpiay-pr0.zip
+unzip -l $USER-pr0.zip
 ```

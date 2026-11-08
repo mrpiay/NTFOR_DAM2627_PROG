@@ -14,6 +14,7 @@ Lo básico que hay que saber de la UD1. Cada apartado tiene la idea clave, lo qu
 - El programa empieza en **`public static void main(String[] args)`**.
 - Un **paquete** agrupa clases relacionadas y es también una carpeta: `package dam;` va en `src/dam/`.
 - Un **método estático** (`static`) se llama sin crear objetos: `Auxiliar.print("Hola")`, o solo `print("Hola")` con `import static dam.Auxiliar.*;`.
+- El tipo que va delante del nombre del método es lo que **devuelve**: `public static int getInt()` devuelve un `int`; `void` (como en `main`) significa que no devuelve nada.
 - Los **comentarios** explican el código: `//` (una línea) y `/* … */` (varias).
 
 ---
@@ -45,7 +46,7 @@ Lo básico que hay que saber de la UD1. Cada apartado tiene la idea clave, lo qu
 
 **Lo que tienes que saber**
 
-- **Tipos primitivos:** enteros (`byte`, `short`, `int`, `long`), decimales (`float`, `double`), `char` (un carácter, entre comillas simples: `'A'`) y `boolean` (`true` o `false`).
+- **Tipos primitivos:** enteros (`byte`, `short`, `int`, `long`), decimales (`float`, `double`), `char` (un carácter, entre comillas simples: `'A'`; por dentro es un número, su código: por eso `'A' + 'B'` da un número, `131`) y `boolean` (`true` o `false`).
 - **`String`** es un texto, entre comillas dobles (`"Ana"`). No es primitivo: es una clase.
 - Una **variable** se declara con su tipo y su nombre: `int edad = 20;`. Solo existe dentro del bloque `{ }` donde se declara (su **ámbito**).
 - Una **constante** no cambia: `final int MAXIMO = 100;` (por convenio, en mayúsculas).
@@ -63,7 +64,7 @@ Lo básico que hay que saber de la UD1. Cada apartado tiene la idea clave, lo qu
 - **Relacionales:** `== != < > <= >=`; dan `true` o `false`.
 - **Lógicos:** `&&` (y), `||` (o) y `!` (no).
 - **Asignación:** `=`, y los abreviados `+=`, `-=`, `++` y `--`.
-- `+` con un `String` **une textos**: `"Tienes " + 20 + " años"`.
+- `+` con un `String` **une textos**: `"Tienes " + 20 + " años"`. Se calcula de izquierda a derecha: en cuanto hay un `String`, lo que viene después se une como texto (`"Tienes " + 20 + 1` da `"Tienes 201"`, y `20 + 1 + " años"` da `"21 años"`).
 - Los textos se comparan con **`equals`**, no con `==`.
 
 ---
@@ -98,4 +99,4 @@ Lo básico que hay que saber de la UD1. Cada apartado tiene la idea clave, lo qu
 - `System.out.println(…)` escribe y salta de línea; `System.out.print(…)` no salta.
 - **`printf`** o **`String.format`** dan formato: `%d` entero, `%.2f` decimal con dos cifras, `%s` texto, `%n` salto de línea.
 - **`Scanner`** lee del teclado: `teclado.nextLine()` lee una línea de texto.
-- En los proyectos, todo esto va en métodos auxiliares (`print`, `getInt`, `getString`), y el `main` los usa.
+- En los proyectos, todo esto va en métodos auxiliares (`print`, `getInt`), y el `main` los usa.

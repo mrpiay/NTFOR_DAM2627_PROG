@@ -14,14 +14,14 @@ Crear excepciones propias, las aserciones, la depuración con el depurador y la 
 
 - **`if`** ejecuta un bloque si la condición es verdadera; **`else`**, si es falsa; y **`else if`** encadena varias condiciones.
 - **`switch`** elige entre varios valores concretos de una variable. Cada **`case`** termina con **`break`**; si falta, se ejecuta también el siguiente. **`default`** recoge cualquier otro valor.
-- Un menú de opciones suele ser un `switch` sobre la opción elegida.
+- Es lo típico para un **menú de opciones**: cada `case` es una opción.
 
 **Compara**
 
 | | `if / else if` | `switch` |
 |---|---|---|
 | Qué compara | Cualquier condición (rangos, varias variables…) | Un valor contra una lista de valores concretos |
-| Ejemplo | `if (edad < 18 \|\| edad > 65)` | El menú: `case 1:`, `case 2:`… |
+| Ejemplo | `if (edad < 18 \|\| edad > 65)` | Un menú: `case 1:`, `case 2:`… |
 
 ---
 
@@ -32,10 +32,9 @@ Crear excepciones propias, las aserciones, la depuración con el depurador y la 
 **Lo que tienes que saber**
 
 - **`while`**: comprueba la condición **antes**; puede no ejecutarse nunca.
-- **`do-while`**: comprueba **después**; se ejecuta al menos una vez. Por eso el menú es un `do-while`: sale siempre una vez.
-- **`for`**: cuando se sabe cuántas veces: `for (int i = 0; i < nombres.length; i++)`.
-- **for-each**: recorre todos los elementos sin usar posiciones: `for (int n : numeros)`.
-- Elementos típicos: un **contador** (`aprobados++`), un **acumulador** (`suma += nota`) y un **centinela** (un valor que indica el final, como `0` para salir).
+- **`do-while`**: comprueba **después**; se ejecuta al menos una vez. Por eso un menú suele ser un `do-while`: se muestra siempre una vez.
+- **`for`**: cuando se sabe cuántas veces: `for (int i = 1; i <= 10; i++)`.
+- Elementos típicos: un **contador** (`contador++`), un **acumulador** (`suma += numero`) y un **centinela** (un valor que indica el final, como `0` para salir).
 
 **Compara**
 
@@ -87,4 +86,4 @@ Crear excepciones propias, las aserciones, la depuración con el depurador y la 
 
 - Un **caso de prueba** es una entrada y la salida que se espera (para un método que suma dos números: «2 y 3» → «5»).
 - Hay que probar los casos normales, los **límites** (el primero, el último, el vacío) y los **erróneos** (letras donde va un número, una opción que no existe).
-- Si sale algo distinto, se busca dónde cambia el valor esperado: con mensajes de control (`print`) o con el depurador, que para el programa en una línea y muestra las variables.
+- Si sale algo distinto, se busca dónde cambia el valor esperado: por ejemplo, con mensajes de control (`print`) que muestran cuánto valen las variables.
