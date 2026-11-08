@@ -1,6 +1,6 @@
 # Autoevaluación · semana del 9 al 13 de noviembre
 
-Preguntas sobre el proyecto «CSV notas» y los métodos de Java para arrays y textos que más se usan. Puede que sufran modificaciones a lo largo de la semana. Responde poniendo el número de cada pregunta.
+Preguntas sobre el proyecto «CSV notas» y sobre los apuntes. Puede que sufran modificaciones a lo largo de la semana. Responde poniendo el número de cada pregunta.
 
 En las preguntas de código, parte del proyecto `csv-notas` terminado. Crea `src/dam/Pregunta.java` con este código y pega el de cada pregunta donde dice `// aquí va el código de la pregunta` (antes, borra el de la anterior):
 
@@ -33,6 +33,8 @@ En cada una, copia en tu respuesta lo que sale por pantalla y asegúrate de que 
 Si en una pregunta aparece un método que no has visto, búscalo en «Dónde consultar», en el [README de `estudio/`](README.md).
 
 ---
+
+## Cuestiones sobre el proyecto
 
 **1.** ¿Por qué `leerLineas` tiene un `try-catch`? ¿Qué devuelve si no puede leer el archivo y qué hace entonces el `main`?
 
@@ -141,7 +143,7 @@ Si en una pregunta aparece un método que no has visto, búscalo en «Dónde con
         print("Fin");
 ```
 
-## UD3 y UD4
+## Cuestiones sobre los apuntes
 
 Estas preguntas se responden con los apuntes de cada unidad, en `estudio/`.
 

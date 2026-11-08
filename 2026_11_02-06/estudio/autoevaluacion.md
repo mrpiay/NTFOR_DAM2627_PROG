@@ -1,6 +1,6 @@
 # Autoevaluación · semana del 2 al 6 de noviembre
 
-Preguntas sobre «Java 0». Puede que sufran modificaciones a lo largo de la semana. Responde poniendo el número de cada pregunta.
+Preguntas sobre el proyecto «Java 0» y sobre los apuntes. Puede que sufran modificaciones a lo largo de la semana. Responde poniendo el número de cada pregunta.
 
 En las preguntas de código, parte del proyecto `java-pr0` terminado: cambia el `main` de `Principal` (o añade el método a `Auxiliar`) como se indica, y desde la carpeta `java-pr0` compila y ejecuta:
 
@@ -14,6 +14,8 @@ En cada una, copia en tu respuesta lo que sale por pantalla y asegúrate de que 
 Si en una pregunta aparece algo que no has visto, como un método de `Math` o de `String`, búscalo en «Dónde consultar», en el [README de `estudio/`](README.md).
 
 ---
+
+## Cuestiones sobre el proyecto
 
 **1.** En `public static int getInt()`, ¿qué significan `public`, `static` e `int`?
 
@@ -91,7 +93,7 @@ Copia lo que sale por pantalla.
 
 **10.** Ejecuta `java -cp bin dam.Principal` y después `java -cp bin Principal`. Copia lo que sale por pantalla.
 
-## UD1 y UD2
+## Cuestiones sobre los apuntes
 
 Estas preguntas se responden con los apuntes de cada unidad, en `estudio/`.
 
