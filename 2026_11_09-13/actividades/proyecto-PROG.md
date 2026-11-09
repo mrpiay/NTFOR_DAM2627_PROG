@@ -26,15 +26,15 @@ Las de «Java 0», en el terminal de Linux (en Windows, **Ubuntu** desde el men�
 
 | Herramienta | Qué es | Cómo se usa | Pasos |
 |---|---|---|---|
-| **git** | Descarga el repositorio del módulo y lo actualiza | `git clone` la primera vez; `git pull` para traer lo nuevo | 0 |
+| **`wget`** | Descarga un archivo de Internet desde el terminal | `wget` y la dirección del archivo | 0 |
 | **VS Code** | El editor | `code .` lo abre en la carpeta en que estás. Su terminal: **Ctrl+ñ** | Todos |
 | **`javac`** | El compilador: de `.java` a `.class` | `javac -d bin src/dam/*.java src/dam/notas/*.java` | Todos |
 | **`java`** | Ejecuta el programa | `java -cp bin dam.Principal`, desde la carpeta del proyecto | Todos |
-| **`zip`** y **`unzip`** | Comprimen el proyecto en un solo archivo y lo extraen | `zip -r …` · `unzip … -d …` | 10 |
+| **`zip`** y **`unzip`** | Comprimen el proyecto en un solo archivo y lo extraen | `zip -r …` · `unzip …` | 0 y 10 |
 
 ## Con qué trabajas
 
-La plantilla, `2026_11_09-13/actividades/plantilla` del repositorio, que en el paso 0 copias como `csv-notas`:
+La plantilla, que en el paso 0 descargas (`plantilla.zip`) y queda en la carpeta `csv-notas`:
 
 | Archivo | Qué es | Pasos |
 |---|---|---|
@@ -104,17 +104,18 @@ Es lo mismo que en «Java 0», con una carpeta más: `src/dam/notas/*.java`, el 
 
 **Pista.**
 
-1. En el terminal de Linux, descarga el repositorio del módulo dentro de `~/dam2627/prog` y copia la plantilla con el nombre `csv-notas`:
+1. En el terminal de Linux, descarga la plantilla dentro de `~/dam2627/prog` y descomprímela:
 
    ```bash
    mkdir -p ~/dam2627/prog
    cd ~/dam2627/prog
-   git clone https://github.com/mrpiay/NTFOR_DAM2627_PROG.git
-   cp -r NTFOR_DAM2627_PROG/2026_11_09-13/actividades/plantilla csv-notas
+   wget https://github.com/mrpiay/NTFOR_DAM2627_PROG/raw/main/2026_11_09-13/actividades/plantilla.zip
+   unzip plantilla.zip
+   rm plantilla.zip
    cd csv-notas
    ```
 
-   `git clone` crea la carpeta `NTFOR_DAM2627_PROG` con todo el repositorio. Las semanas siguientes no hace falta volver a descargarlo: dentro de esa carpeta, `git pull` trae lo nuevo.
+   `wget` descarga el archivo de la dirección que le das, y `unzip` lo descomprime: crea la carpeta `csv-notas` con la plantilla. Después, el zip ya no hace falta.
 2. Ábrelo en VS Code con `code .` y abre su terminal con **Ctrl+ñ**: los comandos siguientes se escriben ahí.
 3. Compila y ejecuta:
 
@@ -127,8 +128,8 @@ Es lo mismo que en «Java 0», con una carpeta más: `src/dam/notas/*.java`, el 
 
 **Si te falla…**
 
-- *`git: command not found`*: instálalo con `sudo apt install git` y repite `git clone`.
-- *`fatal: destination path 'NTFOR_DAM2627_PROG' already exists`*: ya lo descargaste. Entra (`cd NTFOR_DAM2627_PROG`), actualízalo con `git pull`, vuelve con `cd ..` y sigue con `cp -r`.
+- *`wget: command not found`* o *`unzip: command not found`*: instálalos con `sudo apt install wget unzip` y repite.
+- *`unzip` pregunta `replace csv-notas/…?`*: ya tenías una carpeta `csv-notas`. Responde `N` (no), cámbiale el nombre con `mv csv-notas csv-notas-anterior` y repite `unzip plantilla.zip`.
 - *`code: command not found`*: VS Code no está conectado a Linux; repasa la guía de SI [«Ubuntu Linux, WSL, Java y VS Code»](https://github.com/mrpiay/NTFOR_DAM2627_SI/blob/main/2026_11_02-06/actividades/Ubuntu%20Linux%20WSL%20Java%20y%20VS%20Code.md).
 
 ---
