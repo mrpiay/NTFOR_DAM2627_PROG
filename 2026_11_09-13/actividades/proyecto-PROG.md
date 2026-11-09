@@ -26,7 +26,8 @@ Las de «Java 0», en el terminal de Linux (en Windows, **Ubuntu** desde el men�
 
 | Herramienta | Qué es | Cómo se usa | Pasos |
 |---|---|---|---|
-| **`wget`** | Descarga un archivo de Internet desde el terminal | `wget` y la dirección del archivo | 0 |
+| **El navegador y el Explorador de archivos** | Descargar la plantilla y arrastrar su carpeta a la carpeta de Linux | **Linux → Ubuntu-24.04** en el panel izquierdo del Explorador | 0 |
+| **`wget`** | Descarga un archivo de Internet desde el terminal: otra forma de bajar la plantilla | `wget` y la dirección del archivo | 0 |
 | **VS Code** | El editor | `code .` lo abre en la carpeta en que estás. Su terminal: **Ctrl+ñ** | Todos |
 | **`javac`** | El compilador: de `.java` a `.class` | `javac -d bin src/dam/*.java src/dam/notas/*.java` | Todos |
 | **`java`** | Ejecuta el programa | `java -cp bin dam.Principal`, desde la carpeta del proyecto | Todos |
@@ -104,20 +105,32 @@ Es lo mismo que en «Java 0», con una carpeta más: `src/dam/notas/*.java`, el 
 
 **Pista.**
 
-1. En el terminal de Linux, descarga la plantilla dentro de `~/dam2627/prog` y descomprímela:
+1. En el terminal de Linux, crea la carpeta del módulo:
 
    ```bash
    mkdir -p ~/dam2627/prog
+   ```
+
+2. Descarga la plantilla con el navegador: [`plantilla.zip`](https://github.com/mrpiay/NTFOR_DAM2627_PROG/raw/main/2026_11_09-13/actividades/plantilla.zip).
+3. Haz doble clic en el zip: dentro está la carpeta `csv-notas`. Arrástrala a la carpeta del módulo, que en el Explorador de archivos está en el panel de la izquierda, abajo: **Linux → Ubuntu-24.04 → home →** tu usuario **→ dam2627 → prog**.
+
+   También se puede hacer sin salir del terminal: `wget` descarga el archivo de la dirección que le das y `unzip` lo descomprime.
+
+   ```bash
    cd ~/dam2627/prog
    wget https://github.com/mrpiay/NTFOR_DAM2627_PROG/raw/main/2026_11_09-13/actividades/plantilla.zip
    unzip plantilla.zip
    rm plantilla.zip
-   cd csv-notas
    ```
 
-   `wget` descarga el archivo de la dirección que le das, y `unzip` lo descomprime: crea la carpeta `csv-notas` con la plantilla. Después, el zip ya no hace falta.
-2. Ábrelo en VS Code con `code .` y abre su terminal con **Ctrl+ñ**: los comandos siguientes se escriben ahí.
-3. Compila y ejecuta:
+4. Entra en la carpeta del proyecto:
+
+   ```bash
+   cd ~/dam2627/prog/csv-notas
+   ```
+
+5. Ábrelo en VS Code con `code .` y abre su terminal con **Ctrl+ñ**: los comandos siguientes se escriben ahí.
+6. Compila y ejecuta:
 
    ```bash
    javac -d bin src/dam/*.java src/dam/notas/*.java
@@ -128,6 +141,8 @@ Es lo mismo que en «Java 0», con una carpeta más: `src/dam/notas/*.java`, el 
 
 **Si te falla…**
 
+- *`cd: … csv-notas: No such file or directory`*: la carpeta `csv-notas` está en otro sitio, por ejemplo en *Descargas* de Windows. Arrástrala a **Linux → Ubuntu-24.04 → home →** tu usuario **→ dam2627 → prog**.
+- *En el Explorador no aparece **Linux***: abre antes el terminal de Ubuntu; con Ubuntu cerrado, a veces no sale.
 - *`wget: command not found`* o *`unzip: command not found`*: instálalos con `sudo apt install wget unzip` y repite.
 - *`unzip` pregunta `replace csv-notas/…?`*: ya tenías una carpeta `csv-notas`. Responde `N` (no), cámbiale el nombre con `mv csv-notas csv-notas-anterior` y repite `unzip plantilla.zip`.
 - *`code: command not found`*: VS Code no está conectado a Linux; repasa la guía de SI [«Ubuntu Linux, WSL, Java y VS Code»](https://github.com/mrpiay/NTFOR_DAM2627_SI/blob/main/2026_11_02-06/actividades/Ubuntu%20Linux%20WSL%20Java%20y%20VS%20Code.md).
