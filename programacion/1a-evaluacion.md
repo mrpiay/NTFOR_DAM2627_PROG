@@ -51,7 +51,7 @@ Qué entra en la 1ª evaluación y con qué se evalúa cada parte. En cada unida
 |---|---|---|
 | **P** · exámenes parciales | 40 % | Lo evaluado por Julia: P1 (Julia) 6,8 %<br>P2 · mié 2 dic: 33,2 % |
 | **A** · actividades guiadas | 20 % | 4 actividades, 5 % cada una. Lista de cotejo: cada «Comprueba que…» se cumple o no |
-| **F** · examen final | 30 % | mié 9 dic |
+| **F** · examen final | 30 % | jue 10 dic |
 | **R** · revisión | 10 % | De cada cuestionario (C) y cada examen parcial (P), una vez devuelto corregido: 5 revisiones, 2 % cada una |
 | **C** · cuestionarios | — | 4 cuestionarios. Su entrega es obligatoria; cuentan a través de su revisión (R) |
 
@@ -67,7 +67,7 @@ Porcentajes sobre la nota de la evaluación.
 | 16–20 nov | UD1 · Conversiones de tipo y formatos de salida<br>UD2 · Probar y depurar | A3 (5 %), C3, R de C1 (2 %), R de C2 (2 %) |
 | 23–27 nov | UD2 · Documentar el código<br>UD2 · Excepciones propias y aserciones<br>UD4 · Expresiones regulares | A4 (5 %), C4, R de C3 (2 %) |
 | 30 nov–4 dic | Repaso (jue 3 y vie 4) | P2 (33,2 %), R de C4 (2 %) |
-| 7–11 dic | UD5 · POO I: Clases (desde el jue 10) | F (30 %), R de P2 (2 %) |
+| 7–11 dic | Repaso (mié 9)<br>UD5 · POO I: Clases (desde el vie 11) | F (30 %), R de P2 (2 %) |
 | 14–18 dic | UD5 · POO I: Clases | Cierre de la 1ª evaluación · jue 17 |
 
 ## Notas
