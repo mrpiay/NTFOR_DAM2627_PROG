@@ -2,7 +2,7 @@
 
 Lo básico que hay que saber de la UD4. Cada apartado tiene la idea clave, lo que tienes que saber y, cuando hay conceptos que se confunden, una tabla para compararlos. Los ejemplos son de «CSV notas». Las preguntas para comprobar que lo entiendes están en el [cuestionario](../cuestionario.md) de la semana, en «Cuestiones sobre los apuntes».
 
-Las expresiones regulares (regex) se trabajan en la 2.ª evaluación.
+Las expresiones regulares (regex) se trabajan más adelante en esta evaluación.
 
 ---
 

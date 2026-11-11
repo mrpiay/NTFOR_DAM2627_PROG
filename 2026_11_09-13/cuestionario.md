@@ -1,4 +1,4 @@
-# Autoevaluación · semana del 9 al 13 de noviembre
+# C2 · Cuestionario · semana del 9 al 13 de noviembre
 
 Preguntas sobre el proyecto «CSV notas» y sobre los apuntes. Puede que sufran modificaciones a lo largo de la semana. Responde poniendo el número de cada pregunta.
 

@@ -2,124 +2,79 @@
 
 [← Programación](README.md)
 
-## Unidades
+Qué entra en la 1ª evaluación y con qué se evalúa cada parte. En cada unidad se muestran sus contenidos, cada uno agrupando los criterios de evaluación que le corresponden; su porcentaje es la suma de los pesos de esos criterios en la programación oficial del módulo. La planificación empieza el 2 de noviembre; lo que ya evaluó Julia (exámenes y tareas de Teams) aparece marcado como «(Julia)».
 
-| UD | Inicio | Fin | Sesiones | Peso | Entrega |
-|---|---|---|---|---|---|
-| UD1 · Fundamentos de Java | jue 10 sep | vie 18 sep | 13 | 6 % | Taller de ejercicios cortos |
-| UD2 · Control de flujo y excepciones | vie 18 sep | vie 9 oct | 26 | 10 % | Taller de resolución de problemas |
-| UD3 · Funciones | vie 9 oct | vie 23 oct | 16 | 7 % | Pequeño proyecto con 6–8 funciones reutilizables |
-| UD4 · Arrays, cadenas y regex | vie 23 oct | vie 20 nov | 24 | 10 % | — |
-
-Peso de estas unidades en el módulo: 33 % (la suma de los pesos de sus unidades, apartado 2.1 de la programación).
-
-## Exámenes y entregas
-
-| Fecha | Qué | Detalle |
-|---|---|---|
-| mié 9 sep | **Presentación** | Presentación del módulo y preparación del ordenador |
-| vie 18 sep | Entrega UD1 | Taller de ejercicios cortos |
-| vie 25 sep | Examen UD1 | Fundamentos de Java |
-| vie 9 oct | Entrega UD2 | Taller de resolución de problemas |
-| vie 16 oct | Examen UD2 | Control de flujo y excepciones |
-| vie 23 oct | Entrega UD3 | Pequeño proyecto con 6–8 funciones reutilizables |
-| vie 30 oct | Examen UD3 | Funciones |
-| 3–6 nov | **Puesta en común y proyecto de diagnóstico** | No se avanza: se repasa y se completa lo que tocaba hasta la fecha y se preparan las próximas entregas y exámenes |
-| vie 20 nov | Prueba UD4 | Arrays, cadenas y regex: prueba escrita sobre «Java 0» y el proyecto «CSV notas», en lugar del examen |
-| del mié 25 nov al jue 3 dic | **Repaso** | 1ª evaluación |
-| vie 4 dic | **Examen final** | 1ª evaluación |
-
-## Qué incluye cada entrega
-
-| UD | Entrega | Qué incluye |
-|---|---|---|
-| UD1 | Taller de ejercicios cortos | 4–6 ejercicios cortos resueltos. Código que compila y formatea correctamente. Pequeño resumen de los formatos usados. |
-| UD2 | Taller de resolución de problemas | 6–10 ejercicios resueltos con manejo de excepciones. Código que compila, pasa pruebas de caso e incluye mensajes de error claros. Breve autorrevisión por lote (qué falló, cómo se arregló). |
-| UD3 | Pequeño proyecto con 6–8 funciones reutilizables | Pequeño proyecto con 6–8 funciones reutilizables. 3 ejercicios guía: cálculo numérico, validación simple y un problema recursivo. Código que compila, con pruebas de caso y comentarios breves. |
-| UD4 | Taller de procesado de texto | 5–7 ejercicios de parsing/validación resueltos. Pequeña librería TextoUtils con funciones reutilizables. Conjunto de casos de prueba que pasan correctamente. |
-
-## Semana a semana
-
-| Semana | Qué se hace |
-|---|---|
-| Del 7 al 11 de septiembre | **Presentación** del módulo y preparación del ordenador<br>UD1 · Práctica guiada basicos |
-| Del 14 al 18 de septiembre | UD1 · Práctica guiada basicos<br>UD1 · Taller de ejercicios cortos<br>UD2 · Práctica guiada condicionales |
-| Del 21 al 25 de septiembre | UD2 · Práctica guiada condicionales<br>**examen de la UD1** |
-| Del 28 de septiembre al 2 de octubre | UD2 · Práctica guiada condicionales<br>UD2 · Taller de resolución de problemas |
-| Del 5 al 9 de octubre | UD2 · Taller de resolución de problemas<br>UD3 · Práctica guiada |
-| Del 12 al 16 de octubre | UD3 · Práctica guiada<br>**examen de la UD2** |
-| Del 19 al 23 de octubre | UD3 · Práctica guiada<br>UD4 · Práctica guiada Arrays & Strings |
-| Del 26 al 30 de octubre | UD4 · Práctica guiada Arrays & Strings<br>**examen de la UD3** |
-| [Del 2 al 6 de noviembre](../2026_11_02-06) | **puesta en común y proyecto de diagnóstico** (no se avanza: se repasa y se completa lo que tocaba hasta la fecha) |
-| [Del 9 al 13 de noviembre](../2026_11_09-13) | UD4 · Proyecto guiado «CSV notas» |
-| Del 16 al 20 de noviembre | UD4 · Repaso del proyecto «CSV notas»<br>**prueba escrita de la UD4** |
-| Del 23 al 27 de noviembre | **repaso** o terminar lo pendiente · 1ª evaluación |
-| Del 30 de noviembre al 4 de diciembre | **repaso** o terminar lo pendiente · 1ª evaluación<br>**examen final** · 1ª evaluación |
-| Del 7 al 11 de diciembre | UD5 · Práctica guiada –Clases |
-| Del 14 al 18 de diciembre | UD5 · Práctica guiada –Clases<br>UD5 · Taller de encapsulación<br>UD6 · Práctica guiada herencia |
-
-## Qué se aprende y cómo se evalúa en cada unidad
-
-Resultados de aprendizaje (RA) y criterios de evaluación (CA) de cada unidad, con el instrumento con el que se evalúa cada criterio.
+## Qué entra
 
 ### UD1 · Fundamentos de Java
 
-**RA1** · Reconoce la estructura de un programa informático, identificando y relacionando los elementos propios del lenguaje de programación utilizado
+18,2 % de la evaluación (6 % del módulo).
 
-| Criterio | Cómo se evalúa | Peso |
+| Contenido | Se evalúa con | Peso en la unidad |
 |---|---|---|
-| **CA1.1** Se han identificado los bloques que componen la estructura de un programa informático. | Lista de cotejo | 10 % |
-| **CA1.2** Se han creado proyectos de desarrollo de aplicaciones. | Lista de cotejo | 10 % |
-| **CA1.3** Se han utilizado entornos integrados de desarrollo. | Lista de cotejo | 5 % |
-| **CA1.4** Se han identificado los tipos de variables y la utilidad específica de cada uno. | Lista de cotejo | 10 % |
-| **CA1.5** Se ha modificado el código de un programa para crear y utilizar variables. | Lista de cotejo | 10 % |
-| **CA1.6** Se han creado y utilizado constantes y literales. | Lista de cotejo | 10 % |
-| **CA1.7** Se han clasificado, reconocido y utilizado en expresiones los operadores del lenguaje. | Lista de cotejo | 10 % |
-| **CA1.8** Se ha comprobado el funcionamiento de las conversiones de tipo explícitas e implícitas. | Lista de cotejo | 10 % |
-| **CA1.9** Se han introducido comentarios en el código. | Lista de cotejo | 5 % |
-
-**RA2** · Escribe y prueba programas sencillos, reconociendo y aplicando los fundamentos de la programación orientada a objetos
-
-| Criterio | Cómo se evalúa | Peso |
-|---|---|---|
-| **CA2.2** Se han escrito programas simples. | Lista de cotejo | 10 % |
-| **CA2.9** Se ha utilizado el entorno integrado de desarrollo en la creación y en la compilación de programas simples. | Lista de cotejo | 5 % |
-
-**RA5** · Realiza operaciones de entrada y salida de información, utilizando procedimientos específicos del lenguaje y librerías de clases
-
-| Criterio | Cómo se evalúa | Peso |
-|---|---|---|
-| **CA5.1** Se ha utilizado la consola para realizar operaciones de entrada y salida de información. | Lista de cotejo | 5 % |
+| Tipos, variables, constantes, operadores, comentarios, programas simples y consola | P1 (Julia) + P2 | 60 % |
+| Estructura del programa, proyectos, entorno y compilación | P2 | 30 % |
+| Conversiones de tipo y formatos de salida | P2 + P3 | 10 % |
 
 ### UD2 · Control de flujo y excepciones
 
-**RA3** · Escribe y depura código, analizando y utilizando las estructuras de control del lenguaje
+30,3 % de la evaluación (10 % del módulo).
 
-| Criterio | Cómo se evalúa | Peso |
+| Contenido | Se evalúa con | Peso en la unidad |
 |---|---|---|
-| **CA3.1** Se ha escrito y probado código que haga uso de estructuras de selección. | Lista de cotejo | 10 % |
-| **CA3.2** Se han utilizado estructuras de repetición. | Lista de cotejo | 20 % |
-| **CA3.3** Se han reconocido las posibilidades de las sentencias de salto. | Lista de cotejo | 10 % |
-| **CA3.4** Se ha escrito código utilizando control de excepciones. | Lista de cotejo | 10 % |
-| **CA3.5** Se han creado programas ejecutables utilizando diferentes estructuras de control. | Lista de cotejo | 10 % |
-| **CA3.6** Se han probado y depurado los programas. | Lista de cotejo | 10 % |
-| **CA3.7** Se ha comentado y documentado el código. | Lista de cotejo | 10 % |
-| **CA3.8** Se han creado excepciones. | Lista de cotejo | 10 % |
-| **CA3.9** Se han utilizado aserciones para la detección y la corrección de errores durante la fase de desarrollo. | Lista de cotejo | 10 % |
+| Selección y programas con varias estructuras de control | P1 (Julia) + P2 | 20 % |
+| Bucles, saltos y control de excepciones | P2 | 40 % |
+| Probar y depurar | P2 + P3 | 10 % |
+| Documentar el código | P3 | 10 % |
+| Excepciones propias y aserciones | P3 | 20 % |
 
 ### UD3 · Funciones
 
-**RA2** · Escribe y prueba programas sencillos, reconociendo y aplicando los fundamentos de la programación orientada a objetos
+21,2 % de la evaluación (7 % del módulo).
 
-| Criterio | Cómo se evalúa | Peso |
+| Contenido | Se evalúa con | Peso en la unidad |
 |---|---|---|
-| **CA2.6** Se han utilizado parámetros en la llamada a métodos. | Lista de cotejo | 100 % |
+| Métodos: parámetros, retorno, ámbito, sobrecarga y recursividad | P2 | 100 % |
 
 ### UD4 · Arrays, cadenas y regex
 
-**RA6** · Escribe programas que manipulen información seleccionando y utilizando tipos avanzados de datos
+30,3 % de la evaluación (10 % del módulo).
 
-| Criterio | Cómo se evalúa | Peso |
+| Contenido | Se evalúa con | Peso en la unidad |
 |---|---|---|
-| **CA6.1** Se han escrito programas que utilicen matrices (arrays). | Lista de cotejo | 50 % |
-| **CA6.7** Se han utilizado expresiones regulares en la búsqueda de patrones en cadenas de texto. | Lista de cotejo | 50 % |
+| Arrays, matrices y cadenas | P2 | 50 % |
+| Expresiones regulares | P3 | 50 % |
+
+## Cómo se evalúa
+
+| Parte | Peso | Qué incluye |
+|---|---|---|
+| **P** · exámenes parciales | 40 % | Lo evaluado por Julia: P1 (Julia) 3,4 %<br>P2 · vie 20 nov: 25,9 %<br>P3 · vie 4 dic: 10,7 % |
+| **A** · actividades guiadas | 20 % | 5 actividades, 4 % cada una. Lista de cotejo: cada «Comprueba que…» se cumple o no |
+| **F** · examen final | 30 % | vie 11 dic |
+| **C** · cuestionarios | 10 % | 5 cuestionarios, 2 % cada uno |
+
+Porcentajes sobre la nota de la evaluación.
+
+## Planificación semanal
+
+| Semana | Qué se da | Qué se evalúa |
+|---|---|---|
+| Antes del 2 nov | Lo evaluado por Julia | P1 (Julia) (3,4 %) |
+| [2–6 nov](../2026_11_02-06) | UD1 · Tipos, variables, constantes, operadores, comentarios, programas simples y consola<br>UD1 · Estructura del programa, proyectos, entorno y compilación<br>UD1 · Conversiones de tipo y formatos de salida<br>UD2 · Selección y programas con varias estructuras de control<br>UD2 · Bucles, saltos y control de excepciones<br>UD2 · Probar y depurar | A1 (4 %), C1 (2 %) |
+| [9–13 nov](../2026_11_09-13) | UD2 · Selección y programas con varias estructuras de control<br>UD2 · Bucles, saltos y control de excepciones<br>UD3 · Métodos: parámetros, retorno, ámbito, sobrecarga y recursividad<br>UD4 · Arrays, matrices y cadenas | A2 (4 %), C2 (2 %) |
+| 16–20 nov | UD1 · Conversiones de tipo y formatos de salida<br>UD2 · Probar y depurar | A3 (4 %), C3 (2 %), P2 (25,9 %) |
+| 23–27 nov | UD2 · Documentar el código<br>UD2 · Excepciones propias y aserciones | A4 (4 %), C4 (2 %) |
+| 30 nov–4 dic | UD4 · Expresiones regulares | A5 (4 %), C5 (2 %), P3 (10,7 %) |
+| 7–11 dic | Repaso (mié 9 y jue 10) | F (30 %) |
+| 14–18 dic | UD5 · POO I: Clases (2ª evaluación, desde mié 16) | Cierre de la 1ª evaluación · jue 17 |
+
+## Notas
+
+- **Cuestionarios (C).** Hay uno cada semana en la que se facilitan apuntes o actividades guiadas nuevas, con preguntas sobre ellos. Se entrega hasta el lunes siguiente a su semana.
+- **Exámenes escritos** (parciales, **P**, y final, **F**). Son en papel e incluyen preguntas similares a las de los cuestionarios. Cada pregunta indica los puntos que vale: los contenidos con más porcentaje tienen preguntas que valen más.
+- **Actividades guiadas (A).** La marcha y el cumplimiento de cada actividad se evalúan con una lista de cotejo: cada «Comprueba que…» de cada paso se cumple o no. La nota de cada actividad es el porcentaje de puntos cumplidos (de 0 a 10), y el mínimo de 4 se aplica a la media de las actividades de la evaluación.
+- En Teams no hay tareas entregadas de PROG.
+- En la programación todo se evaluaba con lista de cotejo; ahora se evalúa con exámenes, y esa lista sirve para corregirlos.
+- Los exámenes parciales preguntan todo lo trabajado en clase desde el 2 de noviembre, también los contenidos que ya evaluó Julia. Esos contenidos aparecen en «Qué entra» con dos instrumentos (por ejemplo, «P1 (Julia) + P2»): la mitad de su nota sale de lo de Julia y la otra mitad del examen parcial. Si no se hizo el examen de Julia o no se entregó su tarea, en esa mitad se obtiene un 5.
+- Mínimo de 4 en cada examen parcial, en la media de las actividades guiadas y en el final para aplicar la media (apartado 6.1 de la programación oficial).
