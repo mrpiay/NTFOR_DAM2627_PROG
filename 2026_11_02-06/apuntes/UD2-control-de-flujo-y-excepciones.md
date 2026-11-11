@@ -15,6 +15,18 @@ Crear excepciones propias, las aserciones, la depuración con el depurador y la 
 - **`if`** ejecuta un bloque si la condición es verdadera; **`else`**, si es falsa; y **`else if`** encadena varias condiciones.
 - **`switch`** elige entre varios valores concretos de una variable. Cada **`case`** termina con **`break`**; si falta, se ejecuta también el siguiente. **`default`** recoge cualquier otro valor.
 - Es lo típico para un **menú de opciones**: cada `case` es una opción.
+- Desde Java 14 hay otra forma, con **flechas**: `case 1 -> …`. Cada caso ejecuta solo lo suyo, así que **no necesita `break`**. Si un caso tiene varias instrucciones, van entre llaves.
+
+  ```java
+  switch (opcion) {
+      case 1 -> System.out.println("Nueva partida");
+      case 2 -> {
+          System.out.println("Cargando…");
+          cargarPartida();
+      }
+      default -> System.out.println("Opción no válida");
+  }
+  ```
 
 **Compara**
 
@@ -22,6 +34,11 @@ Crear excepciones propias, las aserciones, la depuración con el depurador y la 
 |---|---|---|
 | Qué compara | Cualquier condición (rangos, varias variables…) | Un valor contra una lista de valores concretos |
 | Ejemplo | `if (edad < 18 \|\| edad > 65)` | Un menú: `case 1:`, `case 2:`… |
+
+| | `switch` clásico (`case 1:`) | `switch` con flechas (`case 1 ->`) |
+|---|---|---|
+| `break` | Hace falta en cada caso; si falta, sigue con el siguiente | No hace falta: nunca sigue con el siguiente |
+| Varias instrucciones en un caso | Una detrás de otra, hasta el `break` | Entre llaves `{ }` |
 
 ---
 
