@@ -1,30 +1,28 @@
 # Programación · PROG
 
-Qué se trabaja en cada evaluación, cuándo y cómo se califica, según la programación del módulo.
+Qué unidades entran en cada evaluación y cómo se califica, según la programación del módulo.
 
-- [1ª evaluación](1a-evaluacion.md): UD1, UD2, UD3, UD4 · cierre el 17 de diciembre
-- [2ª evaluación](2a-evaluacion.md): UD5, UD6, UD7 · cierre el 15 de marzo
-- [3ª evaluación](3a-evaluacion.md): UD8, UD9, UD10, UD11, UD12, UD13, UD14 · cierre el 14 de junio
 - [Rúbricas](rubricas.md)
 - [Currículo oficial del módulo](curriculo-oficial.md): resultados de aprendizaje, criterios de evaluación, contenidos básicos y orientaciones, tal como los publica el DOG (Decreto 105/2011)
 
-## Fechas clave
+## Unidades de cada evaluación
+
+Peso de cada unidad en el módulo, según la programación oficial. La 1ª evaluación tiene su detalle (qué entra, cómo se evalúa y planificación semanal) en [1ª evaluación](1a-evaluacion.md).
+
+| Evaluación | Unidades | Cierre |
+|---|---|---|
+| [1ª](1a-evaluacion.md) | UD1 · Fundamentos de Java (6 %)<br>UD2 · Control de flujo y excepciones (10 %)<br>UD3 · Funciones (7 %)<br>UD4 · Arrays, cadenas y regex (10 %) | 17 de diciembre |
+| 2ª | UD5 · POO I: Clases (10 %)<br>UD6 · POO II: Herencia y polimorfismo (8 %)<br>UD7 · POO III: Interfaces y clases abstractas (6 %) | 15 de marzo |
+| 3ª | UD8 · Ficheros: flujos, texto y binario (10 %)<br>UD9 · Colecciones y genéricos (8 %)<br>UD10 · Streams y programación funcional (6 %)<br>UD11 · GUI básica y eventos (4 %)<br>UD12 · Conexión a BD: JDBC (6 %)<br>UD13 · Persistencia con JPA (6 %)<br>UD14 · BD orientadas a objetos (3 %) | 14 de junio |
+
+## Fechas clave de la 1ª evaluación
 
 | Fecha | Qué |
 |---|---|
-| 3–6 nov | Puesta en común y proyecto de diagnóstico (no se avanza: se repasa y se completa lo que tocaba hasta la fecha y se preparan las próximas entregas y exámenes) |
 | vie 20 nov | **P2** · examen parcial de la 1ª evaluación (25,9 % de la nota) |
 | vie 4 dic | **P3** · examen parcial de la 1ª evaluación (10,7 % de la nota) |
 | vie 11 dic | **F** · examen final de la 1ª evaluación |
 | jue 17 dic | Cierre de la 1ª evaluación (sesión de evaluación) |
-| mié 10 mar y jue 11 mar | Repaso de la 2ª evaluación |
-| vie 12 mar | Examen final de la 2ª evaluación |
-| lun 15 mar | Cierre de la 2ª evaluación (sesión de evaluación) |
-| mié 9 jun y jue 10 jun | Repaso de la 3ª evaluación |
-| vie 11 jun | Examen final de la 3ª evaluación |
-| lun 14 jun | Cierre de la 3ª evaluación (sesión de evaluación) |
-| 15–18 jun | Últimas clases: revisar, recuperar y cerrar notas |
-| lun 21 jun | Sesión de evaluación final del curso |
 
 ## Cómo se califica
 
