@@ -37,7 +37,7 @@ Repaso de lo que entró en la P1 (Julia), el examen de octubre: lo básico de Ja
 
 - **`//`**: comentario de **una línea**, desde `//` hasta el final de la línea.
 - **`/* … */`**: comentario de **varias líneas**.
-- **`/** … */`**: comentario **Javadoc**. Va justo antes de una clase o un método y sirve para generar su documentación (`javadoc`). Se ve en la semana del 16 al 20.
+- **`/** … */`**: comentario **Javadoc**. Va justo antes de una clase o un método y sirve para generar su documentación (`javadoc`). Se ve en la semana del 23 al 27.
 
 **Compara**
 
