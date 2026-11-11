@@ -61,8 +61,8 @@ Porcentajes sobre la nota de la evaluación.
 | Semana | Qué se da | Qué se evalúa |
 |---|---|---|
 | Antes del 2 nov | Lo evaluado por Julia | P1 (Julia) (3,4 %) |
-| [2–6 nov](../2026_11_02-06) | UD1 · Tipos, variables, constantes, operadores, comentarios, programas simples y consola<br>UD1 · Estructura del programa, proyectos, entorno y compilación<br>UD1 · Conversiones de tipo y formatos de salida<br>UD2 · Selección y programas con varias estructuras de control<br>UD2 · Bucles, saltos y control de excepciones<br>UD2 · Probar y depurar | A1 (4 %), C1 (2 %) |
-| [9–13 nov](../2026_11_09-13) | UD2 · Selección y programas con varias estructuras de control<br>UD2 · Bucles, saltos y control de excepciones<br>UD3 · Métodos: parámetros, retorno, ámbito, sobrecarga y recursividad<br>UD4 · Arrays, matrices y cadenas | A2 (4 %), C2 (2 %) |
+| [2–6 nov](../2026_11_02-06)<br>[apuntes](../2026_11_02-06/apuntes) · [actividades](../2026_11_02-06/actividades) | UD1 · Tipos, variables, constantes, operadores, comentarios, programas simples y consola<br>UD1 · Estructura del programa, proyectos, entorno y compilación<br>UD1 · Conversiones de tipo y formatos de salida<br>UD2 · Selección y programas con varias estructuras de control<br>UD2 · Bucles, saltos y control de excepciones<br>UD2 · Probar y depurar | A1 (4 %), C1 (2 %) |
+| [9–13 nov](../2026_11_09-13)<br>[apuntes](../2026_11_09-13/apuntes) · [actividades](../2026_11_09-13/actividades) | UD2 · Selección y programas con varias estructuras de control<br>UD2 · Bucles, saltos y control de excepciones<br>UD3 · Métodos: parámetros, retorno, ámbito, sobrecarga y recursividad<br>UD4 · Arrays, matrices y cadenas | A2 (4 %), C2 (2 %) |
 | 16–20 nov | UD1 · Conversiones de tipo y formatos de salida<br>UD2 · Probar y depurar | A3 (4 %), C3 (2 %), P2 (25,9 %) |
 | 23–27 nov | UD2 · Documentar el código<br>UD2 · Excepciones propias y aserciones | A4 (4 %), C4 (2 %) |
 | 30 nov–4 dic | UD4 · Expresiones regulares | A5 (4 %), C5 (2 %), P3 (10,7 %) |
