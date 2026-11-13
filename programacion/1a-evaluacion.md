@@ -22,11 +22,9 @@ Qué entra en la 1ª evaluación y con qué se evalúa cada parte. En cada unida
 
 | Contenido | Se evalúa con | Peso en la unidad |
 |---|---|---|
-| Selección y programas con varias estructuras de control | P1 (Julia) | 20 % |
-| Bucles, saltos y control de excepciones | P2 | 40 % |
-| Probar y depurar | P2 | 10 % |
-| Documentar el código | P2 | 10 % |
-| Excepciones propias y aserciones | P2 | 20 % |
+| Selección y programas con varias estructuras de control | P1 (Julia) | 29 % |
+| Bucles, saltos y control de excepciones | P2 | 57 % |
+| Probar un programa | P2 | 14 % |
 
 ### UD3 · Funciones
 
@@ -49,8 +47,8 @@ Qué entra en la 1ª evaluación y con qué se evalúa cada parte. En cada unida
 
 | Parte | Peso | Qué incluye |
 |---|---|---|
-| **P** · exámenes parciales | 40 % | Lo evaluado por Julia: P1 (Julia) 6,8 %<br>P2 · mié 2 dic: 33,2 % |
-| **A** · actividades guiadas | 20 % | 4 actividades, 5 % cada una. Lista de cotejo: cada «Comprueba que…» se cumple o no |
+| **P** · exámenes parciales | 40 % | Lo evaluado por Julia: P1 (Julia) 7,9 %<br>P2 · mié 2 dic: 32,1 % |
+| **A** · actividades guiadas | 20 % | 3 actividades, 6,7 % cada una. Lista de cotejo: cada «Comprueba que…» se cumple o no |
 | **F** · examen final | 30 % | jue 10 dic |
 | **R** · revisión | 10 % | De cada cuestionario (C) y cada examen parcial (P), una vez devuelto corregido: 4 revisiones, 2,5 % cada una |
 | **C** · cuestionarios | — | 3 cuestionarios. Su entrega es obligatoria; cuentan a través de su revisión (R) |
@@ -61,12 +59,12 @@ Porcentajes sobre la nota de la evaluación.
 
 | Semana | Qué se da | Qué se evalúa |
 |---|---|---|
-| Antes del 2 nov<br>[repaso Julia](../repaso-julia/apuntes)<br>[examen de octubre](../examen-julia/enunciado.md) | Lo evaluado por Julia | P1 (Julia) (6,8 %) |
-| [2–6 nov](../2026_11_02-06)<br>[apuntes](../2026_11_02-06/apuntes) · [actividades](../2026_11_02-06/actividades) | UD1 · Tipos, variables, constantes, operadores, comentarios, programas simples y consola<br>UD1 · Estructura del programa, proyectos, entorno y compilación<br>UD1 · Conversiones de tipo: la teoría<br>UD2 · Selección (if y switch): la teoría<br>UD2 · Bucles, saltos y excepciones: la teoría<br>UD2 · Probar un programa: la teoría | A1 (5 %), C1 |
-| [9–13 nov](../2026_11_09-13)<br>[apuntes](../2026_11_09-13/apuntes) · [actividades](../2026_11_09-13/actividades) | UD2 · Varias estructuras de control: el menú del proyecto, con do-while y switch<br>UD2 · Bucles, saltos y excepciones en el proyecto: recorrer arrays y leer números con try-catch<br>UD3 · Métodos: parámetros, retorno, ámbito, sobrecarga y recursividad<br>UD4 · Arrays, matrices y cadenas | A2 (5 %), C2 |
-| 16–20 nov | UD1 · Formatos de salida: el informe de notas con printf<br>UD2 · Depurar: seguir un fallo con el depurador<br>UD2 · Documentar el código<br>UD2 · Excepciones propias y aserciones<br>UD4 · Expresiones regulares | A3 (5 %), A4 (5 %), C3, R de C1 (2,5 %), R de C2 (2,5 %) |
+| Antes del 2 nov<br>[repaso Julia](../repaso-julia/apuntes)<br>[examen de octubre](../examen-julia/enunciado.md) | Lo evaluado por Julia | P1 (Julia) (7,9 %) |
+| [2–6 nov](../2026_11_02-06)<br>[apuntes](../2026_11_02-06/apuntes) · [actividades](../2026_11_02-06/actividades) | UD1 · Tipos, variables, constantes, operadores, comentarios, programas simples y consola<br>UD1 · Estructura del programa, proyectos, entorno y compilación<br>UD1 · Conversiones de tipo: la teoría<br>UD2 · Selección (if y switch): la teoría<br>UD2 · Bucles, saltos y excepciones: la teoría<br>UD2 · Probar un programa: la teoría | A1 (6,7 %), C1 |
+| [9–13 nov](../2026_11_09-13)<br>[apuntes](../2026_11_09-13/apuntes) · [actividades](../2026_11_09-13/actividades) | UD1 · Formatos de salida: String.format en el proyecto<br>UD2 · Varias estructuras de control: el menú del proyecto, con do-while y switch<br>UD2 · Bucles, saltos y excepciones en el proyecto: recorrer arrays y leer números con try-catch<br>UD3 · Métodos: parámetros, retorno, ámbito, sobrecarga y recursividad<br>UD4 · Arrays, matrices y cadenas | A2 (6,7 %), C2 |
+| 16–20 nov | UD4 · Expresiones regulares: dos casos de uso en «CSV notas»<br>Terminar la A2 «CSV notas» (pasos 3 a 10) | A3 (6,7 %), C3, R de C1 (2,5 %), R de C2 (2,5 %) |
 | 23–27 nov | Repaso de toda la evaluación | R de C3 (2,5 %) |
-| 30 nov–4 dic | Repaso (jue 3 y vie 4) | P2 (33,2 %) |
+| 30 nov–4 dic | Repaso (jue 3 y vie 4) | P2 (32,1 %) |
 | 7–11 dic | Repaso (mié 9)<br>UD5 · POO I: Clases (desde el vie 11) | F (30 %), R de P2 (2,5 %) |
 | 14–18 dic | UD5 · POO I: Clases | Cierre de la 1ª evaluación · jue 17 |
 
@@ -77,6 +75,7 @@ Porcentajes sobre la nota de la evaluación.
 - **Exámenes escritos** (parciales, **P**, y final, **F**). Son en papel e incluyen preguntas similares a las de los cuestionarios. Cada pregunta indica los puntos que vale: los contenidos con más porcentaje tienen preguntas que valen más.
 - **Actividades guiadas (A).** La marcha y el cumplimiento de cada actividad se evalúan con una lista de cotejo: cada «Comprueba que…» de cada paso se cumple o no. La nota de cada actividad es el porcentaje de puntos cumplidos (de 0 a 10), y el mínimo de 4 se aplica a la media de las actividades de la evaluación.
 - En Teams no hay tareas entregadas de PROG.
+- Se aplazan al final del curso (3ª evaluación) el depurador, Javadoc (CA3.7) y las excepciones propias y aserciones (CA3.8 y CA3.9): en la 1ª evaluación, la UD2 se calcula con lo que se da (CA3.1–3.6).
 - En la programación todo se evaluaba con lista de cotejo; ahora se evalúa con exámenes, y esa lista sirve para corregirlos.
 - El examen parcial pregunta todo lo de la 1ª evaluación que no evaluó Julia, aunque sea de forma breve. Lo que ya evaluó Julia (su examen de octubre, P1 (Julia), y sus tareas de Teams) cuenta con esa nota; si no se hizo su examen o no se entregó su tarea, en esa parte se obtiene un 5. El examen final pregunta toda la evaluación.
 - Mínimo de 4 en cada examen parcial, en la media de las actividades guiadas y en el final para aplicar la media (apartado 6.1 de la programación oficial).

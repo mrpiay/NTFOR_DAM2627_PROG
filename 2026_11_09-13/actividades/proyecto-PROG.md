@@ -40,7 +40,7 @@ La plantilla, que en el paso 0 descargas (`plantilla.zip`) y queda en la carpeta
 | Archivo | Qué es | Pasos |
 |---|---|---|
 | `src/dam/Auxiliar.java` | `print`, `getInt` y `getString` (lee una línea de texto), como en «Java 0». Ya está hecho | ninguno |
-| `src/dam/Principal.java` | El `main` y los métodos de cada opción | todos |
+| `src/dam/Principal.java` | El `main`, que elige qué se ejecuta; `actividad()`, con el proyecto guiado, y los métodos de cada opción | todos |
 | `src/dam/notas/Notas.java` | Los métodos auxiliares; los comentarios `// TODO Paso N` marcan dónde va cada uno | 1 a 6 |
 
 Los datos van en formato **CSV** ([UD4, apartado 5](../apuntes/UD4-arrays-y-cadenas.md#5-datos-en-formato-csv)): una línea de cabecera y una línea por alumno, con los campos separados por `;`. No hay archivo: el programa genera las líneas en el paso 1, con notas al azar, y empiezan así:
@@ -187,7 +187,7 @@ En `Principal.java`, debajo de `import static dam.Auxiliar.*;`, importa los mét
 import static dam.notas.Notas.*;
 ```
 
-Y en el `main`, en lugar de `// TODO Paso 1: generar las líneas del CSV`:
+Y en `actividad()`, en lugar de `// TODO Paso 1: generar las líneas del CSV`:
 
 ```java
         String[] lineas = generarLineas(25, 2627);
@@ -262,7 +262,7 @@ En `Notas.java`, en lugar de `// TODO Paso 2: cargarNombres y cargarNotas`:
 - Los dos bucles empiezan en `i = 1` para saltarse la cabecera (`lineas[0]`). Por eso los arrays tienen `lineas.length - 1` posiciones y se rellenan en `i - 1`.
 - El `for` de dentro rellena las tres columnas de cada fila.
 
-En el `main` de `Principal`, cambia las líneas `print("Primera: …")` y `print("Segunda: …")` por estas:
+En `actividad()`, en `Principal`, cambia las líneas `print("Primera: …")` y `print("Segunda: …")` por estas:
 
 ```java
         String[] nombres = cargarNombres(lineas);
@@ -290,6 +290,87 @@ Nombre25 [19, 8, 71]
 - *`ArrayIndexOutOfBoundsException`*: una posición se sale del array. Revisa `i - 1` y `t + 1`, y que los arrays tengan `lineas.length - 1` posiciones.
 - *Sale algo como `[I@1b6d3586`*: has escrito `notas[0]` sin `Arrays.toString`.
 
+## Antes del paso 3 · `main`, `actividad()` y el ejercicio de tablas
+
+**Objetivo.** Que el `main` solo elija qué se ejecuta: el proyecto guiado, que va en un método privado `actividad()`, o el ejercicio de tablas, que va en `Auxiliar`.
+
+**Pista.**
+
+1. **El proyecto, en `actividad()`.** La plantilla ya trae el método `actividad()`. Si en tu `Principal` el código de los pasos 1 y 2 está dentro del `main`, crea debajo del `main` el método `actividad()` y **mueve a él todo lo que hay dentro del `main`**. El `main` queda así:
+
+   ```java
+       public static void main(String[] args) {
+           actividad();      // el proyecto guiado «CSV notas»
+           // autoEval();    // el ejercicio de tablas, en Auxiliar
+       }
+
+       // El proyecto guiado «CSV notas»: cada paso añade aquí su código
+       private static void actividad() {
+           print("=== CSV notas ===");
+           // … lo de los pasos 1 y 2
+       }
+   ```
+
+   - `actividad()` es `private`: solo se usa desde `Principal` ([UD3, apartado 1](../apuntes/UD3-funciones.md#1-qué-es-una-función-método)). Es `static` porque la llama el `main`, que también lo es.
+   - El `main` se convierte en un selector: para ejecutar otra cosa, se pone `//` delante de una línea y se quita de la otra. **Desde aquí, todo lo que los pasos dicen que va «en `actividad()`» va dentro de ese método.**
+
+2. **Leer números con decimales.** En `Auxiliar.java`, debajo de `getInt`, añade `getFloat`, que lee un número con decimales (un `double`):
+
+   ```java
+       public static double getFloat() {
+           return Double.parseDouble(teclado.nextLine().trim());
+       }
+   ```
+
+   Es igual que `getInt`, con `Double.parseDouble` en lugar de `Integer.parseInt`. El número se escribe con punto: `2.5`.
+
+3. **El ejercicio de tablas.** En `Auxiliar.java`, debajo de `getString`, añade este método y completa cada comentario con su código:
+
+   ```java
+       public static void autoEval() {
+           print("Autoevaluación: tablas");
+
+           // 1. Crea una tabla de números decimales (double) con 3 filas y 2 columnas
+
+           // 2. Pon todos los valores de la tabla a -1
+
+           // 3. Pide al usuario un número (con print("Dame número:")) y guárdalo
+           //    en la primera columna de la última fila
+
+           // 4. Muestra el valor guardado, leyéndolo de la tabla
+
+           // 5. Calcula y muestra la suma de todos los valores de la primera fila
+
+           // 6. Calcula y muestra la suma de todos los valores de la segunda columna
+
+       }
+   ```
+
+   Para ejecutarlo, en el `main` pon `//` delante de `actividad();` y quítalo de `autoEval();`. Al terminar, déjalo como estaba: el proyecto sigue en el paso 3.
+
+**Comprueba que…**
+
+- con `actividad();` activa, sale lo mismo que al final del paso 2;
+- con `autoEval();` activa, si escribes `5`, sale:
+
+  ```
+  Autoevaluación: tablas
+  Dame número:
+  5
+  5.0
+  -2.0
+  -3.0
+  ```
+
+  `5` es lo que escribes; `5.0`, el valor leído de la tabla (un `double` se muestra con decimal). `-2.0` es la suma de la primera fila (dos `-1`), y `-3.0`, la de la segunda columna (tres `-1`, porque el 5 está en la primera columna). Para leer el número, usa `getFloat()`; para mostrar un número con `print`, conviértelo en texto con `String.valueOf(…)` o sumándolo a un texto: `print("" + suma)`.
+
+**Si te falla…**
+
+- *`cannot find symbol: method autoEval()` o `getFloat()`*: el método no está en `Auxiliar`, o no es `public static`.
+- *`NumberFormatException` al escribir el número*: los decimales van con punto (`2.5`), no con coma.
+- *`ArrayIndexOutOfBoundsException`*: un bucle se sale de la tabla. Las filas van de 0 a 2 y las columnas, de 0 a 1: recorre con `< tabla.length` (filas) y `< tabla[0].length` (columnas) ([UD4, apartado 2](../apuntes/UD4-arrays-y-cadenas.md#2-matrices-arrays-de-dos-dimensiones)).
+- *`non-static method actividad() cannot be referenced from a static context`*: falta `static` en `private static void actividad()`.
+
 ---
 
 ## Paso 3 · ¿Está en la lista?
@@ -313,7 +394,7 @@ Nombre25 [19, 8, 71]
 - `equalsIgnoreCase` compara sin distinguir mayúsculas: `nombre07` es igual que `Nombre07` ([UD4, apartado 4](../apuntes/UD4-arrays-y-cadenas.md#4-cadenas-string)).
 - Devuelve la posición en cuanto lo encuentra, o `-1` si no está ([UD3, apartado 2](../apuntes/UD3-funciones.md#2-parámetros-y-valor-de-retorno)).
 
-En `Principal.java`, debajo del `main` (después de su `}` y antes de la última `}` de la clase), añade el método de esta opción:
+En `Principal.java`, debajo de `actividad()` (después de su `}` y antes de la última `}` de la clase), añade el método de esta opción:
 
 ```java
     static void opcionEstaEnLaLista(String[] nombres) {
@@ -386,7 +467,7 @@ En `Principal.java`, añade este método debajo del anterior:
 
 `buscar` sirve también aquí: la posición del nombre es la de su fila de notas. `String.format("%.2f", …)` da el número con dos decimales.
 
-En el `main`, cambia la llamada `opcionEstaEnLaLista(nombres);` por `opcionNotasDeUnAlumno(nombres, notas);`. El método del paso 3 no se borra: se usa en el menú del paso 7.
+En `actividad()`, cambia la llamada `opcionEstaEnLaLista(nombres);` por `opcionNotasDeUnAlumno(nombres, notas);`. El método del paso 3 no se borra: se usa en el menú del paso 7.
 
 **Comprueba que…**
 
@@ -444,7 +525,7 @@ En `Principal.java`, añade este método:
     }
 ```
 
-Y en el `main`, cambia la llamada del paso anterior por `opcionMejorDeUnTrimestre(nombres, notas);`.
+Y en `actividad()`, cambia la llamada del paso anterior por `opcionMejorDeUnTrimestre(nombres, notas);`.
 
 **Comprueba que…**
 
@@ -494,7 +575,7 @@ En `Principal.java`, este método reutiliza `mejorDelTrimestre` en un bucle, par
     }
 ```
 
-Y en el `main`, cambia la llamada del paso anterior por `opcionMejores(nombres, notas);`.
+Y en `actividad()`, cambia la llamada del paso anterior por `opcionMejores(nombres, notas);`.
 
 **Comprueba que…**
 
@@ -516,10 +597,10 @@ Curso: Nombre22 (media 70.67)
 
 **Objetivo.** Que el programa muestre un menú, haga la opción elegida y repita hasta elegir «Salir».
 
-**Pista.** Sustituye el `main` entero por este. Los métodos de las opciones (pasos 3 a 6) se quedan como están:
+**Pista.** Sustituye el método `actividad()` entero por este (el `main` no se toca). Los métodos de las opciones (pasos 3 a 6) se quedan como están:
 
 ```java
-    public static void main(String[] args) {
+    private static void actividad() {
         print("=== CSV notas ===");
 
         String[] lineas = generarLineas(25, 2627);
@@ -562,7 +643,7 @@ Curso: Nombre22 (media 70.67)
 
 - Los datos se generan y se cargan **una sola vez**, al principio; el menú solo los consulta.
 - `do-while` repite el menú mientras la opción no sea 0; como la condición va al final, el menú sale al menos una vez.
-- Cada `case` llama al método de su opción: el `main` se lee como una lista de lo que hace el programa ([UD3, apartado 1](../apuntes/UD3-funciones.md#1-qué-es-una-función-método)).
+- Cada `case` llama al método de su opción: `actividad()` se lee como una lista de lo que hace el programa ([UD3, apartado 1](../apuntes/UD3-funciones.md#1-qué-es-una-función-método)).
 
 **Comprueba que…**
 
@@ -660,7 +741,7 @@ En `Principal.java`, añade este método debajo de los demás:
 - `return` termina el método en ese momento: si el trimestre no existe, no se hace nada más ([UD3, apartado 1](../apuntes/UD3-funciones.md#1-qué-es-una-función-método)).
 - Con un suspenso, `continue` se salta el `print` y el `aprobados++`: solo se muestran y se cuentan los aprobados.
 
-En el `main`, añade la opción al menú, debajo de `print("4. Mejores de cada trimestre y del curso");`:
+En `actividad()`, añade la opción al menú, debajo de `print("4. Mejores de cada trimestre y del curso");`:
 
 ```java
             print("5. Aprobados de un trimestre");
