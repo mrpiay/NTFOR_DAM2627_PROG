@@ -18,7 +18,7 @@ Son la **UD3 · Funciones** (un método auxiliar para cada cosa) y la **UD4 · A
 
 **El objetivo es entender cada paso:** es lo que necesitas para responder el cuestionario y preparar los exámenes.
 
-**Evaluación.** Esta actividad guiada (**A2**) se evalúa con su lista de cotejo: cada «Comprueba que…» se cumple o no. El cuestionario de la semana (**C2**) se entrega hasta el lunes 16 de noviembre, junto con el de la otra semana. El **miércoles 2 de diciembre** hay un examen parcial, **P2**, en papel, con todo lo de la 1ª evaluación que no evaluó Julia, también «Java 0» y esta actividad: cómo se organiza un programa en Java (clases, paquetes y métodos estáticos), arrays y matrices, los métodos de `String` y de `Arrays`, las excepciones con `try-catch`; y los apuntes de la UD1 a la UD4. Qué entra y cuánto vale cada parte: [1ª evaluación](../../programacion/1a-evaluacion.md).
+**Evaluación.** Esta actividad guiada (**A2**) se evalúa con su lista de cotejo: cada «Comprueba que…» se cumple o no. El cuestionario de la semana (**C2**) se entrega hasta el lunes 23 de noviembre, junto con el de la semana del 16 al 20, porque el proyecto se termina esa semana. El **miércoles 2 de diciembre** hay un examen parcial, **P2**, en papel, con todo lo de la 1ª evaluación que no evaluó Julia, también «Java 0» y esta actividad: cómo se organiza un programa en Java (clases, paquetes y métodos estáticos), arrays y matrices, los métodos de `String` y de `Arrays`, las excepciones con `try-catch`; y los apuntes de la UD1 a la UD4. Qué entra y cuánto vale cada parte: [1ª evaluación](../../programacion/1a-evaluacion.md).
 
 ## Las herramientas
 
@@ -68,23 +68,26 @@ Nombre03;6;64;43
 | Repetir una pregunta hasta que el dato sea válido (`try-catch` y `break`) | 8 |
 | Saltarse elementos al recorrer un array (`continue`) | 9 |
 
-## Plan de la semana
+## Plan de las semanas
 
-Cada sesión dura 50 minutos.
+El proyecto ocupa dos semanas. Cada sesión dura 50 minutos.
+
+**Semana del 9 al 13 de noviembre:** «Punto de partida», «Las herramientas» y «Con qué trabajas», **paso 0** (preparar el proyecto), **paso 1** (generar el CSV) y **paso 2** (partir las líneas y cargar los arrays).
+
+**Semana del 16 al 20 de noviembre:**
 
 | Día | Sesión | Qué se hace |
 |---|---|---|
-| Miércoles 11 | 13:00 | Leer «Punto de partida», «Las herramientas» y «Con qué trabajas» (15 min). **Paso 0** (preparar el proyecto) y **paso 1** (generar el CSV). |
-| Miércoles 11 | 13:50 | **Paso 2** (partir las líneas y cargar los arrays). |
-| Miércoles 11 | 14:40 | **Paso 3** (¿está en la lista?). |
-| Jueves 12 | 12:10 | **Paso 4** (las notas y la media de un alumno). |
-| Jueves 12 | 13:00 | **Paso 5** (el mejor de un trimestre). |
-| Jueves 12 | 13:50 | **Paso 6** (los mejores de cada trimestre y del curso). |
-| Viernes 13 | 10:10 | **Paso 7** (el menú). |
-| Viernes 13 | 11:00 | **Paso 8** (leer números sin romperse) y **paso 9** (aprobados de un trimestre). |
-| Viernes 13 | 12:10 | **Paso 10** (comprobar todo y comprimir) y repasar el proyecto con la lista final («Cómo comprobarlo»). |
+| Miércoles 18 | 13:00 | **Antes del paso 3** (`main`, `actividad()` y el ejercicio de tablas) y **paso 3** (¿está en la lista?). |
+| Miércoles 18 | 13:50 | **Paso 4** (las notas y la media de un alumno). |
+| Miércoles 18 | 14:40 | **Paso 5** (el mejor de un trimestre). |
+| Jueves 19 | 12:10 | **Paso 6** (los mejores de cada trimestre y del curso). |
+| Jueves 19 | 13:00 | **Paso 7** (el menú). |
+| Jueves 19 | 13:50 | **Paso 8** (leer números sin romperse) y **paso 9** (aprobados de un trimestre). |
+| Viernes 20 | 10:10 | **Paso 10** (comprobar todo y comprimir) y repasar el proyecto con la lista final («Cómo comprobarlo»). |
+| Viernes 20 | 11:00 y 12:10 | La actividad de la semana del 16 al 20: expresiones regulares en «CSV notas». |
 
-**Los pasos se hacen en orden**, cada uno en la sesión que le toca según el plan de la semana: cada paso usa lo del anterior. Al terminar cada paso, el programa tiene que compilar y funcionar.
+**Los pasos se hacen en orden**, cada uno en la sesión que le toca según el plan: cada paso usa lo del anterior. Al terminar cada paso, el programa tiene que compilar y funcionar.
 
 Cada paso tiene **Objetivo**, **Pista** (el código y lo justo para entenderlo), **Comprueba que…** y **Si te falla…** (errores típicos y cómo resolverlos).
 

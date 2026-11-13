@@ -8,5 +8,5 @@
 
 | Qué | Cuándo |
 |---|---|
-| Cuestionario C1: se entrega junto con el C2 (semana del 9 al 13), en una sola tarea de Teams | Hasta el **lunes 16 de noviembre**, a las 23:59 |
+| Cuestionario C1, en su tarea de Teams | Hasta el **lunes 16 de noviembre**, a las 23:59 |
 | Soluciones del cuestionario, en [`soluciones/`](../soluciones) | **Martes 17 de noviembre** |

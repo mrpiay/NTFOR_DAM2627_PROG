@@ -6,6 +6,7 @@ Materiales del módulo de **Programación (PROG)**, con una carpeta por semana.
 
 | Fecha | Qué cambia |
 |---|---|
+| 13 nov | Semana del 16 al 20: se termina «CSV notas» y se ven las expresiones regulares, con apuntes, una actividad corta y el cuestionario C3. El C2 se entrega con el C3, el lunes 23; la semana del 23 al 27 es de repaso ([2026_11_16-20](2026_11_16-20)) |
 | 11 nov | Nuevas fechas de exámenes: un solo examen parcial (**P2**, miércoles 2 de diciembre) con todo lo de la evaluación que no evaluó Julia, y el examen final (**F**) el jueves 10 de diciembre |
 | 11 nov | El examen de octubre de Julia, con su solución explicada ([examen-julia](examen-julia/enunciado.md)) |
 | 11 nov | Apuntes de la UD2 (semana del 2 al 6): el switch con flechas, que no necesita break |
@@ -50,6 +51,7 @@ Junto a cada archivo, GitHub muestra cuándo cambió por última vez y qué se c
 | Repaso Julia | — | [apuntes](repaso-julia/apuntes) | [examen de octubre](examen-julia/enunciado.md) | [solución](examen-julia/solucion.md) |
 | Del 2 al 6 de noviembre | [actividades](2026_11_02-06/actividades) | [apuntes](2026_11_02-06/apuntes) | [cuestionario](2026_11_02-06/cuestionario.md) | [soluciones](2026_11_02-06/soluciones) |
 | Del 9 al 13 de noviembre | [actividades](2026_11_09-13/actividades) | [apuntes](2026_11_09-13/apuntes) | [cuestionario](2026_11_09-13/cuestionario.md) | [soluciones](2026_11_09-13/soluciones) |
+| Del 16 al 20 de noviembre | [actividades](2026_11_16-20/actividades) | [apuntes](2026_11_16-20/apuntes) | [cuestionario](2026_11_16-20/cuestionario.md) | [soluciones](2026_11_16-20/soluciones) |
 
 ## Cómo usar los materiales
 
