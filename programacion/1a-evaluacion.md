@@ -70,12 +70,13 @@ Porcentajes sobre la nota de la evaluación.
 
 ## Notas
 
-- **Cuestionarios (C).** Hay uno cada semana en la que se facilitan apuntes o actividades guiadas nuevas, con preguntas sobre ellos. Su entrega es obligatoria, hasta el lunes siguiente a su semana. No cuentan por sí mismos para la nota: cuenta su revisión (R).
+- **Cuestionarios (C).** Hay uno cada semana en la que se facilitan apuntes o actividades guiadas nuevas, con preguntas sobre ellos. Su entrega es obligatoria, hasta el lunes siguiente a su semana, salvo que se indique otra fecha (ver las notas). No cuentan por sí mismos para la nota: cuenta su revisión (R).
 - **Revisión (R).** Cada cuestionario y cada examen parcial, una vez devuelto corregido, se revisa: se localizan los errores y se corrigen por escrito. Todas las revisiones pesan lo mismo y forman el 10 % de autoevaluación del apartado 6.1 de la programación oficial. El examen final no tiene revisión, porque se devuelve después del cierre.
 - **Exámenes escritos** (parciales, **P**, y final, **F**). Son en papel e incluyen preguntas similares a las de los cuestionarios. Cada pregunta indica los puntos que vale: los contenidos con más porcentaje tienen preguntas que valen más.
 - **Actividades guiadas (A).** La marcha y el cumplimiento de cada actividad se evalúan con una lista de cotejo: cada «Comprueba que…» de cada paso se cumple o no. La nota de cada actividad es el porcentaje de puntos cumplidos (de 0 a 10), y el mínimo de 4 se aplica a la media de las actividades de la evaluación.
 - En Teams no hay tareas entregadas de PROG.
+- El C1 se entrega el lunes 16 de noviembre. El C2 se entrega junto con el C3, el lunes 23 de noviembre, porque «CSV notas» se termina en la semana del 16 al 20.
 - Se aplazan al final del curso (3ª evaluación) el depurador, Javadoc (CA3.7) y las excepciones propias y aserciones (CA3.8 y CA3.9): en la 1ª evaluación, la UD2 se calcula con lo que se da (CA3.1–3.6).
 - En la programación todo se evaluaba con lista de cotejo; ahora se evalúa con exámenes, y esa lista sirve para corregirlos.
-- El examen parcial pregunta todo lo de la 1ª evaluación que no evaluó Julia, aunque sea de forma breve. Lo que ya evaluó Julia (su examen de octubre, P1 (Julia), y sus tareas de Teams) cuenta con esa nota; si no se hizo su examen o no se entregó su tarea, en esa parte se obtiene un 5. El examen final pregunta toda la evaluación.
+- El examen parcial pregunta todo lo de la 1ª evaluación que no evaluó Julia, aunque sea de forma breve. Lo que ya evaluó Julia (lo marcado «(Julia)» en «Qué entra») cuenta con esa nota; si no se hizo ese examen o no se entregó esa tarea, en esa parte se obtiene un 5. El examen final pregunta toda la evaluación.
 - Mínimo de 4 en cada examen parcial, en la media de las actividades guiadas y en el final para aplicar la media (apartado 6.1 de la programación oficial).
