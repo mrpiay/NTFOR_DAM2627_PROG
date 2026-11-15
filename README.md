@@ -22,8 +22,10 @@ Todas las semanas con apuntes o actividades guiadas nuevas hay un cuestionario (
 
 | Fecha | Qué |
 |---|---|
-| Lunes 16 de noviembre, 23:59 | Entrega en Teams de los cuestionarios C1 y C2 (semanas del 2 al 6 y del 9 al 13), en una sola tarea |
-| Martes 17 de noviembre | Se publican las soluciones de C1 y C2 y la actividad guiada «CSV notas» completa |
+| Lunes 16 de noviembre, 23:59 | Entrega en Teams del cuestionario C1 (semana del 2 al 6) |
+| Martes 17 de noviembre | Se publica la solución de C1 |
+| Lunes 23 de noviembre, 23:59 | Entrega en Teams de los cuestionarios C2 y C3 (semanas del 9 al 13 y del 16 al 20), en una sola tarea |
+| Martes 24 de noviembre | Se publican las soluciones de C2 y C3 y la actividad guiada «CSV notas» terminada |
 | Miércoles 2 de diciembre (13:00, 13:50 y 14:40) | **P2** · examen parcial, en papel: todo lo de la 1ª evaluación que no evaluó Julia |
 | Jueves 10 de diciembre (12:10, 13:00 y 13:50) | **F** · examen final de la 1ª evaluación |
 
