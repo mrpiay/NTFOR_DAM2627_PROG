@@ -9,12 +9,9 @@ Materiales del módulo de **Programación (PROG)**, con una carpeta por semana.
 | 13 nov | Semana del 16 al 20: se termina «CSV notas» y se ven las expresiones regulares, con apuntes, una actividad corta y el cuestionario C3. El C2 se entrega con el C3, el lunes 23; la semana del 23 al 27 es de repaso ([2026_11_16-20](2026_11_16-20)) |
 | 11 nov | Nuevas fechas de exámenes: un solo examen parcial (**P2**, miércoles 2 de diciembre) con todo lo de la evaluación que no evaluó Julia, y el examen final (**F**) el jueves 10 de diciembre |
 | 11 nov | El examen de octubre de Julia, con su solución explicada ([examen-julia](examen-julia/enunciado.md)) |
-| 11 nov | Apuntes de la UD2 (semana del 2 al 6): el switch con flechas, que no necesita break |
 | 11 nov | **Repaso Julia**: apuntes que completan lo que se dio antes del 2 de noviembre ([repaso-julia/apuntes](repaso-julia/apuntes)) |
 | 11 nov | La **revisión (R)** de los cuestionarios y de los exámenes parciales corregidos es el 10 % de la nota; la entrega de los cuestionarios es obligatoria |
 | 11 nov | La 1ª evaluación en detalle: qué entra, cómo se evalúa y planificación semanal, con enlaces a los apuntes y actividades de cada semana ([programacion/1a-evaluacion.md](programacion/1a-evaluacion.md)) |
-| 10 nov | Fechas de los exámenes parciales y del examen final de la 1ª evaluación |
-| 9 nov | Currículo oficial del módulo ([programacion/curriculo-oficial.md](programacion/curriculo-oficial.md)) |
 
 ## Fechas importantes
 
