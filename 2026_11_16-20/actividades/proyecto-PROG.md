@@ -13,7 +13,7 @@ Es la última parte de la **UD4 · Arrays, cadenas y regex**. La teoría está e
 
 **El objetivo es entender cada paso:** es lo que necesitas para responder el cuestionario y preparar los exámenes.
 
-**Evaluación.** Esta actividad guiada (**A3**) se evalúa con su lista de cotejo: cada «Comprueba que…» se cumple o no. El cuestionario de la semana (**C3**) se entrega hasta el lunes 23 de noviembre, junto con el de la semana del 9 al 13 (**C2**). El **miércoles 2 de diciembre** hay un examen parcial, **P2**, en papel, con todo lo de la 1ª evaluación que no evaluó Julia, también esta actividad y sus apuntes. Qué entra y cuánto vale cada parte: [1ª evaluación](../../programacion/1a-evaluacion.md).
+**Evaluación.** Esta actividad guiada (**A3**) se califica por el nivel de cumplimiento de sus pasos: nada (0), poco (2,5), medio (5), alto (7,5) o completo (10). Los «Comprueba que…» de cada paso indican si está cumplido; qué supone cada nivel, en las [rúbricas](../../programacion/rubricas.md). El cuestionario de la semana (**C3**) se entrega hasta el lunes 23 de noviembre, junto con el de la semana del 9 al 13 (**C2**). El **miércoles 2 de diciembre** hay un examen parcial, **P2**, en papel, con todo lo de la 1ª evaluación que no evaluó Julia, también esta actividad y sus apuntes. Qué entra y cuánto vale cada parte: [1ª evaluación](../../programacion/1a-evaluacion.md).
 
 ## Con qué trabajas
 

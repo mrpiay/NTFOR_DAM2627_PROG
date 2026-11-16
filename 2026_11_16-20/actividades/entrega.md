@@ -12,6 +12,6 @@
 | Cuestionarios C2 ([semana del 9 al 13](../../2026_11_09-13/cuestionario.md)) y C3, en una sola tarea de Teams | Hasta el **lunes 23 de noviembre**, a las 23:59 |
 | Soluciones del C2 y del proyecto «CSV notas» completo, en `soluciones/` de la [semana del 9 al 13](../../2026_11_09-13/soluciones), y del C3 y esta actividad, en [`soluciones/`](../soluciones) | **Martes 24 de noviembre** |
 
-El proyecto no se sube: se comprueba en clase con la lista de cotejo de cada actividad.
+El proyecto no se sube: se comprueba en clase el nivel de cumplimiento de los pasos de cada actividad.
 
 La semana del 23 al 27 es de **repaso de toda la evaluación**. El examen parcial **P2**, en papel, con todo lo de la 1ª evaluación que no evaluó Julia, también «Java 0», «CSV notas», esta actividad y los apuntes de las tres semanas (UD1 a UD4), es el **miércoles 2 de diciembre**: está en las [fechas importantes](../../README.md) del repositorio.
