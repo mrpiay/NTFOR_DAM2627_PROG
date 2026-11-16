@@ -6,6 +6,7 @@ Materiales del módulo de **Programación (PROG)**, con una carpeta por semana.
 
 | Fecha | Qué cambia |
 |---|---|
+| 16 nov | Los **cuestionarios (C)** son requisito de la **autoevaluación (R)**: sin todos los cuestionarios entregados, la autoevaluación (R) es un 0 |
 | 16 nov | La **autoevaluación (R)**, el 10 % de la nota, pasa a ser una sola, la semana del examen final: una [plantilla](programacion/autoevaluacion-1a.xlsx) en Teams con el nivel y el tipo de fallo de cada tema, los hábitos de estudio y una reflexión sobre qué hacer para mejorar. Sustituye a la revisión de cada cuestionario y examen ([cómo se califica](programacion/rubricas.md)) |
 | 13 nov | Semana del 16 al 20: se termina «CSV notas» y se ven las expresiones regulares, con apuntes, una actividad corta y el cuestionario C3. El C2 se entrega con el C3, el lunes 23; la semana del 23 al 27 es de repaso ([2026_11_16-20](2026_11_16-20)) |
 | 11 nov | Nuevas fechas de exámenes: un solo examen parcial (**P2**, miércoles 2 de diciembre) con todo lo de la evaluación que no evaluó Julia, y el examen final (**F**) el jueves 10 de diciembre |
@@ -16,7 +17,7 @@ Materiales del módulo de **Programación (PROG)**, con una carpeta por semana.
 
 ## Fechas importantes
 
-Todas las semanas con apuntes o actividades guiadas nuevas hay un cuestionario (C), disponible desde el primer día. Su entrega es obligatoria, en Teams, hasta el lunes siguiente a las 23:59, y el martes se publican sus soluciones. Además:
+Todas las semanas con apuntes o actividades guiadas nuevas hay un cuestionario (C), disponible desde el primer día. Su entrega es obligatoria, en Teams, hasta el lunes siguiente a las 23:59, y el martes se publican sus soluciones. No tienen nota propia, pero sin todos los cuestionarios entregados, la autoevaluación (R) es un 0. Además:
 
 | Fecha | Qué |
 |---|---|
