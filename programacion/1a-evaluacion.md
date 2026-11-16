@@ -2,48 +2,11 @@
 
 [← Programación](README.md)
 
-Qué entra en la 1ª evaluación y con qué se evalúa cada parte. En cada unidad se muestran sus contenidos, cada uno agrupando los criterios de evaluación que le corresponden; su porcentaje es la suma de los pesos de esos criterios en la programación oficial del módulo. La planificación empieza el 2 de noviembre; lo que ya evaluó Julia (exámenes y tareas de Teams) aparece marcado como «(Julia)».
+Cómo se calcula la nota de la 1ª evaluación, qué contenidos entran en los exámenes y planificación semanal. La planificación empieza el 2 de noviembre; lo que ya evaluó Julia (exámenes y tareas de Teams) aparece marcado como «(Julia)».
 
-## Qué entra
+## Cómo se evalúa: de dónde sale la nota
 
-### UD1 · Fundamentos de Java
-
-18,2 % de la evaluación (6 % del módulo).
-
-| Contenido | Se evalúa con | Peso en la unidad |
-|---|---|---|
-| Tipos, variables, constantes, operadores, comentarios, programas simples y consola | P1 (Julia) | 60 % |
-| Estructura del programa, proyectos, entorno y compilación | P2 | 30 % |
-| Conversiones de tipo y formatos de salida | P2 | 10 % |
-
-### UD2 · Control de flujo y excepciones
-
-30,3 % de la evaluación (10 % del módulo).
-
-| Contenido | Se evalúa con | Peso en la unidad |
-|---|---|---|
-| Selección y programas con varias estructuras de control | P1 (Julia) | 29 % |
-| Bucles, saltos y control de excepciones | P2 | 57 % |
-| Probar un programa | P2 | 14 % |
-
-### UD3 · Funciones
-
-21,2 % de la evaluación (7 % del módulo).
-
-| Contenido | Se evalúa con | Peso en la unidad |
-|---|---|---|
-| Métodos: parámetros, retorno, ámbito, sobrecarga y recursividad | P2 | 100 % |
-
-### UD4 · Arrays, cadenas y regex
-
-30,3 % de la evaluación (10 % del módulo).
-
-| Contenido | Se evalúa con | Peso en la unidad |
-|---|---|---|
-| Arrays, matrices y cadenas | P2 | 50 % |
-| Expresiones regulares | P2 | 50 % |
-
-## Cómo se evalúa
+Porcentajes sobre la nota de la evaluación: entre todas las partes suman 100 %.
 
 | Parte | Peso | Qué incluye |
 |---|---|---|
@@ -53,7 +16,46 @@ Qué entra en la 1ª evaluación y con qué se evalúa cada parte. En cada unida
 | **R** · autoevaluación | 10 % | Una sola, la semana del examen final: una tarea de Teams con la [plantilla de autoevaluación](autoevaluacion-1a.xlsx) |
 | **C** · cuestionarios | — | 3 cuestionarios. No tienen nota propia, pero su entrega es obligatoria: sin todos ellos entregados, la R es un 0 |
 
-Porcentajes sobre la nota de la evaluación.
+## Qué entra en los exámenes
+
+Los porcentajes de esta sección no son partes de la nota: dicen cuánto pesa cada unidad y cada contenido **dentro de los exámenes**. Con ellos se reparte el 40 % de los exámenes parciales (P) entre lo que evaluó Julia y el examen parcial, y valen igual para el examen final (F), que pregunta todas las unidades: los contenidos con más porcentaje tienen preguntas que valen más. Cada porcentaje es la suma de los pesos de sus criterios de evaluación en la programación oficial. Las actividades guiadas (A) y la autoevaluación (R) cuentan aparte, como se indica en «Cómo se evalúa».
+
+### UD1 · Fundamentos de Java
+
+Pesa un 18,2 % en los exámenes (6 % del módulo).
+
+| Contenido | Examen o tarea que lo evalúa (además del F) | Peso en la unidad |
+|---|---|---|
+| Tipos, variables, constantes, operadores, comentarios, programas simples y consola | P1 (Julia) | 60 % |
+| Estructura del programa, proyectos, entorno y compilación | P2 | 30 % |
+| Conversiones de tipo y formatos de salida | P2 | 10 % |
+
+### UD2 · Control de flujo y excepciones
+
+Pesa un 30,3 % en los exámenes (10 % del módulo).
+
+| Contenido | Examen o tarea que lo evalúa (además del F) | Peso en la unidad |
+|---|---|---|
+| Selección y programas con varias estructuras de control | P1 (Julia) | 29 % |
+| Bucles, saltos y control de excepciones | P2 | 57 % |
+| Probar un programa | P2 | 14 % |
+
+### UD3 · Funciones
+
+Pesa un 21,2 % en los exámenes (7 % del módulo).
+
+| Contenido | Examen o tarea que lo evalúa (además del F) | Peso en la unidad |
+|---|---|---|
+| Métodos: parámetros, retorno, ámbito, sobrecarga y recursividad | P2 | 100 % |
+
+### UD4 · Arrays, cadenas y regex
+
+Pesa un 30,3 % en los exámenes (10 % del módulo).
+
+| Contenido | Examen o tarea que lo evalúa (además del F) | Peso en la unidad |
+|---|---|---|
+| Arrays, matrices y cadenas | P2 | 50 % |
+| Expresiones regulares | P2 | 50 % |
 
 ## Planificación semanal
 
@@ -78,5 +80,5 @@ Porcentajes sobre la nota de la evaluación.
 - El C1 se entrega el lunes 16 de noviembre. El C2 se entrega junto con el C3, el lunes 23 de noviembre, porque «CSV notas» se termina en la semana del 16 al 20.
 - Se aplazan al final del curso (3ª evaluación) el depurador, Javadoc (CA3.7) y las excepciones propias y aserciones (CA3.8 y CA3.9): en la 1ª evaluación, la UD2 se calcula con lo que se da (CA3.1–3.6).
 - En la programación todo se evaluaba con lista de cotejo; ahora se evalúa con exámenes, y esa lista sirve para corregirlos.
-- El examen parcial pregunta todo lo de la 1ª evaluación que no evaluó Julia, aunque sea de forma breve. Lo que ya evaluó Julia (lo marcado «(Julia)» en «Qué entra») cuenta con esa nota; si no se hizo ese examen o no se entregó esa tarea, en esa parte se obtiene un 5. El examen final pregunta toda la evaluación.
+- El examen parcial pregunta todo lo de la 1ª evaluación que no evaluó Julia, aunque sea de forma breve. Lo que ya evaluó Julia (lo marcado «(Julia)» en «Qué entra en los exámenes») cuenta con esa nota; si no se hizo ese examen o no se entregó esa tarea, en esa parte se obtiene un 5. El examen final pregunta toda la evaluación.
 - Mínimo de 4 en cada examen parcial, en la media de las actividades guiadas y en el final para aplicar la media (apartado 6.1 de la programación oficial).
