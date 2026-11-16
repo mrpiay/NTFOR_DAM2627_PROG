@@ -2,6 +2,8 @@
 
 **Programación Java en Linux con terminal en VS Code**
 
+**Evaluación.** Esta actividad guiada (**A1**) comprende los apartados 1 a 9. Se califica por el nivel de cumplimiento de sus apartados: nada (0), poco (2,5), medio (5), alto (7,5) o completo (10); qué supone cada nivel, en las [rúbricas](../../programacion/rubricas.md). El cuestionario de la semana (**C1**) se entrega hasta el lunes 16 de noviembre. El **miércoles 2 de diciembre** hay un examen parcial, **P2**, en papel, con todo lo de la 1ª evaluación que no evaluó Julia, también esta actividad. Qué entra y cuánto vale cada parte: [1ª evaluación](../../programacion/1a-evaluacion.md).
+
 ## Qué se construye
 
 Este tutorial va paso a paso. Se empieza con dos archivos en `java-pr0` y se convierten, paso a paso, en un proyecto con paquete, compilado en `bin` y comprimido en un zip. `Principal` usa los métodos `print` y `getInt` de `Auxiliar`.

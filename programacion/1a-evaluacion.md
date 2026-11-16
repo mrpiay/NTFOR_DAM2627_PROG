@@ -10,10 +10,10 @@ Porcentajes sobre la nota de la evaluación: entre todas las partes suman 100 %.
 
 | Parte | Peso | Qué incluye |
 |---|---|---|
-| **P** · exámenes parciales | 40 % | Lo evaluado por Julia: P1 (Julia) 7,9 %<br>P2 · mié 2 dic: 32,1 % |
-| **A** · actividades guiadas | 20 % | 3 actividades, 6,7 % cada una. Nivel de cumplimiento de los pasos: nada, poco, medio, alto o completo |
-| **F** · examen final | 30 % | jue 10 dic |
-| **R** · autoevaluación | 10 % | Una sola, la semana del examen final: una tarea de Teams con la [plantilla de autoevaluación](autoevaluacion-1a.xlsx) |
+| **P** · exámenes parciales | 40 % | Lo evaluado por Julia: P1 (Julia) 7,9 %<br>P2 · mié 2 dic: 32,1 % |
+| **A** · actividades guiadas | 20 % | 3 actividades, 6,7 % cada una. Nivel de cumplimiento de los pasos: nada, poco, medio, alto o completo |
+| **F** · examen final | 30 % | jue 10 dic |
+| **R** · autoevaluación | 10 % | Una sola, la semana del examen final: una tarea de Teams con la [plantilla de autoevaluación](autoevaluacion-1a.xlsx) |
 | **C** · cuestionarios | — | 3 cuestionarios. No tienen nota propia, pero su entrega es obligatoria: sin todos ellos entregados, la R es un 0 |
 
 ## Qué entra en los exámenes
@@ -54,8 +54,8 @@ Pesa un 30,3 % en los exámenes (10 % del módulo).
 
 | Contenido | Peso en la unidad |
 |---|---|
-| Arrays, matrices y cadenas | 50 % |
-| Expresiones regulares | 50 % |
+| Arrays, matrices y cadenas | 80 % |
+| Expresiones regulares | 20 % |
 
 ## Planificación semanal
 
@@ -64,7 +64,7 @@ Pesa un 30,3 % en los exámenes (10 % del módulo).
 | Antes del 2 nov<br>[repaso Julia](../repaso-julia/apuntes)<br>[examen de octubre](../examen-julia/enunciado.md) | Lo evaluado por Julia | — | **P1 (Julia)** (7,9 %) |
 | [2–6 nov](../2026_11_02-06)<br>[apuntes](../2026_11_02-06/apuntes) · [actividades](../2026_11_02-06/actividades) | UD1 · Tipos, variables, constantes, operadores, comentarios, programas simples y consola<br>UD1 · Estructura del programa, proyectos, entorno y compilación<br>UD1 · Conversiones de tipo: la teoría<br>UD2 · Selección (if y switch): la teoría<br>UD2 · Bucles, saltos y excepciones: la teoría<br>UD2 · Probar un programa: la teoría | A1 (6,7 %), C1 | — |
 | [9–13 nov](../2026_11_09-13)<br>[apuntes](../2026_11_09-13/apuntes) · [actividades](../2026_11_09-13/actividades) | UD1 · Formatos de salida: String.format en el proyecto<br>UD2 · Varias estructuras de control: el menú del proyecto, con do-while y switch<br>UD2 · Bucles, saltos y excepciones en el proyecto: recorrer arrays y leer números con try-catch<br>UD3 · Métodos: parámetros, retorno, ámbito, sobrecarga y recursividad<br>UD4 · Arrays, matrices y cadenas | A2 (6,7 %), C2 | — |
-| [16–20 nov](../2026_11_16-20)<br>[apuntes](../2026_11_16-20/apuntes) · [actividades](../2026_11_16-20/actividades) | UD4 · Expresiones regulares: dos casos de uso en «CSV notas»<br>Terminar la A2 «CSV notas» (pasos 3 a 10) | A3 (6,7 %), C3 | — |
+| [16–20 nov](../2026_11_16-20)<br>[apuntes](../2026_11_16-20/apuntes) · [actividades](../2026_11_16-20/actividades) | UD4 · Expresiones regulares: dos casos de uso en «CSV notas»<br>A3: continuación de la A2 «CSV notas» (pasos 3 a 10) y expresiones regulares | A3 (6,7 %), C3 | — |
 | 23–27 nov | Repaso de toda la evaluación | — | — |
 | 30 nov–4 dic | Repaso (jue 3 y vie 4) | — | **P2** (32,1 %), mié 2 dic |
 | 7–11 dic | Repaso (mié 9)<br>UD5 · POO I: Clases (desde el vie 11) | R (10 %) | **F** (30 %), jue 10 dic |
@@ -80,5 +80,6 @@ Pesa un 30,3 % en los exámenes (10 % del módulo).
 - El C1 se entrega el lunes 16 de noviembre. El C2 se entrega junto con el C3, el lunes 23 de noviembre, porque «CSV notas» se termina en la semana del 16 al 20.
 - Se aplazan al final del curso (3ª evaluación) el depurador, Javadoc (CA3.7) y las excepciones propias y aserciones (CA3.8 y CA3.9): en la 1ª evaluación, la UD2 se calcula con lo que se da (CA3.1–3.6).
 - En la programación todo se evaluaba con lista de cotejo; ahora se evalúa con exámenes, y esa lista sirve para corregirlos.
+- En la UD4, la programación da el mismo peso (50 %) a los arrays (CA6.1) y a las expresiones regulares (CA6.7). Las expresiones regulares se ven por encima, con dos casos de uso en la semana del 16 al 20, para que dé tiempo a repasar toda la evaluación antes de los exámenes; por eso, en la 1ª evaluación, pesan un 20 % y los arrays, matrices y cadenas, trabajados a fondo en el proyecto «CSV notas», un 80 %.
 - El examen parcial pregunta todo lo de la 1ª evaluación que no evaluó Julia, aunque sea de forma breve. Lo que ya evaluó Julia (fila «Antes del 2 nov» de la planificación semanal) cuenta con esa nota; si no se hizo ese examen o no se entregó esa tarea, en esa parte se obtiene un 5. El examen final pregunta toda la evaluación.
 - Mínimo de 4 en cada examen parcial, en la media de las actividades guiadas y en el final para aplicar la media (apartado 6.1 de la programación oficial).
