@@ -2,7 +2,7 @@
 
 **Programación Java en Linux con terminal en VS Code**
 
-**Evaluación.** Esta actividad guiada (**A1**) comprende los apartados 1 a 9. Se califica, una vez terminada, por su resultado (nada, bajo, medio, alto o máximo) y por 4 preguntas sobre su diseño y su arquitectura, al 50 %. Qué se muestra en cada nivel, en las [rúbricas](../../programacion/1a-evaluacion.md#rúbricas). El cuestionario de la semana (**C1**) se entrega hasta el lunes 16 de noviembre. El **miércoles 2 de diciembre** hay un examen parcial, **P2**, en papel, con todo lo de la 1ª evaluación que no evaluó Julia, también esta actividad. Qué entra y cuánto vale cada parte: [1ª evaluación](../../programacion/1a-evaluacion.md).
+**Evaluación.** Esta actividad guiada (**A1**) comprende los apartados 1 a 9. Se califica, una vez terminada, por su resultado (cuántas de sus 12 comprobaciones salen bien) y por 4 preguntas sobre su diseño y su arquitectura, al 50 %. Qué se muestra en cada nivel, en las [rúbricas](../../programacion/1a-evaluacion.md#rúbricas). El cuestionario de la semana (**C1**) se entrega hasta el lunes 16 de noviembre. El **miércoles 2 de diciembre** hay un examen parcial, **P2**, en papel, con todo lo de la 1ª evaluación que no evaluó Julia, también esta actividad. Qué entra y cuánto vale cada parte: [1ª evaluación](../../programacion/1a-evaluacion.md).
 
 ## Qué se construye
 
