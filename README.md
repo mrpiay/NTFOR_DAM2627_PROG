@@ -6,6 +6,7 @@ Materiales del módulo de **Programación (PROG)**, con una carpeta por semana.
 
 | Fecha | Qué cambia |
 |---|---|
+| 17 nov | Soluciones del cuestionario C1 ([2026_11_02-06/soluciones](2026_11_02-06/soluciones)). Las del C2 y el proyecto «CSV notas» completo, el martes 24 |
 | 17 nov | Semana del 23 al 27, de repaso: la guía de **ValoraPROG**, un programa en Java con menú en la terminal, de principio a fin ([2026_11_23-27](2026_11_23-27)) |
 | 16 nov | Las **actividades guiadas (A)** se califican por el nivel de cumplimiento de sus pasos: nada (0), poco (2,5), medio (5), alto (7,5) o completo (10). Qué supone cada nivel: [rúbricas](programacion/rubricas.md) |
 | 16 nov | Los **cuestionarios (C)** son requisito de la **autoevaluación (R)**: sin todos los cuestionarios entregados, la autoevaluación (R) es un 0 |
@@ -15,7 +16,6 @@ Materiales del módulo de **Programación (PROG)**, con una carpeta por semana.
 | 11 nov | El examen de octubre de Julia, con su solución explicada ([examen-julia](examen-julia/enunciado.md)) |
 | 11 nov | **Repaso Julia**: apuntes que completan lo que se dio antes del 2 de noviembre ([repaso-julia/apuntes](repaso-julia/apuntes)) |
 | 11 nov | La **revisión (R)** de los cuestionarios y de los exámenes parciales corregidos es el 10 % de la nota; la entrega de los cuestionarios es obligatoria |
-| 11 nov | La 1ª evaluación en detalle: qué entra, cómo se evalúa y planificación semanal, con enlaces a los apuntes y actividades de cada semana ([programacion/1a-evaluacion.md](programacion/1a-evaluacion.md)) |
 
 ## Fechas importantes
 
