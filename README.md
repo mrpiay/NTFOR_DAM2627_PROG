@@ -6,6 +6,7 @@ Materiales del módulo de **Programación (PROG)**, con una carpeta por semana.
 
 | Fecha | Qué cambia |
 |---|---|
+| 17 nov | Semana del 23 al 27, de repaso: la guía de **ValoraPROG**, un programa en Java con menú en la terminal, de principio a fin ([2026_11_23-27](2026_11_23-27)) |
 | 16 nov | Las **actividades guiadas (A)** se califican por el nivel de cumplimiento de sus pasos: nada (0), poco (2,5), medio (5), alto (7,5) o completo (10). Qué supone cada nivel: [rúbricas](programacion/rubricas.md) |
 | 16 nov | Los **cuestionarios (C)** son requisito de la **autoevaluación (R)**: sin todos los cuestionarios entregados, la autoevaluación (R) es un 0 |
 | 16 nov | La **autoevaluación (R)**, el 10 % de la nota, pasa a ser una sola, la semana del examen final: una [plantilla](programacion/autoevaluacion-1a.xlsx) en Teams con el nivel y el tipo de fallo de cada tema, los hábitos de estudio y una reflexión sobre qué hacer para mejorar. Sustituye a la revisión de cada cuestionario y examen ([cómo se califica](programacion/rubricas.md)) |
@@ -54,6 +55,7 @@ Junto a cada archivo, GitHub muestra cuándo cambió por última vez y qué se c
 | Del 2 al 6 de noviembre | [actividades](2026_11_02-06/actividades) | [apuntes](2026_11_02-06/apuntes) | [cuestionario](2026_11_02-06/cuestionario.md) | [soluciones](2026_11_02-06/soluciones) |
 | Del 9 al 13 de noviembre | [actividades](2026_11_09-13/actividades) | [apuntes](2026_11_09-13/apuntes) | [cuestionario](2026_11_09-13/cuestionario.md) | [soluciones](2026_11_09-13/soluciones) |
 | Del 16 al 20 de noviembre | [actividades](2026_11_16-20/actividades) | [apuntes](2026_11_16-20/apuntes) | [cuestionario](2026_11_16-20/cuestionario.md) | [soluciones](2026_11_16-20/soluciones) |
+| Del 23 al 27 de noviembre | [actividades](2026_11_23-27/actividades) | — | — | — |
 
 ## Cómo usar los materiales
 

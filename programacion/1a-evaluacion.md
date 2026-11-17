@@ -65,7 +65,7 @@ Pesa un 30,3 % en los exámenes (10 % del módulo).
 | [2–6 nov](../2026_11_02-06)<br>[apuntes](../2026_11_02-06/apuntes) · [actividades](../2026_11_02-06/actividades) | UD1 · Tipos, variables, constantes, operadores, comentarios, programas simples y consola<br>UD1 · Estructura del programa, proyectos, entorno y compilación<br>UD1 · Conversiones de tipo: la teoría<br>UD2 · Selección (if y switch): la teoría<br>UD2 · Bucles, saltos y excepciones: la teoría<br>UD2 · Probar un programa: la teoría | A1 (6,7 %), C1 | — |
 | [9–13 nov](../2026_11_09-13)<br>[apuntes](../2026_11_09-13/apuntes) · [actividades](../2026_11_09-13/actividades) | UD1 · Formatos de salida: String.format en el proyecto<br>UD2 · Varias estructuras de control: el menú del proyecto, con do-while y switch<br>UD2 · Bucles, saltos y excepciones en el proyecto: recorrer arrays y leer números con try-catch<br>UD3 · Métodos: parámetros, retorno, ámbito, sobrecarga y recursividad<br>UD4 · Arrays, matrices y cadenas | A2 (6,7 %), C2 | — |
 | [16–20 nov](../2026_11_16-20)<br>[apuntes](../2026_11_16-20/apuntes) · [actividades](../2026_11_16-20/actividades) | UD4 · Expresiones regulares: dos casos de uso en «CSV notas»<br>A3: continuación de la A2 «CSV notas» (pasos 3 a 10) y expresiones regulares | A3 (6,7 %), C3 | — |
-| 23–27 nov | Repaso de toda la evaluación | — | — |
+| [23–27 nov](../2026_11_23-27)<br>[actividades](../2026_11_23-27/actividades) | Repaso de toda la evaluación | — | — |
 | 30 nov–4 dic | Repaso (jue 3 y vie 4) | — | **P2** (32,1 %), mié 2 dic |
 | 7–11 dic | Repaso (mié 9)<br>UD5 · POO I: Clases (desde el vie 11) | R (10 %) | **F** (30 %), jue 10 dic |
 | 14–18 dic | UD5 · POO I: Clases | Cierre de la 1ª evaluación · jue 17 | — |
