@@ -10,10 +10,10 @@ Lo básico que hay que saber de la UD3. Cada apartado tiene la idea clave, lo qu
 
 **Lo que tienes que saber**
 
-- Se declara con lo que devuelve, su nombre y sus parámetros: `public static double media(int[] notasAlumno)`.
+- Se declara con lo que devuelve, su nombre y sus parámetros: `public static double mediaDadasNotas(int[] notas)`.
 - **`void`** indica que no devuelve nada; si devuelve algo, termina con **`return valor;`**. En un método `void`, `return;` (sin valor) lo termina en ese momento.
 - Con **`public`**, el método se puede usar desde cualquier clase; sin `public`, solo desde las clases de su mismo paquete.
-- Se **llama** por su nombre con los valores que necesita: `media(notas[0])`.
+- Se **llama** por su nombre con los valores que necesita: `mediaDadasNotas(notas[0])`.
 - Dividir el programa en métodos pequeños hace que se lea mejor, se pruebe por partes y no se repita código. En «CSV notas», `Notas` tiene un método para cada cosa y `Principal` solo los usa.
 - `static` permite llamarlo sin crear un objeto; los objetos se ven en la UD5.
 
@@ -25,9 +25,9 @@ Lo básico que hay que saber de la UD3. Cada apartado tiene la idea clave, lo qu
 
 **Lo que tienes que saber**
 
-- Los **parámetros** se declaran con tipo y nombre: `buscar(String[] nombres, String nombre)`. Al llamar, se pasan los **argumentos** en el mismo orden y del mismo tipo.
+- Los **parámetros** se declaran con tipo y nombre: `buscarPosNombre(String[] nombres, String nombre)`. Al llamar, se pasan los **argumentos** en el mismo orden y del mismo tipo.
 - El **valor de retorno** se puede guardar, usar en una expresión o pasar a otro método: `nombres[mejorDelTrimestre(notas, 1)]`.
-- Un método puede devolver un valor especial para decir que algo no ha ido bien: `buscar` devuelve **`-1`** si el nombre no está.
+- Un método puede devolver un valor especial para decir que algo no ha ido bien: `buscarPosNombre` devuelve **`-1`** si el nombre no está.
 
 ---
 

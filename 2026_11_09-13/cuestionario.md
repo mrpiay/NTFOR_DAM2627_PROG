@@ -114,15 +114,15 @@ Si en una pregunta aparece un método que no has visto, búscalo en «Dónde con
 ```java
         String[] nombres = {"Ana", "Luis", "Marta"};
         int[][] notas = {{70, 80, 90}, {95, 60, 50}, {65, 85, 99}};
-        print("Luis: " + buscar(nombres, "LUIS"));
-        print("Pepe: " + buscar(nombres, "Pepe"));
-        print("Media de Ana: " + media(notas[0]));
+        print("Luis: " + buscarPosNombre(nombres, "LUIS"));
+        print("Pepe: " + buscarPosNombre(nombres, "Pepe"));
+        print("Media de Ana: " + mediaDadasNotas(notas[0]));
         print("Mejor del 1.º: " + nombres[mejorDelTrimestre(notas, 1)]);
         print("Mejor del 3.º: " + nombres[mejorDelTrimestre(notas, 3)]);
         print("Mejor del curso: " + nombres[mejorDelCurso(notas)]);
 ```
 
-**9.** `buscar`, `mejorDelTrimestre` y `mejorDelCurso` devuelven una **posición**, no un nombre ni una nota. ¿Por qué? ¿Para qué sirve que `buscar` devuelva `-1`?
+**9.** `buscarPosNombre`, `mejorDelTrimestre` y `mejorDelCurso` devuelven una **posición**, no un nombre ni una nota. ¿Por qué? ¿Para qué sirve que `buscarPosNombre` devuelva `-1`?
 
 **10.** ¿Por qué los métodos auxiliares están en una clase aparte, `Notas`, en el paquete `dam.notas`? ¿Qué hace `import static dam.notas.Notas.*;`? Si el CSV tuviera cuatro trimestres en lugar de tres, ¿qué habría que cambiar en `Notas` y en `Principal`?
 

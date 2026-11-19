@@ -9,9 +9,9 @@ public class Notas {
 
     // TODO Paso 2: cargarNombres y cargarNotas
 
-    // TODO Paso 3: buscar
+    // TODO Paso 3: buscarPosNombre
 
-    // TODO Paso 4: media
+    // TODO Paso 4: mediaDadasNotas y mediaDadoNombre
 
     // TODO Paso 5: mejorDelTrimestre
 

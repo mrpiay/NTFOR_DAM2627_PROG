@@ -154,12 +154,15 @@ Es lo mismo que en «Java 0», con una carpeta más: `src/dam/notas/*.java`, el 
 
 ## Paso 1 · Generar el CSV
 
-**Objetivo.** Tener las líneas del CSV en un array: la cabecera y una línea por alumno, con sus tres notas.
+**Objetivo.** Tener las líneas del CSV en un array, la cabecera y una línea por alumno con sus tres notas, e imprimirlas.
 
 **Pista.** Las notas se inventan al azar con `Random`. En `Notas.java`, en lugar de `// TODO Paso 1: generarLineas`:
 
 ```java
-    // Las líneas del CSV: la cabecera y una línea por alumno, con tres notas al azar de 0 a 100
+    // Generar y devolver CSV: un array de strings (líneas de texto)
+    // con una cabecera y una línea por alumno;
+    // cada línea contiene un nombre y 3 notas al azar entre 0 y 100,
+    // todo separado por ;
     public static String[] generarLineas(int alumnos, long semilla) {
         Random azar = new Random(semilla);
         String[] lineas = new String[alumnos + 1];
@@ -184,7 +187,7 @@ import java.util.Random;
 - El array tiene `alumnos + 1` posiciones: la 0 es la cabecera y cada una de las demás, un alumno.
 - `String.format` monta cada línea: `%02d` escribe el número con dos cifras, `01` ([UD4, apartado 4](../apuntes/UD4-arrays-y-cadenas.md#4-cadenas-string)).
 
-En `Principal.java`, debajo de `import static dam.Auxiliar.*;`, importa los métodos de `Notas`:
+En `Principal.java`, debajo de `package dam;`, importa los métodos de `Notas`:
 
 ```java
 import static dam.notas.Notas.*;
@@ -193,24 +196,46 @@ import static dam.notas.Notas.*;
 Y en `actividad()`, en lugar de `// TODO Paso 1: generar las líneas del CSV`:
 
 ```java
-        String[] lineas = generarLineas(25, 2627);
-        print("Líneas: " + lineas.length);
-        print("Primera: " + lineas[0]);
-        print("Segunda: " + lineas[1]);
+        // Generar las líneas del CSV
+        String[] lineas = generarLineas(3, 2627);
+
+        // Imprimir las líneas del CSV
+
+        // Método 1
+        for (int pos = 1; pos < lineas.length; pos++) {
+            print(lineas[pos]);
+        }
+
+        print("");
+
+        // Método 2
+        for (String linea : lineas) {
+            print(linea);
+        }
+
+        print("");
 ```
 
-`generarLineas(25, 2627)` genera 25 alumnos con la semilla 2627. `lineas[0]` es la primera posición ([UD4, apartado 1](../apuntes/UD4-arrays-y-cadenas.md#1-arrays)).
+- `generarLineas(3, 2627)` genera 3 alumnos con la semilla 2627. Son pocos para que lo que se imprime en los pasos 1 a 6 quepa en la pantalla; en el paso 7 se pasa a 25.
+- **Método 1:** un `for` con posiciones. Empieza en `pos = 1` para saltarse la cabecera, que está en `lineas[0]` ([UD4, apartado 1](../apuntes/UD4-arrays-y-cadenas.md#1-arrays)).
+- **Método 2:** un **for-each**. Da cada línea en `linea`, sin posiciones; las da todas, también la cabecera.
+- `print("")` deja una línea en blanco, para separar lo que imprime cada parte.
 
 **Comprueba que…**
 
 ```
 === CSV notas ===
-Líneas: 26
-Primera: nombre;t1;t2;t3
-Segunda: Nombre01;11;60;16
+Nombre01;11;60;16
+Nombre02;9;46;19
+Nombre03;6;64;43
+
+nombre;t1;t2;t3
+Nombre01;11;60;16
+Nombre02;9;46;19
+Nombre03;6;64;43
 ```
 
-Y que, si cambias la semilla `2627` por otro número, la segunda línea sale con otras notas, y si vuelves a ejecutar sin cambiarla, salen las mismas. Después déjala en `2627`.
+Y que, si cambias la semilla `2627` por otro número, las líneas salen con otras notas, y si vuelves a ejecutar sin cambiarla, salen las mismas. Después déjala en `2627`.
 
 **Si te falla…**
 
@@ -218,6 +243,7 @@ Y que, si cambias la semilla `2627` por otro número, la segunda línea sale con
 - *`cannot find symbol` en `generarLineas`*: falta `import static dam.notas.Notas.*;` en `Principal.java`, o no has compilado `src/dam/notas/*.java`.
 - *Salen otras notas*: la semilla no es `2627`, o has cambiado el `101` o el orden de `t1`, `t2` y `t3`.
 - *Sale `Nombre1` en lugar de `Nombre01`*: has escrito `%d` en lugar de `%02d`.
+- *El método 1 imprime también la cabecera*: el `for` empieza en `pos = 0`; tiene que empezar en `1`.
 
 ---
 
@@ -234,64 +260,98 @@ String[] campos = "Nombre01;11;60;16".split(";");
 
 Los campos son texto: se limpian con `trim()` y se convierten en número con `Integer.parseInt` ([UD4, apartado 4](../apuntes/UD4-arrays-y-cadenas.md#4-cadenas-string)).
 
-Las notas van en una **matriz** ([UD4, apartado 2](../apuntes/UD4-arrays-y-cadenas.md#2-matrices-arrays-de-dos-dimensiones)): una fila por alumno y una columna por trimestre, en el mismo orden que `nombres`. `notas[0][1]` es la nota del 2.º trimestre del primer alumno, 60.
+Las notas van en una **matriz** o tabla ([UD4, apartado 2](../apuntes/UD4-arrays-y-cadenas.md#2-matrices-arrays-de-dos-dimensiones)): una fila por alumno y una columna por trimestre, en el mismo orden que `nombres`. `notas[0][1]` es la nota del 2.º trimestre del primer alumno, 60.
 
 En `Notas.java`, en lugar de `// TODO Paso 2: cargarNombres y cargarNotas`:
 
 ```java
-    // Los nombres: el primer campo de cada línea, sin la cabecera
+    // Devolver array de nombres dado el CSV
     public static String[] cargarNombres(String[] lineas) {
         String[] nombres = new String[lineas.length - 1];
-        for (int i = 1; i < lineas.length; i++) {
-            String[] campos = lineas[i].split(";");
-            nombres[i - 1] = campos[0].trim();
+        for (int pos = 1; pos < lineas.length; pos++) {
+            String[] campos = lineas[pos].split(";");
+            nombres[pos - 1] = campos[0].trim();
         }
         return nombres;
     }
 
-    // Las notas: una fila por alumno y una columna por trimestre
+    // Devolver tabla de notas dado el CSV
     public static int[][] cargarNotas(String[] lineas) {
-        int[][] notas = new int[lineas.length - 1][3];
-        for (int i = 1; i < lineas.length; i++) {
-            String[] campos = lineas[i].split(";");
-            for (int t = 0; t < 3; t++) {
-                notas[i - 1][t] = Integer.parseInt(campos[t + 1].trim());
+        int numAlumnos = lineas.length - 1;
+        String[] campos = lineas[0].split(";");
+        int numNotas = campos.length - 1;
+        int[][] notas = new int[numAlumnos][numNotas];
+        for (int fila = 1; fila <= numAlumnos; fila++) {
+            campos = lineas[fila].split(";");
+            for (int col = 0; col < numNotas; col++) {
+                notas[fila - 1][col] = Integer.parseInt(campos[col + 1].trim());
             }
         }
         return notas;
     }
 ```
 
-- Los dos bucles empiezan en `i = 1` para saltarse la cabecera (`lineas[0]`). Por eso los arrays tienen `lineas.length - 1` posiciones y se rellenan en `i - 1`.
-- El `for` de dentro rellena las tres columnas de cada fila.
+- `cargarNombres` empieza en `pos = 1` para saltarse la cabecera (`lineas[0]`). Por eso el array tiene `lineas.length - 1` posiciones y se rellena en `pos - 1`.
+- `cargarNotas` saca del propio CSV el tamaño de la tabla: tantas filas como líneas sin la cabecera (`numAlumnos`) y tantas columnas como campos tiene la cabecera, menos el nombre (`numNotas`): `nombre;t1;t2;t3` son 4 campos, 3 notas. Así sirve para cualquier número de alumnos y de trimestres.
+- El `for` de fuera recorre las filas, desde la línea 1 (sin la cabecera), y el de dentro, las columnas. La nota de la columna `col` está en el campo `col + 1`, porque el campo 0 es el nombre.
 
-En `actividad()`, en `Principal`, cambia las líneas `print("Primera: …")` y `print("Segunda: …")` por estas:
+En `actividad()`, en `Principal`, debajo de lo del paso 1:
 
 ```java
+        // Guardar los campos (valores separados por ;)
+        // de la segunda línea del CSV en un array
+        // e imprimir ese array
+        String[] campos = lineas[1].split(";");
+        print(Arrays.toString(campos));
+
+        print("");
+
+        // Guardar todos los nombres del CSV en un array
         String[] nombres = cargarNombres(lineas);
+
+        // Guardar todas las notas del CSV en una tabla (array de 2 dimensiones)
         int[][] notas = cargarNotas(lineas);
-        print("Alumnos: " + nombres.length);
-        print(nombres[0] + " " + Arrays.toString(notas[0]));
-        print(nombres[24] + " " + Arrays.toString(notas[24]));
+
+        // Imprimir las notas
+        for (int[] nota : notas) {
+            print(Arrays.toString(nota));
+        }
+
+        print("");
+
+        // Imprimir nombres seguidos de sus notas
+        for (int pos = 0; pos < nombres.length; pos++) {
+            print(nombres[pos] + ":" + Arrays.toString(notas[pos]));
+        }
+
+        print("");
 ```
 
-Y añade `import java.util.Arrays;` debajo de los otros imports. `Arrays.toString` convierte un array en texto ([UD4, apartado 3](../apuntes/UD4-arrays-y-cadenas.md#3-la-clase-arrays)).
+Y añade `import java.util.Arrays;` debajo de `package dam;`. `Arrays.toString` convierte un array en texto ([UD4, apartado 3](../apuntes/UD4-arrays-y-cadenas.md#3-la-clase-arrays)).
 
-**Comprueba que…**
+- El for-each de `notas` da cada **fila** de la tabla: `nota` es un `int[]`, las tres notas de un alumno.
+- `nombres[pos]` y `notas[pos]` son del mismo alumno, porque los dos arrays van en el mismo orden.
+
+**Comprueba que…** debajo de lo del paso 1 sale:
 
 ```
-=== CSV notas ===
-Líneas: 26
-Alumnos: 25
-Nombre01 [11, 60, 16]
-Nombre25 [19, 8, 71]
+[Nombre01, 11, 60, 16]
+
+[11, 60, 16]
+[9, 46, 19]
+[6, 64, 43]
+
+Nombre01:[11, 60, 16]
+Nombre02:[9, 46, 19]
+Nombre03:[6, 64, 43]
 ```
 
 **Si te falla…**
 
-- *`NumberFormatException: For input string: "t1"`*: el bucle empieza en `i = 0` y está convirtiendo la cabecera.
-- *`ArrayIndexOutOfBoundsException`*: una posición se sale del array. Revisa `i - 1` y `t + 1`, y que los arrays tengan `lineas.length - 1` posiciones.
-- *Sale algo como `[I@1b6d3586`*: has escrito `notas[0]` sin `Arrays.toString`.
+- *`NumberFormatException: For input string: "t1"`*: el bucle de filas empieza en `0` y está convirtiendo la cabecera.
+- *`ArrayIndexOutOfBoundsException`*: una posición se sale del array. Revisa `pos - 1`, `fila - 1` y `col + 1`.
+- *Sale algo como `[I@1b6d3586`*: has escrito `nota` o `notas[pos]` sin `Arrays.toString`.
+- *`cannot find symbol` en `Arrays`*: falta `import java.util.Arrays;` en `Principal.java`.
 
 ## Antes del paso 3 · `main`, `actividad()` y el ejercicio de tablas
 
@@ -304,7 +364,7 @@ Nombre25 [19, 8, 71]
    ```java
        public static void main(String[] args) {
            actividad();      // el proyecto guiado «CSV notas»
-           // autoEval();    // el ejercicio de tablas, en Auxiliar
+           // ejercicio1();    // el ejercicio de tablas, en Auxiliar
        }
 
        // El proyecto guiado «CSV notas»: cada paso añade aquí su código
@@ -330,34 +390,34 @@ Nombre25 [19, 8, 71]
 3. **El ejercicio de tablas.** En `Auxiliar.java`, debajo de `getString`, añade este método y completa cada comentario con su código:
 
    ```java
-       public static void autoEval() {
-           print("Autoevaluación: tablas");
+       public static void ejercicio1() {
+           print("Ejercicio 1: tablas");
 
-           // 1. Crea una tabla de números decimales (double) con 3 filas y 2 columnas
+           // Crea una tabla de números decimales (double) con 3 filas y 2 columnas
 
-           // 2. Pon todos los valores de la tabla a -1
+           // Pon todos los valores de la tabla a -1
 
-           // 3. Pide al usuario un número (con print("Dame número:")) y guárdalo
-           //    en la primera columna de la última fila
+           // Pide al usuario (con print("Dame número:")) el valor de la primera columna y última fila
+           // y guárdalo en la tabla
 
-           // 4. Muestra el valor guardado, leyéndolo de la tabla
+           // Muestra el valor guardado desde la tabla
 
-           // 5. Calcula y muestra la suma de todos los valores de la primera fila
+           // Calcula y muestra la suma de todos los valores de la primera fila
 
-           // 6. Calcula y muestra la suma de todos los valores de la segunda columna
+           // Calcula y muestra la suma de todos los valores de la segunda columna
 
        }
    ```
 
-   Para ejecutarlo, en el `main` pon `//` delante de `actividad();` y quítalo de `autoEval();`. Al terminar, déjalo como estaba: el proyecto sigue en el paso 3.
+   Para ejecutarlo, en el `main` pon `//` delante de `actividad();` y quítalo de `ejercicio1();`. Al terminar, déjalo como estaba: el proyecto sigue en el paso 3.
 
 **Comprueba que…**
 
 - con `actividad();` activa, sale lo mismo que al final del paso 2;
-- con `autoEval();` activa, si escribes `5`, sale:
+- con `ejercicio1();` activa, si escribes `5`, sale:
 
   ```
-  Autoevaluación: tablas
+  Ejercicio 1: tablas
   Dame número:
   5
   5.0
@@ -369,7 +429,7 @@ Nombre25 [19, 8, 71]
 
 **Si te falla…**
 
-- *`cannot find symbol: method autoEval()` o `getFloat()`*: el método no está en `Auxiliar`, o no es `public static`.
+- *`cannot find symbol: method ejercicio1()` o `getFloat()`*: el método no está en `Auxiliar`, o no es `public static`.
 - *`NumberFormatException` al escribir el número*: los decimales van con punto (`2.5`), no con coma.
 - *`ArrayIndexOutOfBoundsException`*: un bucle se sale de la tabla. Las filas van de 0 a 2 y las columnas, de 0 a 1: recorre con `< tabla.length` (filas) y `< tabla[0].length` (columnas) ([UD4, apartado 2](../apuntes/UD4-arrays-y-cadenas.md#2-matrices-arrays-de-dos-dimensiones)).
 - *`non-static method actividad() cannot be referenced from a static context`*: falta `static` en `private static void actividad()`.
@@ -378,114 +438,129 @@ Nombre25 [19, 8, 71]
 
 ## Paso 3 · ¿Está en la lista?
 
-**Objetivo.** Pedir un nombre y decir si está en la lista y en qué número.
+**Objetivo.** Pedir un nombre y decir si está en la lista y en qué posición.
 
-**Pista.** En `Notas.java`, en lugar de `// TODO Paso 3: buscar`:
+**Pista.** En `Notas.java`, en lugar de `// TODO Paso 3: buscarPosNombre`:
 
 ```java
-    // La posición del nombre en la lista, o -1 si no está
-    public static int buscar(String[] nombres, String nombre) {
-        for (int i = 0; i < nombres.length; i++) {
-            if (nombres[i].equalsIgnoreCase(nombre.trim())) {
-                return i;
+    // Devolver posición de un nombre (-1 si no está)
+    // dado el array de nombres y un nombre
+    public static int buscarPosNombre(String[] nombres, String nombre) {
+        for (int pos = 0; pos < nombres.length; pos++) {
+            if (nombres[pos].equalsIgnoreCase(nombre.trim())) {
+                return pos;
             }
         }
         return -1;
     }
 ```
 
-- `equalsIgnoreCase` compara sin distinguir mayúsculas: `nombre07` es igual que `Nombre07` ([UD4, apartado 4](../apuntes/UD4-arrays-y-cadenas.md#4-cadenas-string)).
+- `equalsIgnoreCase` compara sin distinguir mayúsculas: `nombre02` es igual que `Nombre02` ([UD4, apartado 4](../apuntes/UD4-arrays-y-cadenas.md#4-cadenas-string)). `trim()` quita los espacios de lo escrito.
 - Devuelve la posición en cuanto lo encuentra, o `-1` si no está ([UD3, apartado 2](../apuntes/UD3-funciones.md#2-parámetros-y-valor-de-retorno)).
 
-En `Principal.java`, debajo de `actividad()` (después de su `}` y antes de la última `}` de la clase), añade el método de esta opción:
+En `actividad()`, debajo de lo del paso 2:
 
 ```java
-    static void opcionEstaEnLaLista(String[] nombres) {
+        // Buscar la posición de un nombre
         print("Nombre:");
         String nombre = getString();
-        int posicion = buscar(nombres, nombre);
-        if (posicion == -1) {
+        int pos = buscarPosNombre(nombres, nombre);
+        if (pos == -1) {
             print(nombre + " no está en la lista");
         } else {
-            print(nombres[posicion] + " está en la lista: es el número " + (posicion + 1));
+            print(nombres[pos] + " está en la posición " + pos);
         }
-    }
+
+        print("");
 ```
 
-Los métodos de las opciones van sin `public`: no hace falta usarlos fuera de su paquete ([UD3, apartado 1](../apuntes/UD3-funciones.md#1-qué-es-una-función-método)). Y llámalo al final del `main`: `opcionEstaEnLaLista(nombres);`. Se muestra `posicion + 1` porque para una persona el primero es el número 1, no el 0.
+- Las posiciones empiezan en 0: `Nombre01` está en la posición 0.
+- Este `pos` no choca con los de los pasos 1 y 2: aquellos se declaran dentro de su `for` y solo existen en ese bucle.
 
 **Comprueba que…** al ejecutar y escribir el nombre:
 
 | Escribes | Sale |
 |---|---|
-| `Nombre07` | `Nombre07 está en la lista: es el número 7` |
-| `nombre07` | `Nombre07 está en la lista: es el número 7` |
-| `  Nombre12 ` (con espacios) | `Nombre12 está en la lista: es el número 12` |
+| `Nombre02` | `Nombre02 está en la posición 1` |
+| `nombre02` | `Nombre02 está en la posición 1` |
+| `  Nombre03 ` (con espacios) | `Nombre03 está en la posición 2` |
 | `Pepe` | `Pepe no está en la lista` |
 
 **Si te falla…**
 
-- *Con `nombre07` dice que no está*: usas `equals` en lugar de `equalsIgnoreCase`.
+- *Con `nombre02` dice que no está*: usas `equals` en lugar de `equalsIgnoreCase`.
 - *Con espacios dice que no está*: falta `trim()`.
-- *Dice el número 6 para `Nombre07`*: falta el `+ 1`.
+- *`variable pos is already defined`*: hay otro `int pos` fuera de un `for` en `actividad()`; los de los pasos 1 y 2 van dentro de los paréntesis de su `for`.
 
 ---
 
-## Paso 4 · Las notas y la media de un alumno
+## Paso 4 · La media de un alumno
 
-**Objetivo.** Pedir un nombre y, si está, mostrar sus tres notas y su media.
+**Objetivo.** Calcular la media de las notas de un alumno de dos formas: dadas sus notas y dada su posición en la lista.
 
-**Pista.** En `Notas.java`, en lugar de `// TODO Paso 4: media`:
+**Pista.** En `Notas.java`, en lugar de `// TODO Paso 4: mediaDadasNotas y mediaDadoNombre`:
 
 ```java
-    // La media de las notas de un alumno
-    public static double media(int[] notasAlumno) {
+    // Devolver media de notas de un alumno, dadas las notas
+    public static double mediaDadasNotas(int[] notas) {
         int suma = 0;
-        for (int nota : notasAlumno) {
+        for (int nota : notas) {
             suma += nota;
         }
-        return (double) suma / notasAlumno.length;
+        return (double) suma / notas.length;
     }
-```
 
-- `media` recibe **una fila** de la matriz: las notas de un alumno, como `notas[11]`.
-- `for (int nota : notasAlumno)` recorre la fila dando cada valor en `nota`: es el for-each ([UD4, apartado 1](../apuntes/UD4-arrays-y-cadenas.md#1-arrays)).
-- `(double)` convierte la suma en decimal antes de dividir: sin él, `int / int` da una división entera y se pierden los decimales.
-
-En `Principal.java`, añade este método debajo del anterior:
-
-```java
-    static void opcionNotasDeUnAlumno(String[] nombres, int[][] notas) {
-        print("Nombre:");
-        String nombre = getString();
-        int posicion = buscar(nombres, nombre);
-        if (posicion == -1) {
-            print(nombre + " no está en la lista");
+    // Devolver media de notas de un alumno, dado el CSV y la posición del nombre
+    public static double mediaDadoNombre(String[] lineas, int pos) {
+        if (pos == -1) {
+            print("El alumno no existe");
+            return -1;
         } else {
-            print(nombres[posicion] + " " + Arrays.toString(notas[posicion])
-                    + " media " + String.format("%.2f", media(notas[posicion])));
+            return mediaDadasNotas(cargarNotas(lineas)[pos]);
         }
     }
 ```
 
-`buscar` sirve también aquí: la posición del nombre es la de su fila de notas. `String.format("%.2f", …)` da el número con dos decimales.
+Y debajo de `import java.util.Random;`, el import que permite usar `print` en `Notas`:
 
-En `actividad()`, cambia la llamada `opcionEstaEnLaLista(nombres);` por `opcionNotasDeUnAlumno(nombres, notas);`. El método del paso 3 no se borra: se usa en el menú del paso 7.
+```java
+import static dam.Auxiliar.*; // Para poder usar print()
+```
 
-**Comprueba que…**
+- `mediaDadasNotas` recibe **una fila** de la tabla, las notas de un alumno, como `notas[0]`. El for-each da cada nota ([UD4, apartado 1](../apuntes/UD4-arrays-y-cadenas.md#1-arrays)).
+- `(double)` convierte la suma en decimal antes de dividir: sin él, `int / int` da una división entera y se pierden los decimales.
+- `mediaDadoNombre` recibe el CSV y la posición que da `buscarPosNombre`. Si es `-1`, avisa y devuelve `-1`. Si no, carga la tabla con `cargarNotas` y **reutiliza** `mediaDadasNotas` con la fila de esa posición ([UD3, apartado 1](../apuntes/UD3-funciones.md#1-qué-es-una-función-método)).
+
+En `actividad()`, debajo de lo del paso 3:
+
+```java
+        // Calcular e imprimir, con un decimal, la nota media del primer alumno
+        String mediaConFormato = String.format("%.1f", mediaDadasNotas(notas[0]));
+        print(mediaConFormato);
+
+        // Calcular e imprimir, con un decimal, la nota media dada la posición del nombre
+        mediaConFormato = String.format("%.1f", mediaDadoNombre(lineas, pos));
+        print(mediaConFormato);
+
+        print("");
+```
+
+`pos` es la posición del nombre buscado en el paso 3. `String.format("%.1f", …)` da el número con un decimal.
+
+**Comprueba que…** según el nombre que escribes en el paso 3, salen estas líneas:
 
 | Escribes | Sale |
 |---|---|
-| `Nombre22` | `Nombre22 [76, 49, 87] media 70.67` |
-| `Nombre14` | `Nombre14 [97, 34, 51] media 60.67` |
-| `Pepe` | `Pepe no está en la lista` |
+| `Nombre02` | `29.0` y `24.7` |
+| `Nombre03` | `29.0` y `37.7` |
+| `Pepe` | `29.0`, `El alumno no existe` y `-1.0` |
 
-Según el idioma del sistema, los decimales pueden salir con coma (`70,67`): las dos formas están bien.
+`29.0` es la media del primer alumno, (11 + 60 + 16) / 3, y la otra, la del nombre escrito. Según el idioma del sistema, los decimales pueden salir con coma (`24,7`): las dos formas están bien.
 
 **Si te falla…**
 
-- *La media sale `70.00` en lugar de `70.67`*: falta el `(double)`.
-- *`cannot find symbol` en `Arrays`*: falta `import java.util.Arrays;` en `Principal.java`.
+- *La media de `Nombre02` sale `24.0` en lugar de `24.7`*: falta el `(double)`.
+- *`cannot find symbol` en `print`, en `Notas.java`*: falta `import static dam.Auxiliar.*;` en `Notas.java`.
 
 ---
 
@@ -493,30 +568,31 @@ Según el idioma del sistema, los decimales pueden salir con coma (`70,67`): las
 
 **Objetivo.** Pedir un trimestre y decir quién tiene la mejor nota en él.
 
-**Pista.** Se busca el máximo de una **columna** de la matriz ([UD4, apartado 2](../apuntes/UD4-arrays-y-cadenas.md#2-matrices-arrays-de-dos-dimensiones)): el trimestre 1 es la columna 0.
+**Pista.** Se busca el máximo de una **columna** de la tabla ([UD4, apartado 2](../apuntes/UD4-arrays-y-cadenas.md#2-matrices-arrays-de-dos-dimensiones)): el trimestre 1 es la columna 0.
 
 En `Notas.java`, en lugar de `// TODO Paso 5: mejorDelTrimestre`:
 
 ```java
-    // La posición del alumno con la mejor nota de un trimestre (1, 2 o 3)
+    // Devolver posición del alumno con la mejor nota de un trimestre (1, 2 o 3)
+    // dada la tabla de notas y el trimestre
     public static int mejorDelTrimestre(int[][] notas, int trimestre) {
-        int columna = trimestre - 1;
+        int col = trimestre - 1;
         int mejor = 0;
-        for (int i = 1; i < notas.length; i++) {
-            if (notas[i][columna] > notas[mejor][columna]) {
-                mejor = i;
+        for (int pos = 1; pos < notas.length; pos++) {
+            if (notas[pos][col] > notas[mejor][col]) {
+                mejor = pos;
             }
         }
         return mejor;
     }
 ```
 
-Se guarda la **posición** del mejor: con ella se saben el nombre (`nombres[mejor]`) y la nota (`notas[mejor][columna]`). Se empieza suponiendo que el mejor es el primero ([UD4, apartado 1](../apuntes/UD4-arrays-y-cadenas.md#1-arrays)).
+Se guarda la **posición** del mejor: con ella se saben el nombre (`nombres[mejor]`) y la nota (`notas[mejor][col]`). Se empieza suponiendo que el mejor es el primero ([UD4, apartado 1](../apuntes/UD4-arrays-y-cadenas.md#1-arrays)).
 
-En `Principal.java`, añade este método:
+En `actividad()`, debajo de lo del paso 4:
 
 ```java
-    static void opcionMejorDeUnTrimestre(String[] nombres, int[][] notas) {
+        // Pedir un trimestre e imprimir quién tiene la mejor nota en él
         print("Trimestre (1, 2 o 3):");
         int trimestre = getInt();
         if (trimestre < 1 || trimestre > 3) {
@@ -525,18 +601,17 @@ En `Principal.java`, añade este método:
             int mejor = mejorDelTrimestre(notas, trimestre);
             print("Trimestre " + trimestre + ": " + nombres[mejor] + " (" + notas[mejor][trimestre - 1] + ")");
         }
-    }
+
+        print("");
 ```
 
-Y en `actividad()`, cambia la llamada del paso anterior por `opcionMejorDeUnTrimestre(nombres, notas);`.
-
-**Comprueba que…**
+**Comprueba que…** después del nombre, al escribir el trimestre:
 
 | Escribes | Sale |
 |---|---|
-| `1` | `Trimestre 1: Nombre14 (97)` |
-| `2` | `Trimestre 2: Nombre06 (98)` |
-| `3` | `Trimestre 3: Nombre07 (95)` |
+| `1` | `Trimestre 1: Nombre01 (11)` |
+| `2` | `Trimestre 2: Nombre03 (64)` |
+| `3` | `Trimestre 3: Nombre03 (43)` |
 | `5` | `No hay trimestre 5` |
 
 **Si te falla…**
@@ -550,112 +625,171 @@ Y en `actividad()`, cambia la llamada del paso anterior por `opcionMejorDeUnTrim
 
 **Objetivo.** Mostrar de una vez el mejor de cada trimestre y el de mejor media del curso.
 
-**Pista.** El mejor del curso es el de mejor media: un método nuevo que **reutiliza** `media`, del paso 4. En `Notas.java`, en lugar de `// TODO Paso 6: mejorDelCurso`:
+**Pista.** El mejor del curso es el de mejor media: un método nuevo que **reutiliza** `mediaDadasNotas`, del paso 4. En `Notas.java`, en lugar de `// TODO Paso 6: mejorDelCurso`:
 
 ```java
-    // La posición del alumno con la mejor media del curso
+    // Devolver posición del alumno con la mejor media del curso
+    // dada la tabla de notas
     public static int mejorDelCurso(int[][] notas) {
         int mejor = 0;
-        for (int i = 1; i < notas.length; i++) {
-            if (media(notas[i]) > media(notas[mejor])) {
-                mejor = i;
+        for (int pos = 1; pos < notas.length; pos++) {
+            if (mediaDadasNotas(notas[pos]) > mediaDadasNotas(notas[mejor])) {
+                mejor = pos;
             }
         }
         return mejor;
     }
 ```
 
-En `Principal.java`, este método reutiliza `mejorDelTrimestre` en un bucle, para los tres trimestres:
+En `actividad()`, debajo de lo del paso 5, este código reutiliza `mejorDelTrimestre` en un bucle, para los tres trimestres:
 
 ```java
-    static void opcionMejores(String[] nombres, int[][] notas) {
-        for (int trimestre = 1; trimestre <= 3; trimestre++) {
-            int mejor = mejorDelTrimestre(notas, trimestre);
-            print("Trimestre " + trimestre + ": " + nombres[mejor] + " (" + notas[mejor][trimestre - 1] + ")");
+        // Imprimir el mejor de cada trimestre y el de mejor media del curso
+        for (int t = 1; t <= 3; t++) {
+            int mejor = mejorDelTrimestre(notas, t);
+            print("Trimestre " + t + ": " + nombres[mejor] + " (" + notas[mejor][t - 1] + ")");
         }
-        int mejor = mejorDelCurso(notas);
-        print("Curso: " + nombres[mejor] + " (media " + String.format("%.2f", media(notas[mejor])) + ")");
-    }
+        int mejorCurso = mejorDelCurso(notas);
+        print("Curso: " + nombres[mejorCurso] + " (media "
+                + String.format("%.1f", mediaDadasNotas(notas[mejorCurso])) + ")");
 ```
 
-Y en `actividad()`, cambia la llamada del paso anterior por `opcionMejores(nombres, notas);`.
+- El bucle usa `t` y no `trimestre`, porque `trimestre` ya existe en `actividad()`: es el del paso 5.
+- El `int mejor` del bucle solo existe dentro de él; el del curso se llama `mejorCurso`.
 
-**Comprueba que…**
+**Comprueba que…** al final sale:
 
 ```
-Trimestre 1: Nombre14 (97)
-Trimestre 2: Nombre06 (98)
-Trimestre 3: Nombre07 (95)
-Curso: Nombre22 (media 70.67)
+Trimestre 1: Nombre01 (11)
+Trimestre 2: Nombre03 (64)
+Trimestre 3: Nombre03 (43)
+Curso: Nombre03 (media 37.7)
 ```
 
 **Si te falla…**
 
-- *`variable mejor is already defined`*: el primer `int mejor` está fuera de las llaves del `for`. Tiene que ir dentro: así solo existe en el bucle y no choca con el `int mejor` de después.
-- *Las tres primeras líneas dicen el mismo trimestre*: en el `for` llamas a `mejorDelTrimestre` con un número fijo en lugar de con `trimestre`.
+- *`variable trimestre is already defined`*: el bucle usa `trimestre`; cámbialo por `t`.
+- *Las tres primeras líneas dicen el mismo trimestre*: en el `for` llamas a `mejorDelTrimestre` con un número fijo en lugar de con `t`.
 
 ---
 
 ## Paso 7 · El menú
 
-**Objetivo.** Que el programa muestre un menú, haga la opción elegida y repita hasta elegir «Salir».
+**Objetivo.** Que el programa cargue los 25 alumnos, muestre un menú, haga la opción elegida y repita hasta elegir «Salir».
 
-**Pista.** Sustituye el método `actividad()` entero por este (el `main` no se toca). Los métodos de las opciones (pasos 3 a 6) se quedan como están:
+**Pista.** Hasta ahora, `actividad()` lo hace todo seguido y una sola vez. Con el menú, cada pregunta de los pasos 3 a 6 pasa a **su propio método**, que solo se ejecuta cuando se elige su opción.
 
-```java
-    private static void actividad() {
-        print("=== CSV notas ===");
+1. En `Principal.java`, debajo de `actividad()` (después de su `}` y antes de la última `}` de la clase), añade los métodos de las opciones. Cada uno es el código de su paso, y recibe como parámetros los datos que usa:
 
-        String[] lineas = generarLineas(25, 2627);
-        String[] nombres = cargarNombres(lineas);
-        int[][] notas = cargarNotas(lineas);
-        print("Alumnos: " + nombres.length);
+   ```java
+       // Paso 3
+       static void opcionEstaEnLaLista(String[] nombres) {
+           print("Nombre:");
+           String nombre = getString();
+           int pos = buscarPosNombre(nombres, nombre);
+           if (pos == -1) {
+               print(nombre + " no está en la lista");
+           } else {
+               print(nombres[pos] + " está en la posición " + pos);
+           }
+       }
 
-        int opcion;
-        do {
-            print("");
-            print("1. ¿Está en la lista?");
-            print("2. Notas de un alumno");
-            print("3. Mejor de un trimestre");
-            print("4. Mejores de cada trimestre y del curso");
-            print("0. Salir");
-            print("Opción:");
-            opcion = getInt();
-            switch (opcion) {
-                case 1:
-                    opcionEstaEnLaLista(nombres);
-                    break;
-                case 2:
-                    opcionNotasDeUnAlumno(nombres, notas);
-                    break;
-                case 3:
-                    opcionMejorDeUnTrimestre(nombres, notas);
-                    break;
-                case 4:
-                    opcionMejores(nombres, notas);
-                    break;
-                case 0:
-                    print("Hasta luego");
-                    break;
-                default:
-                    print("Opción no válida");
-            }
-        } while (opcion != 0);
-    }
-```
+       // Paso 4
+       static void opcionNotasDeUnAlumno(String[] nombres, int[][] notas) {
+           print("Nombre:");
+           String nombre = getString();
+           int pos = buscarPosNombre(nombres, nombre);
+           if (pos == -1) {
+               print(nombre + " no está en la lista");
+           } else {
+               print(nombres[pos] + ":" + Arrays.toString(notas[pos])
+                       + " media " + String.format("%.1f", mediaDadasNotas(notas[pos])));
+           }
+       }
 
-- Los datos se generan y se cargan **una sola vez**, al principio; el menú solo los consulta.
-- `do-while` repite el menú mientras la opción no sea 0; como la condición va al final, el menú sale al menos una vez.
-- Cada `case` llama al método de su opción: `actividad()` se lee como una lista de lo que hace el programa ([UD3, apartado 1](../apuntes/UD3-funciones.md#1-qué-es-una-función-método)).
+       // Paso 5
+       static void opcionMejorDeUnTrimestre(String[] nombres, int[][] notas) {
+           print("Trimestre (1, 2 o 3):");
+           int trimestre = getInt();
+           if (trimestre < 1 || trimestre > 3) {
+               print("No hay trimestre " + trimestre);
+           } else {
+               int mejor = mejorDelTrimestre(notas, trimestre);
+               print("Trimestre " + trimestre + ": " + nombres[mejor] + " (" + notas[mejor][trimestre - 1] + ")");
+           }
+       }
 
-**Comprueba que…**
+       // Paso 6
+       static void opcionMejores(String[] nombres, int[][] notas) {
+           for (int t = 1; t <= 3; t++) {
+               int mejor = mejorDelTrimestre(notas, t);
+               print("Trimestre " + t + ": " + nombres[mejor] + " (" + notas[mejor][t - 1] + ")");
+           }
+           int mejorCurso = mejorDelCurso(notas);
+           print("Curso: " + nombres[mejorCurso] + " (media "
+                   + String.format("%.1f", mediaDadasNotas(notas[mejorCurso])) + ")");
+       }
+   ```
+
+   - Van sin `public`: no hace falta usarlos fuera de su paquete ([UD3, apartado 1](../apuntes/UD3-funciones.md#1-qué-es-una-función-método)).
+   - `opcionNotasDeUnAlumno` junta los pasos 3 y 4: busca el nombre y muestra sus notas y su media. Usa `mediaDadasNotas`, porque la tabla de notas ya está cargada; `mediaDadoNombre` se queda en `Notas`, aunque el menú no la use.
+
+2. Sustituye el método `actividad()` entero por este (el `main` no se toca):
+
+   ```java
+       private static void actividad() {
+           print("=== CSV notas ===");
+
+           String[] lineas = generarLineas(25, 2627);
+           String[] nombres = cargarNombres(lineas);
+           int[][] notas = cargarNotas(lineas);
+           print("Alumnos: " + nombres.length);
+
+           int opcion;
+           do {
+               print("");
+               print("1. ¿Está en la lista?");
+               print("2. Notas de un alumno");
+               print("3. Mejor de un trimestre");
+               print("4. Mejores de cada trimestre y del curso");
+               print("0. Salir");
+               print("Opción:");
+               opcion = getInt();
+               switch (opcion) {
+                   case 1:
+                       opcionEstaEnLaLista(nombres);
+                       break;
+                   case 2:
+                       opcionNotasDeUnAlumno(nombres, notas);
+                       break;
+                   case 3:
+                       opcionMejorDeUnTrimestre(nombres, notas);
+                       break;
+                   case 4:
+                       opcionMejores(nombres, notas);
+                       break;
+                   case 0:
+                       print("Hasta luego");
+                       break;
+                   default:
+                       print("Opción no válida");
+               }
+           } while (opcion != 0);
+       }
+   ```
+
+   - Ahora son **25 alumnos**. Los datos se generan y se cargan **una sola vez**, al principio; el menú solo los consulta. Lo que se imprimía en los pasos 1 y 2 servía para comprobarlos y ya no hace falta.
+   - `do-while` repite el menú mientras la opción no sea 0; como la condición va al final, el menú sale al menos una vez.
+   - Cada `case` llama al método de su opción: `actividad()` se lee como una lista de lo que hace el programa ([UD3, apartado 1](../apuntes/UD3-funciones.md#1-qué-es-una-función-método)).
+
+**Comprueba que…** al arrancar sale `Alumnos: 25` y:
 
 | Eliges | Y escribes | Sale |
 |---|---|---|
-| `1` | `nombre07` | `Nombre07 está en la lista: es el número 7` |
-| `2` | `Nombre22` | `Nombre22 [76, 49, 87] media 70.67` |
+| `1` | `nombre07` | `Nombre07 está en la posición 6` |
+| `2` | `Nombre22` | `Nombre22:[76, 49, 87] media 70.7` |
 | `3` | `2` | `Trimestre 2: Nombre06 (98)` |
-| `4` | | las cuatro líneas del paso 6 |
+| `4` | | `Trimestre 1: Nombre14 (97)`, `Trimestre 2: Nombre06 (98)`, `Trimestre 3: Nombre07 (95)` y `Curso: Nombre22 (media 70.7)`, cada una en su línea |
 | `9` | | `Opción no válida` |
 | `0` | | `Hasta luego` y termina |
 
@@ -664,6 +798,7 @@ Y que, después de cada opción, vuelve a salir el menú.
 **Si te falla…**
 
 - *Al elegir una opción sale también lo de la siguiente*: falta un `break`.
+- *`cannot find symbol` en `nombres` o `notas` dentro de un método de opción*: falta ese parámetro; cada método solo ve lo que recibe entre paréntesis.
 - *`NumberFormatException` al elegir*: has escrito algo que no es un número; de momento `getInt` solo acepta números enteros. Lo arregla el paso 8.
 
 ---
@@ -728,13 +863,13 @@ En `Principal.java`, añade este método debajo de los demás:
             print("No hay trimestre " + trimestre);
             return;
         }
-        int columna = trimestre - 1;
+        int col = trimestre - 1;
         int aprobados = 0;
-        for (int i = 0; i < nombres.length; i++) {
-            if (notas[i][columna] < 50) {
+        for (int pos = 0; pos < nombres.length; pos++) {
+            if (notas[pos][col] < 50) {
                 continue;                   // suspenso: pasa al siguiente
             }
-            print(nombres[i] + " (" + notas[i][columna] + ")");
+            print(nombres[pos] + " (" + notas[pos][col] + ")");
             aprobados++;
         }
         print("Aprobados: " + aprobados + " de " + nombres.length);
@@ -815,9 +950,9 @@ Qué se entrega y cuándo: [`entrega.md`](entrega.md).
 | Comprobación | Hecho |
 |---|---|
 | Compila sin errores y arranca con `Alumnos: 25` |  |
-| `Notas` tiene los siete métodos auxiliares y `Principal` los usa |  |
+| `Notas` tiene los métodos auxiliares de los pasos 1 a 6 y `Principal` los usa |  |
 | Encuentra un nombre aunque cambien las mayúsculas o haya espacios, y dice si no está |  |
-| Muestra las notas y la media de un alumno |  |
+| Muestra las notas y la media de un alumno, con un decimal |  |
 | Dice el mejor de un trimestre y avisa si el trimestre no existe |  |
 | Muestra los mejores de cada trimestre y del curso |  |
 | El menú repite hasta elegir 0 |  |

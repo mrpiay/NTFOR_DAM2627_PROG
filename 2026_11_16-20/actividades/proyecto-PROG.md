@@ -135,9 +135,9 @@ En `Principal.java`, en **los dos** métodos que piden un nombre, `opcionEstaEnL
 
 | Opción | Escribes | Sale |
 |---|---|---|
-| 1 | `nombre 7` | `Nombre07 está en la lista: es el número 7` |
-| 1 | ` NOMBRE07 ` | `Nombre07 está en la lista: es el número 7` |
-| 2 | `Nombre 7` | `Nombre07 [25, 24, 95] media 48.00` |
+| 1 | `nombre 7` | `Nombre07 está en la posición 6` |
+| 1 | ` NOMBRE07 ` | `Nombre07 está en la posición 6` |
+| 2 | `Nombre 7` | `Nombre07:[25, 24, 95] media 48.0` |
 | 1 | `Pepe` | `Escribe un nombre como Nombre07` |
 | 1 | `nombre 99` | `Nombre99 no está en la lista` |
 
