@@ -71,10 +71,11 @@ Las expresiones regulares (regex) están en los [apuntes de la semana del 16 al 
 | `equals` / `equalsIgnoreCase` | Comparar (con o sin distinguir mayúsculas) | |
 | `contains(t)` | Si contiene el texto `t` | |
 | `split(";")` | Lo parte en un array por el separador | `"Ana;7;8".split(";")` → `{"Ana","7","8"}` |
+| `String.valueOf(x)` | Convierte un número (o cualquier otro valor) en texto | `String.valueOf(7.5)` → `"7.5"` |
 | `String.format(…)` | Texto con formato: `%d` entero, `%02d` entero con dos cifras, `%.2f` dos decimales, `%s` texto; `%5d` ocupa 5 huecos alineado a la derecha y `%-10s`, 10 huecos alineado a la izquierda | `String.format("%.2f", 7.333)` → `"7.33"` |
 
 - Los `String` **no cambian**: cada método devuelve un texto nuevo. `nombre.trim()` no cambia `nombre`; hay que guardar el resultado.
-- Para convertir un texto en número: `Integer.parseInt`.
+- Para convertir un texto en número: `Integer.parseInt`. Al revés, un número en texto: `String.valueOf(n)`, o sumarlo a un texto: `"" + n`.
 - Los textos se comparan con **`equals`** (o `equalsIgnoreCase`), nunca con `==`, que compara si son el mismo objeto y no su contenido.
 
 ---
