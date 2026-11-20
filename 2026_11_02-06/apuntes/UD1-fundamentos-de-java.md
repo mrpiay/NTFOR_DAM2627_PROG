@@ -45,6 +45,36 @@ Lo básico que hay que saber de la UD1. Cada apartado tiene la idea clave, lo qu
 
 ---
 
+### Paquetes, carpetas y compilación
+
+**En una frase:** el paquete dice en qué carpeta tiene que estar cada `.class`; seguir el mismo árbol con los `.java` es lo que permite a `javac` encontrar solo las clases que necesita.
+
+**Lo que tienes que saber**
+
+- **La clase pública se llama como su archivo.** `public class Principal` va en `Principal.java`, con las mismas mayúsculas. Si no coinciden, `javac` da error.
+- **Los `.class` tienen que estar en el árbol del paquete. Esto es obligatorio.** La clase `dam.Principal` se busca en `bin/dam/Principal.class`; si no está ahí, `java` no la encuentra. `javac -d bin` ya los coloca así.
+- **Los `.java` en el mismo árbol (`src/dam/Principal.java`) es una convención**, no una obligación: `javac` compila los archivos que se le pasan estén donde estén. Tampoco `src` ni `bin` son nombres obligatorios.
+- **La convención sirve para algo.** Cuando `javac` compila una clase que usa otra que no se le ha pasado, convierte su nombre en una ruta (`dam.Auxiliar` → `dam/Auxiliar.java`) y la busca a partir de la raíz de las fuentes. Si los archivos siguen el árbol, la encuentra y la compila también; si no, da `cannot find symbol`.
+- La raíz de las fuentes es la carpeta actual o la que se indica con **`-sourcepath`**.
+- **`javac` recibe rutas de archivo; `java` recibe nombres de clase.** Los archivos que se le pasan a `javac` se escriben como cualquier ruta, a partir de la carpeta actual (`src/dam/Principal.java`): `-sourcepath` no las cambia, solo dice dónde buscar las clases que **no** se le han pasado. A `java` se le da el nombre de la clase con puntos (`dam.Principal`), y `-cp` dice dónde buscarla.
+
+**Compara**: tres formas de compilar el mismo proyecto (`Principal` usa `Auxiliar`, las dos en el paquete `dam`):
+
+| Desde | Orden | Qué hace |
+|---|---|---|
+| La carpeta del proyecto | `javac -d bin src/dam/*.java` | Se le pasan todos los archivos |
+| La carpeta del proyecto | `javac -d bin -sourcepath src src/dam/Principal.java` | Se le pasa solo `Principal`; busca `Auxiliar` en `src/dam/` |
+| `src` | `javac -d ../bin dam/Principal.java` | La carpeta actual ya es la raíz de las fuentes |
+
+Las tres dejan los mismos `.class` en `bin/dam/`. En cambio, desde la carpeta del proyecto fallan estas dos:
+
+| Orden | Error | Por qué |
+|---|---|---|
+| `javac -d bin src/dam/Principal.java` | `cannot find symbol` (`Auxiliar`) | Sin `-sourcepath`, busca `Auxiliar` en `./dam/`, que no existe |
+| `javac -d bin -sourcepath src dam/Principal.java` | `file not found: dam/Principal.java` | La ruta del archivo se toma desde la carpeta actual, no desde `src` |
+
+Más casos, con dos paquetes (`a` y `a.b`) y también para `java`: [ejemplos de paquetes y compilación](ejemplos-paquetes-y-compilacion.md).
+
 ## 3. Tipos, variables y constantes
 
 **En una frase:** cada dato tiene un tipo, que dice qué valores admite y qué se puede hacer con él.

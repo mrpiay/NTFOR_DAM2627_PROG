@@ -98,7 +98,7 @@ javac -d bin src/dam/*.java src/dam/notas/*.java
 java -cp bin dam.Principal
 ```
 
-Es lo mismo que en «Java 0», con una carpeta más: `src/dam/notas/*.java`, el paquete nuevo. Si `javac` no dice nada, ha compilado bien.
+Es lo mismo que en «Java 0», con una carpeta más: `src/dam/notas/*.java`, el paquete nuevo. Si `javac` no dice nada, ha compilado bien. Por qué hay que pasarle las dos carpetas, y otras formas de compilar (como `javac -d bin -sourcepath src src/dam/Principal.java`): apuntes de UD1, «Paquetes, carpetas y compilación».
 
 ---
 
