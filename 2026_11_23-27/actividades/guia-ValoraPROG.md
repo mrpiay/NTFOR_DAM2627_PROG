@@ -4,7 +4,7 @@
 
 En esta guía aprenderás a diseñar y desarrollar **ValoraPROG**, un programa en Java, con un menú en la terminal, para recoger valoraciones anónimas del módulo de PROG (Programación).
 
-Cada persona valora del 1 al 5 tres aspectos del módulo: el **docente**, los **materiales** y las **clases**. El programa guarda las valoraciones mientras está abierto y muestra, para cada aspecto, todas sus notas separadas por comas y su media, y una **valoración global**: la media de los tres aspectos, que cuentan todos lo mismo.
+Cada persona valora del 1 al 5 tres aspectos del módulo: el **docente**, los **materiales** y las **clases**. El programa guarda las valoraciones mientras está abierto y muestra, para cada aspecto, todas sus notas separadas por comas y su media, y una **valoración global**: la media de los tres aspectos, que cuentan todos lo mismo. Cada media se ve también con **estrellas** de asteriscos, como en las tiendas de aplicaciones: `****-` son 4 de 5.
 
 El objetivo de esta guía no es únicamente conseguir que el programa funcione, sino también comprender cómo se organiza un programa en Java y por qué cada parte va donde va. Para ello, se usa la terminal de **Ubuntu** para compilar y ejecutar y **VS Code** para escribir el código. Además, se usan **`Scanner`** para leer del teclado, **`switch`** y bucles para el menú, **`try-catch`** para que el programa no se rompa con lo que se escriba, **funciones** para repartir el trabajo y una **matriz** para guardar las notas.
 
@@ -65,10 +65,10 @@ Valoración guardada (1 en total).
 Opción: 2
 
 Valoraciones: 1
-  Docente: 4 (media 4.0)
-  Materiales: 3 (media 3.0)
-  Clases: 5 (media 5.0)
-Valoración global: 4.0
+  Docente: ****-  4 (media 4.0)
+  Materiales: ***--  3 (media 3.0)
+  Clases: *****  5 (media 5.0)
+Valoración global: ****-  4.0
 
 === ValoraPROG ===
 1. Nueva valoración
@@ -84,7 +84,7 @@ Hasta pronto. Las valoraciones no se guardan al salir.
 | R1 | El programa muestra un **menú** con tres opciones: 1, nueva valoración; 2, ver la valoración global; 0, salir. Después de cada opción, el menú vuelve a salir, hasta elegir 0. |
 | R2 | **Nueva valoración:** pide una nota del 1 al 5 para docente, materiales y clases. Si lo escrito no es un número del 1 al 5 (letras, un 0, un 6…), avisa y vuelve a preguntar. El programa no se cierra. |
 | R3 | Al terminar una valoración, dice cuántas hay en total. |
-| R4 | **Ver la valoración global:** el número de valoraciones; para cada categoría, todas sus notas **separadas por comas** y su **media**, con un decimal; y la **valoración global**: la media de las tres medias. |
+| R4 | **Ver la valoración global:** el número de valoraciones; para cada categoría, sus **estrellas**, todas sus notas **separadas por comas** y su **media**, con un decimal; y la **valoración global**, con sus estrellas: la media de las tres medias. Las estrellas son 5 caracteres: un `*` por cada estrella y un `-` por cada una que falta. Las estrellas son la media redondeada a un entero: 4.5 da `*****` y 3.8, `****-`. |
 | R5 | Si aún no hay valoraciones, la opción 2 dice «Aún no hay valoraciones.». |
 | R6 | Si se elige una opción que no existe, avisa y vuelve a mostrar el menú. |
 | R7 | Caben como máximo **30 valoraciones**. Si se intenta una más, avisa. |
@@ -123,6 +123,8 @@ Clases:      (5 + 2) / 2 = 3.5
 Global:      (4.5 + 3.5 + 3.5) / 3 = 3.83…  →  se muestra 3.8
 ```
 
+**Las estrellas.** Se redondea la media a un entero y se escriben 5 caracteres: un `*` por cada estrella y un `-` por cada una que falta. La media de docente, 4.5, da 5 estrellas (`*****`); la de materiales, 3.5, da 4 (`****-`), y la global, 3.8, también 4 (`****-`).
+
 **En memoria.** La matriz existe mientras el programa está abierto. Al salir, Java libera la memoria y las valoraciones se pierden (R8).
 
 ## 3. Cómo se organiza el código
@@ -159,7 +161,7 @@ Estas son las piezas que usa el programa:
 Un programa pequeño se podría escribir entero dentro de `main`, pero sería difícil de leer y de cambiar. Por eso el código se reparte:
 
 - **`Principal`**: el programa que se ve. Muestra el menú, lee lo que se escribe con `Scanner` y escribe las respuestas con `println`. Cada trabajo está en su propia función: `mostrarMenu`, `nuevaValoracion`, `leerNota` y `mostrarResumen`. Así `main` queda corto y se lee como el menú.
-- **`Calculos`**: solo cuentas. No lee del teclado ni escribe nada: recibe datos y devuelve resultados. Comprueba si una nota es válida, junta las notas de una categoría con comas, calcula las medias y redondea.
+- **`Calculos`**: solo cuentas. No lee del teclado ni escribe nada: recibe datos y devuelve resultados. Comprueba si una nota es válida, junta las notas de una categoría con comas, calcula las medias, redondea y convierte una media en estrellas.
 
 En resumen: **`Principal` habla con la persona y `Calculos` hace las cuentas**.
 
@@ -172,7 +174,7 @@ En resumen: **`Principal` habla con la persona y `Calculos` hace las cuentas**.
 │   mostrarMenu        escribe el menú                         │
 │   nuevaValoracion    rellena una fila de la matriz           │
 │   leerNota           pide una nota hasta que es válida       │
-│   mostrarResumen     notas, medias y global                  │
+│   mostrarResumen     estrellas, notas, medias y global       │
 │   habla con la persona: Scanner y println                    │
 └─────────────┬──────────────────────────────────▲─────────────┘
               │ esNotaValida(nota)               │ true o false
@@ -180,6 +182,7 @@ En resumen: **`Principal` habla con la persona y `Calculos` hace las cuentas**.
               │ media(notas, total, c)           │ 4.5
               │ global(notas, total)             │ 3.833…
               │ redondear(x)                     │ 3.8
+              │ estrellas(x)                     │ "****-"
 ┌─────────────▼──────────────────────────────────┴─────────────┐
 │ Calculos.java                                    paso 2      │
 │   solo cuentas: recibe datos y devuelve resultados,          │
@@ -189,7 +192,7 @@ En resumen: **`Principal` habla con la persona y `Calculos` hace las cuentas**.
 
 | Paso | Archivo | Qué contiene |
 |---|---|---|
-| 2 | `src/dam/Calculos.java` | Las cuentas: `esNotaValida`, `unir`, `media`, `global` y `redondear` |
+| 2 | `src/dam/Calculos.java` | Las cuentas: `esNotaValida`, `unir`, `media`, `global`, `redondear` y `estrellas` |
 | 3 | `src/dam/Principal.java` | El menú (`main`) y las funciones que hablan con la persona: `mostrarMenu`, `nuevaValoracion`, `leerNota` y `mostrarResumen` |
 
 ## 4. Cómo se mueve la información
@@ -214,7 +217,7 @@ Esto es lo que pasa por dentro en cada situación, siguiendo el esquema del punt
 
 1. `main` llama a `mostrarResumen` con la matriz y `total`.
 2. Si `total` es 0, dice «Aún no hay valoraciones.» y termina (`return`).
-3. Si no, para cada categoría pide a `Calculos` sus notas con comas (`unir`) y su media (`media`), y las escribe. Después pide la valoración global (`global`). Antes de escribir cada número, lo redondea a un decimal (`redondear`).
+3. Si no, para cada categoría pide a `Calculos` sus notas con comas (`unir`), su media (`media`) y sus estrellas (`estrellas`), y las escribe. Después pide la valoración global (`global`) y sus estrellas. Antes de escribir cada número, lo redondea a un decimal (`redondear`).
 
 **Cualquier otra opción (R6):** el caso `default` del `switch` avisa, y el bucle vuelve a mostrar el menú.
 
@@ -231,6 +234,8 @@ Esto es lo que pasa por dentro en cada situación, siguiendo el esquema del punt
 | Leer con **`nextLine` y `Integer.parseInt`** | Se lee siempre una línea entera. Si no es un número, la excepción se recoge y el programa vuelve a preguntar, en lugar de cerrarse (R2). |
 | Las opciones del menú, como **texto** (`"1"`, `"2"`, `"0"`) | Así cualquier cosa que se escriba es una opción, válida o no, y nunca hay que convertirla a número: no hay excepciones en el menú. |
 | **Redondear** con `Math.round` | El número sale siempre con un decimal y con punto (3.8), sea cual sea el idioma del sistema. |
+| Las estrellas con **`*` y `-`** | Se ven igual en cualquier terminal. Los símbolos ★ y ☆ pueden salir como `?` en la consola de Windows o en algunos IDE. El `-` marca las que faltan, para que siempre haya 5 caracteres y se vea de cuántas es. |
+| Las estrellas, **enteras** | La media se redondea a un entero. Las medias estrellas (3.5 = ★★★½) necesitarían otro símbolo y más casos en el código. |
 | Escala del **1 al 5** | El 0 queda para «Salir» en el menú y no se confunde con una nota. |
 | Valoraciones **en memoria** | Para guardarlas al salir hay que escribirlas en un archivo, y este programa solo usa lo visto hasta ahora. |
 | Valoraciones **anónimas** | Solo tres notas (R8): nada en los datos dice quién valoró. |
@@ -362,6 +367,8 @@ Crea el archivo **`Calculos.java`**, en `src/dam`:
 | `(double) suma / total` | `(double)` convierte la suma en decimal **antes** de dividir. Entre dos `int`, Java hace una división entera: `7 / 2` da `3`; `(double) 7 / 2` da `3.5` |
 | `notas[0].length` | El tamaño de la primera fila: el número de columnas, es decir, de categorías |
 | `Math.round(numero * 10) / 10.0` | Redondea a un decimal: 3.833 · 10 = 38.33, redondeado 38, entre 10.0 da 3.8. Dividir entre `10.0`, y no entre `10`, hace que el resultado sea decimal |
+| `(int) Math.round(redondear(media))` | El número de estrellas: la media redondeada a un entero. `Math.round` devuelve un `long` (un entero más grande) y `(int)` lo convierte en `int`. Antes se redondea a un decimal, como se muestra, para que las estrellas coincidan con el número que se ve |
+| `if (estrella <= llenas) { … } else { … }` | Para cada una de las 5 posiciones, añade un `*` si es de las llenas y un `-` si no |
 
 ```java
 package dam;
@@ -423,6 +430,24 @@ public class Calculos {
     public static double redondear(double numero) {
         return Math.round(numero * 10) / 10.0;
     }
+
+    // ── Las estrellas: la media, de un vistazo ───────────────────────────
+    // Un * por cada estrella y un - por cada una que falta, hasta 5: 3.8 → "****-"
+    // Las estrellas son la media redondeada a un entero: 4.5 → 5, 3.8 → 4, 2.0 → 2.
+    // Antes se redondea a un decimal, como se muestra, para que las estrellas
+    // y el número coincidan: 4.46 se muestra 4.5, y da 5 estrellas, no 4
+    public static String estrellas(double media) {
+        int llenas = (int) Math.round(redondear(media));   // Math.round devuelve un long: (int) lo pasa a int
+        String texto = "";
+        for (int estrella = NOTA_MINIMA; estrella <= NOTA_MAXIMA; estrella++) {
+            if (estrella <= llenas) {
+                texto += "*";
+            } else {
+                texto += "-";
+            }
+        }
+        return texto;
+    }
 }
 ```
 
@@ -439,6 +464,7 @@ javac -d bin src/dam/*.java
 1. ¿Qué devuelven `esNotaValida(0)`, `esNotaValida(5)` y `esNotaValida(6)`?
 2. Con las notas de docente 4, 5 y 3 (y `total` 3), ¿qué devuelven `unir(notas, 3, 0)` y `media(notas, 3, 0)`?
 3. Si en `media` se quitara `(double)`, ¿cuánto daría la media de 4 y 5?
+4. ¿Qué devuelven `estrellas(4.5)`, `estrellas(2.2)` y `estrellas(1.0)`?
 
 <details>
 <summary>Respuestas</summary>
@@ -446,6 +472,7 @@ javac -d bin src/dam/*.java
 1. `false`, `true` y `false`: solo valen del 1 al 5.
 2. `"4, 5, 3"` y `4.0`: (4 + 5 + 3) / 3 = 12 / 3.
 3. `4.0`: 9 / 2 entre dos `int` es una división entera y da 4; después se convierte en `4.0` para devolverlo. Con `(double)`, da 4.5.
+4. `"*****"`, `"**---"` y `"*----"`: 4.5 se redondea a 5, 2.2 a 2 y 1.0 se queda en 1.
 
 </details>
 
@@ -574,10 +601,11 @@ public class Principal {
         for (int categoria = 0; categoria < CATEGORIAS.length; categoria++) {
             String lista = Calculos.unir(notas, total, categoria);
             double media = Calculos.media(notas, total, categoria);
-            System.out.println("  " + CATEGORIAS[categoria] + ": " + lista + " (media " + Calculos.redondear(media) + ")");
+            String estrellas = Calculos.estrellas(media);
+            System.out.println("  " + CATEGORIAS[categoria] + ": " + estrellas + "  " + lista + " (media " + Calculos.redondear(media) + ")");
         }
         double global = Calculos.global(notas, total);
-        System.out.println("Valoración global: " + Calculos.redondear(global));
+        System.out.println("Valoración global: " + Calculos.estrellas(global) + "  " + Calculos.redondear(global));
     }
 }
 ```
@@ -627,11 +655,11 @@ Un programa se prueba con **casos de prueba**: una entrada preparada y la salida
 |---|---|---|---|
 | 1 | Límite: vacío | `2` | «Aún no hay valoraciones.» |
 | 2 | Normal | `1`, y las notas `4`, `3` y `5` | «Valoración guardada (1 en total).» |
-| 3 | Normal | `2` | «Valoraciones: 1», «Docente: 4 (media 4.0)», «Materiales: 3 (media 3.0)», «Clases: 5 (media 5.0)» y «Valoración global: 4.0» |
+| 3 | Normal | `2` | «Valoraciones: 1», «Docente: \*\*\*\*-  4 (media 4.0)», «Materiales: \*\*\*--  3 (media 3.0)», «Clases: \*\*\*\*\*  5 (media 5.0)» y «Valoración global: \*\*\*\*-  4.0» |
 | 4 | Erróneo: letras | `1`, docente `5`, materiales `siete` | «Escribe un número del 1 al 5.» y vuelve a preguntar «Materiales (1-5):» |
 | 5 | Erróneo: fuera de rango | Materiales `0` y después `6` | Las dos veces, «Escribe un número del 1 al 5.» |
 | 6 | Límite: 1 y 5 | Materiales `1` y clases `5` | «Valoración guardada (2 en total).»: el 1 y el 5, las notas de los extremos, se aceptan |
-| 7 | Normal | `2` | «Valoraciones: 2», «Docente: 4, 5 (media 4.5)», «Materiales: 3, 1 (media 2.0)», «Clases: 5, 5 (media 5.0)» y «Valoración global: 3.8» |
+| 7 | Normal | `2` | «Valoraciones: 2», «Docente: \*\*\*\*\*  4, 5 (media 4.5)», «Materiales: \*\*---  3, 1 (media 2.0)», «Clases: \*\*\*\*\*  5, 5 (media 5.0)» y «Valoración global: \*\*\*\*-  3.8»: 4.5 se redondea a 5 estrellas y 3.8, a 4 |
 | 8 | Erróneo: opción | `3`, y después `hola` | Las dos veces, «Opción no válida: escribe 1, 2 o 0.» y el menú otra vez |
 | 9 | Salir | `0` | «Hasta pronto. Las valoraciones no se guardan al salir.» y el programa termina |
 
