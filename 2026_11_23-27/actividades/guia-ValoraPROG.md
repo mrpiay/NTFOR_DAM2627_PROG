@@ -65,10 +65,12 @@ Valoración guardada (1 en total).
 Opción: 2
 
 Valoraciones: 1
-  Docente: ****-  4 (media 4.0)
-  Materiales: ***--  3 (media 3.0)
-  Clases: *****  5 (media 5.0)
-Valoración global: ****-  4.0
+
+  Categoría    Estrellas  Media  Notas
+  Docente      ****-        4.0  4
+  Materiales   ***--        3.0  3
+  Clases       *****        5.0  5
+  Global       ****-        4.0
 
 === ValoraPROG ===
 1. Nueva valoración
@@ -84,7 +86,7 @@ Hasta pronto. Las valoraciones no se guardan al salir.
 | R1 | El programa muestra un **menú** con tres opciones: 1, nueva valoración; 2, ver la valoración global; 0, salir. Después de cada opción, el menú vuelve a salir, hasta elegir 0. |
 | R2 | **Nueva valoración:** pide una nota del 1 al 5 para docente, materiales y clases. Si lo escrito no es un número del 1 al 5 (letras, un 0, un 6…), avisa y vuelve a preguntar. El programa no se cierra. |
 | R3 | Al terminar una valoración, dice cuántas hay en total. |
-| R4 | **Ver la valoración global:** el número de valoraciones; para cada categoría, sus **estrellas**, todas sus notas **separadas por comas** y su **media**, con un decimal; y la **valoración global**, con sus estrellas: la media de las tres medias. Las estrellas son 5 caracteres: un `*` por cada estrella y un `-` por cada una que falta. Las estrellas son la media redondeada a un entero: 4.5 da `*****` y 3.8, `****-`. |
+| R4 | **Ver la valoración global:** el número de valoraciones y una **tabla** con las columnas alineadas: para cada categoría, sus **estrellas**, su **media**, con un decimal, y todas sus notas **separadas por comas**; y en la última fila, la **valoración global** («Global»), con sus estrellas: la media de las tres medias. Las estrellas son 5 caracteres: un `*` por cada estrella y un `-` por cada una que falta. Las estrellas son la media redondeada a un entero: 4.5 da `*****` y 3.8, `****-`. |
 | R5 | Si aún no hay valoraciones, la opción 2 dice «Aún no hay valoraciones.». |
 | R6 | Si se elige una opción que no existe, avisa y vuelve a mostrar el menú. |
 | R7 | Caben como máximo **30 valoraciones**. Si se intenta una más, avisa. |
@@ -148,7 +150,7 @@ Estas son las piezas que usa el programa:
 | **Paquete** | Una carpeta con nombre para agrupar clases. Se declara en la primera línea: `package dam;` | `dam`, en la carpeta `src/dam` |
 | **`main`** | La función por la que empieza el programa | En `Principal` |
 | **`static`** | Una función o un dato que pertenece a la clase y se usa sin crear objetos: `Calculos.media(…)` | Todas las funciones del programa |
-| **Constante** (`static final`) | Un dato que no cambia. Por costumbre, su nombre va en mayúsculas | `CATEGORIAS`, `MAX_VALORACIONES`, `NOTA_MINIMA` |
+| **Constante** (`static final`) | Un dato que no cambia. Por costumbre, su nombre va en mayúsculas | `CATEGORIAS`, `MAX_VALORACIONES`, `FILA`, `NOTA_MINIMA` |
 | **`Scanner`** | La clase de Java que lee del teclado: `teclado.nextLine()` lee una línea | `teclado` |
 | **`String`** | Un texto, entre comillas dobles | Las opciones del menú, los nombres de las categorías |
 | **Array** | Una lista de valores del mismo tipo, con un tamaño fijo. Cada valor tiene una **posición**, empezando en 0 | `CATEGORIAS`, y cada fila de la matriz |
@@ -174,7 +176,7 @@ En resumen: **`Principal` habla con la persona y `Calculos` hace las cuentas**.
 │   mostrarMenu        escribe el menú                         │
 │   nuevaValoracion    rellena una fila de la matriz           │
 │   leerNota           pide una nota hasta que es válida       │
-│   mostrarResumen     estrellas, notas, medias y global       │
+│   mostrarResumen     la tabla: estrellas, medias y notas     │
 │   habla con la persona: Scanner y println                    │
 └─────────────┬──────────────────────────────────▲─────────────┘
               │ esNotaValida(nota)               │ true o false
@@ -217,7 +219,7 @@ Esto es lo que pasa por dentro en cada situación, siguiendo el esquema del punt
 
 1. `main` llama a `mostrarResumen` con la matriz y `total`.
 2. Si `total` es 0, dice «Aún no hay valoraciones.» y termina (`return`).
-3. Si no, para cada categoría pide a `Calculos` sus notas con comas (`unir`), su media (`media`) y sus estrellas (`estrellas`), y las escribe. Después pide la valoración global (`global`) y sus estrellas. Antes de escribir cada número, lo redondea a un decimal (`redondear`).
+3. Si no, escribe la cabecera de la tabla y, para cada categoría, una fila: pide a `Calculos` su media (`media`), sus estrellas (`estrellas`) y sus notas con comas (`unir`). La última fila es la valoración global (`global`), con sus estrellas. Antes de escribir cada número, lo redondea a un decimal (`redondear`). Todas las filas se escriben con `printf` y el mismo formato (`FILA`), y por eso las columnas quedan alineadas.
 
 **Cualquier otra opción (R6):** el caso `default` del `switch` avisa, y el bucle vuelve a mostrar el menú.
 
@@ -234,6 +236,8 @@ Esto es lo que pasa por dentro en cada situación, siguiendo el esquema del punt
 | Leer con **`nextLine` y `Integer.parseInt`** | Se lee siempre una línea entera. Si no es un número, la excepción se recoge y el programa vuelve a preguntar, en lugar de cerrarse (R2). |
 | Las opciones del menú, como **texto** (`"1"`, `"2"`, `"0"`) | Así cualquier cosa que se escriba es una opción, válida o no, y nunca hay que convertirla a número: no hay excepciones en el menú. |
 | **Redondear** con `Math.round` | El número sale siempre con un decimal y con punto (3.8), sea cual sea el idioma del sistema. |
+| El resumen, como **tabla** con `printf` | Con todas las filas en el mismo formato, cada columna empieza siempre en el mismo sitio y se comparan las categorías de un vistazo. Las notas van en la última columna porque su largo cambia con el número de valoraciones. |
+| La media con **`%5s`**, no con `%.1f` | `%.1f` usa el idioma del sistema: en español escribiría `4,5`. Con `%5s`, el número redondeado sale como con `println`, `4.5`. |
 | Las estrellas con **`*` y `-`** | Se ven igual en cualquier terminal. Los símbolos ★ y ☆ pueden salir como `?` en la consola de Windows o en algunos IDE. El `-` marca las que faltan, para que siempre haya 5 caracteres y se vea de cuántas es. |
 | Las estrellas, **enteras** | La media se redondea a un entero. Las medias estrellas (3.5 = ★★★½) necesitarían otro símbolo y más casos en el código. |
 | Escala del **1 al 5** | El 0 queda para «Salir» en el menú y no se confunde con una nota. |
@@ -259,6 +263,7 @@ Para cada cosa que tiene que hacer el programa:
 |---|---|---|---|---|
 | Leer la opción y las notas (R1, R2) | Leer del teclado | `Scanner` | `java.util` | **Sí**: `import java.util.Scanner;` |
 | Escribir el menú y las respuestas | Escribir en la terminal | `System.out.println` y `print` | `java.lang` | No |
+| El resumen en columnas (R4) | Escribir con formato | `System.out.printf` | `java.lang` | No |
 | Pasar «4» a 4 (R2) | Convertir texto a número | `Integer.parseInt` | `java.lang` | No |
 | No cerrarse con letras (R2) | Recoger el error | `NumberFormatException` y `try-catch` | `java.lang` | No |
 | Las notas con comas, los textos (R4) | Textos | `String` | `java.lang` | No |
@@ -502,6 +507,8 @@ Crea el archivo **`Principal.java`**, en `src/dam`:
 | `try { … } catch (NumberFormatException e) { … }` | Si `Integer.parseInt` recibe algo que no es un número, lanza esa excepción, y el `catch` la recoge en lugar de cerrar el programa |
 | `Calculos.media(notas, total, categoria)` | Llama a una función de otra clase: el nombre de la clase, un punto y la función |
 | `return;` en `mostrarResumen` | Termina la función ahí mismo: si no hay valoraciones, no sigue |
+| `static final String FILA = "  %-12s %-10s %5s  %s%n";` | El formato de cada fila de la tabla. Cada `%…s` es un hueco para un dato: `%-12s` lo escribe en 12 caracteres, pegado a la izquierda (el `-`), y rellena con espacios; `%5s`, en 5, pegado a la derecha; `%s`, tal cual. `%n` es el salto de línea |
+| `System.out.printf(FILA, "Docente", "****-", 4.0, "4")` | Escribe el formato cambiando cada hueco por un dato, en orden. Como todas las filas usan `FILA`, las columnas quedan alineadas |
 
 ```java
 package dam;
@@ -519,6 +526,13 @@ public class Principal {
 
     // Cuántas valoraciones caben como máximo: el número de filas de la matriz
     static final int MAX_VALORACIONES = 30;
+
+    // El formato de cada fila del resumen, para que las columnas queden alineadas como en una tabla:
+    // %-12s, un texto en 12 caracteres pegado a la izquierda; %5s, en 5 pegado a la derecha;
+    // %s, el texto tal cual; %n, el salto de línea.
+    // La media va con %5s, no con %.1f: así sale con punto (4.5), como con println,
+    // y no con coma (4,5) si el sistema está en español
+    static final String FILA = "  %-12s %-10s %5s  %s%n";
 
     // ── El programa: el menú, que se repite hasta elegir 0 ───────────────
     public static void main(String[] args) {
@@ -598,14 +612,15 @@ public class Principal {
             return;
         }
         System.out.println("Valoraciones: " + total);
+        System.out.println();
+        System.out.printf(FILA, "Categoría", "Estrellas", "Media", "Notas");
         for (int categoria = 0; categoria < CATEGORIAS.length; categoria++) {
-            String lista = Calculos.unir(notas, total, categoria);
             double media = Calculos.media(notas, total, categoria);
-            String estrellas = Calculos.estrellas(media);
-            System.out.println("  " + CATEGORIAS[categoria] + ": " + estrellas + "  " + lista + " (media " + Calculos.redondear(media) + ")");
+            System.out.printf(FILA, CATEGORIAS[categoria], Calculos.estrellas(media),
+                    Calculos.redondear(media), Calculos.unir(notas, total, categoria));
         }
         double global = Calculos.global(notas, total);
-        System.out.println("Valoración global: " + Calculos.estrellas(global) + "  " + Calculos.redondear(global));
+        System.out.printf(FILA, "Global", Calculos.estrellas(global), Calculos.redondear(global), "");
     }
 }
 ```
@@ -655,15 +670,15 @@ Un programa se prueba con **casos de prueba**: una entrada preparada y la salida
 |---|---|---|---|
 | 1 | Límite: vacío | `2` | «Aún no hay valoraciones.» |
 | 2 | Normal | `1`, y las notas `4`, `3` y `5` | «Valoración guardada (1 en total).» |
-| 3 | Normal | `2` | «Valoraciones: 1», «Docente: \*\*\*\*-  4 (media 4.0)», «Materiales: \*\*\*--  3 (media 3.0)», «Clases: \*\*\*\*\*  5 (media 5.0)» y «Valoración global: \*\*\*\*-  4.0» |
+| 3 | Normal | `2` | «Valoraciones: 1» y la tabla con las columnas alineadas: Docente `****-` 4.0 y 4; Materiales `***--` 3.0 y 3; Clases `*****` 5.0 y 5; Global `****-` 4.0 |
 | 4 | Erróneo: letras | `1`, docente `5`, materiales `siete` | «Escribe un número del 1 al 5.» y vuelve a preguntar «Materiales (1-5):» |
 | 5 | Erróneo: fuera de rango | Materiales `0` y después `6` | Las dos veces, «Escribe un número del 1 al 5.» |
 | 6 | Límite: 1 y 5 | Materiales `1` y clases `5` | «Valoración guardada (2 en total).»: el 1 y el 5, las notas de los extremos, se aceptan |
-| 7 | Normal | `2` | «Valoraciones: 2», «Docente: \*\*\*\*\*  4, 5 (media 4.5)», «Materiales: \*\*---  3, 1 (media 2.0)», «Clases: \*\*\*\*\*  5, 5 (media 5.0)» y «Valoración global: \*\*\*\*-  3.8»: 4.5 se redondea a 5 estrellas y 3.8, a 4 |
+| 7 | Normal | `2` | «Valoraciones: 2» y la tabla: Docente `*****` 4.5 y 4, 5; Materiales `**---` 2.0 y 3, 1; Clases `*****` 5.0 y 5, 5; Global `****-` 3.8. 4.5 se redondea a 5 estrellas y 3.8, a 4 |
 | 8 | Erróneo: opción | `3`, y después `hola` | Las dos veces, «Opción no válida: escribe 1, 2 o 0.» y el menú otra vez |
 | 9 | Salir | `0` | «Hasta pronto. Las valoraciones no se guardan al salir.» y el programa termina |
 
-**5.2 · Probar sin teclear.** Se le puede dar al programa todo lo que se escribiría, de una vez, con `printf` y una tubería (`|`): `printf` escribe el texto, `\n` es cada **Intro**, y `|` se lo pasa a `java` como si se tecleara. Así se repite una prueba larga en un segundo. Por ejemplo, los casos 2 y 3, y salir:
+**5.2 · Probar sin teclear.** Se le puede dar al programa todo lo que se escribiría, de una vez, con la orden `printf` de la terminal (no es el `printf` de Java, aunque se llame igual) y una tubería (`|`): `printf` escribe el texto, `\n` es cada **Intro**, y `|` se lo pasa a `java` como si se tecleara. Así se repite una prueba larga en un segundo. Por ejemplo, los casos 2 y 3, y salir:
 
 ```bash
 printf "1\n4\n3\n5\n2\n0\n" | java -cp bin dam.Principal
