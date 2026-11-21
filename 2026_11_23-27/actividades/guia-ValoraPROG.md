@@ -4,9 +4,9 @@
 
 En esta guía aprenderás a diseñar y desarrollar **ValoraPROG**, un programa en Java, con un menú en la terminal, para recoger valoraciones anónimas del módulo de PROG (Programación).
 
-Cada persona valora del 1 al 5 tres aspectos del módulo: el **docente**, los **materiales** y las **clases**. El programa guarda las valoraciones mientras está abierto y muestra, para cada aspecto, todas sus notas separadas por comas y su media, y una **valoración global**: la media de los tres aspectos, que cuentan todos lo mismo. Cada media se ve también con **estrellas** de asteriscos, como en las tiendas de aplicaciones: `****-` son 4 de 5.
+Cada persona valora del 1 al 5 tres aspectos del módulo: el **docente**, los **materiales** y las **clases**. El programa guarda las valoraciones mientras está abierto y muestra, para cada aspecto, todas sus notas separadas por comas y su media, y una **valoración global**: la media de los tres aspectos, en la que cada uno cuenta según su **peso**. Al empezar todos pesan lo mismo, y los pesos se pueden cambiar desde el menú. Cada media se ve también con **estrellas** de asteriscos, como en las tiendas de aplicaciones: `****-` son 4 de 5.
 
-El objetivo de esta guía no es únicamente conseguir que el programa funcione, sino también comprender cómo se organiza un programa en Java y por qué cada parte va donde va. Para ello, se usa la terminal de **Ubuntu** para compilar y ejecutar y **VS Code** para escribir el código. Además, se usan **`Scanner`** para leer del teclado, **`switch`** y bucles para el menú, **`try-catch`** para que el programa no se rompa con lo que se escriba, **funciones** para repartir el trabajo y una **matriz** para guardar las notas.
+El objetivo de esta guía no es únicamente conseguir que el programa funcione, sino también comprender cómo se organiza un programa en Java y por qué cada parte va donde va. Para ello, se usa la terminal de **Ubuntu** para compilar y ejecutar y **VS Code** para escribir el código. Además, se usan **`Scanner`** para leer del teclado, **`switch`** y bucles para el menú, **`try-catch`** para que el programa no se rompa con lo que se escriba, **funciones** para repartir el trabajo, una **matriz** para guardar las notas y un **array** para los pesos.
 
 El desarrollo se divide en dos partes:
 
@@ -48,6 +48,7 @@ Así se usa, en la terminal. Lo que escribe la persona va detrás de cada `:` y 
 === ValoraPROG ===
 1. Nueva valoración
 2. Ver valoración global
+3. Cambiar pesos
 0. Salir
 Opción: 1
 
@@ -61,36 +62,70 @@ Valoración guardada (1 en total).
 === ValoraPROG ===
 1. Nueva valoración
 2. Ver valoración global
+3. Cambiar pesos
 0. Salir
 Opción: 2
 
 Valoraciones: 1
 
-  Categoría    Estrellas  Media  Notas
-  Docente      ****-        4.0  4
-  Materiales   ***--        3.0  3
-  Clases       *****        5.0  5
-  Global       ****-        4.0
+  Categoría      Peso  Estrellas  Media  Notas
+  Docente       33.3%  ****-        4.0  4
+  Materiales    33.3%  ***--        3.0  3
+  Clases        33.3%  *****        5.0  5
+  Global               ****-        4.0
 
 === ValoraPROG ===
 1. Nueva valoración
 2. Ver valoración global
+3. Cambiar pesos
+0. Salir
+Opción: 3
+
+Cuánto cuenta cada categoría en la valoración global. Pesos de ahora:
+  Docente: 1
+  Materiales: 1
+  Clases: 1
+Peso de Docente (1-10): 2
+Peso de Materiales (1-10): 1
+Peso de Clases (1-10): 1
+Pesos guardados.
+
+=== ValoraPROG ===
+1. Nueva valoración
+2. Ver valoración global
+3. Cambiar pesos
+0. Salir
+Opción: 2
+
+Valoraciones: 1
+
+  Categoría      Peso  Estrellas  Media  Notas
+  Docente       50.0%  ****-        4.0  4
+  Materiales    25.0%  ***--        3.0  3
+  Clases        25.0%  *****        5.0  5
+  Global               ****-        4.0
+
+=== ValoraPROG ===
+1. Nueva valoración
+2. Ver valoración global
+3. Cambiar pesos
 0. Salir
 Opción: 0
 
-Hasta pronto. Las valoraciones no se guardan al salir.
+Hasta pronto. Las valoraciones y los pesos no se guardan al salir.
 ```
 
 | N.º | Requisito |
 |---|---|
-| R1 | El programa muestra un **menú** con tres opciones: 1, nueva valoración; 2, ver la valoración global; 0, salir. Después de cada opción, el menú vuelve a salir, hasta elegir 0. |
+| R1 | El programa muestra un **menú** con cuatro opciones: 1, nueva valoración; 2, ver la valoración global; 3, cambiar los pesos; 0, salir. Después de cada opción, el menú vuelve a salir, hasta elegir 0. |
 | R2 | **Nueva valoración:** pide una nota del 1 al 5 para docente, materiales y clases. Si lo escrito no es un número del 1 al 5 (letras, un 0, un 6…), avisa y vuelve a preguntar. El programa no se cierra. |
 | R3 | Al terminar una valoración, dice cuántas hay en total. |
-| R4 | **Ver la valoración global:** el número de valoraciones y una **tabla** con las columnas alineadas: para cada categoría, sus **estrellas**, su **media**, con un decimal, y todas sus notas **separadas por comas**; y en la última fila, la **valoración global** («Global»), con sus estrellas: la media de las tres medias. Las estrellas son 5 caracteres: un `*` por cada estrella y un `-` por cada una que falta. Las estrellas son la media redondeada a un entero: 4.5 da `*****` y 3.8, `****-`. |
+| R4 | **Ver la valoración global:** el número de valoraciones y una **tabla** con las columnas alineadas: para cada categoría, su **peso** en porcentaje, sus **estrellas**, su **media**, con un decimal, y todas sus notas **separadas por comas**; y en la última fila, la **valoración global** («Global»), con sus estrellas: la media **ponderada** de las tres medias, en la que cada una cuenta según su peso. Las estrellas son 5 caracteres: un `*` por cada estrella y un `-` por cada una que falta. Las estrellas son la media redondeada a un entero: 4.5 da `*****` y 3.8, `****-`. |
 | R5 | Si aún no hay valoraciones, la opción 2 dice «Aún no hay valoraciones.». |
 | R6 | Si se elige una opción que no existe, avisa y vuelve a mostrar el menú. |
 | R7 | Caben como máximo **30 valoraciones**. Si se intenta una más, avisa. |
-| R8 | Las valoraciones son **anónimas** (solo tres notas) y se guardan **en memoria**: al salir del programa, se pierden, y el programa lo dice al salir. |
+| R8 | Las valoraciones son **anónimas** (solo tres notas) y se guardan **en memoria**, igual que los pesos: al salir del programa, se pierden, y el programa lo dice al salir. |
+| R9 | **Cambiar los pesos:** muestra el peso de ahora de cada categoría y pide uno nuevo, del 1 al 10, para cada una. Si lo escrito no es un número del 1 al 10, avisa y vuelve a preguntar. Al empezar, los tres pesos valen 1: todas las categorías cuentan lo mismo. |
 
 Cada respuesta del programa queda separada del menú por una línea en blanco, por arriba y por abajo, para que se lea bien.
 
@@ -116,18 +151,26 @@ Con dos valoraciones guardadas, la matriz está así:
 - La variable **`total`** dice cuántas filas están ya rellenas. La siguiente valoración va en la fila `total`, y después `total` aumenta en 1.
 - Las notas de **una categoría** son una **columna**: las de docente son `notas[0][0]`, `notas[1][0]`… hasta la fila `total - 1`.
 
-**Las medias.** La media de una categoría es la suma de su columna entre el número de valoraciones. La valoración global es la media de las tres medias, porque las tres categorías cuentan lo mismo:
+**Los pesos.** Se guardan en un **array** de tres enteros, `pesos`, uno por categoría y en el mismo orden que las columnas: `pesos[0]` es el de docente. Al empezar vale `{1, 1, 1}`.
+
+**Las medias.** La media de una categoría es la suma de su columna entre el número de valoraciones. La valoración global es la **media ponderada**: cada media se multiplica por su peso, se suma todo y se divide entre la suma de los pesos. Con los pesos iguales, es la media de las tres medias:
 
 ```
 Docente:     (4 + 5) / 2 = 4.5
 Materiales:  (3 + 4) / 2 = 3.5
 Clases:      (5 + 2) / 2 = 3.5
-Global:      (4.5 + 3.5 + 3.5) / 3 = 3.83…  →  se muestra 3.8
+Global:      (4.5 · 1 + 3.5 · 1 + 3.5 · 1) / (1 + 1 + 1) = 3.83…  →  se muestra 3.8
+```
+
+Con los pesos 2, 1 y 1, docente cuenta el doble que cada una de las otras: 2 de 4, el 50 %, y cada una de las otras, el 25 %:
+
+```
+Global:      (4.5 · 2 + 3.5 · 1 + 3.5 · 1) / (2 + 1 + 1) = 16 / 4 = 4.0
 ```
 
 **Las estrellas.** Se redondea la media a un entero y se escriben 5 caracteres: un `*` por cada estrella y un `-` por cada una que falta. La media de docente, 4.5, da 5 estrellas (`*****`); la de materiales, 3.5, da 4 (`****-`), y la global, 3.8, también 4 (`****-`).
 
-**En memoria.** La matriz existe mientras el programa está abierto. Al salir, Java libera la memoria y las valoraciones se pierden (R8).
+**En memoria.** La matriz y los pesos existen mientras el programa está abierto. Al salir, Java libera la memoria y se pierden (R8).
 
 ## 3. Cómo se organiza el código
 
@@ -138,7 +181,7 @@ El programa se escribe en **Java**. El código se guarda en archivos con la exte
 Dentro de esos archivos hay, sobre todo, dos cosas:
 
 - **Clases.** En Java, todo el código va dentro de una clase. El archivo se llama como la clase: `Principal` va en `Principal.java`. Este programa tiene dos clases, `Principal` y `Calculos`.
-- **Funciones** (en Java se llaman **métodos**). Una función es una acción con nombre. Se escribe con paréntesis: `leerNota(teclado, "Docente")` pide una nota; `media(notas, total, 0)` calcula la media de docente. Lo que va entre los paréntesis son los **parámetros**, los datos que necesita, y lo que devuelve con `return` es su **resultado**.
+- **Funciones** (en Java se llaman **métodos**). Una función es una acción con nombre. Se escribe con paréntesis: `leerEntero(teclado, "Docente", 1, 5)` pide una nota del 1 al 5; `media(notas, total, 0)` calcula la media de docente. Lo que va entre los paréntesis son los **parámetros**, los datos que necesita, y lo que devuelve con `return` es su **resultado**.
 
 Estas son las piezas que usa el programa:
 
@@ -153,17 +196,17 @@ Estas son las piezas que usa el programa:
 | **Constante** (`static final`) | Un dato que no cambia. Por costumbre, su nombre va en mayúsculas | `CATEGORIAS`, `MAX_VALORACIONES`, `FILA`, `NOTA_MINIMA` |
 | **`Scanner`** | La clase de Java que lee del teclado: `teclado.nextLine()` lee una línea | `teclado` |
 | **`String`** | Un texto, entre comillas dobles | Las opciones del menú, los nombres de las categorías |
-| **Array** | Una lista de valores del mismo tipo, con un tamaño fijo. Cada valor tiene una **posición**, empezando en 0 | `CATEGORIAS`, y cada fila de la matriz |
+| **Array** | Una lista de valores del mismo tipo, con un tamaño fijo. Cada valor tiene una **posición**, empezando en 0 | `CATEGORIAS`, `pesos` y cada fila de la matriz |
 | **Matriz** | Un array de arrays: una tabla con filas y columnas | `notas`, con 30 filas y 3 columnas |
 | **Excepción** | Un error que salta al ejecutar. `try-catch` lo recoge para que el programa no se cierre | `NumberFormatException`, si se escribe «siete» donde va un número |
-| **Paso por valor** | Al llamar a una función, se le pasa una **copia** del valor. Con un `int`, la función no puede cambiar la variable de quien llama. Con un array, la copia es de la **referencia**: los dos apuntan al mismo array, y lo que la función cambie dentro se ve fuera | `nuevaValoracion` rellena una fila de la matriz; `total` lo suma `main` |
+| **Paso por valor** | Al llamar a una función, se le pasa una **copia** del valor. Con un `int`, la función no puede cambiar la variable de quien llama. Con un array, la copia es de la **referencia**: los dos apuntan al mismo array, y lo que la función cambie dentro se ve fuera | `nuevaValoracion` rellena una fila de la matriz y `cambiarPesos`, el array de pesos; `total` lo suma `main` |
 
 ### 3.2 · Las dos partes
 
 Un programa pequeño se podría escribir entero dentro de `main`, pero sería difícil de leer y de cambiar. Por eso el código se reparte:
 
-- **`Principal`**: el programa que se ve. Muestra el menú, lee lo que se escribe con `Scanner` y escribe las respuestas con `println`. Cada trabajo está en su propia función: `mostrarMenu`, `nuevaValoracion`, `leerNota` y `mostrarResumen`. Así `main` queda corto y se lee como el menú.
-- **`Calculos`**: solo cuentas. No lee del teclado ni escribe nada: recibe datos y devuelve resultados. Comprueba si una nota es válida, junta las notas de una categoría con comas, calcula las medias, redondea y convierte una media en estrellas.
+- **`Principal`**: el programa que se ve. Muestra el menú, lee lo que se escribe con `Scanner` y escribe las respuestas con `println`. Cada trabajo está en su propia función: `mostrarMenu`, `leerEntero`, `nuevaValoracion`, `mostrarResumen` y `cambiarPesos`. Así `main` queda corto y se lee como el menú.
+- **`Calculos`**: solo cuentas. No lee del teclado ni escribe nada: recibe datos y devuelve resultados. Comprueba si un número está entre dos límites, junta las notas de una categoría con comas, calcula las medias, los porcentajes de los pesos y la global ponderada, redondea y convierte una media en estrellas.
 
 En resumen: **`Principal` habla con la persona y `Calculos` hace las cuentas**.
 
@@ -174,15 +217,17 @@ En resumen: **`Principal` habla con la persona y `Calculos` hace las cuentas**.
 │ Principal.java                                   paso 3      │
 │   main               el menú: do-while y switch              │
 │   mostrarMenu        escribe el menú                         │
+│   leerEntero         pide un número hasta que es válido      │
 │   nuevaValoracion    rellena una fila de la matriz           │
-│   leerNota           pide una nota hasta que es válida       │
-│   mostrarResumen     la tabla: estrellas, medias y notas     │
+│   mostrarResumen     la tabla: pesos, estrellas, medias…     │
+│   cambiarPesos       rellena el array de pesos               │
 │   habla con la persona: Scanner y println                    │
 └─────────────┬──────────────────────────────────▲─────────────┘
-              │ esNotaValida(nota)               │ true o false
+              │ estaEntre(n, min, max)           │ true o false
               │ unir(notas, total, c)            │ "4, 5"
               │ media(notas, total, c)           │ 4.5
-              │ global(notas, total)             │ 3.833…
+              │ porcentaje(pesos, c)             │ 33.33…
+              │ global(notas, total, pesos)      │ 3.833…
               │ redondear(x)                     │ 3.8
               │ estrellas(x)                     │ "****-"
 ┌─────────────▼──────────────────────────────────┴─────────────┐
@@ -194,8 +239,8 @@ En resumen: **`Principal` habla con la persona y `Calculos` hace las cuentas**.
 
 | Paso | Archivo | Qué contiene |
 |---|---|---|
-| 2 | `src/dam/Calculos.java` | Las cuentas: `esNotaValida`, `unir`, `media`, `global`, `redondear` y `estrellas` |
-| 3 | `src/dam/Principal.java` | El menú (`main`) y las funciones que hablan con la persona: `mostrarMenu`, `nuevaValoracion`, `leerNota` y `mostrarResumen` |
+| 2 | `src/dam/Calculos.java` | Las cuentas: `estaEntre`, `unir`, `media`, `sumaPesos`, `porcentaje`, `global`, `redondear` y `estrellas` |
+| 3 | `src/dam/Principal.java` | El menú (`main`) y las funciones que hablan con la persona: `mostrarMenu`, `leerEntero`, `nuevaValoracion`, `mostrarResumen` y `cambiarPesos` |
 
 ## 4. Cómo se mueve la información
 
@@ -203,7 +248,7 @@ Esto es lo que pasa por dentro en cada situación, siguiendo el esquema del punt
 
 **Al arrancar (R1)**
 
-1. `main` crea el `Scanner` (`teclado`), la matriz de notas (`notas`), con 30 filas a 0, y `total`, que vale 0.
+1. `main` crea el `Scanner` (`teclado`), la matriz de notas (`notas`), con 30 filas a 0, `total`, que vale 0, y los pesos (`pesos`), que valen `{1, 1, 1}`.
 2. Empieza el bucle `do-while`: muestra el menú (`mostrarMenu`), lee la opción y deja una línea en blanco.
 3. El `switch` elige qué hacer según la opción. Al terminar, si la opción no era 0, el bucle vuelve a empezar.
 
@@ -211,19 +256,25 @@ Esto es lo que pasa por dentro en cada situación, siguiendo el esquema del punt
 
 1. Si `total` ya vale 30, la matriz está llena: avisa y vuelve al menú.
 2. Si no, llama a `nuevaValoracion` y le pasa la primera fila libre, `notas[total]`.
-3. `nuevaValoracion` llama a `leerNota` una vez por categoría y guarda cada nota en su columna de la fila.
-4. `leerNota` pregunta hasta que la nota es válida. Si lo escrito no es un número, `Integer.parseInt` lanza una `NumberFormatException`, el `catch` la recoge y la nota se trata como no válida. Para saber si es válida, pregunta a `Calculos.esNotaValida`.
+3. `nuevaValoracion` llama a `leerEntero` una vez por categoría, con los límites de las notas (1 y 5), y guarda cada nota en su columna de la fila.
+4. `leerEntero` pregunta hasta que el número está entre los límites. Si lo escrito no es un número, `Integer.parseInt` lanza una `NumberFormatException`, el `catch` la recoge y se trata como uno fuera de los límites. Para saberlo, pregunta a `Calculos.estaEntre`.
 5. De vuelta en `main`, `total` aumenta en 1 y se dice cuántas valoraciones hay. La fila se ha rellenado dentro de `nuevaValoracion`, pero `total` se suma en `main`: es un `int`, y una función no puede cambiar un `int` de quien la llama.
 
 **Opción 2: ver la valoración global (R4, R5)**
 
-1. `main` llama a `mostrarResumen` con la matriz y `total`.
+1. `main` llama a `mostrarResumen` con la matriz, `total` y los pesos.
 2. Si `total` es 0, dice «Aún no hay valoraciones.» y termina (`return`).
-3. Si no, escribe la cabecera de la tabla y, para cada categoría, una fila: pide a `Calculos` su media (`media`), sus estrellas (`estrellas`) y sus notas con comas (`unir`). La última fila es la valoración global (`global`), con sus estrellas. Antes de escribir cada número, lo redondea a un decimal (`redondear`). Todas las filas se escriben con `printf` y el mismo formato (`FILA`), y por eso las columnas quedan alineadas.
+3. Si no, escribe la cabecera de la tabla y, para cada categoría, una fila: pide a `Calculos` su peso en porcentaje (`porcentaje`), su media (`media`), sus estrellas (`estrellas`) y sus notas con comas (`unir`). La última fila es la valoración global ponderada (`global`), con sus estrellas. Antes de escribir cada número, lo redondea a un decimal (`redondear`). Todas las filas se escriben con `printf` y el mismo formato (`FILA`), y por eso las columnas quedan alineadas.
+
+**Opción 3: cambiar los pesos (R9)**
+
+1. `main` llama a `cambiarPesos` con el `Scanner` y el array de pesos.
+2. `cambiarPesos` escribe los pesos de ahora y llama a `leerEntero` una vez por categoría, con los límites de los pesos (1 y 10), y guarda cada peso en su posición del array.
+3. Como el array es el mismo que el de `main`, los pesos nuevos quedan allí, y la próxima vez que se elija la opción 2 la global se calcula con ellos.
 
 **Cualquier otra opción (R6):** el caso `default` del `switch` avisa, y el bucle vuelve a mostrar el menú.
 
-**Opción 0: salir (R8):** dice que las valoraciones no se guardan, el bucle termina porque la opción es `"0"` y `main` cierra el `Scanner`.
+**Opción 0: salir (R8):** dice que las valoraciones y los pesos no se guardan, el bucle termina porque la opción es `"0"` y `main` cierra el `Scanner`.
 
 ## 5. Decisiones de diseño
 
@@ -231,13 +282,16 @@ Esto es lo que pasa por dentro en cada situación, siguiendo el esquema del punt
 |---|---|
 | Una **matriz** para las notas | Hace falta cada nota, no solo la suma, para mostrarlas separadas por comas (R4). La matriz guarda todas, cada una en su fila y su columna. |
 | Un **máximo** de 30 valoraciones | Un array tiene tamaño fijo: se elige al crearlo. 30 es de sobra para una clase. |
-| Una **función por trabajo** en `Principal` | `main` se lee como el menú, y cada función se entiende sola: mostrar el menú, pedir una nota, pedir una valoración, mostrar el resumen. |
+| Una **función por trabajo** en `Principal` | `main` se lee como el menú, y cada función se entiende sola: mostrar el menú, pedir un número, pedir una valoración, mostrar el resumen, cambiar los pesos. |
 | Las cuentas, en **`Calculos`**, sin `Scanner` ni `println` | Las cuentas se pueden comprobar y cambiar sin tocar lo que se ve. Si cambia el cálculo, `Principal` no se toca. |
 | Leer con **`nextLine` y `Integer.parseInt`** | Se lee siempre una línea entera. Si no es un número, la excepción se recoge y el programa vuelve a preguntar, en lugar de cerrarse (R2). |
 | Las opciones del menú, como **texto** (`"1"`, `"2"`, `"0"`) | Así cualquier cosa que se escriba es una opción, válida o no, y nunca hay que convertirla a número: no hay excepciones en el menú. |
 | **Redondear** con `Math.round` | El número sale siempre con un decimal y con punto (3.8), sea cual sea el idioma del sistema. |
 | El resumen, como **tabla** con `printf` | Con todas las filas en el mismo formato, cada columna empieza siempre en el mismo sitio y se comparan las categorías de un vistazo. Las notas van en la última columna porque su largo cambia con el número de valoraciones. |
 | La media con **`%5s`**, no con `%.1f` | `%.1f` usa el idioma del sistema: en español escribiría `4,5`. Con `%5s`, el número redondeado sale como con `println`, `4.5`. |
+| Una sola función, **`leerEntero`**, para notas y pesos | Las dos preguntan lo mismo, un número entre dos límites; solo cambian los límites y la pregunta, que se le pasan como parámetros. Si se arregla algo al leer, se arregla para las dos. |
+| Pesos **relativos**, del 1 al 10 | Con porcentajes que sumen 100, tres pesos iguales no se pueden escribir con enteros (34, 33 y 33). Con pesos relativos, `{1, 1, 1}` son iguales y `{2, 1, 1}`, el doble para docente. El porcentaje lo calcula el programa y se ve en la tabla. |
+| Pesos desde el **1**, sin 0 | Con todos a 0, la suma de los pesos sería 0 y la global, una división entre 0. |
 | Las estrellas con **`*` y `-`** | Se ven igual en cualquier terminal. Los símbolos ★ y ☆ pueden salir como `?` en la consola de Windows o en algunos IDE. El `-` marca las que faltan, para que siempre haya 5 caracteres y se vea de cuántas es. |
 | Las estrellas, **enteras** | La media se redondea a un entero. Las medias estrellas (3.5 = ★★★½) necesitarían otro símbolo y más casos en el código. |
 | Escala del **1 al 5** | El 0 queda para «Salir» en el menú y no se confunde con una nota. |
@@ -261,7 +315,7 @@ Para cada cosa que tiene que hacer el programa:
 
 | Lo que se quiere (requisito) | Qué necesita | Con qué se hace | Paquete | ¿`import`? |
 |---|---|---|---|---|
-| Leer la opción y las notas (R1, R2) | Leer del teclado | `Scanner` | `java.util` | **Sí**: `import java.util.Scanner;` |
+| Leer la opción, las notas y los pesos (R1, R2, R9) | Leer del teclado | `Scanner` | `java.util` | **Sí**: `import java.util.Scanner;` |
 | Escribir el menú y las respuestas | Escribir en la terminal | `System.out.println` y `print` | `java.lang` | No |
 | El resumen en columnas (R4) | Escribir con formato | `System.out.printf` | `java.lang` | No |
 | Pasar «4» a 4 (R2) | Convertir texto a número | `Integer.parseInt` | `java.lang` | No |
@@ -269,6 +323,7 @@ Para cada cosa que tiene que hacer el programa:
 | Las notas con comas, los textos (R4) | Textos | `String` | `java.lang` | No |
 | Una media con un decimal (R4) | Redondear | `Math.round` | `java.lang` | No |
 | Guardar las notas (R4, R7) | Una tabla de números | Una matriz, `int[][]` | Es parte del lenguaje | No |
+| Guardar los pesos (R9) | Una lista de números | Un array, `int[]` | Es parte del lenguaje | No |
 
 Todo está en el JDK: **no hay que instalar ninguna librería**, y el único `import` es el de `Scanner`.
 
@@ -364,13 +419,15 @@ Crea el archivo **`Calculos.java`**, en `src/dam`:
 | `/** … */` y `// …` | **Comentarios**: textos para quien lee el código. Java no los ejecuta |
 | `public class Calculos` | La clase. El archivo tiene que llamarse igual: `Calculos.java` |
 | `public static final int NOTA_MINIMA = 1;` | Una **constante**: `final` impide cambiarla después |
-| `public static boolean esNotaValida(int nota)` | Una función: `boolean` es el tipo de lo que devuelve (`true` o `false`), `esNotaValida` su nombre e `int nota` su parámetro |
-| `return nota >= NOTA_MINIMA && nota <= NOTA_MAXIMA;` | Devuelve `true` solo si se cumplen las dos condiciones (`&&`) |
+| `public static boolean estaEntre(int numero, int minimo, int maximo)` | Una función: `boolean` es el tipo de lo que devuelve (`true` o `false`), `estaEntre` su nombre, y `numero`, `minimo` y `maximo`, sus tres parámetros |
+| `return numero >= minimo && numero <= maximo;` | Devuelve `true` solo si se cumplen las dos condiciones (`&&`) |
 | `int[][] notas` | Un parámetro que es una **matriz** de enteros |
 | `notas[fila][categoria]` | La nota de esa fila (valoración) y esa columna (categoría) |
 | `String texto = "";` y `texto += …` | Un texto que empieza vacío y al que se le van añadiendo cosas al final. Con `+=`, un número se añade como texto: `"4, " + 5` da `"4, 5"` |
 | `(double) suma / total` | `(double)` convierte la suma en decimal **antes** de dividir. Entre dos `int`, Java hace una división entera: `7 / 2` da `3`; `(double) 7 / 2` da `3.5` |
-| `notas[0].length` | El tamaño de la primera fila: el número de columnas, es decir, de categorías |
+| `pesos.length` | El tamaño del array de pesos: el número de categorías |
+| `100.0 * pesos[categoria] / sumaPesos(pesos)` | El porcentaje: con `100.0`, decimal, la división no es entera. Con pesos 1, 1 y 1, da 33.33… |
+| `media(…) * pesos[categoria]` | En la global, cada media se multiplica por su peso antes de sumar. Una función de `Calculos` puede usar otra de la misma clase sin escribir `Calculos.` delante |
 | `Math.round(numero * 10) / 10.0` | Redondea a un decimal: 3.833 · 10 = 38.33, redondeado 38, entre 10.0 da 3.8. Dividir entre `10.0`, y no entre `10`, hace que el resultado sea decimal |
 | `(int) Math.round(redondear(media))` | El número de estrellas: la media redondeada a un entero. `Math.round` devuelve un `long` (un entero más grande) y `(int)` lo convierte en `int`. Antes se redondea a un decimal, como se muestra, para que las estrellas coincidan con el número que se ve |
 | `if (estrella <= llenas) { … } else { … }` | Para cada una de las 5 posiciones, añade un `*` si es de las llenas y un `-` si no |
@@ -384,16 +441,19 @@ package dam;
  *
  * Las notas están en una matriz: una fila por valoración y una columna por categoría.
  * Solo cuentan las primeras «total» filas: las demás aún están vacías.
+ * Los pesos están en un array: uno por categoría, en el mismo orden que las columnas.
  */
 public class Calculos {
 
-    // ── Las notas válidas van de 1 a 5 ───────────────────────────────────
+    // ── Los límites: las notas van de 1 a 5, y los pesos, de 1 a 10 ──────
     public static final int NOTA_MINIMA = 1;
     public static final int NOTA_MAXIMA = 5;
+    public static final int PESO_MINIMO = 1;
+    public static final int PESO_MAXIMO = 10;
 
-    // ¿Está la nota entre 1 y 5?
-    public static boolean esNotaValida(int nota) {
-        return nota >= NOTA_MINIMA && nota <= NOTA_MAXIMA;
+    // ¿Está el número entre minimo y maximo, los dos incluidos?
+    public static boolean estaEntre(int numero, int minimo, int maximo) {
+        return numero >= minimo && numero <= maximo;
     }
 
     // ── Las notas de una categoría, como texto: "4, 5, 3" ────────────────
@@ -419,15 +479,31 @@ public class Calculos {
         return (double) suma / total;
     }
 
-    // La valoración global, con pesos iguales: la media de las medias de las categorías.
-    // notas[0].length es el número de columnas: el de categorías
-    public static double global(int[][] notas, int total) {
-        int categorias = notas[0].length;
-        double sumaMedias = 0;
-        for (int categoria = 0; categoria < categorias; categoria++) {
-            sumaMedias += media(notas, total, categoria);
+    // ── Los pesos ────────────────────────────────────────────────────────
+    // La suma de todos los pesos
+    public static int sumaPesos(int[] pesos) {
+        int suma = 0;
+        for (int categoria = 0; categoria < pesos.length; categoria++) {
+            suma += pesos[categoria];
         }
-        return sumaMedias / categorias;
+        return suma;
+    }
+
+    // Lo que cuenta una categoría en la valoración global, en porcentaje:
+    // con pesos 2, 1 y 1, la primera cuenta el 50 % (2 de 4) y cada una de las otras, el 25 %
+    public static double porcentaje(int[] pesos, int categoria) {
+        return 100.0 * pesos[categoria] / sumaPesos(pesos);
+    }
+
+    // La valoración global, ponderada: cada media multiplicada por su peso, todo sumado,
+    // y dividido entre la suma de los pesos.
+    // Con todos los pesos iguales, es la media de las medias
+    public static double global(int[][] notas, int total, int[] pesos) {
+        double sumaPonderada = 0;
+        for (int categoria = 0; categoria < pesos.length; categoria++) {
+            sumaPonderada += media(notas, total, categoria) * pesos[categoria];
+        }
+        return sumaPonderada / sumaPesos(pesos);
     }
 
     // ── Redondear para mostrar ───────────────────────────────────────────
@@ -466,18 +542,20 @@ javac -d bin src/dam/*.java
 
 **Comprueba que lo entiendes.** Contesta antes de abrir las respuestas:
 
-1. ¿Qué devuelven `esNotaValida(0)`, `esNotaValida(5)` y `esNotaValida(6)`?
+1. ¿Qué devuelven `estaEntre(0, 1, 5)`, `estaEntre(5, 1, 5)` y `estaEntre(6, 1, 5)`?
 2. Con las notas de docente 4, 5 y 3 (y `total` 3), ¿qué devuelven `unir(notas, 3, 0)` y `media(notas, 3, 0)`?
 3. Si en `media` se quitara `(double)`, ¿cuánto daría la media de 4 y 5?
 4. ¿Qué devuelven `estrellas(4.5)`, `estrellas(2.2)` y `estrellas(1.0)`?
+5. Con los pesos `{3, 1, 1}`, ¿qué devuelve `porcentaje(pesos, 0)`? Si las medias son 5.0, 2.0 y 2.0, ¿qué devuelve `global`?
 
 <details>
 <summary>Respuestas</summary>
 
-1. `false`, `true` y `false`: solo valen del 1 al 5.
+1. `false`, `true` y `false`: solo valen del 1 al 5, los dos incluidos.
 2. `"4, 5, 3"` y `4.0`: (4 + 5 + 3) / 3 = 12 / 3.
 3. `4.0`: 9 / 2 entre dos `int` es una división entera y da 4; después se convierte en `4.0` para devolverlo. Con `(double)`, da 4.5.
 4. `"*****"`, `"**---"` y `"*----"`: 4.5 se redondea a 5, 2.2 a 2 y 1.0 se queda en 1.
+5. `60.0`: 3 de 5 (la suma de los pesos) son el 60 %. La global, `3.8`: (5.0 · 3 + 2.0 · 1 + 2.0 · 1) / (3 + 1 + 1) = 19 / 5. Sin pesos, la media de las medias daría 3.0: docente, con más peso, la sube.
 
 </details>
 
@@ -502,13 +580,15 @@ Crea el archivo **`Principal.java`**, en `src/dam`:
 | `nuevaValoracion(teclado, notas[total])` | Le pasa a la función el `Scanner` y la primera fila libre de la matriz. `notas[total]` es un array: la fila entera |
 | `total++;` | Suma 1 a `total` |
 | `static void nuevaValoracion(Scanner teclado, int[] fila)` | Rellena la fila que recibe. Como la fila es un array, lo que se guarda en ella queda en la matriz de `main` |
-| `static int leerNota(Scanner teclado, String categoria)` | Pregunta hasta que la nota es válida y la **devuelve** (`return nota;`) |
-| `while (!Calculos.esNotaValida(nota))` | Repite mientras la nota **no** (`!`) sea válida. `nota` empieza en 0, que no es válida, así que pregunta al menos una vez |
+| `static int leerEntero(Scanner teclado, String pregunta, int minimo, int maximo)` | Pregunta hasta que el número está entre `minimo` y `maximo` y lo **devuelve** (`return numero;`). Con 1 y 5 lee notas; con 1 y 10, pesos |
+| `while (!Calculos.estaEntre(numero, minimo, maximo))` | Repite mientras el número **no** (`!`) esté entre los límites. `numero` empieza en `minimo - 1`, fuera de los límites, así que pregunta al menos una vez |
+| `int[] pesos = {1, 1, 1};` | Crea el array de pesos con sus tres valores. Tiene que tener tantos como `CATEGORIAS` |
+| `static void cambiarPesos(Scanner teclado, int[] pesos)` | Rellena el array que recibe, como `nuevaValoracion` con la fila: el cambio queda en el array de `main` |
 | `try { … } catch (NumberFormatException e) { … }` | Si `Integer.parseInt` recibe algo que no es un número, lanza esa excepción, y el `catch` la recoge en lugar de cerrar el programa |
 | `Calculos.media(notas, total, categoria)` | Llama a una función de otra clase: el nombre de la clase, un punto y la función |
 | `return;` en `mostrarResumen` | Termina la función ahí mismo: si no hay valoraciones, no sigue |
-| `static final String FILA = "  %-12s %-10s %5s  %s%n";` | El formato de cada fila de la tabla. Cada `%…s` es un hueco para un dato: `%-12s` lo escribe en 12 caracteres, pegado a la izquierda (el `-`), y rellena con espacios; `%5s`, en 5, pegado a la derecha; `%s`, tal cual. `%n` es el salto de línea |
-| `System.out.printf(FILA, "Docente", "****-", 4.0, "4")` | Escribe el formato cambiando cada hueco por un dato, en orden. Como todas las filas usan `FILA`, las columnas quedan alineadas |
+| `static final String FILA = "  %-12s %6s  %-10s %5s  %s%n";` | El formato de cada fila de la tabla. Cada `%…s` es un hueco para un dato: `%-12s` lo escribe en 12 caracteres, pegado a la izquierda (el `-`), y rellena con espacios; `%6s`, en 6, pegado a la derecha; `%s`, tal cual. `%n` es el salto de línea |
+| `System.out.printf(FILA, "Docente", "33.3%", "****-", 4.0, "4")` | Escribe el formato cambiando cada hueco por un dato, en orden. Como todas las filas usan `FILA`, las columnas quedan alineadas |
 
 ```java
 package dam;
@@ -517,7 +597,7 @@ import java.util.Scanner;
 
 /**
  * ValoraPROG: valoraciones anónimas de docente, materiales y clases, con un menú en la terminal.
- * Las valoraciones se guardan en memoria: al salir del programa, se pierden.
+ * Las valoraciones y los pesos se guardan en memoria: al salir del programa, se pierden.
  */
 public class Principal {
 
@@ -528,11 +608,11 @@ public class Principal {
     static final int MAX_VALORACIONES = 30;
 
     // El formato de cada fila del resumen, para que las columnas queden alineadas como en una tabla:
-    // %-12s, un texto en 12 caracteres pegado a la izquierda; %5s, en 5 pegado a la derecha;
+    // %-12s, un texto en 12 caracteres pegado a la izquierda; %6s, en 6 pegado a la derecha;
     // %s, el texto tal cual; %n, el salto de línea.
-    // La media va con %5s, no con %.1f: así sale con punto (4.5), como con println,
+    // Los números van con %s, no con %.1f: así salen con punto (4.5), como con println,
     // y no con coma (4,5) si el sistema está en español
-    static final String FILA = "  %-12s %-10s %5s  %s%n";
+    static final String FILA = "  %-12s %6s  %-10s %5s  %s%n";
 
     // ── El programa: el menú, que se repite hasta elegir 0 ───────────────
     public static void main(String[] args) {
@@ -542,6 +622,9 @@ public class Principal {
         // notas[0][1] es la nota de «Materiales» (columna 1) de la primera valoración (fila 0)
         int[][] notas = new int[MAX_VALORACIONES][CATEGORIAS.length];
         int total = 0;      // cuántas valoraciones hay: las filas ya rellenas
+
+        // Un peso por categoría, en el mismo orden que CATEGORIAS. Al empezar, todas cuentan lo mismo
+        int[] pesos = {1, 1, 1};
 
         String opcion;
         do {
@@ -559,9 +642,10 @@ public class Principal {
                         System.out.println("Valoración guardada (" + total + " en total).");
                     }
                 }
-                case "2" -> mostrarResumen(notas, total);
-                case "0" -> System.out.println("Hasta pronto. Las valoraciones no se guardan al salir.");
-                default -> System.out.println("Opción no válida: escribe 1, 2 o 0.");
+                case "2" -> mostrarResumen(notas, total, pesos);
+                case "3" -> cambiarPesos(teclado, pesos);
+                case "0" -> System.out.println("Hasta pronto. Las valoraciones y los pesos no se guardan al salir.");
+                default -> System.out.println("Opción no válida: escribe 1, 2, 3 o 0.");
             }
         } while (!opcion.equals("0"));
 
@@ -574,8 +658,28 @@ public class Principal {
         System.out.println("=== ValoraPROG ===");
         System.out.println("1. Nueva valoración");
         System.out.println("2. Ver valoración global");
+        System.out.println("3. Cambiar pesos");
         System.out.println("0. Salir");
         System.out.print("Opción: ");
+    }
+
+    // ── Leer un número ───────────────────────────────────────────────────
+    // Pregunta hasta que se escribe un número entero entre minimo y maximo, y lo devuelve.
+    // Sirve para las notas (del 1 al 5) y para los pesos (del 1 al 10)
+    static int leerEntero(Scanner teclado, String pregunta, int minimo, int maximo) {
+        int numero = minimo - 1;    // empieza fuera del rango: así pregunta al menos una vez
+        while (!Calculos.estaEntre(numero, minimo, maximo)) {
+            System.out.print(pregunta + " (" + minimo + "-" + maximo + "): ");
+            try {
+                numero = Integer.parseInt(teclado.nextLine().trim());
+            } catch (NumberFormatException e) {
+                numero = minimo - 1;    // no es un número: se trata como uno fuera del rango
+            }
+            if (!Calculos.estaEntre(numero, minimo, maximo)) {
+                System.out.println("  Escribe un número del " + minimo + " al " + maximo + ".");
+            }
+        }
+        return numero;
     }
 
     // ── 1. Nueva valoración ──────────────────────────────────────────────
@@ -583,44 +687,43 @@ public class Principal {
     // La fila es un array y se recibe por referencia: lo que se guarda aquí, queda en la matriz de main
     static void nuevaValoracion(Scanner teclado, int[] fila) {
         for (int categoria = 0; categoria < CATEGORIAS.length; categoria++) {
-            fila[categoria] = leerNota(teclado, CATEGORIAS[categoria]);
+            fila[categoria] = leerEntero(teclado, CATEGORIAS[categoria], Calculos.NOTA_MINIMA, Calculos.NOTA_MAXIMA);
         }
-    }
-
-    // Pregunta la nota de una categoría hasta que sea un número del 1 al 5, y la devuelve
-    static int leerNota(Scanner teclado, String categoria) {
-        int nota = 0;
-        while (!Calculos.esNotaValida(nota)) {
-            System.out.print(categoria + " (1-5): ");
-            try {
-                nota = Integer.parseInt(teclado.nextLine().trim());
-            } catch (NumberFormatException e) {
-                nota = 0;   // no es un número: se trata como una nota no válida
-            }
-            if (!Calculos.esNotaValida(nota)) {
-                System.out.println("  Escribe un número del 1 al 5.");
-            }
-        }
-        return nota;
     }
 
     // ── 2. Ver valoración global ─────────────────────────────────────────
     // Las cuentas las hace Calculos; aquí solo se muestran
-    static void mostrarResumen(int[][] notas, int total) {
+    static void mostrarResumen(int[][] notas, int total, int[] pesos) {
         if (total == 0) {
             System.out.println("Aún no hay valoraciones.");
             return;
         }
         System.out.println("Valoraciones: " + total);
         System.out.println();
-        System.out.printf(FILA, "Categoría", "Estrellas", "Media", "Notas");
+        System.out.printf(FILA, "Categoría", "Peso", "Estrellas", "Media", "Notas");
         for (int categoria = 0; categoria < CATEGORIAS.length; categoria++) {
             double media = Calculos.media(notas, total, categoria);
-            System.out.printf(FILA, CATEGORIAS[categoria], Calculos.estrellas(media),
+            String peso = Calculos.redondear(Calculos.porcentaje(pesos, categoria)) + "%";
+            System.out.printf(FILA, CATEGORIAS[categoria], peso, Calculos.estrellas(media),
                     Calculos.redondear(media), Calculos.unir(notas, total, categoria));
         }
-        double global = Calculos.global(notas, total);
-        System.out.printf(FILA, "Global", Calculos.estrellas(global), Calculos.redondear(global), "");
+        double global = Calculos.global(notas, total, pesos);
+        System.out.printf(FILA, "Global", "", Calculos.estrellas(global), Calculos.redondear(global), "");
+    }
+
+    // ── 3. Cambiar los pesos ─────────────────────────────────────────────
+    // Muestra los pesos de ahora y pide uno nuevo, del 1 al 10, para cada categoría.
+    // Como la fila en nuevaValoracion, pesos es un array: lo que se cambia aquí, queda en el de main
+    static void cambiarPesos(Scanner teclado, int[] pesos) {
+        System.out.println("Cuánto cuenta cada categoría en la valoración global. Pesos de ahora:");
+        for (int categoria = 0; categoria < CATEGORIAS.length; categoria++) {
+            System.out.println("  " + CATEGORIAS[categoria] + ": " + pesos[categoria]);
+        }
+        for (int categoria = 0; categoria < CATEGORIAS.length; categoria++) {
+            pesos[categoria] = leerEntero(teclado, "Peso de " + CATEGORIAS[categoria],
+                    Calculos.PESO_MINIMO, Calculos.PESO_MAXIMO);
+        }
+        System.out.println("Pesos guardados.");
     }
 }
 ```
@@ -631,14 +734,16 @@ public class Principal {
 
 1. ¿Por qué `total++` está en `main` y no dentro de `nuevaValoracion`?
 2. Si se escribe `siete` cuando pide la nota de docente, ¿qué líneas del código se ejecutan, y qué sale en la pantalla?
-3. ¿Qué pasa si se elige la opción `3`?
+3. ¿Qué pasa si se elige la opción `4`?
+4. ¿Por qué `cambiarPesos` puede cambiar los pesos de `main` sin devolver nada?
 
 <details>
 <summary>Respuestas</summary>
 
 1. Porque `total` es un `int`: si se le pasara a una función, la función recibiría una copia y, al sumarle 1, `total` no cambiaría en `main`. La fila sí se puede rellenar dentro de `nuevaValoracion`, porque es un array: la función y `main` apuntan a la misma fila.
-2. `Integer.parseInt("siete")` lanza `NumberFormatException`; el `catch` pone `nota = 0`; como 0 no es válida, se escribe «Escribe un número del 1 al 5.» y el `while` vuelve a preguntar «Docente (1-5):».
-3. No coincide con ningún `case`, así que se ejecuta `default`: «Opción no válida: escribe 1, 2 o 0.». Como no es `"0"`, el bucle vuelve a mostrar el menú.
+2. `Integer.parseInt("siete")` lanza `NumberFormatException`; el `catch` pone `numero = 0` (`minimo - 1`); como 0 no está entre 1 y 5, se escribe «Escribe un número del 1 al 5.» y el `while` vuelve a preguntar «Docente (1-5):».
+3. No coincide con ningún `case`, así que se ejecuta `default`: «Opción no válida: escribe 1, 2, 3 o 0.». Como no es `"0"`, el bucle vuelve a mostrar el menú.
+4. Porque `pesos` es un array: `cambiarPesos` recibe una copia de la referencia, que apunta al mismo array que el de `main`. Lo que guarda en `pesos[categoria]` se ve en `main`, igual que la fila en `nuevaValoracion`.
 
 </details>
 
@@ -670,13 +775,15 @@ Un programa se prueba con **casos de prueba**: una entrada preparada y la salida
 |---|---|---|---|
 | 1 | Límite: vacío | `2` | «Aún no hay valoraciones.» |
 | 2 | Normal | `1`, y las notas `4`, `3` y `5` | «Valoración guardada (1 en total).» |
-| 3 | Normal | `2` | «Valoraciones: 1» y la tabla con las columnas alineadas: Docente `****-` 4.0 y 4; Materiales `***--` 3.0 y 3; Clases `*****` 5.0 y 5; Global `****-` 4.0 |
+| 3 | Normal | `2` | «Valoraciones: 1» y la tabla con las columnas alineadas, con 33.3% de peso en las tres categorías: Docente `****-` 4.0 y 4; Materiales `***--` 3.0 y 3; Clases `*****` 5.0 y 5; Global `****-` 4.0 |
 | 4 | Erróneo: letras | `1`, docente `5`, materiales `siete` | «Escribe un número del 1 al 5.» y vuelve a preguntar «Materiales (1-5):» |
 | 5 | Erróneo: fuera de rango | Materiales `0` y después `6` | Las dos veces, «Escribe un número del 1 al 5.» |
 | 6 | Límite: 1 y 5 | Materiales `1` y clases `5` | «Valoración guardada (2 en total).»: el 1 y el 5, las notas de los extremos, se aceptan |
 | 7 | Normal | `2` | «Valoraciones: 2» y la tabla: Docente `*****` 4.5 y 4, 5; Materiales `**---` 2.0 y 3, 1; Clases `*****` 5.0 y 5, 5; Global `****-` 3.8. 4.5 se redondea a 5 estrellas y 3.8, a 4 |
-| 8 | Erróneo: opción | `3`, y después `hola` | Las dos veces, «Opción no válida: escribe 1, 2 o 0.» y el menú otra vez |
-| 9 | Salir | `0` | «Hasta pronto. Las valoraciones no se guardan al salir.» y el programa termina |
+| 8 | Pesos | `3`, y los pesos `0`, `11`, `2`, `1` y `1` | Muestra los pesos de ahora (1, 1 y 1). Con el `0` y el `11`, «Escribe un número del 1 al 10.»; después, «Pesos guardados.» |
+| 9 | Normal | `2` | La tabla, con pesos 50.0%, 25.0% y 25.0%, y «Global» `****-` 4.0: (4.5 · 2 + 2.0 + 5.0) / 4 = 4.0 |
+| 10 | Erróneo: opción | `4`, y después `hola` | Las dos veces, «Opción no válida: escribe 1, 2, 3 o 0.» y el menú otra vez |
+| 11 | Salir | `0` | «Hasta pronto. Las valoraciones y los pesos no se guardan al salir.» y el programa termina |
 
 **5.2 · Probar sin teclear.** Se le puede dar al programa todo lo que se escribiría, de una vez, con la orden `printf` de la terminal (no es el `printf` de Java, aunque se llame igual) y una tubería (`|`): `printf` escribe el texto, `\n` es cada **Intro**, y `|` se lo pasa a `java` como si se tecleara. Así se repite una prueba larga en un segundo. Por ejemplo, los casos 2 y 3, y salir:
 
@@ -687,12 +794,12 @@ printf "1\n4\n3\n5\n2\n0\n" | java -cp bin dam.Principal
 Y el límite de 30 valoraciones (R7): un bucle `for` de la terminal repite 31 veces una valoración, y después se sale:
 
 ```bash
-(for i in $(seq 31); do printf "1\n5\n4\n3\n"; done; printf "0\n") | java -cp bin dam.Principal | grep "No caben"
+(for i in $(seq 31); do printf "1\n5\n5\n5\n"; done; printf "0\n") | java -cp bin dam.Principal | grep "No caben"
 ```
 
-`grep` muestra solo las líneas que contienen «No caben»: tiene que salir «No caben más valoraciones: el máximo es 30.».
+`grep` muestra solo las líneas que contienen «No caben»: tiene que salir «No caben más valoraciones: el máximo es 30.». Las notas de la valoración 31 (`5`, `5` y `5`) las lee el menú como opciones que no existen, y las salta.
 
-**Comprueba que…** los nueve casos de 5.1 dan el resultado esperado y las dos órdenes de 5.2 muestran lo que se indica.
+**Comprueba que…** los once casos de 5.1 dan el resultado esperado y las dos órdenes de 5.2 muestran lo que se indica.
 
 ---
 
