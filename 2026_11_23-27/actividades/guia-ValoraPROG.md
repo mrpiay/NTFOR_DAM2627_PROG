@@ -69,6 +69,7 @@ Opción: 2
 Valoraciones: 1
 
   Categoría      Peso  Estrellas  Media  Notas
+  ============================================
   Docente       33.3%  ****-        4.0  4
   Materiales    33.3%  ***--        3.0  3
   Clases        33.3%  *****        5.0  5
@@ -100,6 +101,7 @@ Opción: 2
 Valoraciones: 1
 
   Categoría      Peso  Estrellas  Media  Notas
+  ============================================
   Docente       50.0%  ****-        4.0  4
   Materiales    25.0%  ***--        3.0  3
   Clases        25.0%  *****        5.0  5
@@ -120,7 +122,7 @@ Hasta pronto. Las valoraciones y los pesos no se guardan al salir.
 | R1 | El programa muestra un **menú** con cuatro opciones: 1, nueva valoración; 2, ver la valoración global; 3, cambiar los pesos; 0, salir. Después de cada opción, el menú vuelve a salir, hasta elegir 0. |
 | R2 | **Nueva valoración:** pide una nota del 1 al 5 para docente, materiales y clases. Si lo escrito no es un número del 1 al 5 (letras, un 0, un 6…), avisa y vuelve a preguntar. El programa no se cierra. |
 | R3 | Al terminar una valoración, dice cuántas hay en total. |
-| R4 | **Ver la valoración global:** el número de valoraciones y una **tabla** con las columnas alineadas: para cada categoría, su **peso** en porcentaje, sus **estrellas**, su **media**, con un decimal, y todas sus notas **separadas por comas**; y en la última fila, la **valoración global** («Global»), con sus estrellas: la media **ponderada** de las tres medias, en la que cada una cuenta según su peso. Las estrellas son 5 caracteres: un `*` por cada estrella y un `-` por cada una que falta. Las estrellas son la media redondeada a un entero: 4.5 da `*****` y 3.8, `****-`. |
+| R4 | **Ver la valoración global:** el número de valoraciones y una **tabla** con las columnas alineadas y una línea de `=` debajo de la cabecera, tan larga como ella: para cada categoría, su **peso** en porcentaje, sus **estrellas**, su **media**, con un decimal, y todas sus notas **separadas por comas**; y en la última fila, la **valoración global** («Global»), con sus estrellas: la media **ponderada** de las tres medias, en la que cada una cuenta según su peso. Las estrellas son 5 caracteres: un `*` por cada estrella y un `-` por cada una que falta. Las estrellas son la media redondeada a un entero: 4.5 da `*****` y 3.8, `****-`. |
 | R5 | Si aún no hay valoraciones, la opción 2 dice «Aún no hay valoraciones.». |
 | R6 | Si se elige una opción que no existe, avisa y vuelve a mostrar el menú. |
 | R7 | Caben como máximo **30 valoraciones**. Si se intenta una más, avisa. |
@@ -589,6 +591,8 @@ Crea el archivo **`Principal.java`**, en `src/dam`:
 | `return;` en `mostrarResumen` | Termina la función ahí mismo: si no hay valoraciones, no sigue |
 | `static final String FILA = "  %-12s %6s  %-10s %5s  %s%n";` | El formato de cada fila de la tabla. Cada `%…s` es un hueco para un dato: `%-12s` lo escribe en 12 caracteres, pegado a la izquierda (el `-`), y rellena con espacios; `%6s`, en 6, pegado a la derecha; `%s`, tal cual. `%n` es el salto de línea |
 | `System.out.printf(FILA, "Docente", "33.3%", "****-", 4.0, "4")` | Escribe el formato cambiando cada hueco por un dato, en orden. Como todas las filas usan `FILA`, las columnas quedan alineadas |
+| `String cabecera = String.format(FILA, …);` | Hace lo mismo que `printf`, pero en lugar de escribir el texto, lo **devuelve**: así se puede escribir y, además, medir |
+| `"=".repeat(cabecera.trim().length())` | La línea de debajo de la cabecera: `repeat` repite el texto `"="` tantas veces como se le diga. `trim()` quita los espacios del principio y el salto de línea del final, y `length()` da cuántos caracteres quedan: la línea mide lo mismo que el texto de la cabecera |
 
 ```java
 package dam;
@@ -700,7 +704,12 @@ public class Principal {
         }
         System.out.println("Valoraciones: " + total);
         System.out.println();
-        System.out.printf(FILA, "Categoría", "Peso", "Estrellas", "Media", "Notas");
+        // La cabecera, y debajo una línea de = tan larga como su texto.
+        // String.format hace lo mismo que printf, pero devuelve el texto en lugar de escribirlo;
+        // trim le quita los espacios del principio y el salto de línea del final
+        String cabecera = String.format(FILA, "Categoría", "Peso", "Estrellas", "Media", "Notas");
+        System.out.print(cabecera);
+        System.out.println("  " + "=".repeat(cabecera.trim().length()));
         for (int categoria = 0; categoria < CATEGORIAS.length; categoria++) {
             double media = Calculos.media(notas, total, categoria);
             String peso = Calculos.redondear(Calculos.porcentaje(pesos, categoria)) + "%";
