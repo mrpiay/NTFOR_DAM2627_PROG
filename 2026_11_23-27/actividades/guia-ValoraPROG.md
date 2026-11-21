@@ -149,14 +149,14 @@ Opción: 5
 Opción: 6
 
 Número de la valoración (1-11): 1
-Notas de ahora de la n.º 1:
+Notas de ahora de la nº 1:
   Docente: 4
   Materiales: 3
   Clases: 5
 Docente (1-5): 5
 Materiales (1-5): 5
 Clases (1-5): 5
-Valoración n.º 1 modificada.
+Valoración nº 1 modificada.
 
 === ValoraPROG ===
 1. Nueva valoración
@@ -169,7 +169,7 @@ Valoración n.º 1 modificada.
 0. Salir
 Opción: 4
 
-Mejor valoración: n.º 1 de 11
+Mejor valoración: nº 1 de 11
 
   Categoría      Peso  Estrellas   Nota
   =====================================
@@ -192,7 +192,7 @@ Opción: 0
 Hasta pronto. Las valoraciones y los pesos no se guardan al salir.
 ```
 
-| N.º | Requisito |
+| Nº | Requisito |
 |---|---|
 | R1 | El programa muestra un **menú** con ocho opciones: 1, nueva valoración; 2, ver la valoración global; 3, cambiar los pesos; 4, ver la mejor valoración; 5, crear 10 valoraciones al azar; 6, modificar una valoración; 7, ver la mejor nota de cada categoría; 0, salir. Después de cada opción, el menú vuelve a salir, hasta elegir 0. |
 | R2 | **Nueva valoración:** pide una nota del 1 al 5 para docente, materiales y clases. Si lo escrito no es un número del 1 al 5 (letras, un 0, un 6…), avisa y vuelve a preguntar. El programa no se cierra. |
@@ -206,7 +206,7 @@ Hasta pronto. Las valoraciones y los pesos no se guardan al salir.
 | R10 | **Ver la mejor valoración:** la de nota global más alta, calculada con sus tres notas y los pesos de ahora. Dice su número y, en una tabla como la de R4, el peso, las estrellas y la nota de cada categoría, y su global. Si hay empate, la primera. |
 | R11 | **Crear 10 valoraciones al azar:** añade 10 valoraciones con notas del 1 al 5 elegidas al azar y dice cuántas hay en total. Si no caben las 10, crea las que caben hasta llegar a 30. |
 | R12 | **Modificar una valoración:** pide su número, del 1 al número de valoraciones que haya, así que solo se puede elegir una que ya existe. Muestra sus notas de ahora y pide las tres nuevas, como en una nueva valoración. No cambia el número de valoraciones. |
-| R13 | **Ver la mejor nota de cada categoría:** en una tabla como la de R4, para cada categoría, su nota más alta, con sus estrellas, y los números de **todas** las valoraciones que tienen esa nota: «n.º 2, 7, 9». |
+| R13 | **Ver la mejor nota de cada categoría:** en una tabla como la de R4, para cada categoría, su nota más alta, con sus estrellas, y los números de **todas** las valoraciones que tienen esa nota: «nº 2, 7, 9». |
 
 Cada respuesta del programa queda separada del menú por una línea en blanco, por arriba y por abajo, para que se lea bien.
 
@@ -249,7 +249,7 @@ Con los pesos 2, 1 y 1, docente cuenta el doble que cada una de las otras: 2 de 
 Global:      (4.5 · 2 + 3.5 · 1 + 3.5 · 1) / (2 + 1 + 1) = 16 / 4 = 4.0
 ```
 
-**La mejor valoración.** La nota global de una sola valoración es la media ponderada de sus tres notas: con los pesos 2, 1 y 1, la de la fila 0 (4, 3 y 5) es (4 · 2 + 3 + 5) / 4 = 4.0. La mejor es la fila con la nota global más alta. Las filas empiezan en 0 y las valoraciones se cuentan desde 1: la fila 0 es la valoración n.º 1.
+**La mejor valoración.** La nota global de una sola valoración es la media ponderada de sus tres notas: con los pesos 2, 1 y 1, la de la fila 0 (4, 3 y 5) es (4 · 2 + 3 + 5) / 4 = 4.0. La mejor es la fila con la nota global más alta. Las filas empiezan en 0 y las valoraciones se cuentan desde 1: la fila 0 es la valoración nº 1.
 
 **Las estrellas.** Se redondea la media a un entero y se escriben 5 caracteres: un `*` por cada estrella y un `-` por cada una que falta. La media de docente, 4.5, da 5 estrellas (`*****`); la de materiales, 3.5, da 4 (`****-`), y la global, 3.8, también 4 (`****-`).
 
@@ -580,7 +580,7 @@ Crea el archivo **`Calculos.java`**, en `src/dam`:
 | `int mejorFila = 0;` y `if (… > …) { mejorFila = fila; }` | El patrón para buscar el máximo: se supone que es el primero y se compara con cada uno de los demás; si alguno es mayor, pasa a ser el mejor. `maxima` usa el mismo patrón con las notas de una columna |
 | `if (notas[fila][categoria] == nota)` en `conNota` | Un recorrido con filtro: solo se apuntan las filas que cumplen la condición |
 | `!texto.isEmpty()` | `isEmpty()` dice si el texto está vacío; con `!`, si ya tiene algo. Así la coma va antes de cada número, menos del primero. En `unir` bastaba `fila > 0`, porque se apuntaban todas las filas; aquí no |
-| `texto += (fila + 1);` | Con paréntesis, primero se suma 1 a la fila y después se añade al texto: la fila 0 es la valoración n.º 1 |
+| `texto += (fila + 1);` | Con paréntesis, primero se suma 1 a la fila y después se añade al texto: la fila 0 es la valoración nº 1 |
 
 ```java
 package dam;
@@ -761,7 +761,7 @@ javac -d bin src/dam/*.java
 4. `"*****"`, `"**---"` y `"*----"`: 4.5 se redondea a 5, 2.2 a 2 y 1.0 se queda en 1.
 5. `60.0`: 3 de 5 (la suma de los pesos) son el 60 %. La global, `3.8`: (5.0 · 3 + 2.0 · 1 + 2.0 · 1) / (3 + 1 + 1) = 19 / 5. Sin pesos, la media de las medias daría 3.0: docente, con más peso, la sube.
 6. `0`: las dos tienen global 3.0, y con `>` la fila 1 no sustituye a la fila 0. Con `>=`, devolvería `1`, la última de las empatadas.
-7. `5` y `"2, 4"`: el 5 está en las filas 1 y 3, que son las valoraciones n.º 2 y n.º 4.
+7. `5` y `"2, 4"`: el 5 está en las filas 1 y 3, que son las valoraciones nº 2 y nº 4.
 
 </details>
 
@@ -793,7 +793,7 @@ Crea el archivo **`Menu.java`**, en `src/dam`:
 | `azar.nextInt(Calculos.NOTA_MINIMA, Calculos.NOTA_MAXIMA + 1)` | Un entero al azar desde el primero hasta el segundo **sin incluirlo**: por eso `+ 1`, para que el 5 pueda salir |
 | `Math.min(AL_AZAR, libres)` | La menor de las dos cantidades: 10, o las filas que quedan libres si son menos |
 | `leerEntero(teclado, "Número de la valoración", 1, total)` | Solo acepta del 1 al número de valoraciones que hay: una que existe |
-| `notas[numero - 1]` | La fila de la valoración n.º `numero`: las filas empiezan en 0 |
+| `notas[numero - 1]` | La fila de la valoración nº `numero`: las filas empiezan en 0 |
 
 Las funciones van con **`public static`**: `static`, porque se usan sin crear objetos, y `public`, porque las llama `main`, que está en otra clase.
 
@@ -928,8 +928,8 @@ public class Menu {
         }
         int mejor = Calculos.mejor(notas, total, pesos);
         int[] fila = notas[mejor];
-        // Las filas empiezan en 0, y las valoraciones se cuentan desde 1: la fila 0 es la n.º 1
-        System.out.println("Mejor valoración: n.º " + (mejor + 1) + " de " + total);
+        // Las filas empiezan en 0, y las valoraciones se cuentan desde 1: la fila 0 es la nº 1
+        System.out.println("Mejor valoración: nº " + (mejor + 1) + " de " + total);
         System.out.println();
         escribirCabecera("Nota", "");
         for (int categoria = 0; categoria < CATEGORIAS.length; categoria++) {
@@ -960,7 +960,7 @@ public class Menu {
 
     // ── 6. Modificar una valoración ──────────────────────────────────────
     // Solo una que ya existe: se pide su número, del 1 a total. Muestra sus notas y las vuelve a pedir.
-    // La valoración n.º X está en la fila X - 1, y se rellena con nuevaValoracion, igual que una nueva.
+    // La valoración nº X está en la fila X - 1, y se rellena con nuevaValoracion, igual que una nueva.
     // total no cambia: no se añade ninguna
     public static void modificarValoracion(Scanner teclado, int[][] notas, int total) {
         if (total == 0) {
@@ -969,12 +969,12 @@ public class Menu {
         }
         int numero = leerEntero(teclado, "Número de la valoración", 1, total);
         int[] fila = notas[numero - 1];
-        System.out.println("Notas de ahora de la n.º " + numero + ":");
+        System.out.println("Notas de ahora de la nº " + numero + ":");
         for (int categoria = 0; categoria < CATEGORIAS.length; categoria++) {
             System.out.println("  " + CATEGORIAS[categoria] + ": " + fila[categoria]);
         }
         nuevaValoracion(teclado, fila);
-        System.out.println("Valoración n.º " + numero + " modificada.");
+        System.out.println("Valoración nº " + numero + " modificada.");
     }
 
     // ── 7. Ver la mejor nota de cada categoría ───────────────────────────
@@ -989,7 +989,7 @@ public class Menu {
         escribirCabecera("Nota", "Valoraciones");
         for (int categoria = 0; categoria < CATEGORIAS.length; categoria++) {
             int maxima = Calculos.maxima(notas, total, categoria);
-            String cuales = "n.º " + Calculos.conNota(notas, total, categoria, maxima);
+            String cuales = "nº " + Calculos.conNota(notas, total, categoria, maxima);
             System.out.printf(FILA, CATEGORIAS[categoria], peso(pesos, categoria),
                     Calculos.estrellas(maxima), maxima, cuales);
         }
@@ -1157,7 +1157,7 @@ Un programa se prueba con **casos de prueba**: una entrada preparada y la salida
 
 **6.1 · Los casos de prueba.** Ejecuta el programa y hazlos en orden:
 
-| N.º | Tipo | Entrada | Resultado esperado |
+| Nº | Tipo | Entrada | Resultado esperado |
 |---|---|---|---|
 | 1 | Límite: vacío | `2` | «Aún no hay valoraciones.» |
 | 2 | Normal | `1`, y las notas `4`, `3` y `5` | «Valoración guardada (1 en total).» |
@@ -1168,11 +1168,11 @@ Un programa se prueba con **casos de prueba**: una entrada preparada y la salida
 | 7 | Normal | `2` | «Valoraciones: 2» y la tabla: Docente `*****` 4.5 y 4, 5; Materiales `**---` 2.0 y 3, 1; Clases `*****` 5.0 y 5, 5; Global `****-` 3.8. 4.5 se redondea a 5 estrellas y 3.8, a 4 |
 | 8 | Pesos | `3`, y los pesos `0`, `11`, `2`, `1` y `1` | Muestra los pesos de ahora (1, 1 y 1). Con el `0` y el `11`, «Escribe un número del 1 al 10.»; después, «Pesos guardados.» |
 | 9 | Normal | `2` | La tabla, con pesos 50.0%, 25.0% y 25.0%, y «Global» `****-` 4.0: (4.5 · 2 + 2.0 + 5.0) / 4 = 4.0 |
-| 10 | Normal | `4` | «Mejor valoración: n.º 1 de 2» y su tabla: Docente 4, Materiales 3, Clases 5, Global 4.0. Las dos valoraciones tienen global 4.0, y en el empate sale la primera |
+| 10 | Normal | `4` | «Mejor valoración: nº 1 de 2» y su tabla: Docente 4, Materiales 3, Clases 5, Global 4.0. Las dos valoraciones tienen global 4.0, y en el empate sale la primera |
 | 11 | Límite: no existe | `6`, y el número `3` | «Escribe un número del 1 al 2.» y vuelve a preguntar: la 3 no existe |
-| 12 | Normal | El número `2`, y las notas `2`, `2` y `2` | Muestra las notas de ahora de la n.º 2 (5, 1 y 5) y, después, «Valoración n.º 2 modificada.» |
-| 13 | Normal | `4` | «Mejor valoración: n.º 1 de 2»: ahora la 2 tiene global 2.0 |
-| 14 | Normal | `7` | «Mejor nota de cada categoría (de 2 valoraciones)» y la tabla: Docente 4, Materiales 3 y Clases 5, las tres de la «n.º 1»: la 2 ahora tiene un 2 en todas |
+| 12 | Normal | El número `2`, y las notas `2`, `2` y `2` | Muestra las notas de ahora de la nº 2 (5, 1 y 5) y, después, «Valoración nº 2 modificada.» |
+| 13 | Normal | `4` | «Mejor valoración: nº 1 de 2»: ahora la 2 tiene global 2.0 |
+| 14 | Normal | `7` | «Mejor nota de cada categoría (de 2 valoraciones)» y la tabla: Docente 4, Materiales 3 y Clases 5, las tres de la «nº 1»: la 2 ahora tiene un 2 en todas |
 | 15 | Normal | `5` | «10 valoraciones creadas al azar (12 en total).» |
 | 16 | Normal | `7` | La tabla con las 12: en cada categoría, su nota más alta y todos los números de las valoraciones que la tienen. Como las notas son al azar, cambia en cada ejecución |
 | 17 | Erróneo: opción | `8`, y después `hola` | Las dos veces, «Opción no válida: elige una del menú.» y el menú otra vez |
