@@ -15,7 +15,7 @@ El desarrollo se divide en dos partes:
 
 No es necesario tener experiencia previa con Java en la terminal. La guía explica desde la preparación del entorno hasta el programa terminado, incluyendo comprobaciones y ejemplos para facilitar el seguimiento.
 
-Al finalizar, tendrás un programa funcional y una visión general de cómo se reparten un programa en funciones y los cálculos en una clase aparte.
+Al finalizar, tendrás un programa funcional y una visión general de cómo se reparte un programa en funciones y en tres clases, cada una con su trabajo: el arranque, el menú y los cálculos.
 
 ## Índice
 
@@ -30,9 +30,10 @@ Al finalizar, tendrás un programa funcional y una visión general de cómo se r
   - [Paso 0 · Preparar Ubuntu, Java y VS Code](#paso-0--preparar-ubuntu-java-y-vs-code)
   - [Paso 1 · Crear el proyecto](#paso-1--crear-el-proyecto)
   - [Paso 2 · Los cálculos](#paso-2--los-cálculos)
-  - [Paso 3 · El programa principal](#paso-3--el-programa-principal)
-  - [Paso 4 · Compilar y ejecutar](#paso-4--compilar-y-ejecutar)
-  - [Paso 5 · Probar el programa](#paso-5--probar-el-programa)
+  - [Paso 3 · El menú](#paso-3--el-menú)
+  - [Paso 4 · El programa principal](#paso-4--el-programa-principal)
+  - [Paso 5 · Compilar y ejecutar](#paso-5--compilar-y-ejecutar)
+  - [Paso 6 · Probar el programa](#paso-6--probar-el-programa)
 - [Si algo falla](#si-algo-falla)
 - [El proyecto terminado](#el-proyecto-terminado)
 
@@ -253,7 +254,7 @@ El programa se escribe en **Java**. El código se guarda en archivos con la exte
 
 Dentro de esos archivos hay, sobre todo, dos cosas:
 
-- **Clases.** En Java, todo el código va dentro de una clase. El archivo se llama como la clase: `Principal` va en `Principal.java`. Este programa tiene dos clases, `Principal` y `Calculos`.
+- **Clases.** En Java, todo el código va dentro de una clase. El archivo se llama como la clase: `Principal` va en `Principal.java`. Este programa tiene tres clases: `Principal`, `Menu` y `Calculos`.
 - **Funciones** (en Java se llaman **métodos**). Una función es una acción con nombre. Se escribe con paréntesis: `leerEntero(teclado, "Docente", 1, 5)` pide una nota del 1 al 5; `media(notas, total, 0)` calcula la media de docente. Lo que va entre los paréntesis son los **parámetros**, los datos que necesita, y lo que devuelve con `return` es su **resultado**.
 
 Estas son las piezas que usa el programa:
@@ -266,6 +267,7 @@ Estas son las piezas que usa el programa:
 | **Paquete** | Una carpeta con nombre para agrupar clases. Se declara en la primera línea: `package dam;` | `dam`, en la carpeta `src/dam` |
 | **`main`** | La función por la que empieza el programa | En `Principal` |
 | **`static`** | Una función o un dato que pertenece a la clase y se usa sin crear objetos: `Calculos.media(…)` | Todas las funciones del programa |
+| **`public`** | Una función o un dato que se puede usar desde otras clases, escribiendo delante el nombre de la clase: `Menu.mostrarMenu()` | Las funciones y las constantes de `Menu` y de `Calculos` |
 | **Constante** (`static final`) | Un dato que no cambia. Por costumbre, su nombre va en mayúsculas | `CATEGORIAS`, `MAX_VALORACIONES`, `AL_AZAR`, `FILA`, `NOTA_MINIMA` |
 | **`Scanner`** | La clase de Java que lee del teclado: `teclado.nextLine()` lee una línea | `teclado` |
 | **`Random`** | La clase de Java que da números al azar: `azar.nextInt(1, 6)` da un entero del 1 al 5 | `azar` |
@@ -275,21 +277,28 @@ Estas son las piezas que usa el programa:
 | **Excepción** | Un error que salta al ejecutar. `try-catch` lo recoge para que el programa no se cierre | `NumberFormatException`, si se escribe «siete» donde va un número |
 | **Paso por valor** | Al llamar a una función, se le pasa una **copia** del valor. Con un `int`, la función no puede cambiar la variable de quien llama. Con un array, la copia es de la **referencia**: los dos apuntan al mismo array, y lo que la función cambie dentro se ve fuera | `nuevaValoracion` rellena una fila de la matriz y `cambiarPesos`, el array de pesos; `total` lo cambia `main` |
 
-### 3.2 · Las dos partes
+### 3.2 · Las tres partes
 
 Un programa pequeño se podría escribir entero dentro de `main`, pero sería difícil de leer y de cambiar. Por eso el código se reparte:
 
-- **`Principal`**: el programa que se ve. Muestra el menú, lee lo que se escribe con `Scanner` y escribe las respuestas con `println`. Cada trabajo está en su propia función: `mostrarMenu`, `leerEntero`, una por cada opción del menú y dos de ayuda para las tablas, `escribirCabecera` y `peso`. Así `main` queda corto y se lee como el menú.
+- **`Principal`**: solo `main`, el arranque. Crea los datos (la matriz de notas, `total`, los pesos, el `Scanner` y el `Random`) y repite el menú: lee la opción y, con un `switch`, llama a la función de `Menu` que le toca. Así `main` queda corto y se lee como el menú.
+- **`Menu`**: lo que se ve. Muestra el menú, lee lo que se escribe con `Scanner` y escribe las respuestas con `println` y `printf`. Cada trabajo está en su propia función: `mostrarMenu`, `leerEntero`, una por cada opción del menú y dos de ayuda para las tablas, `escribirCabecera` y `peso`. Los datos no son suyos: los recibe de `main` como parámetros.
 - **`Calculos`**: solo cuentas. No lee del teclado ni escribe nada: recibe datos y devuelve resultados. Comprueba si un número está entre dos límites, junta las notas de una categoría con comas, calcula las medias, los porcentajes de los pesos y la global ponderada, busca la mejor valoración, redondea y convierte una media en estrellas.
 
-En resumen: **`Principal` habla con la persona y `Calculos` hace las cuentas**.
+En resumen: **`Principal` arranca y reparte, `Menu` habla con la persona y `Calculos` hace las cuentas**.
 
-**Cómo se lee el esquema.** Cada caja es una clase, con sus funciones y lo que hace cada una; a la derecha, el paso de la Parte 2 en el que se escribe. La flecha que baja dice qué funciones de `Calculos` usa `Principal`, y la que sube, qué le devuelven.
+**Cómo se lee el esquema.** Cada caja es una clase, con sus funciones y lo que hace cada una; a la derecha, el paso de la Parte 2 en el que se escribe. Las flechas que bajan dicen qué funciones usa cada clase de la de abajo, y la que sube, qué le devuelve `Calculos` a `Menu`. Las flechas solo van hacia abajo: `Calculos` no usa `Menu`, y `Menu` no usa `Principal`.
 
 ```
 ┌──────────────────────────────────────────────────────────────┐
-│ Principal.java                                   paso 3      │
-│   main               el menú: do-while y switch              │
+│ Principal.java                                   paso 4      │
+│   main               crea los datos y repite el menú:        │
+│                      do-while y switch                       │
+└─────────────┬────────────────────────────────────────────────┘
+              │ Menu.mostrarMenu(), Menu.nuevaValoracion(…),
+              │ Menu.mostrarResumen(…)… una por opción
+┌─────────────▼────────────────────────────────────────────────┐
+│ Menu.java                                        paso 3      │
 │   mostrarMenu        escribe el menú                         │
 │   leerEntero         pide un número hasta que es válido      │
 │   escribirCabecera   la cabecera de una tabla y su línea     │
@@ -299,8 +308,8 @@ En resumen: **`Principal` habla con la persona y `Calculos` hace las cuentas**.
 │   cambiarPesos       3: rellena el array de pesos            │
 │   mostrarMejor       4: la tabla de la mejor valoración      │
 │   crearAlAzar        5: rellena filas con Random             │
-│   modificarValoracion 6: vuelve a rellenar una fila          │
-│   habla con la persona: Scanner y println                    │
+│   modificarValoracion  6: vuelve a rellenar una fila         │
+│   habla con la persona: Scanner, println y printf            │
 └─────────────┬──────────────────────────────────▲─────────────┘
               │ estaEntre(n, min, max)           │ true o false
               │ unir(notas, total, c)            │ "4, 5"
@@ -321,11 +330,11 @@ En resumen: **`Principal` habla con la persona y `Calculos` hace las cuentas**.
 | Paso | Archivo | Qué contiene |
 |---|---|---|
 | 2 | `src/dam/Calculos.java` | Las cuentas: `estaEntre`, `unir`, `media`, `sumaPesos`, `porcentaje`, `global`, `globalDe`, `mejor`, `redondear` y `estrellas` |
-| 3 | `src/dam/Principal.java` | El menú (`main`) y las funciones que hablan con la persona: `mostrarMenu`, `leerEntero`, `escribirCabecera`, `peso`, `nuevaValoracion`, `mostrarResumen`, `cambiarPesos`, `mostrarMejor`, `crearAlAzar` y `modificarValoracion` |
+| 3 | `src/dam/Menu.java` | Las constantes del programa y las funciones que hablan con la persona: `mostrarMenu`, `leerEntero`, `escribirCabecera`, `peso`, `nuevaValoracion`, `mostrarResumen`, `cambiarPesos`, `mostrarMejor`, `crearAlAzar` y `modificarValoracion` |
 
 ## 4. Cómo se mueve la información
 
-Esto es lo que pasa por dentro en cada situación, siguiendo el esquema del punto 3. Entre paréntesis va el nombre que tiene en el código.
+Esto es lo que pasa por dentro en cada situación, siguiendo el esquema del punto 3. Entre paréntesis va el nombre que tiene en el código. Cuando dice que `main` llama a una función, es una función de `Menu`: `Menu.nuevaValoracion(…)`.
 
 **Al arrancar (R1)**
 
@@ -381,8 +390,12 @@ Esto es lo que pasa por dentro en cada situación, siguiendo el esquema del punt
 |---|---|
 | Una **matriz** para las notas | Hace falta cada nota, no solo la suma, para mostrarlas separadas por comas (R4). La matriz guarda todas, cada una en su fila y su columna. |
 | Un **máximo** de 30 valoraciones | Un array tiene tamaño fijo: se elige al crearlo. 30 es de sobra para una clase. |
-| Una **función por trabajo** en `Principal` | `main` se lee como el menú, y cada función se entiende sola: mostrar el menú, pedir un número, y una por cada opción del menú. |
-| Las cuentas, en **`Calculos`**, sin `Scanner` ni `println` | Las cuentas se pueden comprobar y cambiar sin tocar lo que se ve. Si cambia el cálculo, `Principal` no se toca. |
+| Una **función por trabajo** en `Menu` | `main` se lee como el menú, y cada función se entiende sola: mostrar el menú, pedir un número, y una por cada opción del menú. |
+| **`main`**, solo en `Principal` | Al abrir `Principal.java` se ve entero cómo funciona el programa: qué datos hay y qué hace cada opción. El detalle de cada opción está en `Menu`. |
+| Lo que se ve, en **`Menu`** | Si cambia un texto o una tabla, solo se toca `Menu`. Y si se añade una opción, se escribe su función en `Menu` y su `case` en `main`. |
+| Los datos, en **`main`**, y no en `Menu` | `Menu` recibe los datos como parámetros, igual que `Calculos`: cada función dice en su cabecera con qué datos trabaja. |
+| Las constantes, en **`Menu`** | Las usa casi todas `Menu`. `main` usa dos, `MAX_VALORACIONES` y `CATEGORIAS`, y las escribe con el nombre de la clase delante: `Menu.MAX_VALORACIONES`. |
+| Las cuentas, en **`Calculos`**, sin `Scanner` ni `println` | Las cuentas se pueden comprobar y cambiar sin tocar lo que se ve. Si cambia el cálculo, `Menu` no se toca. |
 | Leer con **`nextLine` y `Integer.parseInt`** | Se lee siempre una línea entera. Si no es un número, la excepción se recoge y el programa vuelve a preguntar, en lugar de cerrarse (R2). |
 | Las opciones del menú, como **texto** (`"1"`, `"2"`, `"0"`) | Así cualquier cosa que se escriba es una opción, válida o no, y nunca hay que convertirla a número: no hay excepciones en el menú. |
 | **Redondear** con `Math.round` | El número sale siempre con un decimal y con punto (3.8), sea cual sea el idioma del sistema. |
@@ -393,8 +406,8 @@ Esto es lo que pasa por dentro en cada situación, siguiendo el esquema del punt
 | La cabecera de las tablas, en **`escribirCabecera`** | Las tablas de las opciones 2 y 4 tienen la misma cabecera, salvo las dos últimas columnas, que se le pasan. Así la cabecera y su línea de `=` se escriben en un solo sitio. |
 | La mejor, por la **nota global** de la valoración | Es la que resume las tres notas con los pesos que se han elegido, la misma cuenta que la global de la opción 2. |
 | En un empate, **la primera** | Al comparar con `>`, una valoración igual no sustituye a la que ya se tenía. Para quedarse con la última bastaría `>=`. |
-| Las valoraciones al azar, en **`Principal`** | `Calculos` hace cuentas con los datos que recibe y siempre da el mismo resultado; crear datos al azar es otra cosa. Y `crearAlAzar` necesita `MAX_VALORACIONES` y `CATEGORIAS`, que están en `Principal`. |
-| **Un solo** `Random` para todo el programa | Se crea una vez en `main` y se le pasa a `crearAlAzar`, como el `Scanner`. No hace falta uno nuevo cada vez. |
+| Las valoraciones al azar, en **`Menu`** | `Calculos` hace cuentas con los datos que recibe y siempre da el mismo resultado; crear datos al azar es otra cosa. Y `crearAlAzar` necesita `MAX_VALORACIONES` y `CATEGORIAS`, que están en `Menu`. |
+| **Un solo** `Random` para todo el programa | Se crea una vez en `main` y se le pasa a `Menu.crearAlAzar`, como el `Scanner`. No hace falta uno nuevo cada vez. |
 | Modificar con **`nuevaValoracion`** | Modificar una valoración es volver a rellenar su fila: la misma función sirve para las dos cosas, y pide las notas igual. |
 | Modificar, **solo las que existen** | El número se lee con `leerEntero` entre 1 y `total`: un número de una valoración que no existe no se acepta, y vuelve a preguntar. |
 | «Opción no válida: **elige una del menú**» | Con siete opciones, escribir todos los números en el aviso sería largo, y habría que cambiarlo cada vez que se añade una. |
@@ -447,7 +460,7 @@ Todo está en el JDK: **no hay que instalar ninguna librería**, y solo hay dos 
 | Error | Lo que falta |
 |---|---|
 | `javac: command not found` (o `orden no encontrada`) | El JDK no está instalado: `sudo apt install openjdk-21-jdk` |
-| `cannot find symbol` … `class Scanner` | El `import java.util.Scanner;` al principio de `Principal.java` |
+| `cannot find symbol` … `class Scanner` | El `import java.util.Scanner;` al principio de `Menu.java` o de `Principal.java` |
 | `UnsupportedClassVersionError` al ejecutar | Se compiló con un Java más nuevo que el que ejecuta: compila y ejecuta con la misma versión |
 
 ---
@@ -503,14 +516,16 @@ VALORAPROG
 ├── bin                         la crea javac al compilar (paso 2) · no se toca
 │   └── dam
 │       ├── Calculos.class
+│       ├── Menu.class
 │       └── Principal.class
 └── src                         ya existe (paso 1)
     └── dam                     ya existe (paso 1)
         ├── Calculos.java       NUEVO · paso 2
-        └── Principal.java      NUEVO · paso 3
+        ├── Menu.java           NUEVO · paso 3
+        └── Principal.java      NUEVO · paso 4
 ```
 
-**Cómo se crea un archivo** (pasos 2 y 3): en el Explorador de VS Code, abre `src` con su flecha, haz clic derecho sobre la carpeta **`dam`** → **New File…**, escribe el nombre **con** su extensión (por ejemplo, `Calculos.java`) y pulsa **Intro**. Se abre vacío a la derecha: pega el código de la guía y guarda con **Ctrl + S**.
+**Cómo se crea un archivo** (pasos 2, 3 y 4): en el Explorador de VS Code, abre `src` con su flecha, haz clic derecho sobre la carpeta **`dam`** → **New File…**, escribe el nombre **con** su extensión (por ejemplo, `Calculos.java`) y pulsa **Intro**. Se abre vacío a la derecha: pega el código de la guía y guarda con **Ctrl + S**.
 
 **Comprueba que…** VS Code muestra la carpeta `VALORAPROG` con `src/dam` dentro, y abajo a la izquierda pone **WSL: Ubuntu-24.04**.
 
@@ -696,45 +711,37 @@ javac -d bin src/dam/*.java
 
 </details>
 
-## Paso 3 · El programa principal
+## Paso 3 · El menú
 
-`Principal` es lo que se ve: el menú, las preguntas y las respuestas. Lee con `Scanner`, escribe con `println` y pide las cuentas a `Calculos`. Cada trabajo está en su propia función, y `main` solo lleva el menú.
+`Menu` es lo que se ve: el menú, las preguntas y las respuestas. Lee con `Scanner`, escribe con `println` y `printf` y pide las cuentas a `Calculos`. Cada trabajo está en su propia función, y cada opción del menú, en la suya. Los datos no son suyos: los crea `main` (paso 4) y llegan como parámetros.
 
-Crea el archivo **`Principal.java`**, en `src/dam`:
+Crea el archivo **`Menu.java`**, en `src/dam`:
 
 **Las piezas del código:**
 
 | Pieza | Qué hace |
 |---|---|
 | `import java.util.Random;` y `import java.util.Scanner;` | Traen las clases `Random` y `Scanner`, que están en el paquete `java.util` |
-| `static final String[] CATEGORIAS = {…};` | Un array constante con los nombres de las categorías. Su posición es la columna de la matriz: `"Docente"` es la columna 0 |
-| `public static void main(String[] args)` | Donde empieza el programa. `void` quiere decir que no devuelve nada |
-| `Scanner teclado = new Scanner(System.in);` | Crea el lector del teclado (`System.in`) |
-| `new int[MAX_VALORACIONES][CATEGORIAS.length]` | Crea la matriz de 30 filas y 3 columnas. Un array de `int` empieza con todo a 0 |
-| `do { … } while (!opcion.equals("0"));` | Un bucle que se ejecuta **al menos una vez** y se repite mientras la opción no sea `"0"`. Los textos se comparan con `equals`, no con `==` |
-| `teclado.nextLine().trim()` | Lee una línea entera y le quita los espacios de los extremos: `" 1 "` queda en `"1"` |
-| `switch (opcion) { case "1" -> … }` | Elige según el valor de `opcion`. Con flechas, cada caso hace solo lo suyo, sin `break`. `default` es para cualquier otro valor |
-| `nuevaValoracion(teclado, notas[total])` | Le pasa a la función el `Scanner` y la primera fila libre de la matriz. `notas[total]` es un array: la fila entera |
-| `total++;` | Suma 1 a `total` |
-| `static void nuevaValoracion(Scanner teclado, int[] fila)` | Rellena la fila que recibe. Como la fila es un array, lo que se guarda en ella queda en la matriz de `main` |
-| `static int leerEntero(Scanner teclado, String pregunta, int minimo, int maximo)` | Pregunta hasta que el número está entre `minimo` y `maximo` y lo **devuelve** (`return numero;`). Con 1 y 5 lee notas; con 1 y 10, pesos |
+| `public static final String[] CATEGORIAS = {…};` | Un array constante con los nombres de las categorías. Su posición es la columna de la matriz: `"Docente"` es la columna 0. Con `public`, `main` también lo puede usar: `Menu.CATEGORIAS` |
+| `public static void mostrarMenu()` | Una función sin parámetros y que no devuelve nada (`void`): solo escribe el menú |
+| `public static int leerEntero(Scanner teclado, String pregunta, int minimo, int maximo)` | Pregunta hasta que el número está entre `minimo` y `maximo` y lo **devuelve** (`return numero;`). Con 1 y 5 lee notas; con 1 y 10, pesos |
 | `while (!Calculos.estaEntre(numero, minimo, maximo))` | Repite mientras el número **no** (`!`) esté entre los límites. `numero` empieza en `minimo - 1`, fuera de los límites, así que pregunta al menos una vez |
-| `int[] pesos = {1, 1, 1};` | Crea el array de pesos con sus tres valores. Tiene que tener tantos como `CATEGORIAS` |
-| `static void cambiarPesos(Scanner teclado, int[] pesos)` | Rellena el array que recibe, como `nuevaValoracion` con la fila: el cambio queda en el array de `main` |
-| `Random azar = new Random();` | Crea el generador de números al azar. Uno para todo el programa |
-| `azar.nextInt(Calculos.NOTA_MINIMA, Calculos.NOTA_MAXIMA + 1)` | Un entero al azar desde el primero hasta el segundo **sin incluirlo**: por eso `+ 1`, para que el 5 pueda salir |
-| `Math.min(AL_AZAR, libres)` | La menor de las dos cantidades: 10, o las filas que quedan libres si son menos |
-| `total += creadas;` | Suma a `total` lo que devuelve `crearAlAzar`. Como en la opción 1, `total` solo lo cambia `main` |
-| `leerEntero(teclado, "Número de la valoración", 1, total)` | Solo acepta del 1 al número de valoraciones que hay: una que existe |
-| `notas[numero - 1]` | La fila de la valoración n.º `numero`: las filas empiezan en 0 |
-| `static void escribirCabecera(String columna4, String columna5)` | Escribe la cabecera de una tabla con las dos últimas columnas que recibe, y su línea de `=`. La usan las opciones 2 y 4 |
 | `try { … } catch (NumberFormatException e) { … }` | Si `Integer.parseInt` recibe algo que no es un número, lanza esa excepción, y el `catch` la recoge en lugar de cerrar el programa |
+| `public static void nuevaValoracion(Scanner teclado, int[] fila)` | Rellena la fila que recibe. Como la fila es un array, lo que se guarda en ella queda en la matriz de `main` |
+| `public static void cambiarPesos(Scanner teclado, int[] pesos)` | Rellena el array que recibe, como `nuevaValoracion` con la fila: el cambio queda en el array de `main` |
 | `Calculos.media(notas, total, categoria)` | Llama a una función de otra clase: el nombre de la clase, un punto y la función |
 | `return;` en `mostrarResumen` | Termina la función ahí mismo: si no hay valoraciones, no sigue |
-| `static final String FILA = "  %-12s %6s  %-10s %5s  %s%n";` | El formato de cada fila de la tabla. Cada `%…s` es un hueco para un dato: `%-12s` lo escribe en 12 caracteres, pegado a la izquierda (el `-`), y rellena con espacios; `%6s`, en 6, pegado a la derecha; `%s`, tal cual. `%n` es el salto de línea |
+| `public static final String FILA = "  %-12s %6s  %-10s %5s  %s%n";` | El formato de cada fila de la tabla. Cada `%…s` es un hueco para un dato: `%-12s` lo escribe en 12 caracteres, pegado a la izquierda (el `-`), y rellena con espacios; `%6s`, en 6, pegado a la derecha; `%s`, tal cual. `%n` es el salto de línea |
 | `System.out.printf(FILA, "Docente", "33.3%", "****-", 4.0, "4")` | Escribe el formato cambiando cada hueco por un dato, en orden. Como todas las filas usan `FILA`, las columnas quedan alineadas |
 | `String cabecera = String.format(FILA, …);` | Hace lo mismo que `printf`, pero en lugar de escribir el texto, lo **devuelve**: así se puede escribir y, además, medir |
 | `"=".repeat(cabecera.trim().length())` | La línea de debajo de la cabecera: `repeat` repite el texto `"="` tantas veces como se le diga. `trim()` quita los espacios del principio y el salto de línea del final, y `length()` da cuántos caracteres quedan: la línea mide lo mismo que el texto de la cabecera |
+| `public static void escribirCabecera(String columna4, String columna5)` | Escribe la cabecera de una tabla con las dos últimas columnas que recibe, y su línea de `=`. La usan las opciones 2 y 4 |
+| `azar.nextInt(Calculos.NOTA_MINIMA, Calculos.NOTA_MAXIMA + 1)` | Un entero al azar desde el primero hasta el segundo **sin incluirlo**: por eso `+ 1`, para que el 5 pueda salir |
+| `Math.min(AL_AZAR, libres)` | La menor de las dos cantidades: 10, o las filas que quedan libres si son menos |
+| `leerEntero(teclado, "Número de la valoración", 1, total)` | Solo acepta del 1 al número de valoraciones que hay: una que existe |
+| `notas[numero - 1]` | La fila de la valoración n.º `numero`: las filas empiezan en 0 |
+
+Las funciones van con **`public static`**: `static`, porque se usan sin crear objetos, y `public`, porque las llama `main`, que está en otra clase.
 
 ```java
 package dam;
@@ -743,81 +750,30 @@ import java.util.Random;
 import java.util.Scanner;
 
 /**
- * ValoraPROG: valoraciones anónimas de docente, materiales y clases, con un menú en la terminal.
- * Las valoraciones y los pesos se guardan en memoria: al salir del programa, se pierden.
+ * El menú de ValoraPROG y lo que hace cada opción: todo lo que habla con la persona.
+ * Lee con Scanner y escribe con println y printf; las cuentas las pide a Calculos.
+ * Los datos (las notas, total y los pesos) los crea main, en Principal, y llegan como parámetros.
  */
-public class Principal {
+public class Menu {
 
     // Las categorías que se valoran: una columna de la matriz de notas para cada una
-    static final String[] CATEGORIAS = {"Docente", "Materiales", "Clases"};
+    public static final String[] CATEGORIAS = {"Docente", "Materiales", "Clases"};
 
     // Cuántas valoraciones caben como máximo: el número de filas de la matriz
-    static final int MAX_VALORACIONES = 30;
+    public static final int MAX_VALORACIONES = 30;
 
     // Cuántas valoraciones crea de una vez la opción 5
-    static final int AL_AZAR = 10;
+    public static final int AL_AZAR = 10;
 
     // El formato de cada fila del resumen, para que las columnas queden alineadas como en una tabla:
     // %-12s, un texto en 12 caracteres pegado a la izquierda; %6s, en 6 pegado a la derecha;
     // %s, el texto tal cual; %n, el salto de línea.
     // Los números van con %s, no con %.1f: así salen con punto (4.5), como con println,
     // y no con coma (4,5) si el sistema está en español
-    static final String FILA = "  %-12s %6s  %-10s %5s  %s%n";
-
-    // ── El programa: el menú, que se repite hasta elegir 0 ───────────────
-    public static void main(String[] args) {
-        Scanner teclado = new Scanner(System.in);
-
-        // Una fila por valoración y una columna por categoría:
-        // notas[0][1] es la nota de «Materiales» (columna 1) de la primera valoración (fila 0)
-        int[][] notas = new int[MAX_VALORACIONES][CATEGORIAS.length];
-        int total = 0;      // cuántas valoraciones hay: las filas ya rellenas
-
-        // Un peso por categoría, en el mismo orden que CATEGORIAS. Al empezar, todas cuentan lo mismo
-        int[] pesos = {1, 1, 1};
-
-        // El generador de números al azar de la opción 5: uno para todo el programa
-        Random azar = new Random();
-
-        String opcion;
-        do {
-            mostrarMenu();
-            opcion = teclado.nextLine().trim();     // trim quita los espacios de los extremos
-            System.out.println();                   // una línea en blanco entre el menú y la respuesta
-
-            switch (opcion) {
-                case "1" -> {
-                    if (total == MAX_VALORACIONES) {
-                        System.out.println("No caben más valoraciones: el máximo es " + MAX_VALORACIONES + ".");
-                    } else {
-                        nuevaValoracion(teclado, notas[total]);    // rellena la primera fila libre
-                        total++;                                   // total es un int: se cambia aquí, en main
-                        System.out.println("Valoración guardada (" + total + " en total).");
-                    }
-                }
-                case "2" -> mostrarResumen(notas, total, pesos);
-                case "3" -> cambiarPesos(teclado, pesos);
-                case "4" -> mostrarMejor(notas, total, pesos);
-                case "5" -> {
-                    int creadas = crearAlAzar(notas, total, azar);
-                    total += creadas;                              // como en la opción 1: total se cambia en main
-                    if (creadas == 0) {
-                        System.out.println("No caben más valoraciones: el máximo es " + MAX_VALORACIONES + ".");
-                    } else {
-                        System.out.println(creadas + " valoraciones creadas al azar (" + total + " en total).");
-                    }
-                }
-                case "6" -> modificarValoracion(teclado, notas, total);
-                case "0" -> System.out.println("Hasta pronto. Las valoraciones y los pesos no se guardan al salir.");
-                default -> System.out.println("Opción no válida: elige una del menú.");
-            }
-        } while (!opcion.equals("0"));
-
-        teclado.close();
-    }
+    public static final String FILA = "  %-12s %6s  %-10s %5s  %s%n";
 
     // ── El menú ──────────────────────────────────────────────────────────
-    static void mostrarMenu() {
+    public static void mostrarMenu() {
         System.out.println();
         System.out.println("=== ValoraPROG ===");
         System.out.println("1. Nueva valoración");
@@ -833,7 +789,7 @@ public class Principal {
     // ── Leer un número ───────────────────────────────────────────────────
     // Pregunta hasta que se escribe un número entero entre minimo y maximo, y lo devuelve.
     // Sirve para las notas (del 1 al 5) y para los pesos (del 1 al 10)
-    static int leerEntero(Scanner teclado, String pregunta, int minimo, int maximo) {
+    public static int leerEntero(Scanner teclado, String pregunta, int minimo, int maximo) {
         int numero = minimo - 1;    // empieza fuera del rango: así pregunta al menos una vez
         while (!Calculos.estaEntre(numero, minimo, maximo)) {
             System.out.print(pregunta + " (" + minimo + "-" + maximo + "): ");
@@ -852,7 +808,7 @@ public class Principal {
     // ── 1. Nueva valoración ──────────────────────────────────────────────
     // Pide una nota por categoría y la guarda en la fila que recibe.
     // La fila es un array y se recibe por referencia: lo que se guarda aquí, queda en la matriz de main
-    static void nuevaValoracion(Scanner teclado, int[] fila) {
+    public static void nuevaValoracion(Scanner teclado, int[] fila) {
         for (int categoria = 0; categoria < CATEGORIAS.length; categoria++) {
             fila[categoria] = leerEntero(teclado, CATEGORIAS[categoria], Calculos.NOTA_MINIMA, Calculos.NOTA_MAXIMA);
         }
@@ -863,20 +819,20 @@ public class Principal {
     // Las tres primeras columnas son siempre las mismas; las dos últimas, las que se le pasan.
     // String.format hace lo mismo que printf, pero devuelve el texto en lugar de escribirlo;
     // trim le quita los espacios del principio y el salto de línea del final
-    static void escribirCabecera(String columna4, String columna5) {
+    public static void escribirCabecera(String columna4, String columna5) {
         String cabecera = String.format(FILA, "Categoría", "Peso", "Estrellas", columna4, columna5);
         System.out.print(cabecera);
         System.out.println("  " + "=".repeat(cabecera.trim().length()));
     }
 
     // El peso de una categoría, en porcentaje y como texto: "33.3%"
-    static String peso(int[] pesos, int categoria) {
+    public static String peso(int[] pesos, int categoria) {
         return Calculos.redondear(Calculos.porcentaje(pesos, categoria)) + "%";
     }
 
     // ── 2. Ver valoración global ─────────────────────────────────────────
     // Las cuentas las hace Calculos; aquí solo se muestran
-    static void mostrarResumen(int[][] notas, int total, int[] pesos) {
+    public static void mostrarResumen(int[][] notas, int total, int[] pesos) {
         if (total == 0) {
             System.out.println("Aún no hay valoraciones.");
             return;
@@ -896,7 +852,7 @@ public class Principal {
     // ── 3. Cambiar los pesos ─────────────────────────────────────────────
     // Muestra los pesos de ahora y pide uno nuevo, del 1 al 10, para cada categoría.
     // Como la fila en nuevaValoracion, pesos es un array: lo que se cambia aquí, queda en el de main
-    static void cambiarPesos(Scanner teclado, int[] pesos) {
+    public static void cambiarPesos(Scanner teclado, int[] pesos) {
         System.out.println("Cuánto cuenta cada categoría en la valoración global. Pesos de ahora:");
         for (int categoria = 0; categoria < CATEGORIAS.length; categoria++) {
             System.out.println("  " + CATEGORIAS[categoria] + ": " + pesos[categoria]);
@@ -910,7 +866,7 @@ public class Principal {
 
     // ── 4. Ver la mejor valoración ───────────────────────────────────────
     // La de nota global más alta, con los pesos de ahora. Si hay empate, la primera
-    static void mostrarMejor(int[][] notas, int total, int[] pesos) {
+    public static void mostrarMejor(int[][] notas, int total, int[] pesos) {
         if (total == 0) {
             System.out.println("Aún no hay valoraciones.");
             return;
@@ -933,7 +889,7 @@ public class Principal {
     // Rellena hasta AL_AZAR filas libres con notas al azar, sin pasar del máximo,
     // y devuelve cuántas ha creado: main las suma a total, porque total es un int.
     // Sirve para probar el programa con muchos datos sin escribirlos
-    static int crearAlAzar(int[][] notas, int total, Random azar) {
+    public static int crearAlAzar(int[][] notas, int total, Random azar) {
         int libres = MAX_VALORACIONES - total;
         int crear = Math.min(AL_AZAR, libres);      // la menor de las dos: 10, o las que quepan
         for (int i = 0; i < crear; i++) {
@@ -951,7 +907,7 @@ public class Principal {
     // Solo una que ya existe: se pide su número, del 1 a total. Muestra sus notas y las vuelve a pedir.
     // La valoración n.º X está en la fila X - 1, y se rellena con nuevaValoracion, igual que una nueva.
     // total no cambia: no se añade ninguna
-    static void modificarValoracion(Scanner teclado, int[][] notas, int total) {
+    public static void modificarValoracion(Scanner teclado, int[][] notas, int total) {
         if (total == 0) {
             System.out.println("Aún no hay valoraciones.");
             return;
@@ -968,30 +924,142 @@ public class Principal {
 }
 ```
 
-**Comprueba que…** `javac -d bin src/dam/*.java` no muestra nada y en `bin/dam` están `Calculos.class` y `Principal.class`.
+En la terminal de VS Code, compila:
+
+```bash
+javac -d bin src/dam/*.java
+```
+
+**Comprueba que…** `javac` no muestra nada y en `bin/dam` están `Calculos.class` y `Menu.class`. Aún no se puede ejecutar: falta `main`, que se escribe en el paso 4.
 
 **Comprueba que lo entiendes.** Contesta antes de abrir las respuestas:
 
-1. ¿Por qué `total++` está en `main` y no dentro de `nuevaValoracion`?
-2. Si se escribe `siete` cuando pide la nota de docente, ¿qué líneas del código se ejecutan, y qué sale en la pantalla?
-3. ¿Qué pasa si se elige la opción `7`?
-4. ¿Por qué `cambiarPesos` puede cambiar los pesos de `main` sin devolver nada?
-5. ¿Por qué `crearAlAzar` devuelve un `int` y `nuevaValoracion` no devuelve nada?
-6. Con 3 valoraciones, se elige la opción 6 y se escribe `4`. ¿Qué pasa?
+1. Si se escribe `siete` cuando pide la nota de docente, ¿qué líneas del código se ejecutan, y qué sale en la pantalla?
+2. ¿Por qué `cambiarPesos` puede cambiar los pesos de `main` sin devolver nada?
+3. ¿Por qué `crearAlAzar` devuelve un `int` y `nuevaValoracion` no devuelve nada?
+4. Con 3 valoraciones, se elige la opción 6 y se escribe `4`. ¿Qué pasa?
+
+<details>
+<summary>Respuestas</summary>
+
+1. `Integer.parseInt("siete")` lanza `NumberFormatException`; el `catch` pone `numero = 0` (`minimo - 1`); como 0 no está entre 1 y 5, se escribe «Escribe un número del 1 al 5.» y el `while` vuelve a preguntar «Docente (1-5):».
+2. Porque `pesos` es un array: `cambiarPesos` recibe una copia de la referencia, que apunta al mismo array que el de `main`. Lo que guarda en `pesos[categoria]` se ve en `main`, igual que la fila en `nuevaValoracion`.
+3. Las dos rellenan filas de la matriz, que se ven en `main`. Pero `crearAlAzar` además cambia cuántas hay, y `total` es un `int`: no lo puede cambiar, así que devuelve cuántas ha creado y `main` las suma. `nuevaValoracion` siempre rellena una, y `main` suma 1 con `total++`.
+4. `leerEntero` se llamó con los límites 1 y 3: el 4 no está entre ellos, así que avisa «Escribe un número del 1 al 3.» y vuelve a preguntar. La valoración 4 no existe, y no se puede modificar.
+
+</details>
+
+## Paso 4 · El programa principal
+
+`Principal` solo tiene `main`: crea los datos y repite el menú. Para cada opción, llama a su función de `Menu`. Al leerlo se ve entero cómo funciona el programa, sin los detalles.
+
+Crea el archivo **`Principal.java`**, en `src/dam`:
+
+**Las piezas del código:**
+
+| Pieza | Qué hace |
+|---|---|
+| `public static void main(String[] args)` | Donde empieza el programa. `void` quiere decir que no devuelve nada |
+| `Scanner teclado = new Scanner(System.in);` | Crea el lector del teclado (`System.in`) |
+| `new int[Menu.MAX_VALORACIONES][Menu.CATEGORIAS.length]` | Crea la matriz de 30 filas y 3 columnas. Un array de `int` empieza con todo a 0. Las constantes están en `Menu`: se escriben con el nombre de la clase delante |
+| `int[] pesos = {1, 1, 1};` | Crea el array de pesos con sus tres valores. Tiene que tener tantos como `CATEGORIAS` |
+| `Random azar = new Random();` | Crea el generador de números al azar. Uno para todo el programa |
+| `do { … } while (!opcion.equals("0"));` | Un bucle que se ejecuta **al menos una vez** y se repite mientras la opción no sea `"0"`. Los textos se comparan con `equals`, no con `==` |
+| `teclado.nextLine().trim()` | Lee una línea entera y le quita los espacios de los extremos: `" 1 "` queda en `"1"` |
+| `switch (opcion) { case "1" -> … }` | Elige según el valor de `opcion`. Con flechas, cada caso hace solo lo suyo, sin `break`. `default` es para cualquier otro valor |
+| `Menu.nuevaValoracion(teclado, notas[total])` | Llama a la función de `Menu` y le pasa el `Scanner` y la primera fila libre de la matriz. `notas[total]` es un array: la fila entera |
+| `total++;` | Suma 1 a `total` |
+| `total += creadas;` | Suma a `total` lo que devuelve `Menu.crearAlAzar`. Como en la opción 1, `total` solo lo cambia `main` |
+
+```java
+package dam;
+
+import java.util.Random;
+import java.util.Scanner;
+
+/**
+ * ValoraPROG: valoraciones anónimas de docente, materiales y clases, con un menú en la terminal.
+ * Las valoraciones y los pesos se guardan en memoria: al salir del programa, se pierden.
+ *
+ * Aquí solo está main: crea los datos y repite el menú. Lo que hace cada opción está en Menu,
+ * y las cuentas, en Calculos.
+ */
+public class Principal {
+
+    // ── El programa: el menú, que se repite hasta elegir 0 ───────────────
+    public static void main(String[] args) {
+        Scanner teclado = new Scanner(System.in);
+
+        // Una fila por valoración y una columna por categoría:
+        // notas[0][1] es la nota de «Materiales» (columna 1) de la primera valoración (fila 0)
+        int[][] notas = new int[Menu.MAX_VALORACIONES][Menu.CATEGORIAS.length];
+        int total = 0;      // cuántas valoraciones hay: las filas ya rellenas
+
+        // Un peso por categoría, en el mismo orden que CATEGORIAS. Al empezar, todas cuentan lo mismo
+        int[] pesos = {1, 1, 1};
+
+        // El generador de números al azar de la opción 5: uno para todo el programa
+        Random azar = new Random();
+
+        String opcion;
+        do {
+            Menu.mostrarMenu();
+            opcion = teclado.nextLine().trim();     // trim quita los espacios de los extremos
+            System.out.println();                   // una línea en blanco entre el menú y la respuesta
+
+            switch (opcion) {
+                case "1" -> {
+                    if (total == Menu.MAX_VALORACIONES) {
+                        System.out.println("No caben más valoraciones: el máximo es " + Menu.MAX_VALORACIONES + ".");
+                    } else {
+                        Menu.nuevaValoracion(teclado, notas[total]);   // rellena la primera fila libre
+                        total++;                                       // total es un int: se cambia aquí, en main
+                        System.out.println("Valoración guardada (" + total + " en total).");
+                    }
+                }
+                case "2" -> Menu.mostrarResumen(notas, total, pesos);
+                case "3" -> Menu.cambiarPesos(teclado, pesos);
+                case "4" -> Menu.mostrarMejor(notas, total, pesos);
+                case "5" -> {
+                    int creadas = Menu.crearAlAzar(notas, total, azar);
+                    total += creadas;                                  // como en la opción 1: total se cambia en main
+                    if (creadas == 0) {
+                        System.out.println("No caben más valoraciones: el máximo es " + Menu.MAX_VALORACIONES + ".");
+                    } else {
+                        System.out.println(creadas + " valoraciones creadas al azar (" + total + " en total).");
+                    }
+                }
+                case "6" -> Menu.modificarValoracion(teclado, notas, total);
+                case "0" -> System.out.println("Hasta pronto. Las valoraciones y los pesos no se guardan al salir.");
+                default -> System.out.println("Opción no válida: elige una del menú.");
+            }
+        } while (!opcion.equals("0"));
+
+        teclado.close();
+    }
+}
+```
+
+**Comprueba que…** `javac -d bin src/dam/*.java` no muestra nada y en `bin/dam` están `Calculos.class`, `Menu.class` y `Principal.class`.
+
+**Comprueba que lo entiendes.** Contesta antes de abrir las respuestas:
+
+1. ¿Por qué `total++` está en `main` y no dentro de `Menu.nuevaValoracion`?
+2. ¿Qué pasa si se elige la opción `7`?
+3. Si en `main` se escribiera `MAX_VALORACIONES` sin `Menu.` delante, ¿qué pasaría al compilar?
+4. Para añadir una opción 7 al programa, ¿qué habría que cambiar, y en qué archivos?
 
 <details>
 <summary>Respuestas</summary>
 
 1. Porque `total` es un `int`: si se le pasara a una función, la función recibiría una copia y, al sumarle 1, `total` no cambiaría en `main`. La fila sí se puede rellenar dentro de `nuevaValoracion`, porque es un array: la función y `main` apuntan a la misma fila.
-2. `Integer.parseInt("siete")` lanza `NumberFormatException`; el `catch` pone `numero = 0` (`minimo - 1`); como 0 no está entre 1 y 5, se escribe «Escribe un número del 1 al 5.» y el `while` vuelve a preguntar «Docente (1-5):».
-3. No coincide con ningún `case`, así que se ejecuta `default`: «Opción no válida: elige una del menú.». Como no es `"0"`, el bucle vuelve a mostrar el menú.
-4. Porque `pesos` es un array: `cambiarPesos` recibe una copia de la referencia, que apunta al mismo array que el de `main`. Lo que guarda en `pesos[categoria]` se ve en `main`, igual que la fila en `nuevaValoracion`.
-5. Las dos rellenan filas de la matriz, que se ven en `main`. Pero `crearAlAzar` además cambia cuántas hay, y `total` es un `int`: no lo puede cambiar, así que devuelve cuántas ha creado y `main` las suma. `nuevaValoracion` siempre rellena una, y `main` suma 1 con `total++`.
-6. `leerEntero` se llamó con los límites 1 y 3: el 4 no está entre ellos, así que avisa «Escribe un número del 1 al 3.» y vuelve a preguntar. La valoración 4 no existe, y no se puede modificar.
+2. No coincide con ningún `case`, así que se ejecuta `default`: «Opción no válida: elige una del menú.». Como no es `"0"`, el bucle vuelve a mostrar el menú.
+3. `javac` daría `error: cannot find symbol`: en `Principal` no hay ninguna `MAX_VALORACIONES`. La constante es de `Menu`, y desde otra clase se escribe con su nombre delante.
+4. En `Menu.java`, una función nueva para la opción y una línea más en `mostrarMenu`. En `Principal.java`, un `case "7"` en el `switch` que la llame.
 
 </details>
 
-## Paso 4 · Compilar y ejecutar
+## Paso 5 · Compilar y ejecutar
 
 Siempre desde la carpeta del proyecto (`~/dam2627/prog/ValoraPROG`), en la terminal de VS Code:
 
@@ -1009,11 +1077,11 @@ Cada vez que cambies un `.java`, **vuelve a compilar** antes de ejecutar: `java`
 
 **Comprueba que…** sale el menú «=== ValoraPROG ===» y, al escribir `0` e **Intro**, el programa se despide y termina.
 
-## Paso 5 · Probar el programa
+## Paso 6 · Probar el programa
 
 Un programa se prueba con **casos de prueba**: una entrada preparada y la salida que se espera. Hay que probar los casos **normales**, los **límites** (el primero, el último, el vacío) y los **erróneos** (letras donde va un número, una opción que no existe).
 
-**5.1 · Los casos de prueba.** Ejecuta el programa y hazlos en orden:
+**6.1 · Los casos de prueba.** Ejecuta el programa y hazlos en orden:
 
 | N.º | Tipo | Entrada | Resultado esperado |
 |---|---|---|---|
@@ -1034,7 +1102,7 @@ Un programa se prueba con **casos de prueba**: una entrada preparada y la salida
 | 15 | Erróneo: opción | `7`, y después `hola` | Las dos veces, «Opción no válida: elige una del menú.» y el menú otra vez |
 | 16 | Salir | `0` | «Hasta pronto. Las valoraciones y los pesos no se guardan al salir.» y el programa termina |
 
-**5.2 · Probar sin teclear.** Se le puede dar al programa todo lo que se escribiría, de una vez, con la orden `printf` de la terminal (no es el `printf` de Java, aunque se llame igual) y una tubería (`|`): `printf` escribe el texto, `\n` es cada **Intro**, y `|` se lo pasa a `java` como si se tecleara. Así se repite una prueba larga en un segundo. Por ejemplo, los casos 2 y 3, y salir:
+**6.2 · Probar sin teclear.** Se le puede dar al programa todo lo que se escribiría, de una vez, con la orden `printf` de la terminal (no es el `printf` de Java, aunque se llame igual) y una tubería (`|`): `printf` escribe el texto, `\n` es cada **Intro**, y `|` se lo pasa a `java` como si se tecleara. Así se repite una prueba larga en un segundo. Por ejemplo, los casos 2 y 3, y salir:
 
 ```bash
 printf "1\n4\n3\n5\n2\n0\n" | java -cp bin dam.Principal
@@ -1048,7 +1116,7 @@ printf "5\n5\n5\n5\n1\n0\n" | java -cp bin dam.Principal | grep -E "creadas|No c
 
 `grep -E` muestra solo las líneas que contienen «creadas» o («|») «No caben»: tienen que salir tres «10 valoraciones creadas al azar», con 10, 20 y 30 en total, y dos «No caben más valoraciones: el máximo es 30.».
 
-**Comprueba que…** los dieciséis casos de 5.1 dan el resultado esperado y las dos órdenes de 5.2 muestran lo que se indica.
+**Comprueba que…** los dieciséis casos de 6.1 dan el resultado esperado y las dos órdenes de 6.2 muestran lo que se indica.
 
 ---
 
@@ -1069,16 +1137,18 @@ printf "5\n5\n5\n5\n1\n0\n" | java -cp bin dam.Principal | grep -E "creadas|No c
 
 ## El proyecto terminado
 
-El proyecto terminado, listo para compilar, está en [`ValoraPROG.zip`](ValoraPROG.zip). Descomprímelo en `~/dam2627/prog/` con `unzip ValoraPROG.zip` y compílalo como en el paso 4. El zip no trae la carpeta `bin`: la crea `javac` al compilar.
+El proyecto terminado, listo para compilar, está en [`ValoraPROG.zip`](ValoraPROG.zip). Descomprímelo en `~/dam2627/prog/` con `unzip ValoraPROG.zip` y compílalo como en el paso 5. El zip no trae la carpeta `bin`: la crea `javac` al compilar.
 
 ```
 ~/dam2627/prog/ValoraPROG
 ├── src                         el código fuente
 │   └── dam                     el paquete dam
 │       ├── Calculos.java       las cuentas (paso 2)
-│       └── Principal.java      el menú y lo que se ve (paso 3)
-└── bin                         lo compilado: la crea javac (paso 4)
+│       ├── Menu.java           el menú y lo que se ve (paso 3)
+│       └── Principal.java      main: el arranque (paso 4)
+└── bin                         lo compilado: la crea javac (paso 5)
     └── dam
         ├── Calculos.class
+        ├── Menu.class
         └── Principal.class
 ```
