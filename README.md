@@ -6,6 +6,7 @@ Materiales del módulo de **Programación (PROG)**, con una carpeta por semana.
 
 | Fecha | Qué cambia |
 |---|---|
+| 23 nov | Soluciones de los cuestionarios C2 y C3 y el proyecto «CSV notas» completo ([2026_11_09-13/soluciones](2026_11_09-13/soluciones) y [2026_11_16-20/soluciones](2026_11_16-20/soluciones)) |
 | 17 nov | Las **actividades guiadas (A)** se califican, una vez terminadas, por su **nivel de implementación y comprensión**: la mitad de la nota es cuánto funciona o se ha completado y la otra mitad, cuánto se sabe explicar, con 4 preguntas sobre el diseño y la arquitectura del proyecto ([rúbricas](programacion/1a-evaluacion.md#rúbricas)) |
 | 17 nov | Soluciones del cuestionario C1 ([2026_11_02-06/soluciones](2026_11_02-06/soluciones)). Las del C2 y el proyecto «CSV notas» completo, el martes 24 |
 | 17 nov | Semana del 23 al 27, de repaso: la guía de **ValoraPROG**, un programa en Java con menú en la terminal, de principio a fin ([2026_11_23-27](2026_11_23-27)) |
@@ -15,7 +16,6 @@ Materiales del módulo de **Programación (PROG)**, con una carpeta por semana.
 | 11 nov | Nuevas fechas de exámenes: un solo examen parcial (**P2**, miércoles 2 de diciembre) con todo lo de la evaluación que no evaluó Julia, y el examen final (**F**) el jueves 10 de diciembre |
 | 11 nov | El examen de octubre de Julia, con su solución explicada ([examen-julia](examen-julia/enunciado.md)) |
 | 11 nov | **Repaso Julia**: apuntes que completan lo que se dio antes del 2 de noviembre ([repaso-julia/apuntes](repaso-julia/apuntes)) |
-| 11 nov | La **revisión (R)** de los cuestionarios y de los exámenes parciales corregidos es el 10 % de la nota; la entrega de los cuestionarios es obligatoria |
 
 ## Fechas importantes
 
