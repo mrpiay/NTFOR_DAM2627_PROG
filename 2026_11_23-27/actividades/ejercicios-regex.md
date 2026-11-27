@@ -6,7 +6,7 @@ Un miniproyecto Java, `regex`, con tres ejercicios:
 - **Ejercicio 2:** buscar con `Pattern` y `Matcher`.
 - **Ejercicio 3:** repasar los arrays de una y dos dimensiones.
 
-Los ejercicios 1 y 2 están resueltos. El 3 está empezado: hay que completarlo.
+Los tres ejercicios están resueltos.
 
 Antes del código va un ejercicio sobre el proyecto en sí: deducir sus carpetas y su paquete a partir de los comandos que lo compilan y lo ejecutan.
 
@@ -119,20 +119,42 @@ public class Principal {
         // Poner toda la fila 0 a 0, toda la fila 1 a 1 y toda la fila 2 a 2
         for(int fila = 0; fila <=2; fila++)
             for(int col = 0; col <=1; col++ )
-                // Si en vez de fila se pone 2-fila, la fila 0 se rellena con 2, la fila 1 con 1 y la fila 2 con 0
-                tabla[fila][col] = fila;
+                //tabla[fila][col] = fila; //(0 0) (1 1) (2 2)
+                //tabla[fila][col] = 2 - fila; //(2 2) (1 1) (0 0)
+                tabla[fila][col] = col + 2 * fila; //(0 1) (2 3) (4 5)
 
         // Imprimir tabla
         for(int [] fila : tabla)
             System.out.println(Arrays.toString(fila));
 
         // Sumar la fila 1
+        int total = 0;
+        for(int dato : tabla[0])
+            total = total + dato;
+        System.out.println(total);
 
+        total = 0;
+        for(int col = 0; col < tabla[0].length; col++)
+            total = total + tabla[0][col];
+        System.out.println(total);
 
         // Sumar la columna 2
+        total = 0;
+        for(int fila = 0; fila < tabla.length; fila++)
+            total = total + tabla[fila][1];
+        System.out.println(total);
 
-
-
+        // Sumar todos los valores de la tabla
+        int totalTabla = 0;
+        int totalFila;
+        for(int[] fila : tabla){
+            totalFila = 0;
+            for(int dato : fila){
+                totalFila = totalFila + dato;
+            }
+            totalTabla = totalTabla + totalFila;
+        }
+        System.out.println(totalTabla);
     }
 
     public static void main(String[] args) {
@@ -230,25 +252,27 @@ Código postal 4: 36201
 **Enunciado:** con una tabla de 3 filas y 2 columnas de tipo `int`:
 
 1. Crear la tabla.
-2. Rellenar cada fila con un mismo valor.
+2. Rellenarla.
 3. Imprimirla.
-4. Sumar la fila 1.
-5. Sumar una columna.
+4. Sumar la primera fila.
+5. Sumar la segunda columna.
+6. Sumar todos los valores de la tabla.
 
-**Hecho:** los pasos 1 a 3, en el método `ejercicio3()` del código. La salida es:
+**Solución:** el método `ejercicio3()` del código.
+
+**Salida:**
 
 ```
-[0, 0]
-[1, 1]
-[2, 2]
+[0, 1]
+[2, 3]
+[4, 5]
+1
+1
+9
+15
 ```
 
-- `new int[3][2]` crea la tabla: el primer número es el de filas y el segundo, el de columnas. Las filas van de la 0 a la 2, y las columnas, de la 0 a la 1.
-- Los dos `for` anidados recorren cada fila y, dentro de cada fila, cada columna.
-- `tabla[fila][col] = fila;` pone en cada casilla el número de su fila. Con `2-fila`, en cambio, la tabla queda al revés: la fila 0 se rellena con 2, la fila 1 con 1 y la fila 2 con 0.
-- `for (int[] fila : tabla)` recorre la tabla fila a fila: cada fila es un array de una dimensión, que `Arrays.toString` convierte en texto.
-
-**Para completar:** los pasos 4 y 5, donde están los comentarios «Sumar la fila 1» y «Sumar la columna 2».
+**Explicación:** en [`repaso-arrays.md`](repaso-arrays.md), parte por parte: cómo se crea y se rellena la tabla, las tres fórmulas del código, cómo se imprime y cómo se suman una fila, una columna y la tabla entera.
 
 ---
 
